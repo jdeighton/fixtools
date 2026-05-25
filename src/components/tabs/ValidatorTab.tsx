@@ -1,8 +1,16 @@
 import { useMemo, useState } from 'react'
 import { useApp } from '../../context/AppContext'
-import { validateMessage, type ValidationIssue } from '../../lib/fixValidator'
+import { validateMessage, type ValidationIssue, type ValidationProfile } from '../../lib/fixValidator'
 import { msgTypeDescription } from '../../data/fixDictionary'
 import styles from './ValidatorTab.module.css'
+
+const PROFILES: { value: ValidationProfile; label: string }[] = [
+  { value: 'auto',       label: 'Auto (from BeginString)' },
+  { value: 'FIX.4.2',   label: 'FIX 4.2' },
+  { value: 'FIX.4.4',   label: 'FIX 4.4' },
+  { value: 'TT-FIX.4.2', label: 'TT FIX 4.2' },
+  { value: 'TT-FIX.4.4', label: 'TT FIX 4.4' },
+]
 
 interface MsgResult {
   sequenceIndex: number
@@ -17,9 +25,10 @@ interface MsgResult {
 export function ValidatorTab() {
   const { messages, settings, customEnums } = useApp()
   const [filter, setFilter] = useState('')
+  const [profile, setProfile] = useState<ValidationProfile>('auto')
 
   const results: MsgResult[] = useMemo(() => messages.map(msg => {
-    const issues = validateMessage(msg, settings, customEnums)
+    const issues = validateMessage(msg, settings, customEnums, profile)
     return {
       sequenceIndex: msg.sequenceIndex,
       msgType: msg.tags.get(35) ?? '?',
@@ -57,6 +66,17 @@ export function ValidatorTab() {
 
   return (
     <div className={styles.root}>
+      <div className={styles.toolbar}>
+        <label className={styles.toolbarLabel} htmlFor="validatorProfile">Spec</label>
+        <select
+          id="validatorProfile"
+          className={styles.profileSelect}
+          value={profile}
+          onChange={e => setProfile(e.target.value as ValidationProfile)}
+        >
+          {PROFILES.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
+        </select>
+      </div>
       {/* Summary banner */}
       {totalErrors === 0 && totalWarnings === 0 ? (
         <div className={styles.successBanner}>

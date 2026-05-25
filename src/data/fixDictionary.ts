@@ -1,4 +1,4 @@
-// Auto-generated from QuickFIX FIX42.xml and FIX44.xml specs — do not edit by hand
+// Auto-generated from QuickFIX and TT FIX spec files — do not edit by hand
 // Run: node scripts/generateDictionary.mjs
 
 export interface FieldDef {
@@ -8522,6 +8522,8758 @@ export const FIELDS_42: Record<number, FieldDef> = {
   }
 }
 
+export const FIELDS_TT42: Record<number, FieldDef> = {
+  "1": {
+    "name": "Account",
+    "type": "STRING"
+  },
+  "6": {
+    "name": "AvgPx",
+    "type": "PRICE"
+  },
+  "7": {
+    "name": "BeginSeqNo",
+    "type": "SEQNUM"
+  },
+  "8": {
+    "name": "BeginString",
+    "type": "STRING"
+  },
+  "9": {
+    "name": "BodyLength",
+    "type": "INT"
+  },
+  "10": {
+    "name": "CheckSum",
+    "type": "STRING"
+  },
+  "11": {
+    "name": "ClOrdID",
+    "type": "STRING"
+  },
+  "12": {
+    "name": "Commission",
+    "type": "AMT"
+  },
+  "13": {
+    "name": "CommType",
+    "type": "CHAR",
+    "values": {
+      "1": "Per Unit",
+      "2": "Percentage",
+      "3": "Absolute",
+      "4": "Percentage Waived Cash Discount",
+      "5": "Percentage Waived Enhanced Units",
+      "6": "Points Per Bond Or Contract"
+    }
+  },
+  "14": {
+    "name": "CumQty",
+    "type": "QTY"
+  },
+  "15": {
+    "name": "Currency",
+    "type": "CURRENCY"
+  },
+  "16": {
+    "name": "EndSeqNo",
+    "type": "SEQNUM"
+  },
+  "17": {
+    "name": "ExecID",
+    "type": "STRING"
+  },
+  "18": {
+    "name": "ExecInst",
+    "type": "MULTIPLESTRINGVALUE",
+    "values": {
+      "1": "Not Held",
+      "2": "Work",
+      "5": "Held",
+      "6": "Participate Dont Initiate",
+      "G": "All Or None",
+      "S": "Suspend",
+      "q": "Release From Suspension",
+      "o": "Cancel On Connection Loss",
+      "X": "Test Request"
+    }
+  },
+  "19": {
+    "name": "ExecRefID",
+    "type": "STRING"
+  },
+  "20": {
+    "name": "ExecTransType",
+    "type": "CHAR",
+    "values": {
+      "0": "New",
+      "1": "Cancel",
+      "2": "Correct",
+      "3": "Status"
+    }
+  },
+  "21": {
+    "name": "HandlInst",
+    "type": "CHAR",
+    "values": {
+      "1": "Automated Execution Order Private No Broker Intervention",
+      "2": "Automated Execution Order Public Broker Intervention Ok",
+      "3": "Manual Order Best Execution"
+    }
+  },
+  "22": {
+    "name": "IDSource",
+    "type": "STRING",
+    "values": {
+      "4": "Isin Number",
+      "5": "Ric Code",
+      "8": "Exchange Security Id",
+      "91": "Exchange Ticker",
+      "96": "Tt Security Id",
+      "97": "Alias",
+      "98": "Name",
+      "A": "Bloomberg Code",
+      "S": "Openfigi Id",
+      "X": "Series Key",
+      "H": "Clearing House"
+    }
+  },
+  "30": {
+    "name": "LastMkt",
+    "type": "EXCHANGE"
+  },
+  "31": {
+    "name": "LastPx",
+    "type": "PRICE"
+  },
+  "32": {
+    "name": "LastShares",
+    "type": "QTY"
+  },
+  "33": {
+    "name": "LinesOfText",
+    "type": "INT"
+  },
+  "34": {
+    "name": "MsgSeqNum",
+    "type": "SEQNUM"
+  },
+  "35": {
+    "name": "MsgType",
+    "type": "STRING",
+    "values": {
+      "0": "Heartbeat",
+      "1": "Test Request",
+      "2": "Resend Request",
+      "3": "Reject",
+      "4": "Sequence Reset",
+      "5": "Logout",
+      "8": "Execution Report",
+      "9": "Order Cancel Reject",
+      "A": "Logon",
+      "B": "News",
+      "b": "Quote Request Response",
+      "c": "Security Definition Request",
+      "D": "Order Single",
+      "AB": "Order Multi Leg",
+      "AC": "Order Multi Leg Cancel Replace Request",
+      "d": "Security Definition",
+      "e": "Security Status Request",
+      "f": "Security Status",
+      "F": "Order Cancel Request",
+      "G": "Order Cancel Replace Request",
+      "g": "Trading Session Status Request",
+      "H": "Order Status Request",
+      "j": "Business Message Reject",
+      "R": "Quote Request",
+      "V": "Market Data Request",
+      "W": "Market Data Snapshot Full Refresh",
+      "X": "Market Data Incremental Refresh",
+      "Y": "Market Data Request Reject",
+      "AE": "Trade Capture Report",
+      "AR": "Trade Capture Report Ack",
+      "U2": "Outofband Recovery Request",
+      "Q": "Dont Know Trade",
+      "AD": "Trade Capture Report Request",
+      "AQ": "Trade Capture Report Request Ack",
+      "J": "Allocation Instruction",
+      "P": "Allocation Instruction Ack",
+      "AS": "Allocation Report",
+      "AI": "Quote Status Report",
+      "AJ": "Quote Response",
+      "E": "New Order List"
+    }
+  },
+  "36": {
+    "name": "NewSeqNo",
+    "type": "SEQNUM"
+  },
+  "37": {
+    "name": "OrderID",
+    "type": "STRING"
+  },
+  "38": {
+    "name": "OrderQty",
+    "type": "QTY"
+  },
+  "39": {
+    "name": "OrdStatus",
+    "type": "CHAR",
+    "values": {
+      "0": "New",
+      "1": "Partially Filled",
+      "2": "Filled",
+      "3": "Done For Day",
+      "4": "Canceled",
+      "5": "Replaced",
+      "6": "Pending Cancel",
+      "7": "Stopped",
+      "8": "Rejected",
+      "9": "Suspended",
+      "A": "Pending New",
+      "B": "Calculated",
+      "C": "Expired",
+      "D": "Accepted For Bidding",
+      "E": "Pending Replace",
+      "H": "Trade Cancel",
+      "z": "Inactive"
+    }
+  },
+  "40": {
+    "name": "OrdType",
+    "type": "CHAR",
+    "values": {
+      "1": "Market",
+      "2": "Limit",
+      "3": "Stop",
+      "4": "Stop Limit",
+      "5": "Market On Close",
+      "B": "Limit On Close",
+      "D": "Previously Quoted",
+      "K": "Market With Left Over As Limit",
+      "Q": "Market Limit Market Left Over As Limit",
+      "S": "Stop Market To Limit",
+      "T": "If Touched Limit",
+      "J": "If Touched Market",
+      "U": "If Touched Market To Limit",
+      "p": "Limit Post Only",
+      "V": "Market Close Today",
+      "W": "Limit Close Today",
+      "P": "Peg",
+      "X": "Iceberg"
+    }
+  },
+  "41": {
+    "name": "OrigClOrdID",
+    "type": "STRING"
+  },
+  "43": {
+    "name": "PossDupFlag",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "44": {
+    "name": "Price",
+    "type": "PRICE"
+  },
+  "45": {
+    "name": "RefSeqNum",
+    "type": "SEQNUM"
+  },
+  "48": {
+    "name": "SecurityID",
+    "type": "STRING"
+  },
+  "49": {
+    "name": "SenderCompID",
+    "type": "STRING"
+  },
+  "50": {
+    "name": "SenderSubID",
+    "type": "STRING"
+  },
+  "52": {
+    "name": "SendingTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "53": {
+    "name": "Quantity",
+    "type": "QTY"
+  },
+  "54": {
+    "name": "Side",
+    "type": "CHAR",
+    "values": {
+      "1": "Buy",
+      "2": "Sell",
+      "3": "Buy Minus",
+      "4": "Sell Plus",
+      "5": "Sell Short",
+      "6": "Sell Short Exempt",
+      "7": "Undisclosed",
+      "8": "Cross",
+      "9": "Cross Short",
+      "B": "As Defined",
+      "C": "Opposite"
+    }
+  },
+  "55": {
+    "name": "Symbol",
+    "type": "STRING"
+  },
+  "56": {
+    "name": "TargetCompID",
+    "type": "STRING"
+  },
+  "57": {
+    "name": "TargetSubID",
+    "type": "STRING"
+  },
+  "58": {
+    "name": "Text",
+    "type": "STRING"
+  },
+  "59": {
+    "name": "TimeInForce",
+    "type": "CHAR",
+    "values": {
+      "0": "Day",
+      "1": "Good Till Cancel",
+      "2": "At The Opening",
+      "3": "Immediate Or Cancel",
+      "4": "Fill Or Kill",
+      "5": "Good Till Crossing",
+      "6": "Good Till Date",
+      "7": "At The Close",
+      "8": "Good Through Crossing",
+      "9": "At Crossing",
+      "A": "Auction",
+      "S": "Time In Force Morning At The Close",
+      "T": "Time In Force Afternoon At The Close",
+      "U": "Time In Force Night At The Close",
+      "V": "Good In Session",
+      "W": "Day Plus",
+      "X": "Good Till Cancel Plus",
+      "Y": "Good Till Date Plus"
+    }
+  },
+  "60": {
+    "name": "TransactTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "62": {
+    "name": "ValidUntilTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "63": {
+    "name": "SettlType",
+    "type": "STRING"
+  },
+  "64": {
+    "name": "SettlDate",
+    "type": "LOCALMKTDATE"
+  },
+  "66": {
+    "name": "ListID",
+    "type": "STRING"
+  },
+  "67": {
+    "name": "ListSeqNo",
+    "type": "INT"
+  },
+  "69": {
+    "name": "ListExecInst",
+    "type": "STRING"
+  },
+  "70": {
+    "name": "AllocID",
+    "type": "STRING"
+  },
+  "71": {
+    "name": "AllocTransType",
+    "type": "CHAR",
+    "values": {
+      "0": "New",
+      "1": "Replace",
+      "2": "Cancel"
+    }
+  },
+  "73": {
+    "name": "NoOrders",
+    "type": "NUMINGROUP"
+  },
+  "75": {
+    "name": "TradeDate",
+    "type": "LOCALMKTDATE"
+  },
+  "77": {
+    "name": "OpenClose",
+    "type": "CHAR",
+    "values": {
+      "C": "Close",
+      "O": "Open",
+      "F": "Fifo"
+    }
+  },
+  "78": {
+    "name": "NoAllocs",
+    "type": "NUMINGROUP"
+  },
+  "79": {
+    "name": "AllocAccount",
+    "type": "STRING"
+  },
+  "80": {
+    "name": "AllocQty",
+    "type": "QTY"
+  },
+  "81": {
+    "name": "ProcessCode",
+    "type": "CHAR",
+    "values": {
+      "0": "Regular",
+      "1": "Soft Dollar",
+      "2": "Step In",
+      "3": "Setp Out",
+      "4": "Soft Dollar Step In",
+      "5": "Soft Dollar Step Out",
+      "6": "Plan Sponsor"
+    }
+  },
+  "87": {
+    "name": "AllocStatus",
+    "type": "INT",
+    "values": {
+      "0": "Accepted",
+      "1": "Block Level Reject",
+      "2": "Account Level Reject",
+      "3": "Received",
+      "4": "Incomplete",
+      "5": "Rejected By Intermediary"
+    }
+  },
+  "96": {
+    "name": "RawData",
+    "type": "STRING"
+  },
+  "97": {
+    "name": "PossResend",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "98": {
+    "name": "EncryptMethod",
+    "type": "INT",
+    "values": {
+      "0": "None"
+    }
+  },
+  "99": {
+    "name": "StopPx",
+    "type": "PRICE"
+  },
+  "100": {
+    "name": "ExDestination",
+    "type": "EXCHANGE"
+  },
+  "102": {
+    "name": "CxlRejReason",
+    "type": "INT",
+    "values": {
+      "0": "Too Late To Cancel",
+      "1": "Unknown Order",
+      "2": "Broker Option",
+      "3": "Order Already In Pending Cancel Or Pending Replace Status",
+      "4": "Unable To Process Order Mass Cancel Request",
+      "5": "Origordmodtime",
+      "6": "Duplicate Clordid",
+      "7": "Duplicate Of A Verbally Communicated Order",
+      "8": "Stale Order",
+      "9": "Trade Along Required",
+      "10": "Invalid Investor Id",
+      "11": "Unsupported Order Characteristic",
+      "12": "Surveillence Option",
+      "13": "Incorrect Quantity",
+      "14": "Incorrect Allocated Quantity",
+      "15": "Unknown Account",
+      "16": "Price Exceeds Current Price Band",
+      "18": "Invalid Price Increment",
+      "19": "Message Pending",
+      "20": "Routing Error",
+      "99": "Other",
+      "1003": "Market Closed",
+      "1007": "Fix Field Missing Or Incorrect",
+      "1010": "Required Field Missing",
+      "1011": "Fix Field Incorrect",
+      "1012": "Price Must Be Greater Than Zero",
+      "1013": "Invalid Order Qualifier",
+      "1014": "User Not Authorized",
+      "2013": "Market Orders Not Supported By Opposite",
+      "2019": "Invalid Expire Date",
+      "2044": "Order Not In Book",
+      "2045": "Order Not In Book2",
+      "2046": "Disclosed Qty Cannot Be Greater",
+      "2047": "Unknown Contract",
+      "2048": "Cancel With Different Sender Comp Id",
+      "2049": "Clordid Different Than Correlationclordid",
+      "2050": "Clordid Different Than Originalclordid",
+      "2051": "Different Side",
+      "2052": "Different Group",
+      "2053": "Different Security Type",
+      "2054": "Different Account",
+      "2055": "Different Qty",
+      "2056": "Cancel With Different Trader Id",
+      "2058": "Stop Price Must Be Greater",
+      "2059": "Stop Price Must Be Smaller",
+      "2060": "Sell Stop Price Must Be Below Ltp",
+      "2061": "Buy Stop Price Must Be Above Ltp",
+      "2100": "Different Product",
+      "2101": "Different Inflight Fill Mitigation",
+      "2102": "Modify With Different Sender Comp Id",
+      "2103": "Modify With Different Trader Id",
+      "2115": "Order Qty Outside Allowable Range",
+      "2130": "Invalid Order Type For Pcp",
+      "2137": "Order Price Outside Limits",
+      "2179": "Order Price Outside Bands",
+      "2311": "Invalid Order Type For Group",
+      "2500": "Instrument Cross Request In Progress",
+      "2501": "Order Qty Too Low",
+      "2600": "Market Maker Protection Has Tripped",
+      "4000": "Engine Did Not Respond",
+      "5001": "Euronext Unknown Order",
+      "5020": "Comp Id Problem",
+      "5099": "Euronext Other",
+      "5300": "Logon Problem",
+      "5313": "No Router For Security Group",
+      "5314": "Router Not Available Or Connected",
+      "5318": "Invalid Price",
+      "5319": "Invalid Ordqty",
+      "5320": "Invalid Ordtype",
+      "5321": "Invalid Side",
+      "6000": "Fully Filled",
+      "6001": "Pending Replace",
+      "6002": "Pending Cancel",
+      "7000": "Order Rejected",
+      "7001": "Contract Not Gtc Gtd Eligible",
+      "7009": "Contract Past Expiration",
+      "7011": "Max Contract Working Qty Exceeded",
+      "7015": "Modify With Different Side",
+      "7018": "Contract Not Gtc Gtd Eligible2",
+      "7020": "No Trading Calendar For Expire Date",
+      "7021": "Expire Date Beyond Instrument Expiration",
+      "7022": "Expire Date Beyond Leg Instrument Expiration",
+      "7024": "Market In No Cancel",
+      "7027": "Invalid Order Type For Reserved Market",
+      "7028": "Order Session Date In Past",
+      "7613": "Disclosed Qty Cannot Be Smaller",
+      "9999": "Technical Error Function Not Performed"
+    }
+  },
+  "103": {
+    "name": "OrdRejReason",
+    "type": "INT",
+    "values": {
+      "0": "Broker Option",
+      "1": "Unknown Symbol",
+      "2": "Exchange Closed",
+      "3": "Order Exceeds Limit",
+      "4": "Too Late To Enter",
+      "5": "Unknown Order",
+      "6": "Duplicate Order",
+      "7": "Duplicate Of A Verbally Communicated Order",
+      "8": "Stale Order",
+      "9": "Trade Along Required",
+      "10": "Invalid Investor Id",
+      "11": "Unsupported Order Characteristic",
+      "12": "Surveillence Option",
+      "13": "Incorrect Quantity",
+      "14": "Incorrect Allocated Quantity",
+      "15": "Unknown Account",
+      "16": "Price Exceeds Current Price Band",
+      "18": "Invalid Price Increment",
+      "19": "Message Pending",
+      "20": "Routing Error",
+      "99": "Other",
+      "100": "Time Out",
+      "1003": "Market Closed",
+      "1007": "Fix Field Missing Or Incorrect",
+      "1010": "Required Field Missing",
+      "1011": "Fix Field Incorrect",
+      "1012": "Price Must Be Greater Than Zero",
+      "1013": "Invalid Order Qualifier",
+      "1014": "User Not Authorized",
+      "2013": "Market Hours Not Suported By Opposite",
+      "2019": "Invalid Expire Date",
+      "2044": "Order Not In Book",
+      "2045": "Order Not In Book 2",
+      "2046": "Disclosed Qty Cannot Be Greater",
+      "2047": "Unknown Contract",
+      "2048": "Cancel With Different Sender Comp Id",
+      "2049": "Clordid Different Than Correleation Clordid",
+      "2050": "Clordid Different Than Original Clordid",
+      "2051": "Different Side",
+      "2052": "Different Group",
+      "2053": "Different Security Type",
+      "2054": "Different Account",
+      "2055": "Different Qty",
+      "2056": "Cancel With Different Trader Id",
+      "2058": "Stop Price Must Be Greater",
+      "2059": "Stop Price Must Be Smaller",
+      "2060": "Sell Stop Price Must Be Below Ltp",
+      "2061": "Buy Stop Price Must Be Above Ltp",
+      "2100": "Different Product",
+      "2101": "Different Inflight Fill Modification",
+      "2102": "Modify With Different Sender Comp Id",
+      "2103": "Modify With Different Trader Id",
+      "2115": "Order Qty Outside Allowable Range",
+      "2130": "Invalid Order Type For Pcp",
+      "2137": "Order Price Outside Limits",
+      "2179": "Order Price Outside Bands",
+      "2311": "Invalid Order Type For Group",
+      "2500": "Instrument Cross Request In Process",
+      "2501": "Ordr Qty Too Low",
+      "2600": "Market Maker Protection Has Tripped",
+      "4000": "Engine Did Not Respond",
+      "6001": "Pending Replace",
+      "6002": "Pending Cancel",
+      "7000": "Order Rejected",
+      "7001": "Contract Not Gtc Gtd Eligible",
+      "7009": "Contract Past Expiration",
+      "7011": "Max Contract Working Qty Exceeded",
+      "7015": "Modify With Different Side",
+      "7018": "Contract Not Gtc Gtd Eligible 2",
+      "7020": "No Trading Calendar For Expire Date",
+      "7021": "Expire Date Beyond Instrument Expiration",
+      "7022": "Expire Date Beyond Leg Instrument Expiration",
+      "7024": "Market In No Cancel",
+      "7027": "Invalid Order Type For Reserved Market",
+      "7028": "Order Session Date In Past",
+      "7613": "Disclosed Qty Cannot Be Smaller",
+      "9999": "Technical Error Function Not Performed"
+    }
+  },
+  "107": {
+    "name": "SecurityDesc",
+    "type": "STRING"
+  },
+  "108": {
+    "name": "HeartBtInt",
+    "type": "INT"
+  },
+  "110": {
+    "name": "MinQty",
+    "type": "QTY"
+  },
+  "112": {
+    "name": "TestReqID",
+    "type": "STRING"
+  },
+  "115": {
+    "name": "OnBehalfOfCompID",
+    "type": "STRING"
+  },
+  "116": {
+    "name": "OnBehalfOfSubID",
+    "type": "STRING"
+  },
+  "117": {
+    "name": "QuoteId",
+    "type": "STRING"
+  },
+  "118": {
+    "name": "NetMoney",
+    "type": "AMT"
+  },
+  "122": {
+    "name": "OrigSendingTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "123": {
+    "name": "GapFillFlag",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "124": {
+    "name": "NoExecs",
+    "type": "NUMINGROUP"
+  },
+  "126": {
+    "name": "ExpireTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "127": {
+    "name": "DKReason",
+    "type": "CHAR",
+    "values": {
+      "A": "Unknown Symbol",
+      "Z": "Other"
+    }
+  },
+  "128": {
+    "name": "DeliverToCompID",
+    "type": "STRING"
+  },
+  "129": {
+    "name": "DeliverToSubID",
+    "type": "STRING"
+  },
+  "131": {
+    "name": "QuoteReqID",
+    "type": "STRING"
+  },
+  "132": {
+    "name": "BidPx",
+    "type": "PRICE"
+  },
+  "133": {
+    "name": "OfferPx",
+    "type": "PRICE"
+  },
+  "134": {
+    "name": "BidSize",
+    "type": "QTY"
+  },
+  "135": {
+    "name": "OfferSize",
+    "type": "QTY"
+  },
+  "136": {
+    "name": "NoMiscFees",
+    "type": "NUMINGROUP"
+  },
+  "137": {
+    "name": "MiscFeeAmt",
+    "type": "AMT"
+  },
+  "138": {
+    "name": "MiscFeeCurr",
+    "type": "CURRENCY"
+  },
+  "139": {
+    "name": "MiscFeeType",
+    "type": "INT",
+    "values": {
+      "1": "Regulatory",
+      "2": "Tax",
+      "3": "Local Commission",
+      "4": "Exchange Fees",
+      "5": "Stamp",
+      "6": "Levy",
+      "7": "Other",
+      "8": "Markup",
+      "9": "Consumption Tax",
+      "10": "Per Transaction",
+      "11": "Conversion",
+      "12": "Agent"
+    }
+  },
+  "141": {
+    "name": "ResetSeqNumFlag",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "142": {
+    "name": "SenderLocationID",
+    "type": "STRING"
+  },
+  "146": {
+    "name": "NoRelatedSym",
+    "type": "NUMINGROUP"
+  },
+  "148": {
+    "name": "Headline",
+    "type": "STRING"
+  },
+  "150": {
+    "name": "ExecType",
+    "type": "CHAR",
+    "values": {
+      "0": "New",
+      "1": "Partial Fill",
+      "2": "Fill",
+      "3": "Done For Day",
+      "4": "Canceled",
+      "5": "Replace",
+      "6": "Pending Cancel",
+      "7": "Stopped",
+      "8": "Rejected",
+      "9": "Suspended",
+      "A": "Pending New",
+      "B": "Calculated",
+      "C": "Expired",
+      "D": "Restated",
+      "E": "Pending Replace",
+      "F": "Trade",
+      "G": "Trade Correct",
+      "H": "Trade Cancel",
+      "I": "Order Status",
+      "J": "Trade In A Clearing Hold",
+      "K": "Trade Has Been Released To Clearing",
+      "L": "Triggered Or Activated By System",
+      "a": "Cancelled By Stp",
+      "b": "Order Cancelled Due To Cod Mechanism",
+      "n": "Order Cancelled Due To Potential Trade Outside Fsp Limits",
+      "u": "Order Cancelled Due To Market Maker Protection",
+      "v": "Order Cancelled By Clearing Risk Manager",
+      "w": "Order Cancelled Due To Trade Price Validation",
+      "O": "Eliminated By Corporate Event",
+      "P": "Cancelled By Member Risk Manager",
+      "U": "Order Cancelled By Market Operations",
+      "V": "Cancelled Due To Kill Command",
+      "X": "Remaining Quantity Killed",
+      "Y": "Beginning Of Pako Period",
+      "R": "Rfq Partially Or Fully Matched With Other Counterparts"
+    }
+  },
+  "151": {
+    "name": "LeavesQty",
+    "type": "QTY"
+  },
+  "153": {
+    "name": "AllocAvgPx",
+    "type": "PRICE"
+  },
+  "154": {
+    "name": "AllocNetMoney",
+    "type": "AMT"
+  },
+  "161": {
+    "name": "AllocText",
+    "type": "STRING"
+  },
+  "167": {
+    "name": "SecurityType",
+    "type": "STRING",
+    "values": {
+      "FUT": "Future",
+      "OPT": "Option",
+      "MLEG": "Spread",
+      "SPOT": "Spot",
+      "TBOND": "Tbond",
+      "CUR": "Currency",
+      "CS": "Common Stock",
+      "INDEX": "Index",
+      "NONE": "None"
+    }
+  },
+  "168": {
+    "name": "EffectiveTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "194": {
+    "name": "LastSpotRate",
+    "type": "PRICE"
+  },
+  "195": {
+    "name": "LastForwardPoints",
+    "type": "PRICEOFFSET"
+  },
+  "196": {
+    "name": "AllocLinkID",
+    "type": "STRING"
+  },
+  "198": {
+    "name": "SecondaryOrderID",
+    "type": "STRING"
+  },
+  "200": {
+    "name": "MaturityMonthYear",
+    "type": "MONTHYEAR"
+  },
+  "201": {
+    "name": "PutOrCall",
+    "type": "INT",
+    "values": {
+      "0": "Put",
+      "1": "Call"
+    }
+  },
+  "202": {
+    "name": "StrikePrice",
+    "type": "PRICE"
+  },
+  "205": {
+    "name": "MaturityDay",
+    "type": "DAYOFMONTH"
+  },
+  "206": {
+    "name": "OptAttribute",
+    "type": "CHAR"
+  },
+  "207": {
+    "name": "SecurityExchange",
+    "type": "EXCHANGE"
+  },
+  "210": {
+    "name": "MaxShow",
+    "type": "INT"
+  },
+  "262": {
+    "name": "MDReqID",
+    "type": "STRING"
+  },
+  "263": {
+    "name": "SubscriptionRequestType",
+    "type": "CHAR",
+    "values": {
+      "0": "Snapshot",
+      "1": "Snapshot Plus Updates",
+      "2": "Disable Previous Snapshot Plus Update Request"
+    }
+  },
+  "264": {
+    "name": "MarketDepth",
+    "type": "INT",
+    "values": {
+      "0": "Full Book",
+      "1": "Top Of Book"
+    }
+  },
+  "265": {
+    "name": "MDUpdateType",
+    "type": "INT",
+    "values": {
+      "0": "Full Refresh",
+      "1": "Incremental Refresh"
+    }
+  },
+  "266": {
+    "name": "AggregatedBook",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "267": {
+    "name": "NoMDEntryTypes",
+    "type": "NUMINGROUP"
+  },
+  "268": {
+    "name": "NoMDEntries",
+    "type": "NUMINGROUP"
+  },
+  "269": {
+    "name": "MDEntryType",
+    "type": "CHAR",
+    "values": {
+      "0": "Bid",
+      "1": "Ask",
+      "2": "Trade",
+      "4": "Opening Price",
+      "5": "Closing Price",
+      "6": "Settlement Price",
+      "7": "Trading Session High Price",
+      "8": "Trading Session Low Price",
+      "9": "Trading Session Vwap Price",
+      "B": "Trade Volume",
+      "J": "Empty Book",
+      "L": "Leg Trade",
+      "Y": "Implied Bid",
+      "Z": "Implied Ask",
+      "m": "Otc Trade",
+      "p": "Indicative Open",
+      "q": "Indicative Close",
+      "r": "Indicative Bid",
+      "s": "Indicative Ask",
+      "t": "Indicative Settlement",
+      "u": "Exchange Sending Time",
+      "v": "Exchange Transact Time",
+      "w": "Exchange Seq Num",
+      "x": "Last Traded",
+      "A": "Imbalance",
+      "o": "Marketbidqty",
+      "n": "Marketaskqty"
+    }
+  },
+  "270": {
+    "name": "MDEntryPx",
+    "type": "PRICE"
+  },
+  "271": {
+    "name": "MDEntrySize",
+    "type": "QTY"
+  },
+  "272": {
+    "name": "MDEntryDate",
+    "type": "UTCDATEONLY"
+  },
+  "273": {
+    "name": "MDEntryTime",
+    "type": "UTCTIMEONLY"
+  },
+  "276": {
+    "name": "QuoteCondition",
+    "type": "CHAR",
+    "values": {
+      "A": "Open Active",
+      "B": "Closed Inactive",
+      "z": "Suspended"
+    }
+  },
+  "279": {
+    "name": "MDUpdateAction",
+    "type": "CHAR",
+    "values": {
+      "0": "New",
+      "1": "Change",
+      "2": "Delete"
+    }
+  },
+  "282": {
+    "name": "MDEntryOriginator",
+    "type": "STRING"
+  },
+  "290": {
+    "name": "MDEntryPositionNo",
+    "type": "INT"
+  },
+  "297": {
+    "name": "QuoteStatus",
+    "type": "INT",
+    "values": {
+      "0": "Accepted",
+      "5": "Rejected",
+      "7": "Expired"
+    }
+  },
+  "305": {
+    "name": "UnderlyingSecurityIDSource",
+    "type": "STRING",
+    "values": {
+      "4": "Isin Number",
+      "5": "Ric Code",
+      "8": "Exchange Security Id",
+      "91": "Exchange Ticker",
+      "96": "Tt Security Id",
+      "97": "Alias",
+      "98": "Name",
+      "A": "Bloomberg Code",
+      "S": "Openfigi Id",
+      "X": "Series Key",
+      "H": "Clearing House"
+    }
+  },
+  "306": {
+    "name": "UnderlyingIssuer",
+    "type": "STRING"
+  },
+  "309": {
+    "name": "UnderlyingSecurityID",
+    "type": "STRING"
+  },
+  "310": {
+    "name": "UnderlyingSecurityType",
+    "type": "STRING",
+    "values": {
+      "FUT": "Future",
+      "OPT": "Option",
+      "MLEG": "Spread",
+      "SPOT": "Spot",
+      "TBOND": "Tbond",
+      "CUR": "Currency",
+      "CS": "Common Stock",
+      "NONE": "None"
+    }
+  },
+  "311": {
+    "name": "UnderlyingSymbol",
+    "type": "STRING"
+  },
+  "316": {
+    "name": "UnderlyingStrikePrice",
+    "type": "PRICE"
+  },
+  "318": {
+    "name": "UnderlyingCurrency",
+    "type": "CURRENCY"
+  },
+  "320": {
+    "name": "SecurityReqID",
+    "type": "STRING"
+  },
+  "321": {
+    "name": "SecurityRequestType",
+    "type": "INT",
+    "values": {
+      "0": "Request Security Identity And Specifications",
+      "1": "Request Security Identity For The Specifications Provided",
+      "2": "Request List Security Types",
+      "3": "Request List Securities"
+    }
+  },
+  "322": {
+    "name": "SecurityResponseID",
+    "type": "STRING"
+  },
+  "323": {
+    "name": "SecurityResponseType",
+    "type": "INT",
+    "values": {
+      "1": "Accept Security Proposal As Is",
+      "2": "Accept Security Proposal With Revisions As Indicated In The Message",
+      "3": "List Of Security Types Returned Per Request",
+      "4": "List Of Securities Returned Per Request",
+      "5": "Reject Security Proposal",
+      "6": "Can Not Match Selection Criteria"
+    }
+  },
+  "324": {
+    "name": "SecurityStatusReqID",
+    "type": "STRING"
+  },
+  "326": {
+    "name": "SecurityTradingStatus",
+    "type": "INT",
+    "values": {
+      "2": "Trading Halt",
+      "9": "Circuit Breaker",
+      "17": "Ready To Trade",
+      "18": "Not Available For Trading",
+      "20": "Unknown Or Invalid",
+      "21": "Preopen",
+      "23": "Fast Market",
+      "98": "Post Close",
+      "99": "Pre Trade"
+    }
+  },
+  "337": {
+    "name": "ContraTrader",
+    "type": "STRING"
+  },
+  "346": {
+    "name": "NumberOfOrders",
+    "type": "INT"
+  },
+  "366": {
+    "name": "AllocPrice",
+    "type": "PRICE"
+  },
+  "369": {
+    "name": "LastSeqNumProcessed",
+    "type": "SEQNUM"
+  },
+  "371": {
+    "name": "RefTagID",
+    "type": "INT"
+  },
+  "372": {
+    "name": "RefMsgType",
+    "type": "STRING"
+  },
+  "373": {
+    "name": "SessionRejectReason",
+    "type": "INT",
+    "values": {
+      "0": "Invalid Tag Number",
+      "1": "Required Tag Missing",
+      "2": "Tag Not Defined For This Message Type",
+      "3": "Undefined Tag",
+      "4": "Tag Specified Without A Value",
+      "5": "Value Is Incorrect",
+      "6": "Incorrect Data Format For Value",
+      "7": "Decryption Problem",
+      "8": "Signature Problem",
+      "9": "Compid Problem",
+      "10": "Sendingtime Accuracy Problem",
+      "11": "Invalid Msgtype",
+      "99": "Other"
+    }
+  },
+  "375": {
+    "name": "ContraBroker",
+    "type": "STRING"
+  },
+  "378": {
+    "name": "ExecRestatementReason",
+    "type": "INT",
+    "values": {
+      "0": "Gt Corporate Action",
+      "1": "Gt Renewal",
+      "2": "Verbal Change",
+      "3": "Repricing Of Order",
+      "4": "Broker Option",
+      "5": "Partial Decline Of Orderqty",
+      "6": "Cancel On Trading Halt",
+      "7": "Cancel On System Failure",
+      "8": "Market",
+      "9": "Cancel Not Best",
+      "10": "Warehouse Recap",
+      "11": "Peg Refresh",
+      "50": "Control User Activity",
+      "51": "Corporate Manager Activity",
+      "52": "Branch Manager Activity",
+      "53": "Exchange And Fix Server Connection Down",
+      "99": "Other",
+      "100": "Cancel On Disconnect",
+      "103": "Cancel Resting Smp",
+      "104": "Cancel From Credit Violation",
+      "105": "Cancel From Firmsoft",
+      "106": "Cancel From Risk",
+      "107": "Cancel Aggressing Smp",
+      "108": "Cancel From Min Lot Size",
+      "109": "Exec Restatement Reason Cancel By System",
+      "110": "Exec Restatement Reason Cancel By Proxy",
+      "111": "Exec Restatement Reason Cancel Order Expired",
+      "112": "Exec Restatement Reason Cancel Outside Price Limits",
+      "113": "Exec Restatement Reason Cancel Session Transition",
+      "114": "Exec Restatement Reason Cancel Auction Delete",
+      "115": "Exec Restatement Reason Cancel Other",
+      "116": "Order Passing Request Accepted",
+      "117": "Order Passing Request Rejected",
+      "118": "Incoming Order Self Match Prevention",
+      "119": "Resting Order Self Match Prevention",
+      "120": "Cancel Due To Self Match Prevention",
+      "121": "Exec Restatement Reason Gtc Gtd Carryover",
+      "122": "Exec Restatement Reason Reduction Of Ordqty",
+      "123": "Exec Restatement Reason Price Sliding Reprice",
+      "124": "Exec Restatement Reason State Change",
+      "125": "Order Passing Request Initiate",
+      "126": "Order Passing Request Undo",
+      "9000": "Exec Restatement Reason Unsolicited Order Recovery",
+      "9001": "Exec Restatement Reason Timeout",
+      "9002": "Exec Restatement Reason Pending",
+      "9003": "Exec Restatement Reason Revived"
+    }
+  },
+  "379": {
+    "name": "BusinessRejectRefID",
+    "type": "STRING"
+  },
+  "380": {
+    "name": "BusinessRejectReason",
+    "type": "INT",
+    "values": {
+      "0": "Other",
+      "1": "Unkown Id",
+      "2": "Unknown Security",
+      "3": "Unsupported Message Type",
+      "4": "Application Not Available",
+      "5": "Conditionally Required Field Missing"
+    }
+  },
+  "381": {
+    "name": "GrossTradeAmt",
+    "type": "AMT"
+  },
+  "393": {
+    "name": "TotalNumSecurities",
+    "type": "INT"
+  },
+  "423": {
+    "name": "PriceType",
+    "type": "INT",
+    "values": {
+      "1": "Percentage",
+      "2": "Per Unit",
+      "3": "Fixed Amount",
+      "4": "Discount",
+      "5": "Premium",
+      "6": "Spread",
+      "7": "Ted Price",
+      "8": "Ted Yield",
+      "9": "Yield",
+      "10": "Fixed Cabinet Trade Price",
+      "11": "Variable Cabinet Trade Price"
+    }
+  },
+  "432": {
+    "name": "ExpireDate",
+    "type": "LOCALMKTDATE"
+  },
+  "434": {
+    "name": "CxlRejResponseTo",
+    "type": "CHAR",
+    "values": {
+      "1": "Order Cancel Request",
+      "2": "Order Cancel Replace Request",
+      "3": "Quote Cancel",
+      "4": "Quote Replace"
+    }
+  },
+  "435": {
+    "name": "UnderlyingSpotRate",
+    "type": "FLOAT"
+  },
+  "440": {
+    "name": "ClearingAccount",
+    "type": "STRING"
+  },
+  "442": {
+    "name": "MultiLegReportingType",
+    "type": "CHAR",
+    "values": {
+      "1": "Single Security",
+      "2": "Individual Leg Of A Multi Leg Security",
+      "3": "Multi Leg Security"
+    }
+  },
+  "447": {
+    "name": "PartyIDSource",
+    "type": "CHAR",
+    "values": {
+      "1": "Korean Investor Id",
+      "2": "Taiwanese Qualified Foreign Investor Id Qfii Fid",
+      "3": "Taiwanese Trading Acct",
+      "4": "Malaysian Central Depository",
+      "5": "Chinese Investor Id",
+      "6": "Uk National Insurance Or Pension Number",
+      "7": "Us Social Security Number",
+      "8": "Us Employer Or Tax Id Number",
+      "9": "Australian Business Number",
+      "A": "Australian Tax File Number",
+      "B": "Bic",
+      "C": "Generally Accepted Market Participant Identifier",
+      "D": "Proprietary",
+      "E": "Iso Country Code",
+      "F": "Settlement Entity Location",
+      "G": "Mic",
+      "H": "Csd Participant Member Code",
+      "I": "Directed Broker Three Character Acronym As Defined In Isitc Etc Best Practice Guidelines Document",
+      "P": "Short Code Identifier",
+      "N": "Legal Entity Id"
+    }
+  },
+  "448": {
+    "name": "PartyID",
+    "type": "STRING"
+  },
+  "452": {
+    "name": "PartyRole",
+    "type": "INT",
+    "values": {
+      "1": "Executing Firm",
+      "2": "Broker Of Credit",
+      "3": "Client Id",
+      "4": "Clearing Firm",
+      "5": "Investor Id",
+      "6": "Introducing Firm",
+      "7": "Entering Firm",
+      "8": "Locate",
+      "9": "Fund Manager Client Id",
+      "10": "Settlement Location",
+      "11": "Order Origination Trader",
+      "12": "Executing Trader",
+      "13": "Order Origination Firm",
+      "14": "Giveup Clearing Firm",
+      "15": "Correspondant Clearing Firm",
+      "16": "Executing System",
+      "17": "Contra Firm",
+      "18": "Contra Clearing Firm",
+      "19": "Sponsoring Firm",
+      "20": "Underlying Contra Firm",
+      "21": "Clearing Organization",
+      "22": "Exchange",
+      "24": "Customer Account",
+      "25": "Correspondent Clearing Organization",
+      "26": "Correspondent Broker",
+      "27": "Buyer Seller",
+      "28": "Custodian",
+      "29": "Intermediary",
+      "30": "Agent",
+      "31": "Sub Custodian",
+      "32": "Beneficiary",
+      "33": "Interested Party",
+      "34": "Regulatory Body",
+      "35": "Liquidity Provider",
+      "36": "Entering Trader",
+      "37": "Contra Trader",
+      "38": "Position Account",
+      "39": "Contra Investor Id",
+      "40": "Transfer To Firm",
+      "41": "Contra Position Account",
+      "42": "Contra Exchange",
+      "43": "Internal Carry Account",
+      "44": "Order Entry Operator Id",
+      "45": "Secondary Account Number",
+      "46": "Foreign Firm",
+      "47": "Third Party Allocation Firm",
+      "48": "Claiming Account",
+      "49": "Asset Manager",
+      "50": "Pledgor Account",
+      "51": "Pledgee Account",
+      "52": "Large Trader Reportable Account",
+      "53": "Trader Mnemonic",
+      "54": "Sender Location",
+      "55": "Session Id",
+      "56": "Acceptable Counterparty",
+      "57": "Unacceptable Counterparty",
+      "58": "Entering Unit",
+      "59": "Executing Unit",
+      "60": "Introducing Broker",
+      "61": "Quote Originator",
+      "62": "Report Originator",
+      "63": "Systematic Internaliser",
+      "64": "Multilateral Trading Facility",
+      "65": "Regulated Market",
+      "66": "Market Maker",
+      "67": "Investment Firm",
+      "68": "Host Competent Authority",
+      "69": "Home Competent Authority",
+      "70": "Competent Authority Of The Most Relevant Market In Terms Of Liquidity",
+      "71": "Competent Authority Of The Transaction",
+      "72": "Reporting Intermediary",
+      "73": "Execution Venue",
+      "74": "Market Data Entry Originator",
+      "75": "Location Id",
+      "76": "Desk Id",
+      "77": "Market Data Market",
+      "78": "Allocation Entity",
+      "79": "Prime Broker Providing General Trade Services",
+      "80": "Step Out Firm",
+      "81": "Brokerclearingid",
+      "82": "Central Registration Depository",
+      "83": "Clearing Account",
+      "84": "Acceptable Settling Counterparty",
+      "85": "Unacceptable Settling Counterparty",
+      "118": "Party Role Decision Maker",
+      "119": "Party Role Client Id House",
+      "122": "Investment Decision Maker",
+      "200": "Account Code",
+      "201": "Takeup Firm",
+      "202": "Clearing Instruction",
+      "203": "Customer Info",
+      "204": "Allocation Entity Id",
+      "205": "Account Type",
+      "206": "Giveup Firm",
+      "207": "Mifid Id",
+      "208": "Composite Mifid Id",
+      "209": "Cti Code",
+      "210": "Lma Clearing Account",
+      "211": "Authorized Trader Id",
+      "212": "Frequent Trader Id",
+      "213": "Party Role User",
+      "214": "Party Role Member",
+      "215": "Party Role Trading Member",
+      "216": "Party Role Clearing Member",
+      "217": "Party Role Acting User",
+      "218": "Party Role Trader Id",
+      "219": "Party Role Owner Type",
+      "220": "Party Role Routing Member Id",
+      "221": "Giveup Qualifier",
+      "222": "Algo Strategy Type",
+      "223": "Secondary Client Id",
+      "224": "Secondary Executing Trader",
+      "300": "Investment Decision In Firm",
+      "301": "Execution Decision In Firm",
+      "302": "Investment Decision Country",
+      "303": "Execution Decision Country",
+      "304": "Party Role Country Code"
+    }
+  },
+  "453": {
+    "name": "NoPartyIDs",
+    "type": "NUMINGROUP"
+  },
+  "454": {
+    "name": "NoSecurityAltID",
+    "type": "NUMINGROUP"
+  },
+  "455": {
+    "name": "SecurityAltID",
+    "type": "STRING"
+  },
+  "456": {
+    "name": "SecurityAltIDSource",
+    "type": "STRING",
+    "values": {
+      "1": "Cusip",
+      "4": "Isin Number",
+      "5": "Ric Code",
+      "8": "Exchange Security Id",
+      "91": "Exchange Ticker",
+      "92": "Tt Product Family Id",
+      "93": "Tt Product Id",
+      "94": "Alt Symbol",
+      "95": "Clearport",
+      "97": "Alias",
+      "98": "Name",
+      "99": "Security Group",
+      "100": "Energy Identifier Code",
+      "A": "Bloomberg Code",
+      "S": "Openfigi Id",
+      "H": "Clearing House",
+      "X": "Series Key"
+    }
+  },
+  "457": {
+    "name": "NoUnderlyingSecurityAltID",
+    "type": "NUMINGROUP"
+  },
+  "458": {
+    "name": "UnderlyingSecurityAltID",
+    "type": "STRING"
+  },
+  "459": {
+    "name": "UnderlyingSecurityAltIDSource",
+    "type": "STRING"
+  },
+  "460": {
+    "name": "Product",
+    "type": "INT",
+    "values": {
+      "1": "Agency",
+      "2": "Commodity",
+      "3": "Corporate",
+      "4": "Currency",
+      "5": "Equity",
+      "6": "Government",
+      "7": "Index",
+      "8": "Loan",
+      "9": "Moneymarket",
+      "10": "Mortgage",
+      "11": "Municipal",
+      "12": "Other",
+      "13": "Financing",
+      "14": "Energy"
+    }
+  },
+  "461": {
+    "name": "CFICode",
+    "type": "STRING"
+  },
+  "467": {
+    "name": "IndividualAllocID",
+    "type": "STRING"
+  },
+  "483": {
+    "name": "TransBkdTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "487": {
+    "name": "TradeReportTransType",
+    "type": "INT",
+    "values": {
+      "0": "New",
+      "1": "Cancel",
+      "2": "Replace",
+      "3": "Release",
+      "4": "Reverse",
+      "5": "Cancel Due To Back Out Of Trade",
+      "101": "Inquire",
+      "102": "Accept",
+      "103": "Approve",
+      "999": "Unknown"
+    }
+  },
+  "524": {
+    "name": "NestedPartyID",
+    "type": "STRING"
+  },
+  "525": {
+    "name": "NestedPartyIDSource",
+    "type": "CHAR",
+    "values": {
+      "1": "Korean Investor Id",
+      "2": "Taiwanese Qualified Foreign Investor Id Qfii Fid",
+      "3": "Taiwanese Trading Acct",
+      "4": "Malaysian Central Depository",
+      "5": "Chinese Investor Id",
+      "6": "Uk National Insurance Or Pension Number",
+      "7": "Us Social Security Number",
+      "8": "Us Employer Or Tax Id Number",
+      "9": "Australian Business Number",
+      "A": "Australian Tax File Number",
+      "B": "Bic",
+      "C": "Generally Accepted Market Participant Identifier",
+      "D": "Proprietary",
+      "E": "Iso Country Code",
+      "F": "Settlement Entity Location",
+      "G": "Mic",
+      "H": "Csd Participant Member Code",
+      "I": "Directed Broker Three Character Acronym As Defined In Isitc Etc Best Practice Guidelines Document"
+    }
+  },
+  "526": {
+    "name": "SecondaryClOrdID",
+    "type": "STRING"
+  },
+  "527": {
+    "name": "SecondaryExecID",
+    "type": "STRING"
+  },
+  "528": {
+    "name": "OrderCapacity",
+    "type": "CHAR",
+    "values": {
+      "A": "Agency",
+      "G": "Proprietary",
+      "I": "Individual",
+      "P": "Principal",
+      "R": "Riskless Principal",
+      "W": "Agent For Other Member"
+    }
+  },
+  "529": {
+    "name": "OrderRestriction",
+    "type": "CHAR",
+    "values": {
+      "1": "Program Trade",
+      "2": "Index Arbitage",
+      "3": "Non Index Arbitage",
+      "4": "Competing Market Maker",
+      "5": "Acting Market Maker",
+      "6": "Acting Market Maker Underlying Security",
+      "7": "Foreign Entity",
+      "8": "External Market Participant",
+      "9": "External Market Linkage",
+      "A": "Riskless Arbitage",
+      "B": "Holding",
+      "C": "Price Stabilization",
+      "D": "Non Algorithmic",
+      "E": "Algorithmic"
+    }
+  },
+  "537": {
+    "name": "QuoteType",
+    "type": "INT",
+    "values": {
+      "0": "Indicative",
+      "1": "Tradable",
+      "99": "Cross Trade Request",
+      "255": "Unknown"
+    }
+  },
+  "538": {
+    "name": "NestedPartyRole",
+    "type": "INT",
+    "values": {
+      "1": "Executing Firm",
+      "2": "Broker Of Credit",
+      "3": "Client Id",
+      "4": "Clearing Firm",
+      "5": "Investor Id",
+      "6": "Introducing Firm",
+      "7": "Entering Firm",
+      "8": "Locate Lending Firm",
+      "9": "Fund Manager Client Id",
+      "10": "Settlement Location",
+      "11": "Order Origination Trader",
+      "12": "Executing Trader",
+      "13": "Order Origination Firm",
+      "14": "Giveup Clearing Firm",
+      "15": "Correspondant Clearing Firm",
+      "16": "Executing System",
+      "17": "Contra Firm",
+      "18": "Contra Clearing Firm",
+      "19": "Sponsoring Firm",
+      "20": "Underlying Contra Firm",
+      "21": "Clearing Organization",
+      "22": "Exchange",
+      "24": "Customer Account",
+      "25": "Correspondent Clearing Organization",
+      "26": "Correspondent Broker",
+      "27": "Buyer Seller",
+      "28": "Custodian",
+      "29": "Intermediary",
+      "30": "Agent",
+      "31": "Sub Custodian",
+      "32": "Beneficiary",
+      "33": "Interested Party",
+      "34": "Regulatory Body",
+      "35": "Liquidity Provider",
+      "36": "Entering Trader",
+      "37": "Contra Trader",
+      "38": "Position Account"
+    }
+  },
+  "539": {
+    "name": "NoNestedPartyIDs",
+    "type": "NUMINGROUP"
+  },
+  "541": {
+    "name": "MaturityDate",
+    "type": "LOCALMKTDATE"
+  },
+  "542": {
+    "name": "UnderlyingMaturityDate",
+    "type": "LOCALMKTDATE"
+  },
+  "548": {
+    "name": "CrossID",
+    "type": "STRING"
+  },
+  "549": {
+    "name": "CrossType",
+    "type": "INT",
+    "values": {
+      "1": "Cross Aon",
+      "2": "Cross Ioc",
+      "3": "Cross One Side",
+      "4": "Cross Same Price"
+    }
+  },
+  "552": {
+    "name": "NoSides",
+    "type": "NUMINGROUP"
+  },
+  "554": {
+    "name": "Password",
+    "type": "STRING"
+  },
+  "555": {
+    "name": "NoLegs",
+    "type": "NUMINGROUP"
+  },
+  "556": {
+    "name": "LegCurrency",
+    "type": "CURRENCY"
+  },
+  "561": {
+    "name": "RoundLot",
+    "type": "QTY"
+  },
+  "562": {
+    "name": "MinTradeVol",
+    "type": "QTY"
+  },
+  "566": {
+    "name": "LegPrice",
+    "type": "PRICE"
+  },
+  "568": {
+    "name": "TradeRequestID",
+    "type": "STRING"
+  },
+  "569": {
+    "name": "TradeRequestType",
+    "type": "INT",
+    "values": {
+      "0": "All Trades",
+      "1": "Matched Trades Matching Criteria Provided On Request",
+      "2": "Unmatched Trades That Match Criteria",
+      "3": "Unreported Trades That Match Criteria",
+      "4": "Advisories That Match Criteria"
+    }
+  },
+  "570": {
+    "name": "PreviouslyReported",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "Not Reported To Counterparty",
+      "Y": "Perviously Reported To Counterparty"
+    }
+  },
+  "571": {
+    "name": "TradeReportID",
+    "type": "STRING"
+  },
+  "572": {
+    "name": "TradeReportRefID",
+    "type": "STRING"
+  },
+  "582": {
+    "name": "CustOrderCapacity",
+    "type": "INT",
+    "values": {
+      "1": "Member Trading For Their Own Account",
+      "2": "Clearing Firm Trading For Its Proprietary Account",
+      "3": "Member Trading For Another Member",
+      "4": "All Other"
+    }
+  },
+  "584": {
+    "name": "MassStatusReqID",
+    "type": "STRING"
+  },
+  "588": {
+    "name": "LegSettlDate",
+    "type": "LOCALMKTDATE"
+  },
+  "600": {
+    "name": "LegSymbol",
+    "type": "STRING"
+  },
+  "602": {
+    "name": "LegSecurityID",
+    "type": "STRING"
+  },
+  "603": {
+    "name": "LegIDSource",
+    "type": "STRING",
+    "values": {
+      "4": "Isin Number",
+      "5": "Ric Code",
+      "8": "Exchange Security Id",
+      "91": "Exchange Ticker",
+      "96": "Tt Security Id",
+      "97": "Alias",
+      "98": "Name",
+      "X": "Series Key",
+      "A": "Bloomberg Code",
+      "S": "Openfigi Id",
+      "H": "Clearing House"
+    }
+  },
+  "604": {
+    "name": "NoLegSecurityAltID",
+    "type": "NUMINGROUP"
+  },
+  "605": {
+    "name": "LegSecurityAltID",
+    "type": "STRING"
+  },
+  "606": {
+    "name": "LegSecurityAltIDSource",
+    "type": "STRING",
+    "values": {
+      "1": "Cusip",
+      "4": "Isin Number",
+      "5": "Ric Code",
+      "8": "Exchange Security Id",
+      "91": "Exchange Ticker",
+      "94": "Alt Symbol",
+      "95": "Clearport",
+      "97": "Alias",
+      "98": "Name",
+      "99": "Security Group",
+      "A": "Bloomberg Code",
+      "S": "Openfigi Id",
+      "H": "Clearing House",
+      "X": "Series Key"
+    }
+  },
+  "607": {
+    "name": "LegProduct",
+    "type": "INT",
+    "values": {
+      "1": "Agency",
+      "2": "Commodity",
+      "3": "Corporate",
+      "4": "Currency",
+      "5": "Equity",
+      "6": "Government",
+      "7": "Index",
+      "8": "Loan",
+      "9": "Moneymarket",
+      "10": "Mortgage",
+      "11": "Municipal",
+      "12": "Other",
+      "13": "Financing",
+      "14": "Energy"
+    }
+  },
+  "608": {
+    "name": "LegCFICode",
+    "type": "STRING"
+  },
+  "609": {
+    "name": "LegSecurityType",
+    "type": "STRING",
+    "values": {
+      "FUT": "Future",
+      "OPT": "Option",
+      "MLEG": "Spread",
+      "SPOT": "Spot",
+      "TBOND": "Tbond",
+      "CS": "Common Stock",
+      "NONE": "None"
+    }
+  },
+  "610": {
+    "name": "LegMaturityMonthYear",
+    "type": "MONTHYEAR"
+  },
+  "611": {
+    "name": "LegMaturityDate",
+    "type": "LOCALMKTDATE"
+  },
+  "612": {
+    "name": "LegStrikePrice",
+    "type": "PRICE"
+  },
+  "613": {
+    "name": "LegOptAttribute",
+    "type": "CHAR"
+  },
+  "616": {
+    "name": "LegSecurityExchange",
+    "type": "EXCHANGE"
+  },
+  "620": {
+    "name": "LegSecurityDesc",
+    "type": "STRING"
+  },
+  "623": {
+    "name": "LegRatioQty",
+    "type": "FLOAT"
+  },
+  "624": {
+    "name": "LegSide",
+    "type": "CHAR"
+  },
+  "625": {
+    "name": "TradingSessionSubID",
+    "type": "STRING",
+    "values": {
+      "1": "Pre Trading",
+      "2": "Opening Or Opening Auction",
+      "3": "Continuous",
+      "4": "Closing Or Closing Auction",
+      "5": "Post Trading",
+      "6": "Intraday Auction",
+      "7": "Quiescent"
+    }
+  },
+  "626": {
+    "name": "AllocType",
+    "type": "INT",
+    "values": {
+      "1": "Calculated",
+      "2": "Preliminary",
+      "5": "Ready To Book",
+      "7": "Warehouse Instruction",
+      "8": "Request To Intermediary"
+    }
+  },
+  "637": {
+    "name": "LegLastPx",
+    "type": "PRICE"
+  },
+  "654": {
+    "name": "LegRefID",
+    "type": "STRING"
+  },
+  "669": {
+    "name": "LastParPx",
+    "type": "PRICE"
+  },
+  "685": {
+    "name": "LegOrderQty",
+    "type": "QTY"
+  },
+  "687": {
+    "name": "LegQty",
+    "type": "QTY"
+  },
+  "711": {
+    "name": "NoUnderlyings",
+    "type": "NUMINGROUP"
+  },
+  "743": {
+    "name": "DeliveryDate",
+    "type": "LOCALMKTDATE"
+  },
+  "749": {
+    "name": "TradeRequestResult",
+    "type": "INT",
+    "values": {
+      "0": "Successful",
+      "1": "Invalid Or Unknown Instrument",
+      "2": "Invalid Type Requested",
+      "3": "Invalid Parties",
+      "4": "Invalid Transport Type Requested",
+      "5": "Invalid Destination Requested",
+      "8": "Trade Request Type Not Supported",
+      "9": "Unauthorized For Trade Capture Report Request",
+      "99": "Other"
+    }
+  },
+  "750": {
+    "name": "TradeRequestStatus",
+    "type": "INT",
+    "values": {
+      "0": "Accepted",
+      "1": "Completed",
+      "2": "Rejected"
+    }
+  },
+  "751": {
+    "name": "TradeReportRejectReason",
+    "type": "INT",
+    "values": {
+      "0": "Successful",
+      "1": "Invalid Party Information",
+      "2": "Unknown Instrument",
+      "3": "Unauthorized To Report Trades",
+      "4": "Invalid Trade Type",
+      "99": "Other"
+    }
+  },
+  "755": {
+    "name": "AllocReportID",
+    "type": "STRING"
+  },
+  "762": {
+    "name": "SecuritySubType",
+    "type": "STRING"
+  },
+  "763": {
+    "name": "UnderlyingSecuritySubType",
+    "type": "STRING"
+  },
+  "764": {
+    "name": "LegSecuritySubType",
+    "type": "STRING"
+  },
+  "779": {
+    "name": "LastUpdateTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "789": {
+    "name": "NextExpectedMsgSeqNum",
+    "type": "SEQNUM"
+  },
+  "790": {
+    "name": "OrdStatusReqID",
+    "type": "STRING"
+  },
+  "794": {
+    "name": "AllocReportType",
+    "type": "INT",
+    "values": {
+      "3": "Sellside Calculated Using Preliminary",
+      "4": "Sellside Calculated Without Preliminary",
+      "5": "Warehouse Recap",
+      "8": "Request To Intermediary"
+    }
+  },
+  "799": {
+    "name": "OrderAvgPx",
+    "type": "PRICE"
+  },
+  "810": {
+    "name": "UnderlyingPx",
+    "type": "PRICE"
+  },
+  "811": {
+    "name": "OptionDelta",
+    "type": "FLOAT"
+  },
+  "818": {
+    "name": "SecondaryTradeReportID",
+    "type": "STRING"
+  },
+  "820": {
+    "name": "TradeLinkID",
+    "type": "STRING"
+  },
+  "828": {
+    "name": "TrdType",
+    "type": "INT",
+    "values": {
+      "0": "Regular Trade",
+      "1": "Block Trade",
+      "2": "Exchange For Physical",
+      "3": "Transfer",
+      "11": "Exchange For Risk",
+      "12": "Exchange For Swap",
+      "14": "Exchange Of Options For Options",
+      "22": "Over The Counter Privately Negotiated Trades",
+      "23": "Substitution Of Futures For Forwards",
+      "45": "Option Exercise",
+      "54": "Large Notional Off Facility Swap",
+      "55": "Exchange Basis Facility",
+      "57": "Netted Trade",
+      "58": "Stp Block Swap Trade",
+      "59": "Credit Event Trade",
+      "60": "Succession Event Trade",
+      "1000": "Volatility",
+      "1001": "Efp Financial",
+      "1002": "Efp Index Futures",
+      "1003": "Strategy Block Trade",
+      "1004": "Block Standard Cf",
+      "1005": "Block Combination Cf",
+      "1006": "Efs Efp Cf",
+      "1007": "Block Internal Cf",
+      "1008": "Portfolio Cf",
+      "1009": "Correction Cf",
+      "1010": "Block Combination Buyer Cf",
+      "1011": "Block Combination Seller Cf",
+      "1012": "Efs Efp Combination Cf",
+      "1013": "Efs Efp Combination Buyer Cf",
+      "1014": "Efs Efp Combination Seller Cf",
+      "1015": "Otc Standard Cio",
+      "1016": "Otc Combination Cio",
+      "1017": "Otc Combination Buyer Cio",
+      "1018": "Otc Combination Seller Cio",
+      "1019": "Standard Trade Cd",
+      "1020": "Standard Outside Spread Cd",
+      "1021": "Combination Cd",
+      "1022": "Old Cd",
+      "1023": "Internal Cd",
+      "1024": "Portfolio Cd",
+      "1025": "Correction Cd",
+      "1026": "Exchange Granted Fd",
+      "1027": "Standard Outside Fd",
+      "1028": "Off Hours Fd",
+      "1029": "Block Fd",
+      "1030": "Exch Granted Exceed Max Lot Fd",
+      "1031": "Exch Granted Eml Off Hours Fd",
+      "1032": "Exch Granted Late Fd",
+      "1033": "Flex Contract Conversion Fd",
+      "1034": "Ice Efrp",
+      "1035": "Iceblk",
+      "1036": "Basis",
+      "1037": "Volatility Contingent",
+      "1038": "Stock Contingent",
+      "1039": "Ccx Efp",
+      "1040": "Other Clearing Value",
+      "1041": "N2ex",
+      "1042": "Eex",
+      "1043": "Efs Efp Contra",
+      "1044": "Efm",
+      "1045": "Ng Efp Efs",
+      "1046": "Contra",
+      "1047": "Cpblk",
+      "1048": "Bilateral Off Exch",
+      "1049": "Otc Privately Negotiated Trades",
+      "1050": "Otc Large Notional Off Facility Swap",
+      "1051": "Block Swap Trade",
+      "1052": "Large In Scale",
+      "1053": "Against Actual",
+      "1054": "Large In Scale Package",
+      "1055": "Guaranteed Cross",
+      "1056": "Request For Cross",
+      "1057": "Efp Cd",
+      "1058": "B And S No Clearing Cd",
+      "1059": "Buyer No Clearing Cd",
+      "1060": "Seller No Clearing Cd",
+      "1061": "Efp No Fee Cd",
+      "1062": "Match Exch Manually Cd",
+      "1063": "Match Exch Combination Cd",
+      "1064": "Fut Ds Fut Combo Cd",
+      "1065": "Block Nonfinancial Cp Cd",
+      "1066": "Exch For Swap Options Cd",
+      "1067": "Block Nonfinancial Cp Cf",
+      "1068": "Exch For Swap Options Cf",
+      "1069": "Asset Allocation",
+      "1070": "Cross Contra Trade",
+      "1071": "Committed",
+      "1072": "Internal",
+      "1073": "Interbank",
+      "1074": "One Sided",
+      "1075": "Cross",
+      "1076": "Efp Bond",
+      "1077": "Efp Spi Xjo",
+      "1078": "Cash Related Trade",
+      "1079": "Non Disclosed Otc Trade",
+      "1080": "Disclosed Otc Trade",
+      "1081": "Si Trade",
+      "1082": "Eurex Enlight Triggered Trade",
+      "1083": "Efp Against Actual",
+      "1084": "Efr",
+      "1085": "Eoo",
+      "1086": "Tam",
+      "1087": "Efs",
+      "1088": "Lp",
+      "9999": "Unknown"
+    }
+  },
+  "829": {
+    "name": "TrdSubType",
+    "type": "INT",
+    "values": {
+      "1": "Trade Purpose Arbitrage",
+      "2": "Trade Purpose Combination",
+      "3": "Trade Purpose Cross Trade",
+      "4": "Trade Purpose Exchange For Physical",
+      "5": "Trade Purpose Position Consolidation",
+      "6": "Trade Purpose Rollover",
+      "7": "Trade Purpose Other",
+      "8": "Trade Purpose Implied Spread Leg Executed Against An Outright",
+      "36": "Trade Purpose Converted Swap",
+      "37": "Trade Purpose Crossed Trade",
+      "40": "Trade Purpose Traded At Settlement",
+      "42": "Trade Purpose Auction Trade",
+      "43": "Trade Purpose Traded At Marker",
+      "48": "Trade Purpose Multilateral Compression",
+      "200": "Trade Purpose Delivery Transfer"
+    }
+  },
+  "851": {
+    "name": "LastLiquidityIndicator",
+    "type": "INT",
+    "values": {
+      "1": "Added Liquidity",
+      "2": "Removed Liquidity"
+    }
+  },
+  "856": {
+    "name": "TradeReportType",
+    "type": "INT",
+    "values": {
+      "0": "Submit",
+      "1": "Alleged",
+      "2": "Accept",
+      "3": "Decline",
+      "5": "No Was",
+      "6": "Cancel",
+      "11": "Alleged New",
+      "13": "Alleged No Was",
+      "101": "Notification",
+      "102": "Waiting For Cancel Approval",
+      "103": "Partially Filled",
+      "999": "Unknown",
+      "1000": "Clearing"
+    }
+  },
+  "857": {
+    "name": "AllocNoOrdersType",
+    "type": "INT",
+    "values": {
+      "0": "Not Specified",
+      "1": "Explicit List Provided"
+    }
+  },
+  "860": {
+    "name": "AvgParPx",
+    "type": "PRICE"
+  },
+  "864": {
+    "name": "NoEvents",
+    "type": "NUMINGROUP"
+  },
+  "865": {
+    "name": "EventType",
+    "type": "INT",
+    "values": {
+      "5": "Expiry Date",
+      "6": "Last Trading Date",
+      "8": "Swap Start Date",
+      "9": "Swap End Date",
+      "13": "First Delivery Date",
+      "14": "Last Delivery Date",
+      "101": "First Trading Date",
+      "102": "Sdat First Trading Date"
+    }
+  },
+  "866": {
+    "name": "EventDate",
+    "type": "LOCALMKTDATE"
+  },
+  "870": {
+    "name": "NoInstrumentExtensions",
+    "type": "NUMINGROUP"
+  },
+  "871": {
+    "name": "InstrumentAttributeType",
+    "type": "INT",
+    "values": {
+      "5": "Variable Rate",
+      "100": "Coupon Rate",
+      "101": "Offset To Variable Coupon Rate",
+      "102": "Swap Customer 1",
+      "103": "Swap Customer 2",
+      "104": "Cash Basket Reference"
+    }
+  },
+  "872": {
+    "name": "InstrumentAttributeValue",
+    "type": "STRING"
+  },
+  "879": {
+    "name": "UnderlyingQty",
+    "type": "QTY"
+  },
+  "880": {
+    "name": "TrdMatchID",
+    "type": "STRING"
+  },
+  "887": {
+    "name": "NoUnderlyingStipulations",
+    "type": "NUMINGROUP"
+  },
+  "888": {
+    "name": "UnderlyingStipulationType",
+    "type": "INT",
+    "values": {
+      "1": "Payfreq"
+    }
+  },
+  "889": {
+    "name": "UnderlyingStipulationValue",
+    "type": "STRING",
+    "values": {
+      "12": "Monthly",
+      "01": "Annually",
+      "02": "Semi Annually",
+      "04": "Quarterly"
+    }
+  },
+  "912": {
+    "name": "LastRptRequested",
+    "type": "BOOLEAN"
+  },
+  "916": {
+    "name": "StartDate",
+    "type": "UTCTIMESTAMP"
+  },
+  "917": {
+    "name": "EndDate",
+    "type": "UTCTIMESTAMP"
+  },
+  "939": {
+    "name": "TrdRptStatus",
+    "type": "INT",
+    "values": {
+      "0": "Accepted",
+      "1": "Rejected",
+      "3": "Accepted With Errors",
+      "99": "Unknown"
+    }
+  },
+  "957": {
+    "name": "NoStrategyParameters",
+    "type": "NUMINGROUP"
+  },
+  "958": {
+    "name": "StrategyParameterName",
+    "type": "STRING"
+  },
+  "959": {
+    "name": "StrategyParameterType",
+    "type": "INT",
+    "values": {
+      "1": "Int",
+      "6": "Float",
+      "7": "Qty",
+      "8": "Price",
+      "13": "Boolean",
+      "14": "String",
+      "19": "Utctimestamp"
+    }
+  },
+  "960": {
+    "name": "StrategyParameterValue",
+    "type": "STRING"
+  },
+  "961": {
+    "name": "HostCrossID",
+    "type": "STRING"
+  },
+  "1003": {
+    "name": "TradeID",
+    "type": "STRING"
+  },
+  "1028": {
+    "name": "ManualOrderIndicator",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "Electronic",
+      "Y": "Manual"
+    }
+  },
+  "1031": {
+    "name": "CustOrderHandlingInst",
+    "type": "CHAR",
+    "values": {
+      "W": "Desk",
+      "Y": "Electronic",
+      "C": "Vendor Platform Billed By Executing Broker",
+      "G": "Sponsored Access Via Api Or Fix By Executing Broker",
+      "H": "Premium Algo Trading Provider Billed By Executing Broker",
+      "D": "Other"
+    }
+  },
+  "1047": {
+    "name": "AllocPositionEffect",
+    "type": "CHAR",
+    "values": {
+      "O": "Open",
+      "C": "Close",
+      "R": "Rolled",
+      "F": "Fifo",
+      "N": "Close But Notify On Open",
+      "D": "Default"
+    }
+  },
+  "1057": {
+    "name": "AggressorIndicator",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "1071": {
+    "name": "LastSwapPoints",
+    "type": "PRICEOFFSET"
+  },
+  "1088": {
+    "name": "RefreshQty",
+    "type": "QTY"
+  },
+  "1116": {
+    "name": "NoRootPartyIDs",
+    "type": "NUMINGROUP"
+  },
+  "1117": {
+    "name": "RootPartyID",
+    "type": "STRING"
+  },
+  "1118": {
+    "name": "RootPartyIDSource",
+    "type": "CHAR",
+    "values": {
+      "F": "Settlement Entity Location"
+    }
+  },
+  "1119": {
+    "name": "RootPartyRole",
+    "type": "INT",
+    "values": {
+      "10": "Settlement Location"
+    }
+  },
+  "1123": {
+    "name": "TradeHandlingInstr",
+    "type": "CHAR",
+    "values": {
+      "0": "Trade Confirmation",
+      "1": "Two Party Report",
+      "2": "One Party Report For Matching",
+      "3": "One Party Report For Pass Through",
+      "4": "Automated Floor Order Routing",
+      "7": "Third Party Report For Pass Through",
+      "8": "Trade Handling Instr Pending Trade Report",
+      "9": "Trade Handling Instr Completed Trade Report",
+      "A": "Trade Handling Instr Expired Trade Report",
+      "B": "Trade Handling Instr Broadcast",
+      "C": "Trade Handling Instr Pending Approval",
+      "D": "Trade Handling Instr Approved",
+      "E": "Trade Handling Instr Pending Cancel"
+    }
+  },
+  "1125": {
+    "name": "OrigTradeDate",
+    "type": "LOCALMKTDATE"
+  },
+  "1126": {
+    "name": "OrigTradeID",
+    "type": "STRING"
+  },
+  "1138": {
+    "name": "DisplayQty",
+    "type": "QTY"
+  },
+  "1145": {
+    "name": "EventTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "1152": {
+    "name": "LegNumber",
+    "type": "INT"
+  },
+  "1188": {
+    "name": "Volatility",
+    "type": "STRING"
+  },
+  "1189": {
+    "name": "ExpirationTimeValue",
+    "type": "FLOAT"
+  },
+  "1190": {
+    "name": "RiskFreeRate",
+    "type": "PRICE"
+  },
+  "1194": {
+    "name": "ExerciseStyle",
+    "type": "INT"
+  },
+  "1227": {
+    "name": "ProductComplex",
+    "type": "STRING"
+  },
+  "1358": {
+    "name": "LegPutOrCall",
+    "type": "INT"
+  },
+  "1362": {
+    "name": "NoFills",
+    "type": "NUMINGROUP"
+  },
+  "1363": {
+    "name": "FillExecID",
+    "type": "STRING"
+  },
+  "1364": {
+    "name": "FillPx",
+    "type": "PRICE"
+  },
+  "1365": {
+    "name": "FillQty",
+    "type": "QTY"
+  },
+  "1366": {
+    "name": "LegAllocID",
+    "type": "STRING"
+  },
+  "1385": {
+    "name": "ContingencyType",
+    "type": "INT",
+    "values": {
+      "1": "One Cancels The Other",
+      "2": "One Triggers The Other",
+      "3": "One Updates The Other 3",
+      "4": "One Updates The Other 4"
+    }
+  },
+  "1390": {
+    "name": "TradePublishIndicator",
+    "type": "INT",
+    "values": {
+      "0": "Do Not Publish Trade",
+      "1": "Publish Trade",
+      "2": "Deferred Publication"
+    }
+  },
+  "1418": {
+    "name": "LegLastQty",
+    "type": "QTY"
+  },
+  "1420": {
+    "name": "LegExerciseStyle",
+    "type": "INT"
+  },
+  "1461": {
+    "name": "NoTargetPartyIDs",
+    "type": "NUMINGROUP"
+  },
+  "1462": {
+    "name": "TargetPartyExchangeTraderID",
+    "type": "STRING"
+  },
+  "1622": {
+    "name": "FillYieldType",
+    "type": "STRING"
+  },
+  "1724": {
+    "name": "OrderOrigination",
+    "type": "INT",
+    "values": {
+      "1": "Order Received From Customer",
+      "2": "Order Received From Within Firm",
+      "3": "Order Received From Another Broker Dealer",
+      "4": "Order Received From Customer Or Originated Within Firm",
+      "5": "Order Received From Direct Or Sponsored Access Customer",
+      "99": "Order Received From Other Non Dea"
+    }
+  },
+  "1795": {
+    "name": "NoOrderEvents",
+    "type": "NUMINGROUP"
+  },
+  "1796": {
+    "name": "OrderEventType",
+    "type": "INT",
+    "values": {
+      "1": "Added",
+      "2": "Modified",
+      "3": "Deleted",
+      "4": "Partially Filled",
+      "5": "Filled",
+      "6": "Suspended",
+      "7": "Released",
+      "8": "Restated",
+      "9": "Locked",
+      "10": "Triggered",
+      "11": "Activated"
+    }
+  },
+  "1797": {
+    "name": "OrderEventExecID",
+    "type": "STRING"
+  },
+  "1798": {
+    "name": "OrderEventReason",
+    "type": "INT",
+    "values": {
+      "1": "Add Order Request",
+      "2": "Modify Order Request",
+      "3": "Delete Order Request",
+      "4": "Order Entered Out Of Band",
+      "5": "Order Modified Out Of Band",
+      "6": "Order Deleted Out Of Band",
+      "7": "Order Activated Or Triggered",
+      "8": "Order Expired",
+      "9": "Reserve Order Refreshed",
+      "10": "Away Market Better",
+      "11": "Corporate Action",
+      "12": "Start Of Day",
+      "13": "End Of Day",
+      "100": "Binary Trade Reporting"
+    }
+  },
+  "1799": {
+    "name": "OrderEventPx",
+    "type": "PRICE"
+  },
+  "1800": {
+    "name": "OrderEventQty",
+    "type": "QTY"
+  },
+  "1801": {
+    "name": "OrderEventLiquidityIndicator",
+    "type": "INT",
+    "values": {
+      "0": "Neither Added Nor Removed Liquidity",
+      "1": "Added Liquidity",
+      "2": "Removed Liquidity",
+      "3": "Liquidity Routed Out",
+      "4": "Auction Execution",
+      "5": "Triggered Stop Order",
+      "6": "Triggered Contingency Order",
+      "7": "Triggered Market Order",
+      "8": "Removed Liquidity After Firm Order Commitment",
+      "9": "Auction Execution After Firm Order Commitment",
+      "10": "Unknown",
+      "11": "Other"
+    }
+  },
+  "1802": {
+    "name": "OrderEventText",
+    "type": "STRING"
+  },
+  "1856": {
+    "name": "RelatedTradeID",
+    "type": "STRING"
+  },
+  "1860": {
+    "name": "RelatedTradeQty",
+    "type": "QTY"
+  },
+  "2376": {
+    "name": "PartyRoleQualifier",
+    "type": "INT",
+    "values": {
+      "22": "Algorithm",
+      "23": "Firm Or Legal Entity",
+      "24": "Natural Person"
+    }
+  },
+  "2404": {
+    "name": "ComplianceText",
+    "type": "STRING"
+  },
+  "2446": {
+    "name": "AggressorSide",
+    "type": "INT",
+    "values": {
+      "0": "No Aggressor",
+      "1": "Buy",
+      "2": "Sell"
+    }
+  },
+  "2593": {
+    "name": "NoOrderAttributes",
+    "type": "INT"
+  },
+  "2594": {
+    "name": "OrderAttributeType",
+    "type": "INT",
+    "values": {
+      "0": "Aggregated Order",
+      "1": "Pending Allocation",
+      "2": "Liquidity Provision Activity Order",
+      "3": "Risk Reduction Order",
+      "4": "Algorithmic Order",
+      "5": "Systematic Internalizer Order"
+    }
+  },
+  "2595": {
+    "name": "OrderAttributeValue",
+    "type": "STRING"
+  },
+  "5024": {
+    "name": "StartSequenceNumber",
+    "type": "SEQNUM"
+  },
+  "7111": {
+    "name": "AllocStrategy",
+    "type": "STRING"
+  },
+  "7928": {
+    "name": "SelfMatchPreventionID",
+    "type": "STRING"
+  },
+  "8000": {
+    "name": "SMPInstruction",
+    "type": "CHAR",
+    "values": {
+      "O": "Smp Inst Type Cancel Resting",
+      "N": "Smp Inst Type Cancel Aggressor",
+      "B": "Smp Inst Type Cancel Both",
+      "M": "Smp Inst Type Match",
+      "m": "Smp Inst Type Not Match",
+      "S": "Smp Inst Type Smallest",
+      "D": "Smp Inst Type Decrement Larger",
+      "d": "Smp Inst Type Decrement Leaves Qty",
+      "e": "Smp Inst Type Market Wide",
+      "f": "Smp Inst Type Market Wide Cancel Aggressor",
+      "g": "Smp Inst Type Market Wide Cancel Resting",
+      "h": "Smp Inst Type Market Wide Decrement Leaves Qty"
+    }
+  },
+  "8013": {
+    "name": "TrdRegPublicationReason",
+    "type": "INT",
+    "values": {
+      "4": "Ilqd",
+      "5": "Size",
+      "6": "Lrgs"
+    }
+  },
+  "8016": {
+    "name": "TradingVenueRegulatoryTradeID",
+    "type": "STRING"
+  },
+  "9012": {
+    "name": "IsFirm",
+    "type": "INT",
+    "values": {
+      "1": "Firm",
+      "2": "Last Look"
+    }
+  },
+  "9020": {
+    "name": "FixingDate",
+    "type": "LOCALMKTDATE"
+  },
+  "9021": {
+    "name": "FixingSource",
+    "type": "STRING"
+  },
+  "9032": {
+    "name": "ReportingParty",
+    "type": "BOOLEAN"
+  },
+  "9103": {
+    "name": "MaxParticipation",
+    "type": "FLOAT"
+  },
+  "9106": {
+    "name": "IWouldPrice",
+    "type": "FLOAT"
+  },
+  "9111": {
+    "name": "Aggression",
+    "type": "INT"
+  },
+  "9112": {
+    "name": "TiltMode",
+    "type": "INT"
+  },
+  "9115": {
+    "name": "BriskLimitMode",
+    "type": "INT"
+  },
+  "9117": {
+    "name": "BlockLimit",
+    "type": "INT"
+  },
+  "9120": {
+    "name": "LiquidityIndicator",
+    "type": "CHAR",
+    "values": {
+      "A": "Added Liquidity",
+      "R": "Removed Liquidity"
+    }
+  },
+  "9121": {
+    "name": "MemoFieldICE",
+    "type": "STRING"
+  },
+  "9139": {
+    "name": "OriginatorUserID",
+    "type": "STRING"
+  },
+  "9145": {
+    "name": "Tracking",
+    "type": "INT"
+  },
+  "9147": {
+    "name": "MinParticipation",
+    "type": "FLOAT"
+  },
+  "9190": {
+    "name": "IfTouchedPrice",
+    "type": "FLOAT"
+  },
+  "9191": {
+    "name": "PostTriggerDuration",
+    "type": "INT"
+  },
+  "9200": {
+    "name": "SubStrategy",
+    "type": "STRING"
+  },
+  "9202": {
+    "name": "DurationRCM",
+    "type": "INT"
+  },
+  "9203": {
+    "name": "EndTimeOverride",
+    "type": "INT",
+    "values": {
+      "0": "None",
+      "1": "Last Session Close",
+      "2": "Next Session Close",
+      "3": "Settlement"
+    }
+  },
+  "9207": {
+    "name": "CustomerAccountRefID",
+    "type": "STRING"
+  },
+  "9210": {
+    "name": "MaxShowRCM",
+    "type": "INT"
+  },
+  "9211": {
+    "name": "MinShow",
+    "type": "INT"
+  },
+  "9212": {
+    "name": "PassivePriceLevel",
+    "type": "INT"
+  },
+  "9213": {
+    "name": "NumPostLevels",
+    "type": "INT"
+  },
+  "9214": {
+    "name": "AverageDelay",
+    "type": "FLOAT"
+  },
+  "9215": {
+    "name": "IWouldQty",
+    "type": "INT"
+  },
+  "9216": {
+    "name": "IWouldQtyPct",
+    "type": "FLOAT"
+  },
+  "9217": {
+    "name": "WithATickQty",
+    "type": "INT"
+  },
+  "9218": {
+    "name": "WithATickQtyPct",
+    "type": "FLOAT"
+  },
+  "9219": {
+    "name": "CleanupPct",
+    "type": "FLOAT"
+  },
+  "9220": {
+    "name": "PostTicksApart",
+    "type": "INT"
+  },
+  "9221": {
+    "name": "MaxSpreadCrossTicks",
+    "type": "INT"
+  },
+  "9222": {
+    "name": "TacticalPeg",
+    "type": "BOOLEAN"
+  },
+  "9225": {
+    "name": "IWouldQtyVariancePct",
+    "type": "FLOAT"
+  },
+  "9302": {
+    "name": "DynamicEndTime",
+    "type": "BOOLEAN"
+  },
+  "9700": {
+    "name": "DirectElectronicAccess",
+    "type": "INT",
+    "values": {
+      "0": "No",
+      "1": "Yes"
+    }
+  },
+  "9701": {
+    "name": "TradingCapacity",
+    "type": "INT",
+    "values": {
+      "0": "Deal",
+      "1": "Mtch",
+      "2": "Aotc"
+    }
+  },
+  "9702": {
+    "name": "LiquidityProvision",
+    "type": "INT",
+    "values": {
+      "0": "No",
+      "1": "Yes"
+    }
+  },
+  "9703": {
+    "name": "OriginalSecondaryExecID",
+    "type": "STRING"
+  },
+  "9704": {
+    "name": "InvestmentDecision",
+    "type": "INT"
+  },
+  "9705": {
+    "name": "ExecutionDecision",
+    "type": "INT"
+  },
+  "9706": {
+    "name": "ClientIDCode",
+    "type": "INT"
+  },
+  "9707": {
+    "name": "MiFIDID",
+    "type": "STRING"
+  },
+  "9717": {
+    "name": "CorrelationClOrdID",
+    "type": "STRING"
+  },
+  "9787": {
+    "name": "DisplayFactor",
+    "type": "STRING"
+  },
+  "9821": {
+    "name": "SelfMatchPreventionIDICE",
+    "type": "STRING"
+  },
+  "9822": {
+    "name": "SelfMatchPreventionInstruction",
+    "type": "CHAR"
+  },
+  "9991": {
+    "name": "LegRiskAversion",
+    "type": "INT"
+  },
+  "9992": {
+    "name": "HedgeDiscretionTicks",
+    "type": "INT"
+  },
+  "10010": {
+    "name": "DisplayFactorQty",
+    "type": "STRING"
+  },
+  "10011": {
+    "name": "TTClOrdID",
+    "type": "STRING"
+  },
+  "10553": {
+    "name": "TTID",
+    "type": "STRING"
+  },
+  "10555": {
+    "name": "NoTCRLegs",
+    "type": "NUMINGROUP"
+  },
+  "16000": {
+    "name": "Timezone",
+    "type": "STRING"
+  },
+  "16052": {
+    "name": "ExchangeSendingTime",
+    "type": "STRING"
+  },
+  "16060": {
+    "name": "ExchangeTransactTime",
+    "type": "STRING"
+  },
+  "16106": {
+    "name": "StagedOrderMsg",
+    "type": "STRING"
+  },
+  "16109": {
+    "name": "StagedOrderStatus",
+    "type": "CHAR",
+    "values": {
+      "A": "Available",
+      "O": "Owned"
+    }
+  },
+  "16110": {
+    "name": "StagedOrderOwner",
+    "type": "STRING"
+  },
+  "16112": {
+    "name": "NoLinks",
+    "type": "INT"
+  },
+  "16113": {
+    "name": "LinkID",
+    "type": "STRING"
+  },
+  "16114": {
+    "name": "LinkType",
+    "type": "CHAR",
+    "values": {
+      "7": "Staged Child",
+      "8": "Staged Bulked Child",
+      "9": "Staged Stiched Child",
+      "P": "Parent Order Id",
+      "X": "Position Transfer Id",
+      "A": "Staged Split Child",
+      "E": "Unique Exec Id Allocated From",
+      "R": "Root Algo Order Id",
+      "F": "Parent Account Id"
+    }
+  },
+  "16115": {
+    "name": "ExternalSource",
+    "type": "BOOLEAN"
+  },
+  "16116": {
+    "name": "OrderIDGUID",
+    "type": "STRING"
+  },
+  "16117": {
+    "name": "OrderSource",
+    "type": "INT",
+    "values": {
+      "0": "Source Ase",
+      "2": "Source Ntw",
+      "3": "Source Invalid",
+      "4": "Source T Trader",
+      "6": "Source Mobile",
+      "7": "Source Roe",
+      "9": "Source External",
+      "10": "Source Fix Adapter",
+      "11": "Source Aggregator",
+      "12": "Source Bouncer",
+      "13": "Source Lambda Liquidator",
+      "14": "Source External Fix Adapter",
+      "15": "Source Prime Ase",
+      "16": "Source Nimbus",
+      "17": "Source Adl",
+      "18": "Source Ttsdk",
+      "19": "Source Tt Algo",
+      "20": "Source Adl Prime",
+      "21": "Source Ttsdk Prime",
+      "22": "Source Tt Algo Prime",
+      "23": "Source Chart",
+      "24": "Source Ttd",
+      "25": "Source Ttd Chart",
+      "26": "Source Ttint",
+      "27": "Source Tt Admin",
+      "28": "Source Dotnet Api Clt",
+      "29": "Source Dotnet Api Srv",
+      "30": "Source Cpp Api",
+      "31": "Source Options Risk",
+      "32": "Source External Upload",
+      "33": "Source Stager",
+      "34": "Source Score",
+      "35": "Source Fix Adapter Child Router",
+      "36": "Source Pot Child Router",
+      "37": "Source Terminator"
+    }
+  },
+  "16118": {
+    "name": "FillTradingVenueRegulatoryTradeID",
+    "type": "STRING"
+  },
+  "16119": {
+    "name": "FillLastLiquidityIndicator",
+    "type": "INT",
+    "values": {
+      "1": "Added Liquidity",
+      "2": "Removed Liquidity"
+    }
+  },
+  "16120": {
+    "name": "LegNoFills",
+    "type": "NUMINGROUP"
+  },
+  "16121": {
+    "name": "LegFillExecID",
+    "type": "STRING"
+  },
+  "16122": {
+    "name": "LegFillPx",
+    "type": "PRICE"
+  },
+  "16123": {
+    "name": "LegFillQty",
+    "type": "QTY"
+  },
+  "16124": {
+    "name": "LegFillTradingVenueRegulatoryTradeID",
+    "type": "STRING"
+  },
+  "16125": {
+    "name": "LegFillLastLiquidityIndicator",
+    "type": "INT",
+    "values": {
+      "1": "Added Liquidity",
+      "2": "Removed Liquidity"
+    }
+  },
+  "16130": {
+    "name": "IntentToCross",
+    "type": "BOOLEAN"
+  },
+  "16131": {
+    "name": "RejectSource",
+    "type": "INT",
+    "values": {
+      "1": "Reject Source Edge",
+      "2": "Reject Source Risk",
+      "3": "Reject Source Gateway",
+      "4": "Reject Source Exchange",
+      "5": "Reject Source Algo",
+      "6": "Reject Source Ase",
+      "7": "Reject Source Ttint",
+      "8": "Reject Source External",
+      "9": "Reject Source Ttapi",
+      "10": "Reject Source Client App",
+      "11": "Reject Source Fix Adapter",
+      "12": "Reject Source Stager",
+      "13": "Reject Source Options Risk"
+    }
+  },
+  "16207": {
+    "name": "BloombergSecurityExchange",
+    "type": "STRING"
+  },
+  "16451": {
+    "name": "PriceDisplayType",
+    "type": "INT"
+  },
+  "16456": {
+    "name": "NumTickTblEntries",
+    "type": "INT"
+  },
+  "16457": {
+    "name": "NumTicks",
+    "type": "INT"
+  },
+  "16458": {
+    "name": "MaxPrice",
+    "type": "PRICE"
+  },
+  "16460": {
+    "name": "MinLotSize",
+    "type": "INT"
+  },
+  "16463": {
+    "name": "NumberOfBlocks",
+    "type": "INT"
+  },
+  "16464": {
+    "name": "TradesInFlow",
+    "type": "CHAR"
+  },
+  "16552": {
+    "name": "ExchTickSize",
+    "type": "FLOAT"
+  },
+  "16554": {
+    "name": "ExchPointValue",
+    "type": "FLOAT"
+  },
+  "16556": {
+    "name": "TextA",
+    "type": "STRING"
+  },
+  "16557": {
+    "name": "TextB",
+    "type": "STRING"
+  },
+  "16558": {
+    "name": "TextTT",
+    "type": "STRING"
+  },
+  "16559": {
+    "name": "TextC",
+    "type": "STRING"
+  },
+  "16561": {
+    "name": "TimeReceivedFromExchange",
+    "type": "UTCTIMESTAMP"
+  },
+  "16566": {
+    "name": "DropCopyOrder",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "16567": {
+    "name": "ByPassSessionRecovery",
+    "type": "BOOLEAN"
+  },
+  "16568": {
+    "name": "LegAvgPx",
+    "type": "PRICE"
+  },
+  "16601": {
+    "name": "EchoDC_01",
+    "type": "STRING"
+  },
+  "16602": {
+    "name": "EchoDC_02",
+    "type": "STRING"
+  },
+  "16603": {
+    "name": "EchoDC_03",
+    "type": "STRING"
+  },
+  "16604": {
+    "name": "EchoDC_04",
+    "type": "STRING"
+  },
+  "16605": {
+    "name": "EchoDC_05",
+    "type": "STRING"
+  },
+  "16606": {
+    "name": "EchoDC_06",
+    "type": "STRING"
+  },
+  "16607": {
+    "name": "EchoDC_07",
+    "type": "STRING"
+  },
+  "16608": {
+    "name": "EchoDC_08",
+    "type": "STRING"
+  },
+  "16609": {
+    "name": "EchoDC_09",
+    "type": "STRING"
+  },
+  "16610": {
+    "name": "EchoDC_10",
+    "type": "STRING"
+  },
+  "16611": {
+    "name": "MlegHeadExecId",
+    "type": "STRING"
+  },
+  "16612": {
+    "name": "UniqueExecID",
+    "type": "STRING"
+  },
+  "16615": {
+    "name": "LegTTRoutingAccount",
+    "type": "STRING"
+  },
+  "16616": {
+    "name": "LegBloombergSecurityExchange",
+    "type": "STRING"
+  },
+  "16623": {
+    "name": "SpreadLegRatioQty",
+    "type": "FLOAT"
+  },
+  "16624": {
+    "name": "AccountRiskGroup",
+    "type": "STRING"
+  },
+  "16625": {
+    "name": "TextTTModifyingUser",
+    "type": "STRING"
+  },
+  "16626": {
+    "name": "NVDR",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "16627": {
+    "name": "TTF",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "16628": {
+    "name": "TFUserType",
+    "type": "CHAR",
+    "values": {
+      "T": "Traditional Trading",
+      "P": "Program Trading",
+      "M": "Market Making",
+      "G": "Market Making With Program Trading"
+    }
+  },
+  "16631": {
+    "name": "EchoDC_11",
+    "type": "STRING"
+  },
+  "16632": {
+    "name": "EchoDC_12",
+    "type": "STRING"
+  },
+  "16633": {
+    "name": "EchoDC_13",
+    "type": "STRING"
+  },
+  "16634": {
+    "name": "EchoDC_14",
+    "type": "STRING"
+  },
+  "16635": {
+    "name": "EchoDC_15",
+    "type": "STRING"
+  },
+  "16636": {
+    "name": "EchoDC_16",
+    "type": "STRING"
+  },
+  "16637": {
+    "name": "EchoDC_17",
+    "type": "STRING"
+  },
+  "16638": {
+    "name": "EchoDC_18",
+    "type": "STRING"
+  },
+  "16639": {
+    "name": "EchoDC_19",
+    "type": "STRING"
+  },
+  "16640": {
+    "name": "EchoDC_20",
+    "type": "STRING"
+  },
+  "16700": {
+    "name": "PriceFormula",
+    "type": "STRING"
+  },
+  "16701": {
+    "name": "ReloadOffset",
+    "type": "INT"
+  },
+  "16702": {
+    "name": "OverrideTickNumerator",
+    "type": "INT"
+  },
+  "16703": {
+    "name": "FormulaBasedOn",
+    "type": "STRING",
+    "values": {
+      "price_diff": "Price Diff",
+      "ratio": "Ratio",
+      "net_change": "Net Change",
+      "custom": "Custom"
+    }
+  },
+  "16704": {
+    "name": "ReloadDelay",
+    "type": "INT"
+  },
+  "16705": {
+    "name": "DisclosedQty",
+    "type": "QTY"
+  },
+  "16706": {
+    "name": "Reload",
+    "type": "BOOLEAN"
+  },
+  "16707": {
+    "name": "OverrideTickSize",
+    "type": "BOOLEAN"
+  },
+  "16708": {
+    "name": "OverrideTickDenominator",
+    "type": "INT"
+  },
+  "16728": {
+    "name": "TotalNumOrders",
+    "type": "INT"
+  },
+  "16751": {
+    "name": "Multiplier",
+    "type": "FLOAT"
+  },
+  "16752": {
+    "name": "IsHedging",
+    "type": "BOOLEAN"
+  },
+  "16753": {
+    "name": "QueueHolder",
+    "type": "QTY"
+  },
+  "16754": {
+    "name": "MLQ",
+    "type": "STRING"
+  },
+  "16755": {
+    "name": "PayupTicks",
+    "type": "INT"
+  },
+  "16756": {
+    "name": "IsQuoting",
+    "type": "BOOLEAN"
+  },
+  "16757": {
+    "name": "ConvertQuoteToHedge",
+    "type": "INT",
+    "values": {
+      "1": "Attempt",
+      "2": "Always",
+      "3": "Always Preserve Queue"
+    }
+  },
+  "16758": {
+    "name": "IsLeanIndicative",
+    "type": "BOOLEAN"
+  },
+  "16759": {
+    "name": "IsShared",
+    "type": "BOOLEAN"
+  },
+  "16760": {
+    "name": "LegRatioExt",
+    "type": "INT"
+  },
+  "16761": {
+    "name": "InsertTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "16762": {
+    "name": "DefSecuritySubTypeID",
+    "type": "INT"
+  },
+  "16847": {
+    "name": "TargetStrategyName",
+    "type": "STRING"
+  },
+  "16848": {
+    "name": "TargetStrategyType",
+    "type": "INT",
+    "values": {
+      "0": "Adl",
+      "1": "Sse",
+      "3": "Bank Algo",
+      "12": "Core Sdk"
+    }
+  },
+  "16849": {
+    "name": "SideTextA",
+    "type": "STRING"
+  },
+  "16850": {
+    "name": "SideTextB",
+    "type": "STRING"
+  },
+  "16851": {
+    "name": "SideTextC",
+    "type": "STRING"
+  },
+  "16852": {
+    "name": "ParentVendorOrderID",
+    "type": "STRING"
+  },
+  "16853": {
+    "name": "ParentVendorUserID",
+    "type": "STRING"
+  },
+  "16854": {
+    "name": "ParentVendorAccountID",
+    "type": "STRING"
+  },
+  "16855": {
+    "name": "ParentVendorBrokerID",
+    "type": "STRING"
+  },
+  "16856": {
+    "name": "ParentVendorProfileID",
+    "type": "STRING"
+  },
+  "16857": {
+    "name": "TTSMPID",
+    "type": "STRING"
+  },
+  "16858": {
+    "name": "TTSMPInstruction",
+    "type": "INT",
+    "values": {
+      "1": "Tt Smp Inst Reject New",
+      "3": "Tt Smp Inst Cancel Resting",
+      "4": "Tt Smp Inst Internalization",
+      "6": "Tt Smp Inst Internalize Best",
+      "10": "Tt Smp Inst Internalize Allow Split",
+      "11": "Tt Smp Inst Internalize Best Allow Split"
+    }
+  },
+  "16859": {
+    "name": "QuoteAckStatus",
+    "type": "INT",
+    "values": {
+      "0": "Quote Request Status Ok",
+      "5": "Quote Request Status Rejected"
+    }
+  },
+  "16860": {
+    "name": "ParentVendorAlgoID",
+    "type": "STRING"
+  },
+  "16861": {
+    "name": "ParentVendorAlgoType",
+    "type": "STRING"
+  },
+  "16874": {
+    "name": "LegParentVendorAccountID",
+    "type": "STRING"
+  },
+  "16875": {
+    "name": "NewsReportID",
+    "type": "STRING"
+  },
+  "16901": {
+    "name": "BracketOrderType",
+    "type": "INT",
+    "values": {
+      "0": "Limit",
+      "1": "Stop Limit",
+      "2": "Stop Market"
+    }
+  },
+  "16902": {
+    "name": "BracketStopLimitOffset",
+    "type": "INT"
+  },
+  "16903": {
+    "name": "ChildTIF",
+    "type": "CHAR",
+    "values": {
+      "0": "Day",
+      "1": "Good Till Cancel",
+      "2": "At The Opening",
+      "3": "Immediate Or Cancel",
+      "4": "Fill Or Kill",
+      "5": "Good Till Crossing",
+      "6": "Good Till Date",
+      "7": "At The Close",
+      "8": "Good Through Crossing",
+      "9": "At Crossing",
+      "A": "Auction",
+      "V": "Good In Session",
+      "W": "Day Plus",
+      "X": "Good Till Cancel Plus",
+      "Y": "Good Till Date Plus"
+    }
+  },
+  "16904": {
+    "name": "DiscVal",
+    "type": "INT"
+  },
+  "16905": {
+    "name": "DiscValType",
+    "type": "INT"
+  },
+  "16906": {
+    "name": "ETimeAct",
+    "type": "INT",
+    "values": {
+      "1": "Cancel",
+      "2": "Gotomarket"
+    }
+  },
+  "16907": {
+    "name": "Interval",
+    "type": "INT"
+  },
+  "16908": {
+    "name": "IsTrlTrg",
+    "type": "STRING"
+  },
+  "16909": {
+    "name": "LeftoverAction",
+    "type": "INT",
+    "values": {
+      "0": "Leave",
+      "1": "Payup",
+      "2": "Merge",
+      "3": "Gotomarket"
+    }
+  },
+  "16910": {
+    "name": "LeftoverTicks",
+    "type": "INT"
+  },
+  "16911": {
+    "name": "LimitPriceType",
+    "type": "INT"
+  },
+  "16912": {
+    "name": "LimitTicksAway",
+    "type": "INT"
+  },
+  "16913": {
+    "name": "OcoStopTriggerPrice",
+    "type": "PRICE"
+  },
+  "16914": {
+    "name": "ProfitTarget",
+    "type": "INT"
+  },
+  "16915": {
+    "name": "StopLimitOffset",
+    "type": "INT"
+  },
+  "16916": {
+    "name": "StopOrderType",
+    "type": "INT",
+    "values": {
+      "1": "Limit",
+      "2": "Market",
+      "3": "Tt Stop"
+    }
+  },
+  "16917": {
+    "name": "StopTarget",
+    "type": "INT"
+  },
+  "16918": {
+    "name": "TriggerPriceType",
+    "type": "INT",
+    "values": {
+      "1": "Bid",
+      "2": "Ask",
+      "3": "Ltp",
+      "6": "Sameside",
+      "7": "Oppositeside"
+    }
+  },
+  "16919": {
+    "name": "TriggerTicksAway",
+    "type": "INT"
+  },
+  "16920": {
+    "name": "TriggerType",
+    "type": "INT",
+    "values": {
+      "1": "Stop",
+      "2": "It"
+    }
+  },
+  "16921": {
+    "name": "WithATickType",
+    "type": "INT",
+    "values": {
+      "1": "Qty",
+      "2": "Percent"
+    }
+  },
+  "16922": {
+    "name": "WithATick",
+    "type": "INT"
+  },
+  "16923": {
+    "name": "TriggerQtyType",
+    "type": "INT",
+    "values": {
+      "1": "Qty",
+      "2": "Percent"
+    }
+  },
+  "16924": {
+    "name": "TriggerQtyCompare",
+    "type": "INT",
+    "values": {
+      "3": "Lte",
+      "5": "Gte"
+    }
+  },
+  "16925": {
+    "name": "TriggerQty",
+    "type": "INT"
+  },
+  "16926": {
+    "name": "TriggerLTPReset",
+    "type": "BOOLEAN"
+  },
+  "16927": {
+    "name": "TTStopLimitPriceType",
+    "type": "INT",
+    "values": {
+      "1": "Bid",
+      "2": "Ask",
+      "3": "Ltp"
+    }
+  },
+  "16928": {
+    "name": "TTStopWithATickType",
+    "type": "INT",
+    "values": {
+      "1": "Qty",
+      "2": "Percent"
+    }
+  },
+  "16929": {
+    "name": "TTStopWithATick",
+    "type": "INT"
+  },
+  "16930": {
+    "name": "Payup",
+    "type": "INT"
+  },
+  "16931": {
+    "name": "TTStopTriggerPriceType",
+    "type": "INT",
+    "values": {
+      "1": "Bid",
+      "2": "Ask",
+      "3": "Ltp"
+    }
+  },
+  "16932": {
+    "name": "TTStopIsTrlTrg",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "16933": {
+    "name": "TTStopTriggerTicksAway",
+    "type": "INT"
+  },
+  "16934": {
+    "name": "TTStopTriggerQtyType",
+    "type": "INT",
+    "values": {
+      "1": "Qty",
+      "2": "Percentage"
+    }
+  },
+  "16935": {
+    "name": "TTStopTriggerQTyCompare",
+    "type": "INT",
+    "values": {
+      "3": "Lte",
+      "5": "Gte"
+    }
+  },
+  "16936": {
+    "name": "TTStopTriggerQty",
+    "type": "INT"
+  },
+  "16937": {
+    "name": "TTStopTriggerLTPReset",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "16938": {
+    "name": "TTStopTriggeredOrderType",
+    "type": "INT",
+    "values": {
+      "1": "Mkt",
+      "2": "Limit",
+      "21": "Mlm"
+    }
+  },
+  "16939": {
+    "name": "TTStopTriggeredOrderPrice",
+    "type": "PRICE"
+  },
+  "16940": {
+    "name": "TTStopLimitTicksAway",
+    "type": "INT"
+  },
+  "16941": {
+    "name": "TTStopPayup",
+    "type": "INT"
+  },
+  "16942": {
+    "name": "RetryCount",
+    "type": "INT"
+  },
+  "16943": {
+    "name": "RetryInterval",
+    "type": "INT"
+  },
+  "16944": {
+    "name": "Duration",
+    "type": "INT"
+  },
+  "16945": {
+    "name": "DurationBaseUnit",
+    "type": "INT",
+    "values": {
+      "1": "Hour",
+      "2": "Minute",
+      "3": "Second"
+    }
+  },
+  "16946": {
+    "name": "DurationSTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "16947": {
+    "name": "DurationETime",
+    "type": "UTCTIMESTAMP"
+  },
+  "16948": {
+    "name": "LeftoverTimeAction",
+    "type": "INT",
+    "values": {
+      "0": "Atend",
+      "1": "Halflife"
+    }
+  },
+  "16949": {
+    "name": "AutoResubExpiredGTD",
+    "type": "BOOLEAN"
+  },
+  "16950": {
+    "name": "ParentTIF",
+    "type": "INT",
+    "values": {
+      "0": "Day",
+      "1": "Gtc",
+      "7": "Time",
+      "15": "Dayplus",
+      "16": "Gtcplus"
+    }
+  },
+  "16951": {
+    "name": "TTStopSecondConditionIsOn",
+    "type": "BOOLEAN"
+  },
+  "16952": {
+    "name": "TTStopSecondTriggerPriceType",
+    "type": "INT",
+    "values": {
+      "1": "Bid",
+      "2": "Ask",
+      "3": "Ltp",
+      "6": "Sameside",
+      "7": "Oppositeside"
+    }
+  },
+  "16953": {
+    "name": "TTStopSecondConditionIsTrlTrg",
+    "type": "BOOLEAN"
+  },
+  "16954": {
+    "name": "TTStopSecondTriggerTicksAway",
+    "type": "INT"
+  },
+  "16955": {
+    "name": "TTStopSecondTriggerQtyType",
+    "type": "INT",
+    "values": {
+      "1": "Qty",
+      "2": "Percentage"
+    }
+  },
+  "16956": {
+    "name": "TTStopSecondTriggerQtyCompare",
+    "type": "INT",
+    "values": {
+      "3": "Lte",
+      "5": "Gte"
+    }
+  },
+  "16957": {
+    "name": "TTStopSecondTriggerQty",
+    "type": "QTY"
+  },
+  "16958": {
+    "name": "Variance",
+    "type": "INT"
+  },
+  "16959": {
+    "name": "IncludeQuotes",
+    "type": "BOOLEAN"
+  },
+  "16960": {
+    "name": "ETAGoToMktTicks",
+    "type": "INT"
+  },
+  "16961": {
+    "name": "WaitingOption",
+    "type": "INT"
+  },
+  "16962": {
+    "name": "TTStopChildTIFOverride",
+    "type": "INT"
+  },
+  "16963": {
+    "name": "Seq",
+    "type": "INT"
+  },
+  "16964": {
+    "name": "LegFillSeq",
+    "type": "INT"
+  },
+  "16965": {
+    "name": "NoTTReserved",
+    "type": "NUMINGROUP"
+  },
+  "16966": {
+    "name": "TTReservedName",
+    "type": "STRING"
+  },
+  "16967": {
+    "name": "TTReservedValue",
+    "type": "STRING"
+  },
+  "16968": {
+    "name": "LeftoverMktOrderLimitTicks",
+    "type": "INT"
+  },
+  "16969": {
+    "name": "SecondConditionIsOn",
+    "type": "BOOLEAN"
+  },
+  "16970": {
+    "name": "SecondTriggerTicksAway",
+    "type": "INT"
+  },
+  "16971": {
+    "name": "SecondTriggerQtyType",
+    "type": "INT",
+    "values": {
+      "1": "E Qty",
+      "2": "E Percentage"
+    }
+  },
+  "16972": {
+    "name": "SecondTriggerQtyCompare",
+    "type": "INT",
+    "values": {
+      "3": "E LTE",
+      "5": "E GTE"
+    }
+  },
+  "16973": {
+    "name": "SecondTriggerQty",
+    "type": "QTY"
+  },
+  "16974": {
+    "name": "LeftoverTime",
+    "type": "INT",
+    "values": {
+      "0": "E At End",
+      "1": "E At Half Life"
+    }
+  },
+  "16975": {
+    "name": "SecondTriggerPriceType",
+    "type": "INT",
+    "values": {
+      "1": "E Bid",
+      "2": "E Ask",
+      "3": "E Ltp",
+      "6": "E Same Side",
+      "7": "E Opposite Side"
+    }
+  },
+  "16976": {
+    "name": "NoImplies",
+    "type": "BOOLEAN"
+  },
+  "16977": {
+    "name": "CustomSliceSched",
+    "type": "STRING"
+  },
+  "16978": {
+    "name": "TTStopNoImplies",
+    "type": "BOOLEAN"
+  },
+  "16979": {
+    "name": "HKExSSEAlgoHandling",
+    "type": "BOOLEAN"
+  },
+  "16980": {
+    "name": "Aggressiveness",
+    "type": "FLOAT"
+  },
+  "16981": {
+    "name": "IgnoreMarketState",
+    "type": "BOOLEAN"
+  },
+  "16982": {
+    "name": "InstanceName",
+    "type": "STRING"
+  },
+  "16983": {
+    "name": "HedgeOrderType",
+    "type": "INT",
+    "values": {
+      "1": "E Mkt"
+    }
+  },
+  "16984": {
+    "name": "DeltaRounding",
+    "type": "INT",
+    "values": {
+      "0": "E Round Normal",
+      "1": "E Round Up",
+      "2": "E Round Down"
+    }
+  },
+  "16990": {
+    "name": "Vol",
+    "type": "FLOAT"
+  },
+  "16999": {
+    "name": "ClearingAccountOverride",
+    "type": "STRING"
+  },
+  "17000": {
+    "name": "RequestTickTable",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "17001": {
+    "name": "VendorDefinedField1",
+    "type": "STRING"
+  },
+  "17002": {
+    "name": "VendorDefinedField2",
+    "type": "STRING"
+  },
+  "17003": {
+    "name": "VendorDefinedField3",
+    "type": "STRING"
+  },
+  "17004": {
+    "name": "VendorDefinedField4",
+    "type": "STRING"
+  },
+  "17005": {
+    "name": "VendorDefinedField5",
+    "type": "STRING"
+  },
+  "17006": {
+    "name": "MaxPart",
+    "type": "INT"
+  },
+  "17007": {
+    "name": "MaxDisp",
+    "type": "INT"
+  },
+  "17008": {
+    "name": "TwapStyle",
+    "type": "INT",
+    "values": {
+      "0": "E Aggressive",
+      "1": "E Default",
+      "2": "E Passive"
+    }
+  },
+  "17009": {
+    "name": "WouldIfPrc",
+    "type": "PRICE"
+  },
+  "17010": {
+    "name": "LimitPrc",
+    "type": "PRICE"
+  },
+  "18000": {
+    "name": "ForceLogout",
+    "type": "INT",
+    "values": {
+      "0": "Not Forced",
+      "1": "Forced"
+    }
+  },
+  "18001": {
+    "name": "MockOrderFlag",
+    "type": "INT",
+    "values": {
+      "0": "Not Mockorder",
+      "1": "Mock Order"
+    }
+  },
+  "18002": {
+    "name": "CustomMode",
+    "type": "CHAR"
+  },
+  "18009": {
+    "name": "TradingStrategy",
+    "type": "INT",
+    "values": {
+      "1": "Arbitrage",
+      "10": "Hedge",
+      "11": "Directional"
+    }
+  },
+  "18010": {
+    "name": "ReverseSpreadOC",
+    "type": "INT",
+    "values": {
+      "0": "Do Not Reverse Open Close Flag On Far Leg",
+      "1": "Reverse Spread Open Close Flag On Far Le"
+    }
+  },
+  "18100": {
+    "name": "LegExDestination",
+    "type": "EXCHANGE"
+  },
+  "18101": {
+    "name": "AccountID",
+    "type": "STRING"
+  },
+  "18102": {
+    "name": "UserID",
+    "type": "STRING"
+  },
+  "18210": {
+    "name": "PriceFeedStatus",
+    "type": "INT"
+  },
+  "18211": {
+    "name": "DeliveryTerm",
+    "type": "CHAR",
+    "values": {
+      "D": "Day",
+      "W": "Week",
+      "B": "Balance",
+      "Q": "Quarter",
+      "S": "Season",
+      "Y": "Year",
+      "V": "Variable",
+      "L": "Balance Of Week",
+      "X": "Custom",
+      "A": "Same Day",
+      "N": "Next Day",
+      "M": "Month",
+      "E": "Weekly",
+      "P": "Pack",
+      "U": "Bundle",
+      "T": "Weekend",
+      "H": "Hour",
+      "C": "Eom",
+      "a": "Quarter Hour",
+      "b": "Half Hour",
+      "c": "One Hour",
+      "d": "Two Hour",
+      "e": "Four Hour",
+      "f": "Eight Hour",
+      "g": "One Plus Two",
+      "h": "Three Plus Four",
+      "i": "Baseload",
+      "j": "Peakload",
+      "k": "Overnight",
+      "l": "Extended Peak"
+    }
+  },
+  "18212": {
+    "name": "LegDeliveryTerm",
+    "type": "CHAR",
+    "values": {
+      "D": "Day",
+      "W": "Week",
+      "B": "Balance",
+      "Q": "Quarter",
+      "S": "Season",
+      "Y": "Year",
+      "V": "Variable",
+      "L": "Balance Of Week",
+      "X": "Custom",
+      "A": "Same Day",
+      "N": "Next Day",
+      "M": "Month",
+      "E": "Weekly",
+      "P": "Pack",
+      "U": "Bundle",
+      "T": "Weekend",
+      "H": "Hour",
+      "C": "Eom",
+      "a": "Quarter Hour",
+      "b": "Half Hour",
+      "c": "One Hour",
+      "d": "Two Hour",
+      "e": "Four Hour",
+      "f": "Eight Hour",
+      "g": "One Plus Two",
+      "h": "Three Plus Four",
+      "i": "Baseload",
+      "j": "Peakload",
+      "k": "Overnight",
+      "l": "Extended Peak"
+    }
+  },
+  "18213": {
+    "name": "LegDeliveryDate",
+    "type": "LOCALMKTDATE"
+  },
+  "18214": {
+    "name": "IncludeNumberOfOrders",
+    "type": "CHAR",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "18216": {
+    "name": "ExchCred",
+    "type": "STRING"
+  },
+  "18217": {
+    "name": "RefID",
+    "type": "STRING"
+  },
+  "18218": {
+    "name": "TTCustomerName",
+    "type": "STRING"
+  },
+  "18219": {
+    "name": "SecondaryAccount",
+    "type": "STRING"
+  },
+  "18220": {
+    "name": "BrokerID",
+    "type": "STRING"
+  },
+  "18221": {
+    "name": "CompanyID",
+    "type": "STRING"
+  },
+  "18222": {
+    "name": "AOTCPreventionActionType",
+    "type": "CHAR",
+    "values": {
+      "0": "Crossing Order Prevention None",
+      "1": "Crossing Order Prevention Held",
+      "2": "Crossing Order Prevention Cancel",
+      "3": "Crossing Order Prevention Fill",
+      "4": "Crossing Order Prevention Reduced Order",
+      "5": "Crossing Order Prevention Reduced Change",
+      "6": "Crossing Order Prevention Released Order",
+      "7": "Crossing Order Prevention Replaced Order",
+      "8": "Crossing Order Prevention No Action On Order",
+      "9": "Crossing Order Prevention Cancel Replace"
+    }
+  },
+  "18223": {
+    "name": "ContractYearMonth",
+    "type": "STRING"
+  },
+  "18224": {
+    "name": "LegContractYearMonth",
+    "type": "STRING"
+  },
+  "18225": {
+    "name": "ExchangeSeqNum",
+    "type": "INT"
+  },
+  "18226": {
+    "name": "TTSyntheticType",
+    "type": "INT"
+  },
+  "18227": {
+    "name": "Organization",
+    "type": "STRING"
+  },
+  "18228": {
+    "name": "RoutingAccount",
+    "type": "STRING"
+  },
+  "18229": {
+    "name": "ReviewUserID",
+    "type": "STRING"
+  },
+  "18230": {
+    "name": "ReviewStatus",
+    "type": "INT",
+    "values": {
+      "1": "Review Status None",
+      "2": "Review Status Reviewed",
+      "3": "Review Status Approved"
+    }
+  },
+  "18231": {
+    "name": "UniqueLegID",
+    "type": "STRING"
+  },
+  "18232": {
+    "name": "LastTradingDate",
+    "type": "LOCALMKTDATE"
+  },
+  "18233": {
+    "name": "BrokerRoute",
+    "type": "STRING"
+  },
+  "18235": {
+    "name": "HedgeType",
+    "type": "INT",
+    "values": {
+      "1": "Hedge Type Duration",
+      "2": "Hedge Type Nominal",
+      "3": "Hedge Type Price Factor"
+    }
+  },
+  "18236": {
+    "name": "UnderlyingMemo",
+    "type": "STRING"
+  },
+  "18314": {
+    "name": "LegMaturityDay",
+    "type": "DAYOFMONTH"
+  },
+  "18602": {
+    "name": "QuoteSubType",
+    "type": "INT",
+    "values": {
+      "1": "Working Delta",
+      "2": "Basis Trade",
+      "3": "Regular Lds Negotiation",
+      "4": "Negotiate Underlying Outside Exchange",
+      "5": "Vola Strategy Fix",
+      "6": "Vola Strategy Negotiate Underlying"
+    }
+  },
+  "18603": {
+    "name": "QuoteRefPrice",
+    "type": "PRICE"
+  },
+  "18604": {
+    "name": "UnderlyingDeltaPercentage",
+    "type": "FLOAT"
+  },
+  "18605": {
+    "name": "SRFQTransType",
+    "type": "INT",
+    "values": {
+      "1": "New",
+      "2": "Replace",
+      "3": "Close",
+      "4": "Update",
+      "5": "Expire"
+    }
+  },
+  "18606": {
+    "name": "NegotiationID",
+    "type": "STRING"
+  },
+  "18607": {
+    "name": "SecondaryNegotiationID",
+    "type": "STRING"
+  },
+  "18608": {
+    "name": "MktQuoteID",
+    "type": "STRING"
+  },
+  "18609": {
+    "name": "SecondaryQuoteID",
+    "type": "STRING"
+  },
+  "18610": {
+    "name": "QuotingStatus",
+    "type": "INT",
+    "values": {
+      "1": "Quoting Status Open Active",
+      "2": "Quoting Status Open Working",
+      "3": "Quoting Status Closed Inactive"
+    }
+  },
+  "20000": {
+    "name": "OneOffSharedKey",
+    "type": "STRING"
+  },
+  "20016": {
+    "name": "FutureReferencePrice",
+    "type": "PRICE"
+  },
+  "37711": {
+    "name": "MDTradeEntryID",
+    "type": "INT"
+  },
+  "60111": {
+    "name": "AllocVolumeType",
+    "type": "STRING"
+  }
+}
+
+export const FIELDS_TT44: Record<number, FieldDef> = {
+  "1": {
+    "name": "Account",
+    "type": "STRING"
+  },
+  "6": {
+    "name": "AvgPx",
+    "type": "PRICE"
+  },
+  "7": {
+    "name": "BeginSeqNo",
+    "type": "SEQNUM"
+  },
+  "8": {
+    "name": "BeginString",
+    "type": "STRING"
+  },
+  "9": {
+    "name": "BodyLength",
+    "type": "INT"
+  },
+  "10": {
+    "name": "CheckSum",
+    "type": "STRING"
+  },
+  "11": {
+    "name": "ClOrdID",
+    "type": "STRING"
+  },
+  "12": {
+    "name": "Commission",
+    "type": "AMT"
+  },
+  "13": {
+    "name": "CommType",
+    "type": "CHAR",
+    "values": {
+      "1": "Per Unit",
+      "2": "Percentage",
+      "3": "Absolute",
+      "4": "Percentage Waived Cash Discount",
+      "5": "Percentage Waived Enhanced Units",
+      "6": "Points Per Bond Or Contract"
+    }
+  },
+  "14": {
+    "name": "CumQty",
+    "type": "QTY"
+  },
+  "15": {
+    "name": "Currency",
+    "type": "CURRENCY"
+  },
+  "16": {
+    "name": "EndSeqNo",
+    "type": "SEQNUM"
+  },
+  "17": {
+    "name": "ExecID",
+    "type": "STRING"
+  },
+  "18": {
+    "name": "ExecInst",
+    "type": "MULTIPLESTRINGVALUE",
+    "values": {
+      "1": "Not Held",
+      "2": "Work",
+      "5": "Held",
+      "6": "Participate Dont Initiate",
+      "G": "All Or None",
+      "S": "Suspend",
+      "q": "Release From Suspension",
+      "o": "Cancel On Connection Loss",
+      "X": "Test Request"
+    }
+  },
+  "19": {
+    "name": "ExecRefID",
+    "type": "STRING"
+  },
+  "20": {
+    "name": "ExecTransType",
+    "type": "CHAR",
+    "values": {
+      "0": "New",
+      "1": "Cancel",
+      "2": "Correct",
+      "3": "Status"
+    }
+  },
+  "21": {
+    "name": "HandlInst",
+    "type": "CHAR",
+    "values": {
+      "1": "Automated Execution Order Private No Broker Intervention",
+      "2": "Automated Execution Order Public Broker Intervention Ok",
+      "3": "Manual Order Best Execution"
+    }
+  },
+  "22": {
+    "name": "IDSource",
+    "type": "STRING",
+    "values": {
+      "4": "Isin Number",
+      "5": "Ric Code",
+      "8": "Exchange Security Id",
+      "91": "Exchange Ticker",
+      "96": "Tt Security Id",
+      "97": "Alias",
+      "98": "Name",
+      "A": "Bloomberg Code",
+      "S": "Openfigi Id",
+      "X": "Series Key",
+      "H": "Clearing House"
+    }
+  },
+  "30": {
+    "name": "LastMkt",
+    "type": "EXCHANGE"
+  },
+  "31": {
+    "name": "LastPx",
+    "type": "PRICE"
+  },
+  "32": {
+    "name": "LastShares",
+    "type": "QTY"
+  },
+  "33": {
+    "name": "LinesOfText",
+    "type": "INT"
+  },
+  "34": {
+    "name": "MsgSeqNum",
+    "type": "SEQNUM"
+  },
+  "35": {
+    "name": "MsgType",
+    "type": "STRING",
+    "values": {
+      "0": "Heartbeat",
+      "1": "Test Request",
+      "2": "Resend Request",
+      "3": "Reject",
+      "4": "Sequence Reset",
+      "5": "Logout",
+      "8": "Execution Report",
+      "9": "Order Cancel Reject",
+      "A": "Logon",
+      "B": "News",
+      "b": "Quote Request Response",
+      "c": "Security Definition Request",
+      "D": "Order Single",
+      "AB": "Order Multi Leg",
+      "AC": "Order Multi Leg Cancel Replace Request",
+      "d": "Security Definition",
+      "e": "Security Status Request",
+      "f": "Security Status",
+      "F": "Order Cancel Request",
+      "G": "Order Cancel Replace Request",
+      "g": "Trading Session Status Request",
+      "H": "Order Status Request",
+      "j": "Business Message Reject",
+      "R": "Quote Request",
+      "V": "Market Data Request",
+      "W": "Market Data Snapshot Full Refresh",
+      "X": "Market Data Incremental Refresh",
+      "Y": "Market Data Request Reject",
+      "AE": "Trade Capture Report",
+      "AR": "Trade Capture Report Ack",
+      "U2": "Outofband Recovery Request",
+      "Q": "Dont Know Trade",
+      "AD": "Trade Capture Report Request",
+      "AQ": "Trade Capture Report Request Ack",
+      "J": "Allocation Instruction",
+      "P": "Allocation Instruction Ack",
+      "AS": "Allocation Report",
+      "AI": "Quote Status Report",
+      "AJ": "Quote Response",
+      "E": "New Order List"
+    }
+  },
+  "36": {
+    "name": "NewSeqNo",
+    "type": "SEQNUM"
+  },
+  "37": {
+    "name": "OrderID",
+    "type": "STRING"
+  },
+  "38": {
+    "name": "OrderQty",
+    "type": "QTY"
+  },
+  "39": {
+    "name": "OrdStatus",
+    "type": "CHAR",
+    "values": {
+      "0": "New",
+      "1": "Partially Filled",
+      "2": "Filled",
+      "3": "Done For Day",
+      "4": "Canceled",
+      "5": "Replaced",
+      "6": "Pending Cancel",
+      "7": "Stopped",
+      "8": "Rejected",
+      "9": "Suspended",
+      "A": "Pending New",
+      "B": "Calculated",
+      "C": "Expired",
+      "D": "Accepted For Bidding",
+      "E": "Pending Replace",
+      "H": "Trade Cancel",
+      "z": "Inactive"
+    }
+  },
+  "40": {
+    "name": "OrdType",
+    "type": "CHAR",
+    "values": {
+      "1": "Market",
+      "2": "Limit",
+      "3": "Stop",
+      "4": "Stop Limit",
+      "5": "Market On Close",
+      "B": "Limit On Close",
+      "D": "Previously Quoted",
+      "K": "Market With Left Over As Limit",
+      "Q": "Market Limit Market Left Over As Limit",
+      "S": "Stop Market To Limit",
+      "T": "If Touched Limit",
+      "J": "If Touched Market",
+      "U": "If Touched Market To Limit",
+      "p": "Limit Post Only",
+      "V": "Market Close Today",
+      "W": "Limit Close Today",
+      "P": "Peg",
+      "X": "Iceberg"
+    }
+  },
+  "41": {
+    "name": "OrigClOrdID",
+    "type": "STRING"
+  },
+  "43": {
+    "name": "PossDupFlag",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "44": {
+    "name": "Price",
+    "type": "PRICE"
+  },
+  "45": {
+    "name": "RefSeqNum",
+    "type": "SEQNUM"
+  },
+  "48": {
+    "name": "SecurityID",
+    "type": "STRING"
+  },
+  "49": {
+    "name": "SenderCompID",
+    "type": "STRING"
+  },
+  "50": {
+    "name": "SenderSubID",
+    "type": "STRING"
+  },
+  "52": {
+    "name": "SendingTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "53": {
+    "name": "Quantity",
+    "type": "QTY"
+  },
+  "54": {
+    "name": "Side",
+    "type": "CHAR",
+    "values": {
+      "1": "Buy",
+      "2": "Sell",
+      "3": "Buy Minus",
+      "4": "Sell Plus",
+      "5": "Sell Short",
+      "6": "Sell Short Exempt",
+      "7": "Undisclosed",
+      "8": "Cross",
+      "9": "Cross Short",
+      "B": "As Defined",
+      "C": "Opposite"
+    }
+  },
+  "55": {
+    "name": "Symbol",
+    "type": "STRING"
+  },
+  "56": {
+    "name": "TargetCompID",
+    "type": "STRING"
+  },
+  "57": {
+    "name": "TargetSubID",
+    "type": "STRING"
+  },
+  "58": {
+    "name": "Text",
+    "type": "STRING"
+  },
+  "59": {
+    "name": "TimeInForce",
+    "type": "CHAR",
+    "values": {
+      "0": "Day",
+      "1": "Good Till Cancel",
+      "2": "At The Opening",
+      "3": "Immediate Or Cancel",
+      "4": "Fill Or Kill",
+      "5": "Good Till Crossing",
+      "6": "Good Till Date",
+      "7": "At The Close",
+      "8": "Good Through Crossing",
+      "9": "At Crossing",
+      "A": "Auction",
+      "S": "Time In Force Morning At The Close",
+      "T": "Time In Force Afternoon At The Close",
+      "U": "Time In Force Night At The Close",
+      "V": "Good In Session",
+      "W": "Day Plus",
+      "X": "Good Till Cancel Plus",
+      "Y": "Good Till Date Plus"
+    }
+  },
+  "60": {
+    "name": "TransactTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "62": {
+    "name": "ValidUntilTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "63": {
+    "name": "SettlType",
+    "type": "STRING"
+  },
+  "64": {
+    "name": "SettlDate",
+    "type": "LOCALMKTDATE"
+  },
+  "66": {
+    "name": "ListID",
+    "type": "STRING"
+  },
+  "67": {
+    "name": "ListSeqNo",
+    "type": "INT"
+  },
+  "69": {
+    "name": "ListExecInst",
+    "type": "STRING"
+  },
+  "70": {
+    "name": "AllocID",
+    "type": "STRING"
+  },
+  "71": {
+    "name": "AllocTransType",
+    "type": "CHAR",
+    "values": {
+      "0": "New",
+      "1": "Replace",
+      "2": "Cancel"
+    }
+  },
+  "73": {
+    "name": "NoOrders",
+    "type": "NUMINGROUP"
+  },
+  "75": {
+    "name": "TradeDate",
+    "type": "LOCALMKTDATE"
+  },
+  "77": {
+    "name": "OpenClose",
+    "type": "CHAR",
+    "values": {
+      "C": "Close",
+      "O": "Open",
+      "F": "Fifo"
+    }
+  },
+  "78": {
+    "name": "NoAllocs",
+    "type": "NUMINGROUP"
+  },
+  "79": {
+    "name": "AllocAccount",
+    "type": "STRING"
+  },
+  "80": {
+    "name": "AllocQty",
+    "type": "QTY"
+  },
+  "81": {
+    "name": "ProcessCode",
+    "type": "CHAR",
+    "values": {
+      "0": "Regular",
+      "1": "Soft Dollar",
+      "2": "Step In",
+      "3": "Setp Out",
+      "4": "Soft Dollar Step In",
+      "5": "Soft Dollar Step Out",
+      "6": "Plan Sponsor"
+    }
+  },
+  "87": {
+    "name": "AllocStatus",
+    "type": "INT",
+    "values": {
+      "0": "Accepted",
+      "1": "Block Level Reject",
+      "2": "Account Level Reject",
+      "3": "Received",
+      "4": "Incomplete",
+      "5": "Rejected By Intermediary"
+    }
+  },
+  "96": {
+    "name": "RawData",
+    "type": "STRING"
+  },
+  "97": {
+    "name": "PossResend",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "98": {
+    "name": "EncryptMethod",
+    "type": "INT",
+    "values": {
+      "0": "None"
+    }
+  },
+  "99": {
+    "name": "StopPx",
+    "type": "PRICE"
+  },
+  "100": {
+    "name": "ExDestination",
+    "type": "EXCHANGE"
+  },
+  "102": {
+    "name": "CxlRejReason",
+    "type": "INT",
+    "values": {
+      "0": "Too Late To Cancel",
+      "1": "Unknown Order",
+      "2": "Broker Option",
+      "3": "Order Already In Pending Cancel Or Pending Replace Status",
+      "4": "Unable To Process Order Mass Cancel Request",
+      "5": "Origordmodtime",
+      "6": "Duplicate Clordid",
+      "7": "Duplicate Of A Verbally Communicated Order",
+      "8": "Stale Order",
+      "9": "Trade Along Required",
+      "10": "Invalid Investor Id",
+      "11": "Unsupported Order Characteristic",
+      "12": "Surveillence Option",
+      "13": "Incorrect Quantity",
+      "14": "Incorrect Allocated Quantity",
+      "15": "Unknown Account",
+      "16": "Price Exceeds Current Price Band",
+      "18": "Invalid Price Increment",
+      "19": "Message Pending",
+      "20": "Routing Error",
+      "99": "Other",
+      "1003": "Market Closed",
+      "1007": "Fix Field Missing Or Incorrect",
+      "1010": "Required Field Missing",
+      "1011": "Fix Field Incorrect",
+      "1012": "Price Must Be Greater Than Zero",
+      "1013": "Invalid Order Qualifier",
+      "1014": "User Not Authorized",
+      "2013": "Market Orders Not Supported By Opposite",
+      "2019": "Invalid Expire Date",
+      "2044": "Order Not In Book",
+      "2045": "Order Not In Book2",
+      "2046": "Disclosed Qty Cannot Be Greater",
+      "2047": "Unknown Contract",
+      "2048": "Cancel With Different Sender Comp Id",
+      "2049": "Clordid Different Than Correlationclordid",
+      "2050": "Clordid Different Than Originalclordid",
+      "2051": "Different Side",
+      "2052": "Different Group",
+      "2053": "Different Security Type",
+      "2054": "Different Account",
+      "2055": "Different Qty",
+      "2056": "Cancel With Different Trader Id",
+      "2058": "Stop Price Must Be Greater",
+      "2059": "Stop Price Must Be Smaller",
+      "2060": "Sell Stop Price Must Be Below Ltp",
+      "2061": "Buy Stop Price Must Be Above Ltp",
+      "2100": "Different Product",
+      "2101": "Different Inflight Fill Mitigation",
+      "2102": "Modify With Different Sender Comp Id",
+      "2103": "Modify With Different Trader Id",
+      "2115": "Order Qty Outside Allowable Range",
+      "2130": "Invalid Order Type For Pcp",
+      "2137": "Order Price Outside Limits",
+      "2179": "Order Price Outside Bands",
+      "2311": "Invalid Order Type For Group",
+      "2500": "Instrument Cross Request In Progress",
+      "2501": "Order Qty Too Low",
+      "2600": "Market Maker Protection Has Tripped",
+      "4000": "Engine Did Not Respond",
+      "5001": "Euronext Unknown Order",
+      "5020": "Comp Id Problem",
+      "5099": "Euronext Other",
+      "5300": "Logon Problem",
+      "5313": "No Router For Security Group",
+      "5314": "Router Not Available Or Connected",
+      "5318": "Invalid Price",
+      "5319": "Invalid Ordqty",
+      "5320": "Invalid Ordtype",
+      "5321": "Invalid Side",
+      "6000": "Fully Filled",
+      "6001": "Pending Replace",
+      "6002": "Pending Cancel",
+      "7000": "Order Rejected",
+      "7001": "Contract Not Gtc Gtd Eligible",
+      "7009": "Contract Past Expiration",
+      "7011": "Max Contract Working Qty Exceeded",
+      "7015": "Modify With Different Side",
+      "7018": "Contract Not Gtc Gtd Eligible2",
+      "7020": "No Trading Calendar For Expire Date",
+      "7021": "Expire Date Beyond Instrument Expiration",
+      "7022": "Expire Date Beyond Leg Instrument Expiration",
+      "7024": "Market In No Cancel",
+      "7027": "Invalid Order Type For Reserved Market",
+      "7028": "Order Session Date In Past",
+      "7613": "Disclosed Qty Cannot Be Smaller",
+      "9999": "Technical Error Function Not Performed"
+    }
+  },
+  "103": {
+    "name": "OrdRejReason",
+    "type": "INT",
+    "values": {
+      "0": "Broker Option",
+      "1": "Unknown Symbol",
+      "2": "Exchange Closed",
+      "3": "Order Exceeds Limit",
+      "4": "Too Late To Enter",
+      "5": "Unknown Order",
+      "6": "Duplicate Order",
+      "7": "Duplicate Of A Verbally Communicated Order",
+      "8": "Stale Order",
+      "9": "Trade Along Required",
+      "10": "Invalid Investor Id",
+      "11": "Unsupported Order Characteristic",
+      "12": "Surveillence Option",
+      "13": "Incorrect Quantity",
+      "14": "Incorrect Allocated Quantity",
+      "15": "Unknown Account",
+      "16": "Price Exceeds Current Price Band",
+      "18": "Invalid Price Increment",
+      "19": "Message Pending",
+      "20": "Routing Error",
+      "99": "Other",
+      "100": "Time Out",
+      "1003": "Market Closed",
+      "1007": "Fix Field Missing Or Incorrect",
+      "1010": "Required Field Missing",
+      "1011": "Fix Field Incorrect",
+      "1012": "Price Must Be Greater Than Zero",
+      "1013": "Invalid Order Qualifier",
+      "1014": "User Not Authorized",
+      "2013": "Market Hours Not Suported By Opposite",
+      "2019": "Invalid Expire Date",
+      "2044": "Order Not In Book",
+      "2045": "Order Not In Book 2",
+      "2046": "Disclosed Qty Cannot Be Greater",
+      "2047": "Unknown Contract",
+      "2048": "Cancel With Different Sender Comp Id",
+      "2049": "Clordid Different Than Correleation Clordid",
+      "2050": "Clordid Different Than Original Clordid",
+      "2051": "Different Side",
+      "2052": "Different Group",
+      "2053": "Different Security Type",
+      "2054": "Different Account",
+      "2055": "Different Qty",
+      "2056": "Cancel With Different Trader Id",
+      "2058": "Stop Price Must Be Greater",
+      "2059": "Stop Price Must Be Smaller",
+      "2060": "Sell Stop Price Must Be Below Ltp",
+      "2061": "Buy Stop Price Must Be Above Ltp",
+      "2100": "Different Product",
+      "2101": "Different Inflight Fill Modification",
+      "2102": "Modify With Different Sender Comp Id",
+      "2103": "Modify With Different Trader Id",
+      "2115": "Order Qty Outside Allowable Range",
+      "2130": "Invalid Order Type For Pcp",
+      "2137": "Order Price Outside Limits",
+      "2179": "Order Price Outside Bands",
+      "2311": "Invalid Order Type For Group",
+      "2500": "Instrument Cross Request In Process",
+      "2501": "Ordr Qty Too Low",
+      "2600": "Market Maker Protection Has Tripped",
+      "4000": "Engine Did Not Respond",
+      "6001": "Pending Replace",
+      "6002": "Pending Cancel",
+      "7000": "Order Rejected",
+      "7001": "Contract Not Gtc Gtd Eligible",
+      "7009": "Contract Past Expiration",
+      "7011": "Max Contract Working Qty Exceeded",
+      "7015": "Modify With Different Side",
+      "7018": "Contract Not Gtc Gtd Eligible 2",
+      "7020": "No Trading Calendar For Expire Date",
+      "7021": "Expire Date Beyond Instrument Expiration",
+      "7022": "Expire Date Beyond Leg Instrument Expiration",
+      "7024": "Market In No Cancel",
+      "7027": "Invalid Order Type For Reserved Market",
+      "7028": "Order Session Date In Past",
+      "7613": "Disclosed Qty Cannot Be Smaller",
+      "9999": "Technical Error Function Not Performed"
+    }
+  },
+  "107": {
+    "name": "SecurityDesc",
+    "type": "STRING"
+  },
+  "108": {
+    "name": "HeartBtInt",
+    "type": "INT"
+  },
+  "110": {
+    "name": "MinQty",
+    "type": "QTY"
+  },
+  "112": {
+    "name": "TestReqID",
+    "type": "STRING"
+  },
+  "115": {
+    "name": "OnBehalfOfCompID",
+    "type": "STRING"
+  },
+  "116": {
+    "name": "OnBehalfOfSubID",
+    "type": "STRING"
+  },
+  "117": {
+    "name": "QuoteId",
+    "type": "STRING"
+  },
+  "118": {
+    "name": "NetMoney",
+    "type": "AMT"
+  },
+  "122": {
+    "name": "OrigSendingTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "123": {
+    "name": "GapFillFlag",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "124": {
+    "name": "NoExecs",
+    "type": "NUMINGROUP"
+  },
+  "126": {
+    "name": "ExpireTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "127": {
+    "name": "DKReason",
+    "type": "CHAR",
+    "values": {
+      "A": "Unknown Symbol",
+      "Z": "Other"
+    }
+  },
+  "128": {
+    "name": "DeliverToCompID",
+    "type": "STRING"
+  },
+  "129": {
+    "name": "DeliverToSubID",
+    "type": "STRING"
+  },
+  "131": {
+    "name": "QuoteReqID",
+    "type": "STRING"
+  },
+  "132": {
+    "name": "BidPx",
+    "type": "PRICE"
+  },
+  "133": {
+    "name": "OfferPx",
+    "type": "PRICE"
+  },
+  "134": {
+    "name": "BidSize",
+    "type": "QTY"
+  },
+  "135": {
+    "name": "OfferSize",
+    "type": "QTY"
+  },
+  "136": {
+    "name": "NoMiscFees",
+    "type": "NUMINGROUP"
+  },
+  "137": {
+    "name": "MiscFeeAmt",
+    "type": "AMT"
+  },
+  "138": {
+    "name": "MiscFeeCurr",
+    "type": "CURRENCY"
+  },
+  "139": {
+    "name": "MiscFeeType",
+    "type": "INT",
+    "values": {
+      "1": "Regulatory",
+      "2": "Tax",
+      "3": "Local Commission",
+      "4": "Exchange Fees",
+      "5": "Stamp",
+      "6": "Levy",
+      "7": "Other",
+      "8": "Markup",
+      "9": "Consumption Tax",
+      "10": "Per Transaction",
+      "11": "Conversion",
+      "12": "Agent"
+    }
+  },
+  "141": {
+    "name": "ResetSeqNumFlag",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "142": {
+    "name": "SenderLocationID",
+    "type": "STRING"
+  },
+  "146": {
+    "name": "NoRelatedSym",
+    "type": "NUMINGROUP"
+  },
+  "148": {
+    "name": "Headline",
+    "type": "STRING"
+  },
+  "150": {
+    "name": "ExecType",
+    "type": "CHAR",
+    "values": {
+      "0": "New",
+      "1": "Partial Fill",
+      "2": "Fill",
+      "3": "Done For Day",
+      "4": "Canceled",
+      "5": "Replace",
+      "6": "Pending Cancel",
+      "7": "Stopped",
+      "8": "Rejected",
+      "9": "Suspended",
+      "A": "Pending New",
+      "B": "Calculated",
+      "C": "Expired",
+      "D": "Restated",
+      "E": "Pending Replace",
+      "F": "Trade",
+      "G": "Trade Correct",
+      "H": "Trade Cancel",
+      "I": "Order Status",
+      "J": "Trade In A Clearing Hold",
+      "K": "Trade Has Been Released To Clearing",
+      "L": "Triggered Or Activated By System",
+      "a": "Cancelled By Stp",
+      "b": "Order Cancelled Due To Cod Mechanism",
+      "n": "Order Cancelled Due To Potential Trade Outside Fsp Limits",
+      "u": "Order Cancelled Due To Market Maker Protection",
+      "v": "Order Cancelled By Clearing Risk Manager",
+      "w": "Order Cancelled Due To Trade Price Validation",
+      "O": "Eliminated By Corporate Event",
+      "P": "Cancelled By Member Risk Manager",
+      "U": "Order Cancelled By Market Operations",
+      "V": "Cancelled Due To Kill Command",
+      "X": "Remaining Quantity Killed",
+      "Y": "Beginning Of Pako Period",
+      "R": "Rfq Partially Or Fully Matched With Other Counterparts"
+    }
+  },
+  "151": {
+    "name": "LeavesQty",
+    "type": "QTY"
+  },
+  "153": {
+    "name": "AllocAvgPx",
+    "type": "PRICE"
+  },
+  "154": {
+    "name": "AllocNetMoney",
+    "type": "AMT"
+  },
+  "161": {
+    "name": "AllocText",
+    "type": "STRING"
+  },
+  "167": {
+    "name": "SecurityType",
+    "type": "STRING",
+    "values": {
+      "FUT": "Future",
+      "OPT": "Option",
+      "MLEG": "Spread",
+      "SPOT": "Spot",
+      "TBOND": "Tbond",
+      "CUR": "Currency",
+      "CS": "Common Stock",
+      "INDEX": "Index",
+      "NONE": "None"
+    }
+  },
+  "168": {
+    "name": "EffectiveTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "194": {
+    "name": "LastSpotRate",
+    "type": "PRICE"
+  },
+  "195": {
+    "name": "LastForwardPoints",
+    "type": "PRICEOFFSET"
+  },
+  "196": {
+    "name": "AllocLinkID",
+    "type": "STRING"
+  },
+  "198": {
+    "name": "SecondaryOrderID",
+    "type": "STRING"
+  },
+  "200": {
+    "name": "MaturityMonthYear",
+    "type": "MONTHYEAR"
+  },
+  "201": {
+    "name": "PutOrCall",
+    "type": "INT",
+    "values": {
+      "0": "Put",
+      "1": "Call"
+    }
+  },
+  "202": {
+    "name": "StrikePrice",
+    "type": "PRICE"
+  },
+  "205": {
+    "name": "MaturityDay",
+    "type": "DAYOFMONTH"
+  },
+  "206": {
+    "name": "OptAttribute",
+    "type": "CHAR"
+  },
+  "207": {
+    "name": "SecurityExchange",
+    "type": "EXCHANGE"
+  },
+  "210": {
+    "name": "MaxShow",
+    "type": "INT"
+  },
+  "262": {
+    "name": "MDReqID",
+    "type": "STRING"
+  },
+  "263": {
+    "name": "SubscriptionRequestType",
+    "type": "CHAR",
+    "values": {
+      "0": "Snapshot",
+      "1": "Snapshot Plus Updates",
+      "2": "Disable Previous Snapshot Plus Update Request"
+    }
+  },
+  "264": {
+    "name": "MarketDepth",
+    "type": "INT",
+    "values": {
+      "0": "Full Book",
+      "1": "Top Of Book"
+    }
+  },
+  "265": {
+    "name": "MDUpdateType",
+    "type": "INT",
+    "values": {
+      "0": "Full Refresh",
+      "1": "Incremental Refresh"
+    }
+  },
+  "266": {
+    "name": "AggregatedBook",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "267": {
+    "name": "NoMDEntryTypes",
+    "type": "NUMINGROUP"
+  },
+  "268": {
+    "name": "NoMDEntries",
+    "type": "NUMINGROUP"
+  },
+  "269": {
+    "name": "MDEntryType",
+    "type": "CHAR",
+    "values": {
+      "0": "Bid",
+      "1": "Ask",
+      "2": "Trade",
+      "4": "Opening Price",
+      "5": "Closing Price",
+      "6": "Settlement Price",
+      "7": "Trading Session High Price",
+      "8": "Trading Session Low Price",
+      "9": "Trading Session Vwap Price",
+      "B": "Trade Volume",
+      "J": "Empty Book",
+      "L": "Leg Trade",
+      "Y": "Implied Bid",
+      "Z": "Implied Ask",
+      "m": "Otc Trade",
+      "p": "Indicative Open",
+      "q": "Indicative Close",
+      "r": "Indicative Bid",
+      "s": "Indicative Ask",
+      "t": "Indicative Settlement",
+      "u": "Exchange Sending Time",
+      "v": "Exchange Transact Time",
+      "w": "Exchange Seq Num",
+      "x": "Last Traded",
+      "A": "Imbalance",
+      "o": "Marketbidqty",
+      "n": "Marketaskqty"
+    }
+  },
+  "270": {
+    "name": "MDEntryPx",
+    "type": "PRICE"
+  },
+  "271": {
+    "name": "MDEntrySize",
+    "type": "QTY"
+  },
+  "272": {
+    "name": "MDEntryDate",
+    "type": "UTCDATEONLY"
+  },
+  "273": {
+    "name": "MDEntryTime",
+    "type": "UTCTIMEONLY"
+  },
+  "276": {
+    "name": "QuoteCondition",
+    "type": "CHAR",
+    "values": {
+      "A": "Open Active",
+      "B": "Closed Inactive",
+      "z": "Suspended"
+    }
+  },
+  "279": {
+    "name": "MDUpdateAction",
+    "type": "CHAR",
+    "values": {
+      "0": "New",
+      "1": "Change",
+      "2": "Delete"
+    }
+  },
+  "282": {
+    "name": "MDEntryOriginator",
+    "type": "STRING"
+  },
+  "290": {
+    "name": "MDEntryPositionNo",
+    "type": "INT"
+  },
+  "297": {
+    "name": "QuoteStatus",
+    "type": "INT",
+    "values": {
+      "0": "Accepted",
+      "5": "Rejected",
+      "7": "Expired"
+    }
+  },
+  "305": {
+    "name": "UnderlyingSecurityIDSource",
+    "type": "STRING",
+    "values": {
+      "4": "Isin Number",
+      "5": "Ric Code",
+      "8": "Exchange Security Id",
+      "91": "Exchange Ticker",
+      "96": "Tt Security Id",
+      "97": "Alias",
+      "98": "Name",
+      "A": "Bloomberg Code",
+      "S": "Openfigi Id",
+      "X": "Series Key",
+      "H": "Clearing House"
+    }
+  },
+  "306": {
+    "name": "UnderlyingIssuer",
+    "type": "STRING"
+  },
+  "309": {
+    "name": "UnderlyingSecurityID",
+    "type": "STRING"
+  },
+  "310": {
+    "name": "UnderlyingSecurityType",
+    "type": "STRING",
+    "values": {
+      "FUT": "Future",
+      "OPT": "Option",
+      "MLEG": "Spread",
+      "SPOT": "Spot",
+      "TBOND": "Tbond",
+      "CUR": "Currency",
+      "CS": "Common Stock",
+      "NONE": "None"
+    }
+  },
+  "311": {
+    "name": "UnderlyingSymbol",
+    "type": "STRING"
+  },
+  "316": {
+    "name": "UnderlyingStrikePrice",
+    "type": "PRICE"
+  },
+  "318": {
+    "name": "UnderlyingCurrency",
+    "type": "CURRENCY"
+  },
+  "320": {
+    "name": "SecurityReqID",
+    "type": "STRING"
+  },
+  "321": {
+    "name": "SecurityRequestType",
+    "type": "INT",
+    "values": {
+      "0": "Request Security Identity And Specifications",
+      "1": "Request Security Identity For The Specifications Provided",
+      "2": "Request List Security Types",
+      "3": "Request List Securities"
+    }
+  },
+  "322": {
+    "name": "SecurityResponseID",
+    "type": "STRING"
+  },
+  "323": {
+    "name": "SecurityResponseType",
+    "type": "INT",
+    "values": {
+      "1": "Accept Security Proposal As Is",
+      "2": "Accept Security Proposal With Revisions As Indicated In The Message",
+      "3": "List Of Security Types Returned Per Request",
+      "4": "List Of Securities Returned Per Request",
+      "5": "Reject Security Proposal",
+      "6": "Can Not Match Selection Criteria"
+    }
+  },
+  "324": {
+    "name": "SecurityStatusReqID",
+    "type": "STRING"
+  },
+  "326": {
+    "name": "SecurityTradingStatus",
+    "type": "INT",
+    "values": {
+      "2": "Trading Halt",
+      "9": "Circuit Breaker",
+      "17": "Ready To Trade",
+      "18": "Not Available For Trading",
+      "20": "Unknown Or Invalid",
+      "21": "Preopen",
+      "23": "Fast Market",
+      "98": "Post Close",
+      "99": "Pre Trade"
+    }
+  },
+  "337": {
+    "name": "ContraTrader",
+    "type": "STRING"
+  },
+  "346": {
+    "name": "NumberOfOrders",
+    "type": "INT"
+  },
+  "366": {
+    "name": "AllocPrice",
+    "type": "PRICE"
+  },
+  "369": {
+    "name": "LastSeqNumProcessed",
+    "type": "SEQNUM"
+  },
+  "371": {
+    "name": "RefTagID",
+    "type": "INT"
+  },
+  "372": {
+    "name": "RefMsgType",
+    "type": "STRING"
+  },
+  "373": {
+    "name": "SessionRejectReason",
+    "type": "INT",
+    "values": {
+      "0": "Invalid Tag Number",
+      "1": "Required Tag Missing",
+      "2": "Tag Not Defined For This Message Type",
+      "3": "Undefined Tag",
+      "4": "Tag Specified Without A Value",
+      "5": "Value Is Incorrect",
+      "6": "Incorrect Data Format For Value",
+      "7": "Decryption Problem",
+      "8": "Signature Problem",
+      "9": "Compid Problem",
+      "10": "Sendingtime Accuracy Problem",
+      "11": "Invalid Msgtype",
+      "99": "Other"
+    }
+  },
+  "375": {
+    "name": "ContraBroker",
+    "type": "STRING"
+  },
+  "378": {
+    "name": "ExecRestatementReason",
+    "type": "INT",
+    "values": {
+      "0": "Gt Corporate Action",
+      "1": "Gt Renewal",
+      "2": "Verbal Change",
+      "3": "Repricing Of Order",
+      "4": "Broker Option",
+      "5": "Partial Decline Of Orderqty",
+      "6": "Cancel On Trading Halt",
+      "7": "Cancel On System Failure",
+      "8": "Market",
+      "9": "Cancel Not Best",
+      "10": "Warehouse Recap",
+      "11": "Peg Refresh",
+      "50": "Control User Activity",
+      "51": "Corporate Manager Activity",
+      "52": "Branch Manager Activity",
+      "53": "Exchange And Fix Server Connection Down",
+      "99": "Other",
+      "100": "Cancel On Disconnect",
+      "103": "Cancel Resting Smp",
+      "104": "Cancel From Credit Violation",
+      "105": "Cancel From Firmsoft",
+      "106": "Cancel From Risk",
+      "107": "Cancel Aggressing Smp",
+      "108": "Cancel From Min Lot Size",
+      "109": "Exec Restatement Reason Cancel By System",
+      "110": "Exec Restatement Reason Cancel By Proxy",
+      "111": "Exec Restatement Reason Cancel Order Expired",
+      "112": "Exec Restatement Reason Cancel Outside Price Limits",
+      "113": "Exec Restatement Reason Cancel Session Transition",
+      "114": "Exec Restatement Reason Cancel Auction Delete",
+      "115": "Exec Restatement Reason Cancel Other",
+      "116": "Order Passing Request Accepted",
+      "117": "Order Passing Request Rejected",
+      "118": "Incoming Order Self Match Prevention",
+      "119": "Resting Order Self Match Prevention",
+      "120": "Cancel Due To Self Match Prevention",
+      "121": "Exec Restatement Reason Gtc Gtd Carryover",
+      "122": "Exec Restatement Reason Reduction Of Ordqty",
+      "123": "Exec Restatement Reason Price Sliding Reprice",
+      "124": "Exec Restatement Reason State Change",
+      "125": "Order Passing Request Initiate",
+      "126": "Order Passing Request Undo",
+      "9000": "Exec Restatement Reason Unsolicited Order Recovery",
+      "9001": "Exec Restatement Reason Timeout",
+      "9002": "Exec Restatement Reason Pending",
+      "9003": "Exec Restatement Reason Revived"
+    }
+  },
+  "379": {
+    "name": "BusinessRejectRefID",
+    "type": "STRING"
+  },
+  "380": {
+    "name": "BusinessRejectReason",
+    "type": "INT",
+    "values": {
+      "0": "Other",
+      "1": "Unkown Id",
+      "2": "Unknown Security",
+      "3": "Unsupported Message Type",
+      "4": "Application Not Available",
+      "5": "Conditionally Required Field Missing"
+    }
+  },
+  "381": {
+    "name": "GrossTradeAmt",
+    "type": "AMT"
+  },
+  "393": {
+    "name": "TotalNumSecurities",
+    "type": "INT"
+  },
+  "423": {
+    "name": "PriceType",
+    "type": "INT",
+    "values": {
+      "1": "Percentage",
+      "2": "Per Unit",
+      "3": "Fixed Amount",
+      "4": "Discount",
+      "5": "Premium",
+      "6": "Spread",
+      "7": "Ted Price",
+      "8": "Ted Yield",
+      "9": "Yield",
+      "10": "Fixed Cabinet Trade Price",
+      "11": "Variable Cabinet Trade Price"
+    }
+  },
+  "432": {
+    "name": "ExpireDate",
+    "type": "LOCALMKTDATE"
+  },
+  "434": {
+    "name": "CxlRejResponseTo",
+    "type": "CHAR",
+    "values": {
+      "1": "Order Cancel Request",
+      "2": "Order Cancel Replace Request",
+      "3": "Quote Cancel",
+      "4": "Quote Replace"
+    }
+  },
+  "435": {
+    "name": "UnderlyingSpotRate",
+    "type": "FLOAT"
+  },
+  "440": {
+    "name": "ClearingAccount",
+    "type": "STRING"
+  },
+  "442": {
+    "name": "MultiLegReportingType",
+    "type": "CHAR",
+    "values": {
+      "1": "Single Security",
+      "2": "Individual Leg Of A Multi Leg Security",
+      "3": "Multi Leg Security"
+    }
+  },
+  "447": {
+    "name": "PartyIDSource",
+    "type": "CHAR",
+    "values": {
+      "1": "Korean Investor Id",
+      "2": "Taiwanese Qualified Foreign Investor Id Qfii Fid",
+      "3": "Taiwanese Trading Acct",
+      "4": "Malaysian Central Depository",
+      "5": "Chinese Investor Id",
+      "6": "Uk National Insurance Or Pension Number",
+      "7": "Us Social Security Number",
+      "8": "Us Employer Or Tax Id Number",
+      "9": "Australian Business Number",
+      "A": "Australian Tax File Number",
+      "B": "Bic",
+      "C": "Generally Accepted Market Participant Identifier",
+      "D": "Proprietary",
+      "E": "Iso Country Code",
+      "F": "Settlement Entity Location",
+      "G": "Mic",
+      "H": "Csd Participant Member Code",
+      "I": "Directed Broker Three Character Acronym As Defined In Isitc Etc Best Practice Guidelines Document",
+      "P": "Short Code Identifier",
+      "N": "Legal Entity Id"
+    }
+  },
+  "448": {
+    "name": "PartyID",
+    "type": "STRING"
+  },
+  "452": {
+    "name": "PartyRole",
+    "type": "INT",
+    "values": {
+      "1": "Executing Firm",
+      "2": "Broker Of Credit",
+      "3": "Client Id",
+      "4": "Clearing Firm",
+      "5": "Investor Id",
+      "6": "Introducing Firm",
+      "7": "Entering Firm",
+      "8": "Locate",
+      "9": "Fund Manager Client Id",
+      "10": "Settlement Location",
+      "11": "Order Origination Trader",
+      "12": "Executing Trader",
+      "13": "Order Origination Firm",
+      "14": "Giveup Clearing Firm",
+      "15": "Correspondant Clearing Firm",
+      "16": "Executing System",
+      "17": "Contra Firm",
+      "18": "Contra Clearing Firm",
+      "19": "Sponsoring Firm",
+      "20": "Underlying Contra Firm",
+      "21": "Clearing Organization",
+      "22": "Exchange",
+      "24": "Customer Account",
+      "25": "Correspondent Clearing Organization",
+      "26": "Correspondent Broker",
+      "27": "Buyer Seller",
+      "28": "Custodian",
+      "29": "Intermediary",
+      "30": "Agent",
+      "31": "Sub Custodian",
+      "32": "Beneficiary",
+      "33": "Interested Party",
+      "34": "Regulatory Body",
+      "35": "Liquidity Provider",
+      "36": "Entering Trader",
+      "37": "Contra Trader",
+      "38": "Position Account",
+      "39": "Contra Investor Id",
+      "40": "Transfer To Firm",
+      "41": "Contra Position Account",
+      "42": "Contra Exchange",
+      "43": "Internal Carry Account",
+      "44": "Order Entry Operator Id",
+      "45": "Secondary Account Number",
+      "46": "Foreign Firm",
+      "47": "Third Party Allocation Firm",
+      "48": "Claiming Account",
+      "49": "Asset Manager",
+      "50": "Pledgor Account",
+      "51": "Pledgee Account",
+      "52": "Large Trader Reportable Account",
+      "53": "Trader Mnemonic",
+      "54": "Sender Location",
+      "55": "Session Id",
+      "56": "Acceptable Counterparty",
+      "57": "Unacceptable Counterparty",
+      "58": "Entering Unit",
+      "59": "Executing Unit",
+      "60": "Introducing Broker",
+      "61": "Quote Originator",
+      "62": "Report Originator",
+      "63": "Systematic Internaliser",
+      "64": "Multilateral Trading Facility",
+      "65": "Regulated Market",
+      "66": "Market Maker",
+      "67": "Investment Firm",
+      "68": "Host Competent Authority",
+      "69": "Home Competent Authority",
+      "70": "Competent Authority Of The Most Relevant Market In Terms Of Liquidity",
+      "71": "Competent Authority Of The Transaction",
+      "72": "Reporting Intermediary",
+      "73": "Execution Venue",
+      "74": "Market Data Entry Originator",
+      "75": "Location Id",
+      "76": "Desk Id",
+      "77": "Market Data Market",
+      "78": "Allocation Entity",
+      "79": "Prime Broker Providing General Trade Services",
+      "80": "Step Out Firm",
+      "81": "Brokerclearingid",
+      "82": "Central Registration Depository",
+      "83": "Clearing Account",
+      "84": "Acceptable Settling Counterparty",
+      "85": "Unacceptable Settling Counterparty",
+      "118": "Party Role Decision Maker",
+      "119": "Party Role Client Id House",
+      "122": "Investment Decision Maker",
+      "200": "Account Code",
+      "201": "Takeup Firm",
+      "202": "Clearing Instruction",
+      "203": "Customer Info",
+      "204": "Allocation Entity Id",
+      "205": "Account Type",
+      "206": "Giveup Firm",
+      "207": "Mifid Id",
+      "208": "Composite Mifid Id",
+      "209": "Cti Code",
+      "210": "Lma Clearing Account",
+      "211": "Authorized Trader Id",
+      "212": "Frequent Trader Id",
+      "213": "Party Role User",
+      "214": "Party Role Member",
+      "215": "Party Role Trading Member",
+      "216": "Party Role Clearing Member",
+      "217": "Party Role Acting User",
+      "218": "Party Role Trader Id",
+      "219": "Party Role Owner Type",
+      "220": "Party Role Routing Member Id",
+      "221": "Giveup Qualifier",
+      "222": "Algo Strategy Type",
+      "223": "Secondary Client Id",
+      "224": "Secondary Executing Trader",
+      "300": "Investment Decision In Firm",
+      "301": "Execution Decision In Firm",
+      "302": "Investment Decision Country",
+      "303": "Execution Decision Country",
+      "304": "Party Role Country Code"
+    }
+  },
+  "453": {
+    "name": "NoPartyIDs",
+    "type": "NUMINGROUP"
+  },
+  "454": {
+    "name": "NoSecurityAltID",
+    "type": "NUMINGROUP"
+  },
+  "455": {
+    "name": "SecurityAltID",
+    "type": "STRING"
+  },
+  "456": {
+    "name": "SecurityAltIDSource",
+    "type": "STRING",
+    "values": {
+      "1": "Cusip",
+      "4": "Isin Number",
+      "5": "Ric Code",
+      "8": "Exchange Security Id",
+      "91": "Exchange Ticker",
+      "92": "Tt Product Family Id",
+      "93": "Tt Product Id",
+      "94": "Alt Symbol",
+      "95": "Clearport",
+      "97": "Alias",
+      "98": "Name",
+      "99": "Security Group",
+      "100": "Energy Identifier Code",
+      "A": "Bloomberg Code",
+      "S": "Openfigi Id",
+      "H": "Clearing House",
+      "X": "Series Key"
+    }
+  },
+  "457": {
+    "name": "NoUnderlyingSecurityAltID",
+    "type": "NUMINGROUP"
+  },
+  "458": {
+    "name": "UnderlyingSecurityAltID",
+    "type": "STRING"
+  },
+  "459": {
+    "name": "UnderlyingSecurityAltIDSource",
+    "type": "STRING"
+  },
+  "460": {
+    "name": "Product",
+    "type": "INT",
+    "values": {
+      "1": "Agency",
+      "2": "Commodity",
+      "3": "Corporate",
+      "4": "Currency",
+      "5": "Equity",
+      "6": "Government",
+      "7": "Index",
+      "8": "Loan",
+      "9": "Moneymarket",
+      "10": "Mortgage",
+      "11": "Municipal",
+      "12": "Other",
+      "13": "Financing",
+      "14": "Energy"
+    }
+  },
+  "461": {
+    "name": "CFICode",
+    "type": "STRING"
+  },
+  "467": {
+    "name": "IndividualAllocID",
+    "type": "STRING"
+  },
+  "483": {
+    "name": "TransBkdTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "487": {
+    "name": "TradeReportTransType",
+    "type": "INT",
+    "values": {
+      "0": "New",
+      "1": "Cancel",
+      "2": "Replace",
+      "3": "Release",
+      "4": "Reverse",
+      "5": "Cancel Due To Back Out Of Trade",
+      "101": "Inquire",
+      "102": "Accept",
+      "103": "Approve",
+      "999": "Unknown"
+    }
+  },
+  "524": {
+    "name": "NestedPartyID",
+    "type": "STRING"
+  },
+  "525": {
+    "name": "NestedPartyIDSource",
+    "type": "CHAR",
+    "values": {
+      "1": "Korean Investor Id",
+      "2": "Taiwanese Qualified Foreign Investor Id Qfii Fid",
+      "3": "Taiwanese Trading Acct",
+      "4": "Malaysian Central Depository",
+      "5": "Chinese Investor Id",
+      "6": "Uk National Insurance Or Pension Number",
+      "7": "Us Social Security Number",
+      "8": "Us Employer Or Tax Id Number",
+      "9": "Australian Business Number",
+      "A": "Australian Tax File Number",
+      "B": "Bic",
+      "C": "Generally Accepted Market Participant Identifier",
+      "D": "Proprietary",
+      "E": "Iso Country Code",
+      "F": "Settlement Entity Location",
+      "G": "Mic",
+      "H": "Csd Participant Member Code",
+      "I": "Directed Broker Three Character Acronym As Defined In Isitc Etc Best Practice Guidelines Document"
+    }
+  },
+  "526": {
+    "name": "SecondaryClOrdID",
+    "type": "STRING"
+  },
+  "527": {
+    "name": "SecondaryExecID",
+    "type": "STRING"
+  },
+  "528": {
+    "name": "OrderCapacity",
+    "type": "CHAR",
+    "values": {
+      "A": "Agency",
+      "G": "Proprietary",
+      "I": "Individual",
+      "P": "Principal",
+      "R": "Riskless Principal",
+      "W": "Agent For Other Member"
+    }
+  },
+  "529": {
+    "name": "OrderRestriction",
+    "type": "CHAR",
+    "values": {
+      "1": "Program Trade",
+      "2": "Index Arbitage",
+      "3": "Non Index Arbitage",
+      "4": "Competing Market Maker",
+      "5": "Acting Market Maker",
+      "6": "Acting Market Maker Underlying Security",
+      "7": "Foreign Entity",
+      "8": "External Market Participant",
+      "9": "External Market Linkage",
+      "A": "Riskless Arbitage",
+      "B": "Holding",
+      "C": "Price Stabilization",
+      "D": "Non Algorithmic",
+      "E": "Algorithmic"
+    }
+  },
+  "537": {
+    "name": "QuoteType",
+    "type": "INT",
+    "values": {
+      "0": "Indicative",
+      "1": "Tradable",
+      "99": "Cross Trade Request",
+      "255": "Unknown"
+    }
+  },
+  "538": {
+    "name": "NestedPartyRole",
+    "type": "INT",
+    "values": {
+      "1": "Executing Firm",
+      "2": "Broker Of Credit",
+      "3": "Client Id",
+      "4": "Clearing Firm",
+      "5": "Investor Id",
+      "6": "Introducing Firm",
+      "7": "Entering Firm",
+      "8": "Locate Lending Firm",
+      "9": "Fund Manager Client Id",
+      "10": "Settlement Location",
+      "11": "Order Origination Trader",
+      "12": "Executing Trader",
+      "13": "Order Origination Firm",
+      "14": "Giveup Clearing Firm",
+      "15": "Correspondant Clearing Firm",
+      "16": "Executing System",
+      "17": "Contra Firm",
+      "18": "Contra Clearing Firm",
+      "19": "Sponsoring Firm",
+      "20": "Underlying Contra Firm",
+      "21": "Clearing Organization",
+      "22": "Exchange",
+      "24": "Customer Account",
+      "25": "Correspondent Clearing Organization",
+      "26": "Correspondent Broker",
+      "27": "Buyer Seller",
+      "28": "Custodian",
+      "29": "Intermediary",
+      "30": "Agent",
+      "31": "Sub Custodian",
+      "32": "Beneficiary",
+      "33": "Interested Party",
+      "34": "Regulatory Body",
+      "35": "Liquidity Provider",
+      "36": "Entering Trader",
+      "37": "Contra Trader",
+      "38": "Position Account"
+    }
+  },
+  "539": {
+    "name": "NoNestedPartyIDs",
+    "type": "NUMINGROUP"
+  },
+  "541": {
+    "name": "MaturityDate",
+    "type": "LOCALMKTDATE"
+  },
+  "542": {
+    "name": "UnderlyingMaturityDate",
+    "type": "LOCALMKTDATE"
+  },
+  "548": {
+    "name": "CrossID",
+    "type": "STRING"
+  },
+  "549": {
+    "name": "CrossType",
+    "type": "INT",
+    "values": {
+      "1": "Cross Aon",
+      "2": "Cross Ioc",
+      "3": "Cross One Side",
+      "4": "Cross Same Price"
+    }
+  },
+  "552": {
+    "name": "NoSides",
+    "type": "NUMINGROUP"
+  },
+  "554": {
+    "name": "Password",
+    "type": "STRING"
+  },
+  "555": {
+    "name": "NoLegs",
+    "type": "NUMINGROUP"
+  },
+  "556": {
+    "name": "LegCurrency",
+    "type": "CURRENCY"
+  },
+  "561": {
+    "name": "RoundLot",
+    "type": "QTY"
+  },
+  "562": {
+    "name": "MinTradeVol",
+    "type": "QTY"
+  },
+  "566": {
+    "name": "LegPrice",
+    "type": "PRICE"
+  },
+  "568": {
+    "name": "TradeRequestID",
+    "type": "STRING"
+  },
+  "569": {
+    "name": "TradeRequestType",
+    "type": "INT",
+    "values": {
+      "0": "All Trades",
+      "1": "Matched Trades Matching Criteria Provided On Request",
+      "2": "Unmatched Trades That Match Criteria",
+      "3": "Unreported Trades That Match Criteria",
+      "4": "Advisories That Match Criteria"
+    }
+  },
+  "570": {
+    "name": "PreviouslyReported",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "Not Reported To Counterparty",
+      "Y": "Perviously Reported To Counterparty"
+    }
+  },
+  "571": {
+    "name": "TradeReportID",
+    "type": "STRING"
+  },
+  "572": {
+    "name": "TradeReportRefID",
+    "type": "STRING"
+  },
+  "582": {
+    "name": "CustOrderCapacity",
+    "type": "INT",
+    "values": {
+      "1": "Member Trading For Their Own Account",
+      "2": "Clearing Firm Trading For Its Proprietary Account",
+      "3": "Member Trading For Another Member",
+      "4": "All Other"
+    }
+  },
+  "584": {
+    "name": "MassStatusReqID",
+    "type": "STRING"
+  },
+  "588": {
+    "name": "LegSettlDate",
+    "type": "LOCALMKTDATE"
+  },
+  "600": {
+    "name": "LegSymbol",
+    "type": "STRING"
+  },
+  "602": {
+    "name": "LegSecurityID",
+    "type": "STRING"
+  },
+  "603": {
+    "name": "LegIDSource",
+    "type": "STRING",
+    "values": {
+      "4": "Isin Number",
+      "5": "Ric Code",
+      "8": "Exchange Security Id",
+      "91": "Exchange Ticker",
+      "96": "Tt Security Id",
+      "97": "Alias",
+      "98": "Name",
+      "X": "Series Key",
+      "A": "Bloomberg Code",
+      "S": "Openfigi Id",
+      "H": "Clearing House"
+    }
+  },
+  "604": {
+    "name": "NoLegSecurityAltID",
+    "type": "NUMINGROUP"
+  },
+  "605": {
+    "name": "LegSecurityAltID",
+    "type": "STRING"
+  },
+  "606": {
+    "name": "LegSecurityAltIDSource",
+    "type": "STRING",
+    "values": {
+      "1": "Cusip",
+      "4": "Isin Number",
+      "5": "Ric Code",
+      "8": "Exchange Security Id",
+      "91": "Exchange Ticker",
+      "94": "Alt Symbol",
+      "95": "Clearport",
+      "97": "Alias",
+      "98": "Name",
+      "99": "Security Group",
+      "A": "Bloomberg Code",
+      "S": "Openfigi Id",
+      "H": "Clearing House",
+      "X": "Series Key"
+    }
+  },
+  "607": {
+    "name": "LegProduct",
+    "type": "INT",
+    "values": {
+      "1": "Agency",
+      "2": "Commodity",
+      "3": "Corporate",
+      "4": "Currency",
+      "5": "Equity",
+      "6": "Government",
+      "7": "Index",
+      "8": "Loan",
+      "9": "Moneymarket",
+      "10": "Mortgage",
+      "11": "Municipal",
+      "12": "Other",
+      "13": "Financing",
+      "14": "Energy"
+    }
+  },
+  "608": {
+    "name": "LegCFICode",
+    "type": "STRING"
+  },
+  "609": {
+    "name": "LegSecurityType",
+    "type": "STRING",
+    "values": {
+      "FUT": "Future",
+      "OPT": "Option",
+      "MLEG": "Spread",
+      "SPOT": "Spot",
+      "TBOND": "Tbond",
+      "CS": "Common Stock",
+      "NONE": "None"
+    }
+  },
+  "610": {
+    "name": "LegMaturityMonthYear",
+    "type": "MONTHYEAR"
+  },
+  "611": {
+    "name": "LegMaturityDate",
+    "type": "LOCALMKTDATE"
+  },
+  "612": {
+    "name": "LegStrikePrice",
+    "type": "PRICE"
+  },
+  "613": {
+    "name": "LegOptAttribute",
+    "type": "CHAR"
+  },
+  "616": {
+    "name": "LegSecurityExchange",
+    "type": "EXCHANGE"
+  },
+  "620": {
+    "name": "LegSecurityDesc",
+    "type": "STRING"
+  },
+  "623": {
+    "name": "LegRatioQty",
+    "type": "FLOAT"
+  },
+  "624": {
+    "name": "LegSide",
+    "type": "CHAR"
+  },
+  "625": {
+    "name": "TradingSessionSubID",
+    "type": "STRING",
+    "values": {
+      "1": "Pre Trading",
+      "2": "Opening Or Opening Auction",
+      "3": "Continuous",
+      "4": "Closing Or Closing Auction",
+      "5": "Post Trading",
+      "6": "Intraday Auction",
+      "7": "Quiescent"
+    }
+  },
+  "626": {
+    "name": "AllocType",
+    "type": "INT",
+    "values": {
+      "1": "Calculated",
+      "2": "Preliminary",
+      "5": "Ready To Book",
+      "7": "Warehouse Instruction",
+      "8": "Request To Intermediary"
+    }
+  },
+  "637": {
+    "name": "LegLastPx",
+    "type": "PRICE"
+  },
+  "654": {
+    "name": "LegRefID",
+    "type": "STRING"
+  },
+  "669": {
+    "name": "LastParPx",
+    "type": "PRICE"
+  },
+  "685": {
+    "name": "LegOrderQty",
+    "type": "QTY"
+  },
+  "687": {
+    "name": "LegQty",
+    "type": "QTY"
+  },
+  "711": {
+    "name": "NoUnderlyings",
+    "type": "NUMINGROUP"
+  },
+  "743": {
+    "name": "DeliveryDate",
+    "type": "LOCALMKTDATE"
+  },
+  "749": {
+    "name": "TradeRequestResult",
+    "type": "INT",
+    "values": {
+      "0": "Successful",
+      "1": "Invalid Or Unknown Instrument",
+      "2": "Invalid Type Requested",
+      "3": "Invalid Parties",
+      "4": "Invalid Transport Type Requested",
+      "5": "Invalid Destination Requested",
+      "8": "Trade Request Type Not Supported",
+      "9": "Unauthorized For Trade Capture Report Request",
+      "99": "Other"
+    }
+  },
+  "750": {
+    "name": "TradeRequestStatus",
+    "type": "INT",
+    "values": {
+      "0": "Accepted",
+      "1": "Completed",
+      "2": "Rejected"
+    }
+  },
+  "751": {
+    "name": "TradeReportRejectReason",
+    "type": "INT",
+    "values": {
+      "0": "Successful",
+      "1": "Invalid Party Information",
+      "2": "Unknown Instrument",
+      "3": "Unauthorized To Report Trades",
+      "4": "Invalid Trade Type",
+      "99": "Other"
+    }
+  },
+  "755": {
+    "name": "AllocReportID",
+    "type": "STRING"
+  },
+  "762": {
+    "name": "SecuritySubType",
+    "type": "STRING"
+  },
+  "763": {
+    "name": "UnderlyingSecuritySubType",
+    "type": "STRING"
+  },
+  "764": {
+    "name": "LegSecuritySubType",
+    "type": "STRING"
+  },
+  "779": {
+    "name": "LastUpdateTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "789": {
+    "name": "NextExpectedMsgSeqNum",
+    "type": "SEQNUM"
+  },
+  "790": {
+    "name": "OrdStatusReqID",
+    "type": "STRING"
+  },
+  "794": {
+    "name": "AllocReportType",
+    "type": "INT",
+    "values": {
+      "3": "Sellside Calculated Using Preliminary",
+      "4": "Sellside Calculated Without Preliminary",
+      "5": "Warehouse Recap",
+      "8": "Request To Intermediary"
+    }
+  },
+  "799": {
+    "name": "OrderAvgPx",
+    "type": "PRICE"
+  },
+  "810": {
+    "name": "UnderlyingPx",
+    "type": "PRICE"
+  },
+  "811": {
+    "name": "OptionDelta",
+    "type": "FLOAT"
+  },
+  "818": {
+    "name": "SecondaryTradeReportID",
+    "type": "STRING"
+  },
+  "820": {
+    "name": "TradeLinkID",
+    "type": "STRING"
+  },
+  "828": {
+    "name": "TrdType",
+    "type": "INT",
+    "values": {
+      "0": "Regular Trade",
+      "1": "Block Trade",
+      "2": "Exchange For Physical",
+      "3": "Transfer",
+      "11": "Exchange For Risk",
+      "12": "Exchange For Swap",
+      "14": "Exchange Of Options For Options",
+      "22": "Over The Counter Privately Negotiated Trades",
+      "23": "Substitution Of Futures For Forwards",
+      "45": "Option Exercise",
+      "54": "Large Notional Off Facility Swap",
+      "55": "Exchange Basis Facility",
+      "57": "Netted Trade",
+      "58": "Stp Block Swap Trade",
+      "59": "Credit Event Trade",
+      "60": "Succession Event Trade",
+      "1000": "Volatility",
+      "1001": "Efp Financial",
+      "1002": "Efp Index Futures",
+      "1003": "Strategy Block Trade",
+      "1004": "Block Standard Cf",
+      "1005": "Block Combination Cf",
+      "1006": "Efs Efp Cf",
+      "1007": "Block Internal Cf",
+      "1008": "Portfolio Cf",
+      "1009": "Correction Cf",
+      "1010": "Block Combination Buyer Cf",
+      "1011": "Block Combination Seller Cf",
+      "1012": "Efs Efp Combination Cf",
+      "1013": "Efs Efp Combination Buyer Cf",
+      "1014": "Efs Efp Combination Seller Cf",
+      "1015": "Otc Standard Cio",
+      "1016": "Otc Combination Cio",
+      "1017": "Otc Combination Buyer Cio",
+      "1018": "Otc Combination Seller Cio",
+      "1019": "Standard Trade Cd",
+      "1020": "Standard Outside Spread Cd",
+      "1021": "Combination Cd",
+      "1022": "Old Cd",
+      "1023": "Internal Cd",
+      "1024": "Portfolio Cd",
+      "1025": "Correction Cd",
+      "1026": "Exchange Granted Fd",
+      "1027": "Standard Outside Fd",
+      "1028": "Off Hours Fd",
+      "1029": "Block Fd",
+      "1030": "Exch Granted Exceed Max Lot Fd",
+      "1031": "Exch Granted Eml Off Hours Fd",
+      "1032": "Exch Granted Late Fd",
+      "1033": "Flex Contract Conversion Fd",
+      "1034": "Ice Efrp",
+      "1035": "Iceblk",
+      "1036": "Basis",
+      "1037": "Volatility Contingent",
+      "1038": "Stock Contingent",
+      "1039": "Ccx Efp",
+      "1040": "Other Clearing Value",
+      "1041": "N2ex",
+      "1042": "Eex",
+      "1043": "Efs Efp Contra",
+      "1044": "Efm",
+      "1045": "Ng Efp Efs",
+      "1046": "Contra",
+      "1047": "Cpblk",
+      "1048": "Bilateral Off Exch",
+      "1049": "Otc Privately Negotiated Trades",
+      "1050": "Otc Large Notional Off Facility Swap",
+      "1051": "Block Swap Trade",
+      "1052": "Large In Scale",
+      "1053": "Against Actual",
+      "1054": "Large In Scale Package",
+      "1055": "Guaranteed Cross",
+      "1056": "Request For Cross",
+      "1057": "Efp Cd",
+      "1058": "B And S No Clearing Cd",
+      "1059": "Buyer No Clearing Cd",
+      "1060": "Seller No Clearing Cd",
+      "1061": "Efp No Fee Cd",
+      "1062": "Match Exch Manually Cd",
+      "1063": "Match Exch Combination Cd",
+      "1064": "Fut Ds Fut Combo Cd",
+      "1065": "Block Nonfinancial Cp Cd",
+      "1066": "Exch For Swap Options Cd",
+      "1067": "Block Nonfinancial Cp Cf",
+      "1068": "Exch For Swap Options Cf",
+      "1069": "Asset Allocation",
+      "1070": "Cross Contra Trade",
+      "1071": "Committed",
+      "1072": "Internal",
+      "1073": "Interbank",
+      "1074": "One Sided",
+      "1075": "Cross",
+      "1076": "Efp Bond",
+      "1077": "Efp Spi Xjo",
+      "1078": "Cash Related Trade",
+      "1079": "Non Disclosed Otc Trade",
+      "1080": "Disclosed Otc Trade",
+      "1081": "Si Trade",
+      "1082": "Eurex Enlight Triggered Trade",
+      "1083": "Efp Against Actual",
+      "1084": "Efr",
+      "1085": "Eoo",
+      "1086": "Tam",
+      "1087": "Efs",
+      "1088": "Lp",
+      "9999": "Unknown"
+    }
+  },
+  "829": {
+    "name": "TrdSubType",
+    "type": "INT",
+    "values": {
+      "1": "Trade Purpose Arbitrage",
+      "2": "Trade Purpose Combination",
+      "3": "Trade Purpose Cross Trade",
+      "4": "Trade Purpose Exchange For Physical",
+      "5": "Trade Purpose Position Consolidation",
+      "6": "Trade Purpose Rollover",
+      "7": "Trade Purpose Other",
+      "8": "Trade Purpose Implied Spread Leg Executed Against An Outright",
+      "36": "Trade Purpose Converted Swap",
+      "37": "Trade Purpose Crossed Trade",
+      "40": "Trade Purpose Traded At Settlement",
+      "42": "Trade Purpose Auction Trade",
+      "43": "Trade Purpose Traded At Marker",
+      "48": "Trade Purpose Multilateral Compression",
+      "200": "Trade Purpose Delivery Transfer"
+    }
+  },
+  "851": {
+    "name": "LastLiquidityIndicator",
+    "type": "INT",
+    "values": {
+      "1": "Added Liquidity",
+      "2": "Removed Liquidity"
+    }
+  },
+  "856": {
+    "name": "TradeReportType",
+    "type": "INT",
+    "values": {
+      "0": "Submit",
+      "1": "Alleged",
+      "2": "Accept",
+      "3": "Decline",
+      "5": "No Was",
+      "6": "Cancel",
+      "11": "Alleged New",
+      "13": "Alleged No Was",
+      "101": "Notification",
+      "102": "Waiting For Cancel Approval",
+      "103": "Partially Filled",
+      "999": "Unknown",
+      "1000": "Clearing"
+    }
+  },
+  "857": {
+    "name": "AllocNoOrdersType",
+    "type": "INT",
+    "values": {
+      "0": "Not Specified",
+      "1": "Explicit List Provided"
+    }
+  },
+  "860": {
+    "name": "AvgParPx",
+    "type": "PRICE"
+  },
+  "864": {
+    "name": "NoEvents",
+    "type": "NUMINGROUP"
+  },
+  "865": {
+    "name": "EventType",
+    "type": "INT",
+    "values": {
+      "5": "Expiry Date",
+      "6": "Last Trading Date",
+      "8": "Swap Start Date",
+      "9": "Swap End Date",
+      "13": "First Delivery Date",
+      "14": "Last Delivery Date",
+      "101": "First Trading Date",
+      "102": "Sdat First Trading Date"
+    }
+  },
+  "866": {
+    "name": "EventDate",
+    "type": "LOCALMKTDATE"
+  },
+  "870": {
+    "name": "NoInstrumentExtensions",
+    "type": "NUMINGROUP"
+  },
+  "871": {
+    "name": "InstrumentAttributeType",
+    "type": "INT",
+    "values": {
+      "5": "Variable Rate",
+      "100": "Coupon Rate",
+      "101": "Offset To Variable Coupon Rate",
+      "102": "Swap Customer 1",
+      "103": "Swap Customer 2",
+      "104": "Cash Basket Reference"
+    }
+  },
+  "872": {
+    "name": "InstrumentAttributeValue",
+    "type": "STRING"
+  },
+  "879": {
+    "name": "UnderlyingQty",
+    "type": "QTY"
+  },
+  "880": {
+    "name": "TrdMatchID",
+    "type": "STRING"
+  },
+  "887": {
+    "name": "NoUnderlyingStipulations",
+    "type": "NUMINGROUP"
+  },
+  "888": {
+    "name": "UnderlyingStipulationType",
+    "type": "INT",
+    "values": {
+      "1": "Payfreq"
+    }
+  },
+  "889": {
+    "name": "UnderlyingStipulationValue",
+    "type": "STRING",
+    "values": {
+      "12": "Monthly",
+      "01": "Annually",
+      "02": "Semi Annually",
+      "04": "Quarterly"
+    }
+  },
+  "912": {
+    "name": "LastRptRequested",
+    "type": "BOOLEAN"
+  },
+  "916": {
+    "name": "StartDate",
+    "type": "UTCTIMESTAMP"
+  },
+  "917": {
+    "name": "EndDate",
+    "type": "UTCTIMESTAMP"
+  },
+  "939": {
+    "name": "TrdRptStatus",
+    "type": "INT",
+    "values": {
+      "0": "Accepted",
+      "1": "Rejected",
+      "3": "Accepted With Errors",
+      "99": "Unknown"
+    }
+  },
+  "957": {
+    "name": "NoStrategyParameters",
+    "type": "NUMINGROUP"
+  },
+  "958": {
+    "name": "StrategyParameterName",
+    "type": "STRING"
+  },
+  "959": {
+    "name": "StrategyParameterType",
+    "type": "INT",
+    "values": {
+      "1": "Int",
+      "6": "Float",
+      "7": "Qty",
+      "8": "Price",
+      "13": "Boolean",
+      "14": "String",
+      "19": "Utctimestamp"
+    }
+  },
+  "960": {
+    "name": "StrategyParameterValue",
+    "type": "STRING"
+  },
+  "961": {
+    "name": "HostCrossID",
+    "type": "STRING"
+  },
+  "1003": {
+    "name": "TradeID",
+    "type": "STRING"
+  },
+  "1028": {
+    "name": "ManualOrderIndicator",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "Electronic",
+      "Y": "Manual"
+    }
+  },
+  "1031": {
+    "name": "CustOrderHandlingInst",
+    "type": "CHAR",
+    "values": {
+      "W": "Desk",
+      "Y": "Electronic",
+      "C": "Vendor Platform Billed By Executing Broker",
+      "G": "Sponsored Access Via Api Or Fix By Executing Broker",
+      "H": "Premium Algo Trading Provider Billed By Executing Broker",
+      "D": "Other"
+    }
+  },
+  "1047": {
+    "name": "AllocPositionEffect",
+    "type": "CHAR",
+    "values": {
+      "O": "Open",
+      "C": "Close",
+      "R": "Rolled",
+      "F": "Fifo",
+      "N": "Close But Notify On Open",
+      "D": "Default"
+    }
+  },
+  "1057": {
+    "name": "AggressorIndicator",
+    "type": "BOOLEAN",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "1071": {
+    "name": "LastSwapPoints",
+    "type": "PRICEOFFSET"
+  },
+  "1088": {
+    "name": "RefreshQty",
+    "type": "QTY"
+  },
+  "1116": {
+    "name": "NoRootPartyIDs",
+    "type": "NUMINGROUP"
+  },
+  "1117": {
+    "name": "RootPartyID",
+    "type": "STRING"
+  },
+  "1118": {
+    "name": "RootPartyIDSource",
+    "type": "CHAR",
+    "values": {
+      "F": "Settlement Entity Location"
+    }
+  },
+  "1119": {
+    "name": "RootPartyRole",
+    "type": "INT",
+    "values": {
+      "10": "Settlement Location"
+    }
+  },
+  "1123": {
+    "name": "TradeHandlingInstr",
+    "type": "CHAR",
+    "values": {
+      "0": "Trade Confirmation",
+      "1": "Two Party Report",
+      "2": "One Party Report For Matching",
+      "3": "One Party Report For Pass Through",
+      "4": "Automated Floor Order Routing",
+      "7": "Third Party Report For Pass Through",
+      "8": "Trade Handling Instr Pending Trade Report",
+      "9": "Trade Handling Instr Completed Trade Report",
+      "A": "Trade Handling Instr Expired Trade Report",
+      "B": "Trade Handling Instr Broadcast",
+      "C": "Trade Handling Instr Pending Approval",
+      "D": "Trade Handling Instr Approved",
+      "E": "Trade Handling Instr Pending Cancel"
+    }
+  },
+  "1125": {
+    "name": "OrigTradeDate",
+    "type": "LOCALMKTDATE"
+  },
+  "1126": {
+    "name": "OrigTradeID",
+    "type": "STRING"
+  },
+  "1138": {
+    "name": "DisplayQty",
+    "type": "QTY"
+  },
+  "1145": {
+    "name": "EventTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "1152": {
+    "name": "LegNumber",
+    "type": "INT"
+  },
+  "1188": {
+    "name": "Volatility",
+    "type": "STRING"
+  },
+  "1189": {
+    "name": "ExpirationTimeValue",
+    "type": "FLOAT"
+  },
+  "1190": {
+    "name": "RiskFreeRate",
+    "type": "PRICE"
+  },
+  "1194": {
+    "name": "ExerciseStyle",
+    "type": "INT"
+  },
+  "1227": {
+    "name": "ProductComplex",
+    "type": "STRING"
+  },
+  "1358": {
+    "name": "LegPutOrCall",
+    "type": "INT"
+  },
+  "1362": {
+    "name": "NoFills",
+    "type": "NUMINGROUP"
+  },
+  "1363": {
+    "name": "FillExecID",
+    "type": "STRING"
+  },
+  "1364": {
+    "name": "FillPx",
+    "type": "PRICE"
+  },
+  "1365": {
+    "name": "FillQty",
+    "type": "QTY"
+  },
+  "1366": {
+    "name": "LegAllocID",
+    "type": "STRING"
+  },
+  "1385": {
+    "name": "ContingencyType",
+    "type": "INT",
+    "values": {
+      "1": "One Cancels The Other",
+      "2": "One Triggers The Other",
+      "3": "One Updates The Other 3",
+      "4": "One Updates The Other 4"
+    }
+  },
+  "1390": {
+    "name": "TradePublishIndicator",
+    "type": "INT",
+    "values": {
+      "0": "Do Not Publish Trade",
+      "1": "Publish Trade",
+      "2": "Deferred Publication"
+    }
+  },
+  "1418": {
+    "name": "LegLastQty",
+    "type": "QTY"
+  },
+  "1420": {
+    "name": "LegExerciseStyle",
+    "type": "INT"
+  },
+  "1461": {
+    "name": "NoTargetPartyIDs",
+    "type": "NUMINGROUP"
+  },
+  "1462": {
+    "name": "TargetPartyExchangeTraderID",
+    "type": "STRING"
+  },
+  "1622": {
+    "name": "FillYieldType",
+    "type": "STRING"
+  },
+  "1724": {
+    "name": "OrderOrigination",
+    "type": "INT",
+    "values": {
+      "1": "Order Received From Customer",
+      "2": "Order Received From Within Firm",
+      "3": "Order Received From Another Broker Dealer",
+      "4": "Order Received From Customer Or Originated Within Firm",
+      "5": "Order Received From Direct Or Sponsored Access Customer",
+      "99": "Order Received From Other Non Dea"
+    }
+  },
+  "1795": {
+    "name": "NoOrderEvents",
+    "type": "NUMINGROUP"
+  },
+  "1796": {
+    "name": "OrderEventType",
+    "type": "INT",
+    "values": {
+      "1": "Added",
+      "2": "Modified",
+      "3": "Deleted",
+      "4": "Partially Filled",
+      "5": "Filled",
+      "6": "Suspended",
+      "7": "Released",
+      "8": "Restated",
+      "9": "Locked",
+      "10": "Triggered",
+      "11": "Activated"
+    }
+  },
+  "1797": {
+    "name": "OrderEventExecID",
+    "type": "STRING"
+  },
+  "1798": {
+    "name": "OrderEventReason",
+    "type": "INT",
+    "values": {
+      "1": "Add Order Request",
+      "2": "Modify Order Request",
+      "3": "Delete Order Request",
+      "4": "Order Entered Out Of Band",
+      "5": "Order Modified Out Of Band",
+      "6": "Order Deleted Out Of Band",
+      "7": "Order Activated Or Triggered",
+      "8": "Order Expired",
+      "9": "Reserve Order Refreshed",
+      "10": "Away Market Better",
+      "11": "Corporate Action",
+      "12": "Start Of Day",
+      "13": "End Of Day",
+      "100": "Binary Trade Reporting"
+    }
+  },
+  "1799": {
+    "name": "OrderEventPx",
+    "type": "PRICE"
+  },
+  "1800": {
+    "name": "OrderEventQty",
+    "type": "QTY"
+  },
+  "1801": {
+    "name": "OrderEventLiquidityIndicator",
+    "type": "INT",
+    "values": {
+      "0": "Neither Added Nor Removed Liquidity",
+      "1": "Added Liquidity",
+      "2": "Removed Liquidity",
+      "3": "Liquidity Routed Out",
+      "4": "Auction Execution",
+      "5": "Triggered Stop Order",
+      "6": "Triggered Contingency Order",
+      "7": "Triggered Market Order",
+      "8": "Removed Liquidity After Firm Order Commitment",
+      "9": "Auction Execution After Firm Order Commitment",
+      "10": "Unknown",
+      "11": "Other"
+    }
+  },
+  "1802": {
+    "name": "OrderEventText",
+    "type": "STRING"
+  },
+  "1856": {
+    "name": "RelatedTradeID",
+    "type": "STRING"
+  },
+  "1860": {
+    "name": "RelatedTradeQty",
+    "type": "QTY"
+  },
+  "2376": {
+    "name": "PartyRoleQualifier",
+    "type": "INT",
+    "values": {
+      "22": "Algorithm",
+      "23": "Firm Or Legal Entity",
+      "24": "Natural Person"
+    }
+  },
+  "2404": {
+    "name": "ComplianceText",
+    "type": "STRING"
+  },
+  "2446": {
+    "name": "AggressorSide",
+    "type": "INT",
+    "values": {
+      "0": "No Aggressor",
+      "1": "Buy",
+      "2": "Sell"
+    }
+  },
+  "2593": {
+    "name": "NoOrderAttributes",
+    "type": "INT"
+  },
+  "2594": {
+    "name": "OrderAttributeType",
+    "type": "INT",
+    "values": {
+      "0": "Aggregated Order",
+      "1": "Pending Allocation",
+      "2": "Liquidity Provision Activity Order",
+      "3": "Risk Reduction Order",
+      "4": "Algorithmic Order",
+      "5": "Systematic Internalizer Order"
+    }
+  },
+  "2595": {
+    "name": "OrderAttributeValue",
+    "type": "STRING"
+  },
+  "5024": {
+    "name": "StartSequenceNumber",
+    "type": "SEQNUM"
+  },
+  "7111": {
+    "name": "AllocStrategy",
+    "type": "STRING"
+  },
+  "7928": {
+    "name": "SelfMatchPreventionID",
+    "type": "STRING"
+  },
+  "8000": {
+    "name": "SMPInstruction",
+    "type": "CHAR",
+    "values": {
+      "O": "Smp Inst Type Cancel Resting",
+      "N": "Smp Inst Type Cancel Aggressor",
+      "B": "Smp Inst Type Cancel Both",
+      "M": "Smp Inst Type Match",
+      "m": "Smp Inst Type Not Match",
+      "S": "Smp Inst Type Smallest",
+      "D": "Smp Inst Type Decrement Larger",
+      "d": "Smp Inst Type Decrement Leaves Qty",
+      "e": "Smp Inst Type Market Wide",
+      "f": "Smp Inst Type Market Wide Cancel Aggressor",
+      "g": "Smp Inst Type Market Wide Cancel Resting",
+      "h": "Smp Inst Type Market Wide Decrement Leaves Qty"
+    }
+  },
+  "8013": {
+    "name": "TrdRegPublicationReason",
+    "type": "INT",
+    "values": {
+      "4": "Ilqd",
+      "5": "Size",
+      "6": "Lrgs"
+    }
+  },
+  "8016": {
+    "name": "TradingVenueRegulatoryTradeID",
+    "type": "STRING"
+  },
+  "9012": {
+    "name": "IsFirm",
+    "type": "INT",
+    "values": {
+      "1": "Firm",
+      "2": "Last Look"
+    }
+  },
+  "9020": {
+    "name": "FixingDate",
+    "type": "LOCALMKTDATE"
+  },
+  "9021": {
+    "name": "FixingSource",
+    "type": "STRING"
+  },
+  "9032": {
+    "name": "ReportingParty",
+    "type": "BOOLEAN"
+  },
+  "9103": {
+    "name": "MaxParticipation",
+    "type": "FLOAT"
+  },
+  "9106": {
+    "name": "IWouldPrice",
+    "type": "FLOAT"
+  },
+  "9111": {
+    "name": "Aggression",
+    "type": "INT"
+  },
+  "9112": {
+    "name": "TiltMode",
+    "type": "INT"
+  },
+  "9115": {
+    "name": "BriskLimitMode",
+    "type": "INT"
+  },
+  "9117": {
+    "name": "BlockLimit",
+    "type": "INT"
+  },
+  "9120": {
+    "name": "LiquidityIndicator",
+    "type": "CHAR",
+    "values": {
+      "A": "Added Liquidity",
+      "R": "Removed Liquidity"
+    }
+  },
+  "9121": {
+    "name": "MemoFieldICE",
+    "type": "STRING"
+  },
+  "9139": {
+    "name": "OriginatorUserID",
+    "type": "STRING"
+  },
+  "9145": {
+    "name": "Tracking",
+    "type": "INT"
+  },
+  "9147": {
+    "name": "MinParticipation",
+    "type": "FLOAT"
+  },
+  "9190": {
+    "name": "IfTouchedPrice",
+    "type": "FLOAT"
+  },
+  "9191": {
+    "name": "PostTriggerDuration",
+    "type": "INT"
+  },
+  "9200": {
+    "name": "SubStrategy",
+    "type": "STRING"
+  },
+  "9202": {
+    "name": "DurationRCM",
+    "type": "INT"
+  },
+  "9203": {
+    "name": "EndTimeOverride",
+    "type": "INT",
+    "values": {
+      "0": "None",
+      "1": "Last Session Close",
+      "2": "Next Session Close",
+      "3": "Settlement"
+    }
+  },
+  "9207": {
+    "name": "CustomerAccountRefID",
+    "type": "STRING"
+  },
+  "9210": {
+    "name": "MaxShowRCM",
+    "type": "INT"
+  },
+  "9211": {
+    "name": "MinShow",
+    "type": "INT"
+  },
+  "9212": {
+    "name": "PassivePriceLevel",
+    "type": "INT"
+  },
+  "9213": {
+    "name": "NumPostLevels",
+    "type": "INT"
+  },
+  "9214": {
+    "name": "AverageDelay",
+    "type": "FLOAT"
+  },
+  "9215": {
+    "name": "IWouldQty",
+    "type": "INT"
+  },
+  "9216": {
+    "name": "IWouldQtyPct",
+    "type": "FLOAT"
+  },
+  "9217": {
+    "name": "WithATickQty",
+    "type": "INT"
+  },
+  "9218": {
+    "name": "WithATickQtyPct",
+    "type": "FLOAT"
+  },
+  "9219": {
+    "name": "CleanupPct",
+    "type": "FLOAT"
+  },
+  "9220": {
+    "name": "PostTicksApart",
+    "type": "INT"
+  },
+  "9221": {
+    "name": "MaxSpreadCrossTicks",
+    "type": "INT"
+  },
+  "9222": {
+    "name": "TacticalPeg",
+    "type": "BOOLEAN"
+  },
+  "9225": {
+    "name": "IWouldQtyVariancePct",
+    "type": "FLOAT"
+  },
+  "9302": {
+    "name": "DynamicEndTime",
+    "type": "BOOLEAN"
+  },
+  "9700": {
+    "name": "DirectElectronicAccess",
+    "type": "INT",
+    "values": {
+      "0": "No",
+      "1": "Yes"
+    }
+  },
+  "9701": {
+    "name": "TradingCapacity",
+    "type": "INT",
+    "values": {
+      "0": "Deal",
+      "1": "Mtch",
+      "2": "Aotc"
+    }
+  },
+  "9702": {
+    "name": "LiquidityProvision",
+    "type": "INT",
+    "values": {
+      "0": "No",
+      "1": "Yes"
+    }
+  },
+  "9703": {
+    "name": "OriginalSecondaryExecID",
+    "type": "STRING"
+  },
+  "9704": {
+    "name": "InvestmentDecision",
+    "type": "INT"
+  },
+  "9705": {
+    "name": "ExecutionDecision",
+    "type": "INT"
+  },
+  "9706": {
+    "name": "ClientIDCode",
+    "type": "INT"
+  },
+  "9707": {
+    "name": "MiFIDID",
+    "type": "STRING"
+  },
+  "9717": {
+    "name": "CorrelationClOrdID",
+    "type": "STRING"
+  },
+  "9787": {
+    "name": "DisplayFactor",
+    "type": "STRING"
+  },
+  "9821": {
+    "name": "SelfMatchPreventionIDICE",
+    "type": "STRING"
+  },
+  "9822": {
+    "name": "SelfMatchPreventionInstruction",
+    "type": "CHAR"
+  },
+  "9991": {
+    "name": "LegRiskAversion",
+    "type": "INT"
+  },
+  "9992": {
+    "name": "HedgeDiscretionTicks",
+    "type": "INT"
+  },
+  "10010": {
+    "name": "DisplayFactorQty",
+    "type": "STRING"
+  },
+  "10011": {
+    "name": "TTClOrdID",
+    "type": "STRING"
+  },
+  "10553": {
+    "name": "TTID",
+    "type": "STRING"
+  },
+  "10555": {
+    "name": "NoTCRLegs",
+    "type": "NUMINGROUP"
+  },
+  "16000": {
+    "name": "Timezone",
+    "type": "STRING"
+  },
+  "16052": {
+    "name": "ExchangeSendingTime",
+    "type": "STRING"
+  },
+  "16060": {
+    "name": "ExchangeTransactTime",
+    "type": "STRING"
+  },
+  "16106": {
+    "name": "StagedOrderMsg",
+    "type": "STRING"
+  },
+  "16109": {
+    "name": "StagedOrderStatus",
+    "type": "CHAR",
+    "values": {
+      "A": "Available",
+      "O": "Owned"
+    }
+  },
+  "16110": {
+    "name": "StagedOrderOwner",
+    "type": "STRING"
+  },
+  "16112": {
+    "name": "NoLinks",
+    "type": "INT"
+  },
+  "16113": {
+    "name": "LinkID",
+    "type": "STRING"
+  },
+  "16114": {
+    "name": "LinkType",
+    "type": "CHAR",
+    "values": {
+      "7": "Staged Child",
+      "8": "Staged Bulked Child",
+      "9": "Staged Stiched Child",
+      "P": "Parent Order Id",
+      "X": "Position Transfer Id",
+      "A": "Staged Split Child",
+      "E": "Unique Exec Id Allocated From",
+      "R": "Root Algo Order Id",
+      "F": "Parent Account Id"
+    }
+  },
+  "16115": {
+    "name": "ExternalSource",
+    "type": "BOOLEAN"
+  },
+  "16116": {
+    "name": "OrderIDGUID",
+    "type": "STRING"
+  },
+  "16117": {
+    "name": "OrderSource",
+    "type": "INT",
+    "values": {
+      "0": "Source Ase",
+      "2": "Source Ntw",
+      "3": "Source Invalid",
+      "4": "Source T Trader",
+      "6": "Source Mobile",
+      "7": "Source Roe",
+      "9": "Source External",
+      "10": "Source Fix Adapter",
+      "11": "Source Aggregator",
+      "12": "Source Bouncer",
+      "13": "Source Lambda Liquidator",
+      "14": "Source External Fix Adapter",
+      "15": "Source Prime Ase",
+      "16": "Source Nimbus",
+      "17": "Source Adl",
+      "18": "Source Ttsdk",
+      "19": "Source Tt Algo",
+      "20": "Source Adl Prime",
+      "21": "Source Ttsdk Prime",
+      "22": "Source Tt Algo Prime",
+      "23": "Source Chart",
+      "24": "Source Ttd",
+      "25": "Source Ttd Chart",
+      "26": "Source Ttint",
+      "27": "Source Tt Admin",
+      "28": "Source Dotnet Api Clt",
+      "29": "Source Dotnet Api Srv",
+      "30": "Source Cpp Api",
+      "31": "Source Options Risk",
+      "32": "Source External Upload",
+      "33": "Source Stager",
+      "34": "Source Score",
+      "35": "Source Fix Adapter Child Router",
+      "36": "Source Pot Child Router",
+      "37": "Source Terminator"
+    }
+  },
+  "16118": {
+    "name": "FillTradingVenueRegulatoryTradeID",
+    "type": "STRING"
+  },
+  "16119": {
+    "name": "FillLastLiquidityIndicator",
+    "type": "INT",
+    "values": {
+      "1": "Added Liquidity",
+      "2": "Removed Liquidity"
+    }
+  },
+  "16120": {
+    "name": "LegNoFills",
+    "type": "NUMINGROUP"
+  },
+  "16121": {
+    "name": "LegFillExecID",
+    "type": "STRING"
+  },
+  "16122": {
+    "name": "LegFillPx",
+    "type": "PRICE"
+  },
+  "16123": {
+    "name": "LegFillQty",
+    "type": "QTY"
+  },
+  "16124": {
+    "name": "LegFillTradingVenueRegulatoryTradeID",
+    "type": "STRING"
+  },
+  "16125": {
+    "name": "LegFillLastLiquidityIndicator",
+    "type": "INT",
+    "values": {
+      "1": "Added Liquidity",
+      "2": "Removed Liquidity"
+    }
+  },
+  "16130": {
+    "name": "IntentToCross",
+    "type": "BOOLEAN"
+  },
+  "16131": {
+    "name": "RejectSource",
+    "type": "INT",
+    "values": {
+      "1": "Reject Source Edge",
+      "2": "Reject Source Risk",
+      "3": "Reject Source Gateway",
+      "4": "Reject Source Exchange",
+      "5": "Reject Source Algo",
+      "6": "Reject Source Ase",
+      "7": "Reject Source Ttint",
+      "8": "Reject Source External",
+      "9": "Reject Source Ttapi",
+      "10": "Reject Source Client App",
+      "11": "Reject Source Fix Adapter",
+      "12": "Reject Source Stager",
+      "13": "Reject Source Options Risk"
+    }
+  },
+  "16207": {
+    "name": "BloombergSecurityExchange",
+    "type": "STRING"
+  },
+  "16451": {
+    "name": "PriceDisplayType",
+    "type": "INT"
+  },
+  "16456": {
+    "name": "NumTickTblEntries",
+    "type": "INT"
+  },
+  "16457": {
+    "name": "NumTicks",
+    "type": "INT"
+  },
+  "16458": {
+    "name": "MaxPrice",
+    "type": "PRICE"
+  },
+  "16460": {
+    "name": "MinLotSize",
+    "type": "INT"
+  },
+  "16463": {
+    "name": "NumberOfBlocks",
+    "type": "INT"
+  },
+  "16464": {
+    "name": "TradesInFlow",
+    "type": "CHAR"
+  },
+  "16552": {
+    "name": "ExchTickSize",
+    "type": "FLOAT"
+  },
+  "16554": {
+    "name": "ExchPointValue",
+    "type": "FLOAT"
+  },
+  "16556": {
+    "name": "TextA",
+    "type": "STRING"
+  },
+  "16557": {
+    "name": "TextB",
+    "type": "STRING"
+  },
+  "16558": {
+    "name": "TextTT",
+    "type": "STRING"
+  },
+  "16559": {
+    "name": "TextC",
+    "type": "STRING"
+  },
+  "16561": {
+    "name": "TimeReceivedFromExchange",
+    "type": "UTCTIMESTAMP"
+  },
+  "16566": {
+    "name": "DropCopyOrder",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "16567": {
+    "name": "ByPassSessionRecovery",
+    "type": "BOOLEAN"
+  },
+  "16568": {
+    "name": "LegAvgPx",
+    "type": "PRICE"
+  },
+  "16601": {
+    "name": "EchoDC_01",
+    "type": "STRING"
+  },
+  "16602": {
+    "name": "EchoDC_02",
+    "type": "STRING"
+  },
+  "16603": {
+    "name": "EchoDC_03",
+    "type": "STRING"
+  },
+  "16604": {
+    "name": "EchoDC_04",
+    "type": "STRING"
+  },
+  "16605": {
+    "name": "EchoDC_05",
+    "type": "STRING"
+  },
+  "16606": {
+    "name": "EchoDC_06",
+    "type": "STRING"
+  },
+  "16607": {
+    "name": "EchoDC_07",
+    "type": "STRING"
+  },
+  "16608": {
+    "name": "EchoDC_08",
+    "type": "STRING"
+  },
+  "16609": {
+    "name": "EchoDC_09",
+    "type": "STRING"
+  },
+  "16610": {
+    "name": "EchoDC_10",
+    "type": "STRING"
+  },
+  "16611": {
+    "name": "MlegHeadExecId",
+    "type": "STRING"
+  },
+  "16612": {
+    "name": "UniqueExecID",
+    "type": "STRING"
+  },
+  "16615": {
+    "name": "LegTTRoutingAccount",
+    "type": "STRING"
+  },
+  "16616": {
+    "name": "LegBloombergSecurityExchange",
+    "type": "STRING"
+  },
+  "16623": {
+    "name": "SpreadLegRatioQty",
+    "type": "FLOAT"
+  },
+  "16624": {
+    "name": "AccountRiskGroup",
+    "type": "STRING"
+  },
+  "16625": {
+    "name": "TextTTModifyingUser",
+    "type": "STRING"
+  },
+  "16626": {
+    "name": "NVDR",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "16627": {
+    "name": "TTF",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "16628": {
+    "name": "TFUserType",
+    "type": "CHAR",
+    "values": {
+      "T": "Traditional Trading",
+      "P": "Program Trading",
+      "M": "Market Making",
+      "G": "Market Making With Program Trading"
+    }
+  },
+  "16631": {
+    "name": "EchoDC_11",
+    "type": "STRING"
+  },
+  "16632": {
+    "name": "EchoDC_12",
+    "type": "STRING"
+  },
+  "16633": {
+    "name": "EchoDC_13",
+    "type": "STRING"
+  },
+  "16634": {
+    "name": "EchoDC_14",
+    "type": "STRING"
+  },
+  "16635": {
+    "name": "EchoDC_15",
+    "type": "STRING"
+  },
+  "16636": {
+    "name": "EchoDC_16",
+    "type": "STRING"
+  },
+  "16637": {
+    "name": "EchoDC_17",
+    "type": "STRING"
+  },
+  "16638": {
+    "name": "EchoDC_18",
+    "type": "STRING"
+  },
+  "16639": {
+    "name": "EchoDC_19",
+    "type": "STRING"
+  },
+  "16640": {
+    "name": "EchoDC_20",
+    "type": "STRING"
+  },
+  "16700": {
+    "name": "PriceFormula",
+    "type": "STRING"
+  },
+  "16701": {
+    "name": "ReloadOffset",
+    "type": "INT"
+  },
+  "16702": {
+    "name": "OverrideTickNumerator",
+    "type": "INT"
+  },
+  "16703": {
+    "name": "FormulaBasedOn",
+    "type": "STRING",
+    "values": {
+      "price_diff": "Price Diff",
+      "ratio": "Ratio",
+      "net_change": "Net Change",
+      "custom": "Custom"
+    }
+  },
+  "16704": {
+    "name": "ReloadDelay",
+    "type": "INT"
+  },
+  "16705": {
+    "name": "DisclosedQty",
+    "type": "QTY"
+  },
+  "16706": {
+    "name": "Reload",
+    "type": "BOOLEAN"
+  },
+  "16707": {
+    "name": "OverrideTickSize",
+    "type": "BOOLEAN"
+  },
+  "16708": {
+    "name": "OverrideTickDenominator",
+    "type": "INT"
+  },
+  "16728": {
+    "name": "TotalNumOrders",
+    "type": "INT"
+  },
+  "16751": {
+    "name": "Multiplier",
+    "type": "FLOAT"
+  },
+  "16752": {
+    "name": "IsHedging",
+    "type": "BOOLEAN"
+  },
+  "16753": {
+    "name": "QueueHolder",
+    "type": "QTY"
+  },
+  "16754": {
+    "name": "MLQ",
+    "type": "STRING"
+  },
+  "16755": {
+    "name": "PayupTicks",
+    "type": "INT"
+  },
+  "16756": {
+    "name": "IsQuoting",
+    "type": "BOOLEAN"
+  },
+  "16757": {
+    "name": "ConvertQuoteToHedge",
+    "type": "INT",
+    "values": {
+      "1": "Attempt",
+      "2": "Always",
+      "3": "Always Preserve Queue"
+    }
+  },
+  "16758": {
+    "name": "IsLeanIndicative",
+    "type": "BOOLEAN"
+  },
+  "16759": {
+    "name": "IsShared",
+    "type": "BOOLEAN"
+  },
+  "16760": {
+    "name": "LegRatioExt",
+    "type": "INT"
+  },
+  "16761": {
+    "name": "InsertTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "16762": {
+    "name": "DefSecuritySubTypeID",
+    "type": "INT"
+  },
+  "16847": {
+    "name": "TargetStrategyName",
+    "type": "STRING"
+  },
+  "16848": {
+    "name": "TargetStrategyType",
+    "type": "INT",
+    "values": {
+      "0": "Adl",
+      "1": "Sse",
+      "3": "Bank Algo",
+      "12": "Core Sdk"
+    }
+  },
+  "16849": {
+    "name": "SideTextA",
+    "type": "STRING"
+  },
+  "16850": {
+    "name": "SideTextB",
+    "type": "STRING"
+  },
+  "16851": {
+    "name": "SideTextC",
+    "type": "STRING"
+  },
+  "16852": {
+    "name": "ParentVendorOrderID",
+    "type": "STRING"
+  },
+  "16853": {
+    "name": "ParentVendorUserID",
+    "type": "STRING"
+  },
+  "16854": {
+    "name": "ParentVendorAccountID",
+    "type": "STRING"
+  },
+  "16855": {
+    "name": "ParentVendorBrokerID",
+    "type": "STRING"
+  },
+  "16856": {
+    "name": "ParentVendorProfileID",
+    "type": "STRING"
+  },
+  "16857": {
+    "name": "TTSMPID",
+    "type": "STRING"
+  },
+  "16858": {
+    "name": "TTSMPInstruction",
+    "type": "INT",
+    "values": {
+      "1": "Tt Smp Inst Reject New",
+      "3": "Tt Smp Inst Cancel Resting",
+      "4": "Tt Smp Inst Internalization",
+      "6": "Tt Smp Inst Internalize Best",
+      "10": "Tt Smp Inst Internalize Allow Split",
+      "11": "Tt Smp Inst Internalize Best Allow Split"
+    }
+  },
+  "16859": {
+    "name": "QuoteAckStatus",
+    "type": "INT",
+    "values": {
+      "0": "Quote Request Status Ok",
+      "5": "Quote Request Status Rejected"
+    }
+  },
+  "16860": {
+    "name": "ParentVendorAlgoID",
+    "type": "STRING"
+  },
+  "16861": {
+    "name": "ParentVendorAlgoType",
+    "type": "STRING"
+  },
+  "16874": {
+    "name": "LegParentVendorAccountID",
+    "type": "STRING"
+  },
+  "16875": {
+    "name": "NewsReportID",
+    "type": "STRING"
+  },
+  "16901": {
+    "name": "BracketOrderType",
+    "type": "INT",
+    "values": {
+      "0": "Limit",
+      "1": "Stop Limit",
+      "2": "Stop Market"
+    }
+  },
+  "16902": {
+    "name": "BracketStopLimitOffset",
+    "type": "INT"
+  },
+  "16903": {
+    "name": "ChildTIF",
+    "type": "CHAR",
+    "values": {
+      "0": "Day",
+      "1": "Good Till Cancel",
+      "2": "At The Opening",
+      "3": "Immediate Or Cancel",
+      "4": "Fill Or Kill",
+      "5": "Good Till Crossing",
+      "6": "Good Till Date",
+      "7": "At The Close",
+      "8": "Good Through Crossing",
+      "9": "At Crossing",
+      "A": "Auction",
+      "V": "Good In Session",
+      "W": "Day Plus",
+      "X": "Good Till Cancel Plus",
+      "Y": "Good Till Date Plus"
+    }
+  },
+  "16904": {
+    "name": "DiscVal",
+    "type": "INT"
+  },
+  "16905": {
+    "name": "DiscValType",
+    "type": "INT"
+  },
+  "16906": {
+    "name": "ETimeAct",
+    "type": "INT",
+    "values": {
+      "1": "Cancel",
+      "2": "Gotomarket"
+    }
+  },
+  "16907": {
+    "name": "Interval",
+    "type": "INT"
+  },
+  "16908": {
+    "name": "IsTrlTrg",
+    "type": "STRING"
+  },
+  "16909": {
+    "name": "LeftoverAction",
+    "type": "INT",
+    "values": {
+      "0": "Leave",
+      "1": "Payup",
+      "2": "Merge",
+      "3": "Gotomarket"
+    }
+  },
+  "16910": {
+    "name": "LeftoverTicks",
+    "type": "INT"
+  },
+  "16911": {
+    "name": "LimitPriceType",
+    "type": "INT"
+  },
+  "16912": {
+    "name": "LimitTicksAway",
+    "type": "INT"
+  },
+  "16913": {
+    "name": "OcoStopTriggerPrice",
+    "type": "PRICE"
+  },
+  "16914": {
+    "name": "ProfitTarget",
+    "type": "INT"
+  },
+  "16915": {
+    "name": "StopLimitOffset",
+    "type": "INT"
+  },
+  "16916": {
+    "name": "StopOrderType",
+    "type": "INT",
+    "values": {
+      "1": "Limit",
+      "2": "Market",
+      "3": "Tt Stop"
+    }
+  },
+  "16917": {
+    "name": "StopTarget",
+    "type": "INT"
+  },
+  "16918": {
+    "name": "TriggerPriceType",
+    "type": "INT",
+    "values": {
+      "1": "Bid",
+      "2": "Ask",
+      "3": "Ltp",
+      "6": "Sameside",
+      "7": "Oppositeside"
+    }
+  },
+  "16919": {
+    "name": "TriggerTicksAway",
+    "type": "INT"
+  },
+  "16920": {
+    "name": "TriggerType",
+    "type": "INT",
+    "values": {
+      "1": "Stop",
+      "2": "It"
+    }
+  },
+  "16921": {
+    "name": "WithATickType",
+    "type": "INT",
+    "values": {
+      "1": "Qty",
+      "2": "Percent"
+    }
+  },
+  "16922": {
+    "name": "WithATick",
+    "type": "INT"
+  },
+  "16923": {
+    "name": "TriggerQtyType",
+    "type": "INT",
+    "values": {
+      "1": "Qty",
+      "2": "Percent"
+    }
+  },
+  "16924": {
+    "name": "TriggerQtyCompare",
+    "type": "INT",
+    "values": {
+      "3": "Lte",
+      "5": "Gte"
+    }
+  },
+  "16925": {
+    "name": "TriggerQty",
+    "type": "INT"
+  },
+  "16926": {
+    "name": "TriggerLTPReset",
+    "type": "BOOLEAN"
+  },
+  "16927": {
+    "name": "TTStopLimitPriceType",
+    "type": "INT",
+    "values": {
+      "1": "Bid",
+      "2": "Ask",
+      "3": "Ltp"
+    }
+  },
+  "16928": {
+    "name": "TTStopWithATickType",
+    "type": "INT",
+    "values": {
+      "1": "Qty",
+      "2": "Percent"
+    }
+  },
+  "16929": {
+    "name": "TTStopWithATick",
+    "type": "INT"
+  },
+  "16930": {
+    "name": "Payup",
+    "type": "INT"
+  },
+  "16931": {
+    "name": "TTStopTriggerPriceType",
+    "type": "INT",
+    "values": {
+      "1": "Bid",
+      "2": "Ask",
+      "3": "Ltp"
+    }
+  },
+  "16932": {
+    "name": "TTStopIsTrlTrg",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "16933": {
+    "name": "TTStopTriggerTicksAway",
+    "type": "INT"
+  },
+  "16934": {
+    "name": "TTStopTriggerQtyType",
+    "type": "INT",
+    "values": {
+      "1": "Qty",
+      "2": "Percentage"
+    }
+  },
+  "16935": {
+    "name": "TTStopTriggerQTyCompare",
+    "type": "INT",
+    "values": {
+      "3": "Lte",
+      "5": "Gte"
+    }
+  },
+  "16936": {
+    "name": "TTStopTriggerQty",
+    "type": "INT"
+  },
+  "16937": {
+    "name": "TTStopTriggerLTPReset",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "16938": {
+    "name": "TTStopTriggeredOrderType",
+    "type": "INT",
+    "values": {
+      "1": "Mkt",
+      "2": "Limit",
+      "21": "Mlm"
+    }
+  },
+  "16939": {
+    "name": "TTStopTriggeredOrderPrice",
+    "type": "PRICE"
+  },
+  "16940": {
+    "name": "TTStopLimitTicksAway",
+    "type": "INT"
+  },
+  "16941": {
+    "name": "TTStopPayup",
+    "type": "INT"
+  },
+  "16942": {
+    "name": "RetryCount",
+    "type": "INT"
+  },
+  "16943": {
+    "name": "RetryInterval",
+    "type": "INT"
+  },
+  "16944": {
+    "name": "Duration",
+    "type": "INT"
+  },
+  "16945": {
+    "name": "DurationBaseUnit",
+    "type": "INT",
+    "values": {
+      "1": "Hour",
+      "2": "Minute",
+      "3": "Second"
+    }
+  },
+  "16946": {
+    "name": "DurationSTime",
+    "type": "UTCTIMESTAMP"
+  },
+  "16947": {
+    "name": "DurationETime",
+    "type": "UTCTIMESTAMP"
+  },
+  "16948": {
+    "name": "LeftoverTimeAction",
+    "type": "INT",
+    "values": {
+      "0": "Atend",
+      "1": "Halflife"
+    }
+  },
+  "16949": {
+    "name": "AutoResubExpiredGTD",
+    "type": "BOOLEAN"
+  },
+  "16950": {
+    "name": "ParentTIF",
+    "type": "INT",
+    "values": {
+      "0": "Day",
+      "1": "Gtc",
+      "7": "Time",
+      "15": "Dayplus",
+      "16": "Gtcplus"
+    }
+  },
+  "16951": {
+    "name": "TTStopSecondConditionIsOn",
+    "type": "BOOLEAN"
+  },
+  "16952": {
+    "name": "TTStopSecondTriggerPriceType",
+    "type": "INT",
+    "values": {
+      "1": "Bid",
+      "2": "Ask",
+      "3": "Ltp",
+      "6": "Sameside",
+      "7": "Oppositeside"
+    }
+  },
+  "16953": {
+    "name": "TTStopSecondConditionIsTrlTrg",
+    "type": "BOOLEAN"
+  },
+  "16954": {
+    "name": "TTStopSecondTriggerTicksAway",
+    "type": "INT"
+  },
+  "16955": {
+    "name": "TTStopSecondTriggerQtyType",
+    "type": "INT",
+    "values": {
+      "1": "Qty",
+      "2": "Percentage"
+    }
+  },
+  "16956": {
+    "name": "TTStopSecondTriggerQtyCompare",
+    "type": "INT",
+    "values": {
+      "3": "Lte",
+      "5": "Gte"
+    }
+  },
+  "16957": {
+    "name": "TTStopSecondTriggerQty",
+    "type": "QTY"
+  },
+  "16958": {
+    "name": "Variance",
+    "type": "INT"
+  },
+  "16959": {
+    "name": "IncludeQuotes",
+    "type": "BOOLEAN"
+  },
+  "16960": {
+    "name": "ETAGoToMktTicks",
+    "type": "INT"
+  },
+  "16961": {
+    "name": "WaitingOption",
+    "type": "INT"
+  },
+  "16962": {
+    "name": "TTStopChildTIFOverride",
+    "type": "INT"
+  },
+  "16963": {
+    "name": "Seq",
+    "type": "INT"
+  },
+  "16964": {
+    "name": "LegFillSeq",
+    "type": "INT"
+  },
+  "16965": {
+    "name": "NoTTReserved",
+    "type": "NUMINGROUP"
+  },
+  "16966": {
+    "name": "TTReservedName",
+    "type": "STRING"
+  },
+  "16967": {
+    "name": "TTReservedValue",
+    "type": "STRING"
+  },
+  "16968": {
+    "name": "LeftoverMktOrderLimitTicks",
+    "type": "INT"
+  },
+  "16969": {
+    "name": "SecondConditionIsOn",
+    "type": "BOOLEAN"
+  },
+  "16970": {
+    "name": "SecondTriggerTicksAway",
+    "type": "INT"
+  },
+  "16971": {
+    "name": "SecondTriggerQtyType",
+    "type": "INT",
+    "values": {
+      "1": "E Qty",
+      "2": "E Percentage"
+    }
+  },
+  "16972": {
+    "name": "SecondTriggerQtyCompare",
+    "type": "INT",
+    "values": {
+      "3": "E LTE",
+      "5": "E GTE"
+    }
+  },
+  "16973": {
+    "name": "SecondTriggerQty",
+    "type": "QTY"
+  },
+  "16974": {
+    "name": "LeftoverTime",
+    "type": "INT",
+    "values": {
+      "0": "E At End",
+      "1": "E At Half Life"
+    }
+  },
+  "16975": {
+    "name": "SecondTriggerPriceType",
+    "type": "INT",
+    "values": {
+      "1": "E Bid",
+      "2": "E Ask",
+      "3": "E Ltp",
+      "6": "E Same Side",
+      "7": "E Opposite Side"
+    }
+  },
+  "16976": {
+    "name": "NoImplies",
+    "type": "BOOLEAN"
+  },
+  "16977": {
+    "name": "CustomSliceSched",
+    "type": "STRING"
+  },
+  "16978": {
+    "name": "TTStopNoImplies",
+    "type": "BOOLEAN"
+  },
+  "16979": {
+    "name": "HKExSSEAlgoHandling",
+    "type": "BOOLEAN"
+  },
+  "16980": {
+    "name": "Aggressiveness",
+    "type": "FLOAT"
+  },
+  "16981": {
+    "name": "IgnoreMarketState",
+    "type": "BOOLEAN"
+  },
+  "16982": {
+    "name": "InstanceName",
+    "type": "STRING"
+  },
+  "16983": {
+    "name": "HedgeOrderType",
+    "type": "INT",
+    "values": {
+      "1": "E Mkt"
+    }
+  },
+  "16984": {
+    "name": "DeltaRounding",
+    "type": "INT",
+    "values": {
+      "0": "E Round Normal",
+      "1": "E Round Up",
+      "2": "E Round Down"
+    }
+  },
+  "16990": {
+    "name": "Vol",
+    "type": "FLOAT"
+  },
+  "16999": {
+    "name": "ClearingAccountOverride",
+    "type": "STRING"
+  },
+  "17000": {
+    "name": "RequestTickTable",
+    "type": "BOOLEAN",
+    "values": {
+      "Y": "Yes",
+      "N": "No"
+    }
+  },
+  "17001": {
+    "name": "VendorDefinedField1",
+    "type": "STRING"
+  },
+  "17002": {
+    "name": "VendorDefinedField2",
+    "type": "STRING"
+  },
+  "17003": {
+    "name": "VendorDefinedField3",
+    "type": "STRING"
+  },
+  "17004": {
+    "name": "VendorDefinedField4",
+    "type": "STRING"
+  },
+  "17005": {
+    "name": "VendorDefinedField5",
+    "type": "STRING"
+  },
+  "17006": {
+    "name": "MaxPart",
+    "type": "INT"
+  },
+  "17007": {
+    "name": "MaxDisp",
+    "type": "INT"
+  },
+  "17008": {
+    "name": "TwapStyle",
+    "type": "INT",
+    "values": {
+      "0": "E Aggressive",
+      "1": "E Default",
+      "2": "E Passive"
+    }
+  },
+  "17009": {
+    "name": "WouldIfPrc",
+    "type": "PRICE"
+  },
+  "17010": {
+    "name": "LimitPrc",
+    "type": "PRICE"
+  },
+  "18000": {
+    "name": "ForceLogout",
+    "type": "INT",
+    "values": {
+      "0": "Not Forced",
+      "1": "Forced"
+    }
+  },
+  "18001": {
+    "name": "MockOrderFlag",
+    "type": "INT",
+    "values": {
+      "0": "Not Mockorder",
+      "1": "Mock Order"
+    }
+  },
+  "18002": {
+    "name": "CustomMode",
+    "type": "CHAR"
+  },
+  "18009": {
+    "name": "TradingStrategy",
+    "type": "INT",
+    "values": {
+      "1": "Arbitrage",
+      "10": "Hedge",
+      "11": "Directional"
+    }
+  },
+  "18010": {
+    "name": "ReverseSpreadOC",
+    "type": "INT",
+    "values": {
+      "0": "Do Not Reverse Open Close Flag On Far Leg",
+      "1": "Reverse Spread Open Close Flag On Far Le"
+    }
+  },
+  "18100": {
+    "name": "LegExDestination",
+    "type": "EXCHANGE"
+  },
+  "18101": {
+    "name": "AccountID",
+    "type": "STRING"
+  },
+  "18102": {
+    "name": "UserID",
+    "type": "STRING"
+  },
+  "18210": {
+    "name": "PriceFeedStatus",
+    "type": "INT"
+  },
+  "18211": {
+    "name": "DeliveryTerm",
+    "type": "CHAR",
+    "values": {
+      "D": "Day",
+      "W": "Week",
+      "B": "Balance",
+      "Q": "Quarter",
+      "S": "Season",
+      "Y": "Year",
+      "V": "Variable",
+      "L": "Balance Of Week",
+      "X": "Custom",
+      "A": "Same Day",
+      "N": "Next Day",
+      "M": "Month",
+      "E": "Weekly",
+      "P": "Pack",
+      "U": "Bundle",
+      "T": "Weekend",
+      "H": "Hour",
+      "C": "Eom",
+      "a": "Quarter Hour",
+      "b": "Half Hour",
+      "c": "One Hour",
+      "d": "Two Hour",
+      "e": "Four Hour",
+      "f": "Eight Hour",
+      "g": "One Plus Two",
+      "h": "Three Plus Four",
+      "i": "Baseload",
+      "j": "Peakload",
+      "k": "Overnight",
+      "l": "Extended Peak"
+    }
+  },
+  "18212": {
+    "name": "LegDeliveryTerm",
+    "type": "CHAR",
+    "values": {
+      "D": "Day",
+      "W": "Week",
+      "B": "Balance",
+      "Q": "Quarter",
+      "S": "Season",
+      "Y": "Year",
+      "V": "Variable",
+      "L": "Balance Of Week",
+      "X": "Custom",
+      "A": "Same Day",
+      "N": "Next Day",
+      "M": "Month",
+      "E": "Weekly",
+      "P": "Pack",
+      "U": "Bundle",
+      "T": "Weekend",
+      "H": "Hour",
+      "C": "Eom",
+      "a": "Quarter Hour",
+      "b": "Half Hour",
+      "c": "One Hour",
+      "d": "Two Hour",
+      "e": "Four Hour",
+      "f": "Eight Hour",
+      "g": "One Plus Two",
+      "h": "Three Plus Four",
+      "i": "Baseload",
+      "j": "Peakload",
+      "k": "Overnight",
+      "l": "Extended Peak"
+    }
+  },
+  "18213": {
+    "name": "LegDeliveryDate",
+    "type": "LOCALMKTDATE"
+  },
+  "18214": {
+    "name": "IncludeNumberOfOrders",
+    "type": "CHAR",
+    "values": {
+      "N": "No",
+      "Y": "Yes"
+    }
+  },
+  "18216": {
+    "name": "ExchCred",
+    "type": "STRING"
+  },
+  "18217": {
+    "name": "RefID",
+    "type": "STRING"
+  },
+  "18218": {
+    "name": "TTCustomerName",
+    "type": "STRING"
+  },
+  "18219": {
+    "name": "SecondaryAccount",
+    "type": "STRING"
+  },
+  "18220": {
+    "name": "BrokerID",
+    "type": "STRING"
+  },
+  "18221": {
+    "name": "CompanyID",
+    "type": "STRING"
+  },
+  "18222": {
+    "name": "AOTCPreventionActionType",
+    "type": "CHAR",
+    "values": {
+      "0": "Crossing Order Prevention None",
+      "1": "Crossing Order Prevention Held",
+      "2": "Crossing Order Prevention Cancel",
+      "3": "Crossing Order Prevention Fill",
+      "4": "Crossing Order Prevention Reduced Order",
+      "5": "Crossing Order Prevention Reduced Change",
+      "6": "Crossing Order Prevention Released Order",
+      "7": "Crossing Order Prevention Replaced Order",
+      "8": "Crossing Order Prevention No Action On Order",
+      "9": "Crossing Order Prevention Cancel Replace"
+    }
+  },
+  "18223": {
+    "name": "ContractYearMonth",
+    "type": "STRING"
+  },
+  "18224": {
+    "name": "LegContractYearMonth",
+    "type": "STRING"
+  },
+  "18225": {
+    "name": "ExchangeSeqNum",
+    "type": "INT"
+  },
+  "18226": {
+    "name": "TTSyntheticType",
+    "type": "INT"
+  },
+  "18227": {
+    "name": "Organization",
+    "type": "STRING"
+  },
+  "18228": {
+    "name": "RoutingAccount",
+    "type": "STRING"
+  },
+  "18229": {
+    "name": "ReviewUserID",
+    "type": "STRING"
+  },
+  "18230": {
+    "name": "ReviewStatus",
+    "type": "INT",
+    "values": {
+      "1": "Review Status None",
+      "2": "Review Status Reviewed",
+      "3": "Review Status Approved"
+    }
+  },
+  "18231": {
+    "name": "UniqueLegID",
+    "type": "STRING"
+  },
+  "18232": {
+    "name": "LastTradingDate",
+    "type": "LOCALMKTDATE"
+  },
+  "18233": {
+    "name": "BrokerRoute",
+    "type": "STRING"
+  },
+  "18235": {
+    "name": "HedgeType",
+    "type": "INT",
+    "values": {
+      "1": "Hedge Type Duration",
+      "2": "Hedge Type Nominal",
+      "3": "Hedge Type Price Factor"
+    }
+  },
+  "18236": {
+    "name": "UnderlyingMemo",
+    "type": "STRING"
+  },
+  "18314": {
+    "name": "LegMaturityDay",
+    "type": "DAYOFMONTH"
+  },
+  "18602": {
+    "name": "QuoteSubType",
+    "type": "INT",
+    "values": {
+      "1": "Working Delta",
+      "2": "Basis Trade",
+      "3": "Regular Lds Negotiation",
+      "4": "Negotiate Underlying Outside Exchange",
+      "5": "Vola Strategy Fix",
+      "6": "Vola Strategy Negotiate Underlying"
+    }
+  },
+  "18603": {
+    "name": "QuoteRefPrice",
+    "type": "PRICE"
+  },
+  "18604": {
+    "name": "UnderlyingDeltaPercentage",
+    "type": "FLOAT"
+  },
+  "18605": {
+    "name": "SRFQTransType",
+    "type": "INT",
+    "values": {
+      "1": "New",
+      "2": "Replace",
+      "3": "Close",
+      "4": "Update",
+      "5": "Expire"
+    }
+  },
+  "18606": {
+    "name": "NegotiationID",
+    "type": "STRING"
+  },
+  "18607": {
+    "name": "SecondaryNegotiationID",
+    "type": "STRING"
+  },
+  "18608": {
+    "name": "MktQuoteID",
+    "type": "STRING"
+  },
+  "18609": {
+    "name": "SecondaryQuoteID",
+    "type": "STRING"
+  },
+  "18610": {
+    "name": "QuotingStatus",
+    "type": "INT",
+    "values": {
+      "1": "Quoting Status Open Active",
+      "2": "Quoting Status Open Working",
+      "3": "Quoting Status Closed Inactive"
+    }
+  },
+  "20000": {
+    "name": "OneOffSharedKey",
+    "type": "STRING"
+  },
+  "20016": {
+    "name": "FutureReferencePrice",
+    "type": "PRICE"
+  },
+  "37711": {
+    "name": "MDTradeEntryID",
+    "type": "INT"
+  },
+  "60111": {
+    "name": "AllocVolumeType",
+    "type": "STRING"
+  }
+}
+
 export const MSG_TYPES: Record<string, string> = {
   "0": "Heartbeat",
   "1": "Test Request",
@@ -8672,14 +17424,12 @@ export const REQUIRED_FIELDS_42: Record<string, string[]> = {
     "HeartBtInt"
   ],
   "B": [
-    "Headline",
-    "Text"
+    "Headline"
   ],
   "C": [
     "EmailThreadID",
     "EmailType",
-    "Subject",
-    "Text"
+    "Subject"
   ],
   "D": [
     "ClOrdID",
@@ -8692,11 +17442,7 @@ export const REQUIRED_FIELDS_42: Record<string, string[]> = {
   "E": [
     "ListID",
     "BidType",
-    "TotNoOrders",
-    "ClOrdID",
-    "ListSeqNo",
-    "Symbol",
-    "Side"
+    "TotNoOrders"
   ],
   "F": [
     "OrigClOrdID",
@@ -8726,8 +17472,7 @@ export const REQUIRED_FIELDS_42: Record<string, string[]> = {
     "Symbol",
     "Shares",
     "AvgPx",
-    "TradeDate",
-    "AllocShares"
+    "TradeDate"
   ],
   "K": [
     "ListID",
@@ -8746,13 +17491,7 @@ export const REQUIRED_FIELDS_42: Record<string, string[]> = {
     "NoRpts",
     "ListOrderStatus",
     "RptSeq",
-    "TotNoOrders",
-    "ClOrdID",
-    "CumQty",
-    "OrdStatus",
-    "LeavesQty",
-    "CxlQty",
-    "AvgPx"
+    "TotNoOrders"
   ],
   "P": [
     "AllocID",
@@ -8767,8 +17506,7 @@ export const REQUIRED_FIELDS_42: Record<string, string[]> = {
     "Side"
   ],
   "R": [
-    "QuoteReqID",
-    "Symbol"
+    "QuoteReqID"
   ],
   "S": [
     "QuoteID",
@@ -8786,25 +17524,18 @@ export const REQUIRED_FIELDS_42: Record<string, string[]> = {
   "V": [
     "MDReqID",
     "SubscriptionRequestType",
-    "MarketDepth",
-    "MDEntryType",
-    "Symbol"
+    "MarketDepth"
   ],
   "W": [
-    "Symbol",
-    "MDEntryType",
-    "MDEntryPx"
+    "Symbol"
   ],
-  "X": [
-    "MDUpdateAction"
-  ],
+  "X": [],
   "Y": [
     "MDReqID"
   ],
   "Z": [
     "QuoteID",
-    "QuoteCancelType",
-    "Symbol"
+    "QuoteCancelType"
   ],
   "a": [
     "Symbol"
@@ -8838,10 +17569,7 @@ export const REQUIRED_FIELDS_42: Record<string, string[]> = {
     "TradSesStatus"
   ],
   "i": [
-    "QuoteID",
-    "QuoteSetID",
-    "UnderlyingSymbol",
-    "TotQuoteEntries"
+    "QuoteID"
   ],
   "j": [
     "RefMsgType",
@@ -8855,15 +17583,10 @@ export const REQUIRED_FIELDS_42: Record<string, string[]> = {
     "TradeType",
     "BasisPxType"
   ],
-  "l": [
-    "Commission",
-    "CommType"
-  ],
+  "l": [],
   "m": [
     "ListID",
-    "TotNoStrikes",
-    "Symbol",
-    "Price"
+    "TotNoStrikes"
   ]
 }
 
@@ -9336,6 +18059,308 @@ export const REQUIRED_FIELDS_44: Record<string, string[]> = {
   ]
 }
 
+export const REQUIRED_FIELDS_TT42: Record<string, string[]> = {
+  "0": [],
+  "1": [
+    "TestReqID"
+  ],
+  "2": [
+    "BeginSeqNo",
+    "EndSeqNo"
+  ],
+  "3": [
+    "RefSeqNum"
+  ],
+  "4": [
+    "NewSeqNo"
+  ],
+  "5": [],
+  "8": [
+    "OrderID",
+    "ExecType",
+    "OrdStatus",
+    "LeavesQty",
+    "CumQty",
+    "AvgPx"
+  ],
+  "9": [
+    "OrderID",
+    "OrdStatus",
+    "CxlRejResponseTo"
+  ],
+  "AB": [
+    "ClOrdID",
+    "Account",
+    "OrderQty",
+    "Side",
+    "OrdType"
+  ],
+  "D": [
+    "ClOrdID",
+    "Account",
+    "OrderQty",
+    "Side",
+    "OrdType"
+  ],
+  "AC": [
+    "ClOrdID",
+    "Account",
+    "OrderQty",
+    "Side",
+    "OrdType"
+  ],
+  "G": [
+    "ClOrdID",
+    "Account",
+    "OrderQty",
+    "Side",
+    "OrdType"
+  ],
+  "F": [
+    "ClOrdID"
+  ],
+  "c": [
+    "SecurityReqID"
+  ],
+  "d": [
+    "SecurityReqID",
+    "SecurityResponseID",
+    "SecurityResponseType",
+    "TotalNumSecurities"
+  ],
+  "e": [
+    "SecurityStatusReqID",
+    "SubscriptionRequestType"
+  ],
+  "f": [
+    "SecurityStatusReqID",
+    "SecurityTradingStatus"
+  ],
+  "V": [
+    "MDReqID",
+    "SubscriptionRequestType"
+  ],
+  "Y": [
+    "MDReqID",
+    "Text"
+  ],
+  "W": [
+    "MDReqID"
+  ],
+  "X": [
+    "MDReqID"
+  ],
+  "R": [],
+  "b": [],
+  "S": [],
+  "AI": [],
+  "AJ": [],
+  "A": [
+    "HeartBtInt"
+  ],
+  "j": [
+    "RefMsgType",
+    "BusinessRejectReason"
+  ],
+  "H": [],
+  "AD": [
+    "SubscriptionRequestType"
+  ],
+  "AQ": [],
+  "AE": [],
+  "AR": [],
+  "B": [
+    "Headline",
+    "LinesOfText",
+    "Text"
+  ],
+  "U2": [],
+  "Q": [
+    "OrderID",
+    "ExecID",
+    "DKReason"
+  ],
+  "J": [
+    "AllocID",
+    "AllocType",
+    "AllocNoOrdersType",
+    "Side",
+    "Quantity",
+    "AvgPx",
+    "TradeDate"
+  ],
+  "P": [
+    "AllocID",
+    "TransactTime",
+    "AllocStatus"
+  ],
+  "AS": [
+    "AllocReportID",
+    "AllocTransType",
+    "AllocReportType",
+    "AllocStatus",
+    "AllocNoOrdersType",
+    "Side",
+    "Quantity",
+    "AvgPx",
+    "TradeDate"
+  ],
+  "E": [
+    "ListID"
+  ]
+}
+
+export const REQUIRED_FIELDS_TT44: Record<string, string[]> = {
+  "0": [],
+  "1": [
+    "TestReqID"
+  ],
+  "2": [
+    "BeginSeqNo",
+    "EndSeqNo"
+  ],
+  "3": [
+    "RefSeqNum"
+  ],
+  "4": [
+    "NewSeqNo"
+  ],
+  "5": [],
+  "8": [
+    "OrderID",
+    "ExecType",
+    "OrdStatus",
+    "LeavesQty",
+    "CumQty",
+    "AvgPx"
+  ],
+  "9": [
+    "OrderID",
+    "OrdStatus",
+    "CxlRejResponseTo"
+  ],
+  "AB": [
+    "ClOrdID",
+    "Account",
+    "OrderQty",
+    "Side",
+    "OrdType"
+  ],
+  "D": [
+    "ClOrdID",
+    "Account",
+    "OrderQty",
+    "Side",
+    "OrdType"
+  ],
+  "AC": [
+    "ClOrdID",
+    "Account",
+    "OrderQty",
+    "Side",
+    "OrdType"
+  ],
+  "G": [
+    "ClOrdID",
+    "Account",
+    "OrderQty",
+    "Side",
+    "OrdType"
+  ],
+  "F": [
+    "ClOrdID"
+  ],
+  "c": [
+    "SecurityReqID"
+  ],
+  "d": [
+    "SecurityReqID",
+    "SecurityResponseID",
+    "SecurityResponseType",
+    "TotalNumSecurities"
+  ],
+  "e": [
+    "SecurityStatusReqID",
+    "SubscriptionRequestType"
+  ],
+  "f": [
+    "SecurityStatusReqID",
+    "SecurityTradingStatus"
+  ],
+  "V": [
+    "MDReqID",
+    "SubscriptionRequestType"
+  ],
+  "Y": [
+    "MDReqID",
+    "Text"
+  ],
+  "W": [
+    "MDReqID"
+  ],
+  "X": [
+    "MDReqID"
+  ],
+  "R": [],
+  "b": [],
+  "S": [],
+  "AI": [],
+  "AJ": [],
+  "A": [
+    "HeartBtInt"
+  ],
+  "j": [
+    "RefMsgType",
+    "BusinessRejectReason"
+  ],
+  "H": [],
+  "AD": [
+    "SubscriptionRequestType"
+  ],
+  "AQ": [],
+  "AE": [],
+  "AR": [],
+  "B": [
+    "Headline",
+    "LinesOfText",
+    "Text"
+  ],
+  "U2": [],
+  "Q": [
+    "OrderID",
+    "ExecID",
+    "DKReason"
+  ],
+  "J": [
+    "AllocID",
+    "AllocType",
+    "AllocNoOrdersType",
+    "Side",
+    "Quantity",
+    "AvgPx",
+    "TradeDate"
+  ],
+  "P": [
+    "AllocID",
+    "TransactTime",
+    "AllocStatus"
+  ],
+  "AS": [
+    "AllocReportID",
+    "AllocTransType",
+    "AllocReportType",
+    "AllocStatus",
+    "AllocNoOrdersType",
+    "Side",
+    "Quantity",
+    "AvgPx",
+    "TradeDate"
+  ],
+  "E": [
+    "ListID"
+  ]
+}
+
 export interface MessageDef {
   msgtype: string
   name: string
@@ -9457,10 +18482,7 @@ export const MESSAGES_42: MessageDef[] = [
       "TransactTime",
       "URLLink",
       "SpreadToBenchmark",
-      "Benchmark",
-      "IOIQualifier",
-      "RoutingType",
-      "RoutingID"
+      "Benchmark"
     ]
   },
   {
@@ -9616,11 +18638,7 @@ export const MESSAGES_42: MessageDef[] = [
       "OrderQty2",
       "ClearingFirm",
       "ClearingAccount",
-      "MultiLegReportingType",
-      "ContraBroker",
-      "ContraTrader",
-      "ContraTradeQty",
-      "ContraTradeTime"
+      "MultiLegReportingType"
     ]
   },
   {
@@ -9664,17 +18682,14 @@ export const MESSAGES_42: MessageDef[] = [
       "RawDataLength",
       "RawData",
       "ResetSeqNumFlag",
-      "MaxMessageSize",
-      "RefMsgType",
-      "MsgDirection"
+      "MaxMessageSize"
     ]
   },
   {
     "msgtype": "B",
     "name": "News",
     "requiredFields": [
-      "Headline",
-      "Text"
+      "Headline"
     ],
     "allFields": [
       "OrigTime",
@@ -9684,31 +18699,7 @@ export const MESSAGES_42: MessageDef[] = [
       "EncodedHeadline",
       "URLLink",
       "RawDataLength",
-      "RawData",
-      "RoutingType",
-      "RoutingID",
-      "RelatdSym",
-      "SymbolSfx",
-      "SecurityID",
-      "IDSource",
-      "SecurityType",
-      "MaturityMonthYear",
-      "MaturityDay",
-      "PutOrCall",
-      "StrikePrice",
-      "OptAttribute",
-      "ContractMultiplier",
-      "CouponRate",
-      "SecurityExchange",
-      "Issuer",
-      "EncodedIssuerLen",
-      "EncodedIssuer",
-      "SecurityDesc",
-      "EncodedSecurityDescLen",
-      "EncodedSecurityDesc",
-      "Text",
-      "EncodedTextLen",
-      "EncodedText"
+      "RawData"
     ]
   },
   {
@@ -9717,8 +18708,7 @@ export const MESSAGES_42: MessageDef[] = [
     "requiredFields": [
       "EmailThreadID",
       "EmailType",
-      "Subject",
-      "Text"
+      "Subject"
     ],
     "allFields": [
       "EmailThreadID",
@@ -9730,31 +18720,7 @@ export const MESSAGES_42: MessageDef[] = [
       "OrderID",
       "ClOrdID",
       "RawDataLength",
-      "RawData",
-      "RoutingType",
-      "RoutingID",
-      "RelatdSym",
-      "SymbolSfx",
-      "SecurityID",
-      "IDSource",
-      "SecurityType",
-      "MaturityMonthYear",
-      "MaturityDay",
-      "PutOrCall",
-      "StrikePrice",
-      "OptAttribute",
-      "ContractMultiplier",
-      "CouponRate",
-      "SecurityExchange",
-      "Issuer",
-      "EncodedIssuerLen",
-      "EncodedIssuer",
-      "SecurityDesc",
-      "EncodedSecurityDescLen",
-      "EncodedSecurityDesc",
-      "Text",
-      "EncodedTextLen",
-      "EncodedText"
+      "RawData"
     ]
   },
   {
@@ -9837,10 +18803,7 @@ export const MESSAGES_42: MessageDef[] = [
       "DiscretionInst",
       "DiscretionOffset",
       "ClearingFirm",
-      "ClearingAccount",
-      "AllocAccount",
-      "AllocShares",
-      "TradingSessionID"
+      "ClearingAccount"
     ]
   },
   {
@@ -9849,11 +18812,7 @@ export const MESSAGES_42: MessageDef[] = [
     "requiredFields": [
       "ListID",
       "BidType",
-      "TotNoOrders",
-      "ClOrdID",
-      "ListSeqNo",
-      "Symbol",
-      "Side"
+      "TotNoOrders"
     ],
     "allFields": [
       "ListID",
@@ -9866,79 +18825,7 @@ export const MESSAGES_42: MessageDef[] = [
       "ListExecInst",
       "EncodedListExecInstLen",
       "EncodedListExecInst",
-      "TotNoOrders",
-      "ClOrdID",
-      "ListSeqNo",
-      "SettlInstMode",
-      "ClientID",
-      "ExecBroker",
-      "Account",
-      "SettlmntTyp",
-      "FutSettDate",
-      "HandlInst",
-      "ExecInst",
-      "MinQty",
-      "MaxFloor",
-      "ExDestination",
-      "ProcessCode",
-      "Symbol",
-      "SymbolSfx",
-      "SecurityID",
-      "IDSource",
-      "SecurityType",
-      "MaturityMonthYear",
-      "MaturityDay",
-      "PutOrCall",
-      "StrikePrice",
-      "OptAttribute",
-      "ContractMultiplier",
-      "CouponRate",
-      "SecurityExchange",
-      "Issuer",
-      "EncodedIssuerLen",
-      "EncodedIssuer",
-      "SecurityDesc",
-      "EncodedSecurityDescLen",
-      "EncodedSecurityDesc",
-      "PrevClosePx",
-      "Side",
-      "SideValueInd",
-      "LocateReqd",
-      "TransactTime",
-      "OrderQty",
-      "CashOrderQty",
-      "OrdType",
-      "Price",
-      "StopPx",
-      "Currency",
-      "ComplianceID",
-      "SolicitedFlag",
-      "IOIid",
-      "QuoteID",
-      "TimeInForce",
-      "EffectiveTime",
-      "ExpireDate",
-      "ExpireTime",
-      "GTBookingInst",
-      "Commission",
-      "CommType",
-      "Rule80A",
-      "ForexReq",
-      "SettlCurrency",
-      "Text",
-      "EncodedTextLen",
-      "EncodedText",
-      "FutSettDate2",
-      "OrderQty2",
-      "OpenClose",
-      "CoveredOrUncovered",
-      "CustomerOrFirm",
-      "MaxShow",
-      "PegDifference",
-      "DiscretionInst",
-      "DiscretionOffset",
-      "ClearingFirm",
-      "ClearingAccount"
+      "TotNoOrders"
     ]
   },
   {
@@ -10069,10 +18956,7 @@ export const MESSAGES_42: MessageDef[] = [
       "MaxShow",
       "LocateReqd",
       "ClearingFirm",
-      "ClearingAccount",
-      "AllocAccount",
-      "AllocShares",
-      "TradingSessionID"
+      "ClearingAccount"
     ]
   },
   {
@@ -10121,8 +19005,7 @@ export const MESSAGES_42: MessageDef[] = [
       "Symbol",
       "Shares",
       "AvgPx",
-      "TradeDate",
-      "AllocShares"
+      "TradeDate"
     ],
     "allFields": [
       "AllocID",
@@ -10167,38 +19050,7 @@ export const MESSAGES_42: MessageDef[] = [
       "EncodedTextLen",
       "EncodedText",
       "NumDaysInterest",
-      "AccruedInterestRate",
-      "ClOrdID",
-      "OrderID",
-      "SecondaryOrderID",
-      "ListID",
-      "WaveNo",
-      "LastShares",
-      "ExecID",
-      "LastPx",
-      "LastCapacity",
-      "AllocAccount",
-      "AllocPrice",
-      "AllocShares",
-      "ProcessCode",
-      "BrokerOfCredit",
-      "NotifyBrokerOfCredit",
-      "AllocHandlInst",
-      "AllocText",
-      "EncodedAllocTextLen",
-      "EncodedAllocText",
-      "ExecBroker",
-      "ClientID",
-      "Commission",
-      "CommType",
-      "AllocAvgPx",
-      "AllocNetMoney",
-      "SettlCurrAmt",
-      "SettlCurrency",
-      "SettlCurrFxRate",
-      "SettlCurrFxRateCalc",
-      "AccruedInterestAmt",
-      "SettlInstMode"
+      "AccruedInterestRate"
     ]
   },
   {
@@ -10255,13 +19107,7 @@ export const MESSAGES_42: MessageDef[] = [
       "NoRpts",
       "ListOrderStatus",
       "RptSeq",
-      "TotNoOrders",
-      "ClOrdID",
-      "CumQty",
-      "OrdStatus",
-      "LeavesQty",
-      "CxlQty",
-      "AvgPx"
+      "TotNoOrders"
     ],
     "allFields": [
       "ListID",
@@ -10273,17 +19119,7 @@ export const MESSAGES_42: MessageDef[] = [
       "EncodedListStatusTextLen",
       "EncodedListStatusText",
       "TransactTime",
-      "TotNoOrders",
-      "ClOrdID",
-      "CumQty",
-      "OrdStatus",
-      "LeavesQty",
-      "CxlQty",
-      "AvgPx",
-      "OrdRejReason",
-      "Text",
-      "EncodedTextLen",
-      "EncodedText"
+      "TotNoOrders"
     ]
   },
   {
@@ -10354,42 +19190,10 @@ export const MESSAGES_42: MessageDef[] = [
     "msgtype": "R",
     "name": "Quote Request",
     "requiredFields": [
-      "QuoteReqID",
-      "Symbol"
+      "QuoteReqID"
     ],
     "allFields": [
-      "QuoteReqID",
-      "Symbol",
-      "SymbolSfx",
-      "SecurityID",
-      "IDSource",
-      "SecurityType",
-      "MaturityMonthYear",
-      "MaturityDay",
-      "PutOrCall",
-      "StrikePrice",
-      "OptAttribute",
-      "ContractMultiplier",
-      "CouponRate",
-      "SecurityExchange",
-      "Issuer",
-      "EncodedIssuerLen",
-      "EncodedIssuer",
-      "SecurityDesc",
-      "EncodedSecurityDescLen",
-      "EncodedSecurityDesc",
-      "PrevClosePx",
-      "QuoteRequestType",
-      "TradingSessionID",
-      "Side",
-      "OrderQty",
-      "FutSettDate",
-      "OrdType",
-      "FutSettDate2",
-      "OrderQty2",
-      "ExpireTime",
-      "TransactTime",
-      "Currency"
+      "QuoteReqID"
     ]
   },
   {
@@ -10497,46 +19301,21 @@ export const MESSAGES_42: MessageDef[] = [
     "requiredFields": [
       "MDReqID",
       "SubscriptionRequestType",
-      "MarketDepth",
-      "MDEntryType",
-      "Symbol"
+      "MarketDepth"
     ],
     "allFields": [
       "MDReqID",
       "SubscriptionRequestType",
       "MarketDepth",
       "MDUpdateType",
-      "AggregatedBook",
-      "MDEntryType",
-      "Symbol",
-      "SymbolSfx",
-      "SecurityID",
-      "IDSource",
-      "SecurityType",
-      "MaturityMonthYear",
-      "MaturityDay",
-      "PutOrCall",
-      "StrikePrice",
-      "OptAttribute",
-      "ContractMultiplier",
-      "CouponRate",
-      "SecurityExchange",
-      "Issuer",
-      "EncodedIssuerLen",
-      "EncodedIssuer",
-      "SecurityDesc",
-      "EncodedSecurityDescLen",
-      "EncodedSecurityDesc",
-      "TradingSessionID"
+      "AggregatedBook"
     ]
   },
   {
     "msgtype": "W",
     "name": "Market Data Snapshot Full Refresh",
     "requiredFields": [
-      "Symbol",
-      "MDEntryType",
-      "MDEntryPx"
+      "Symbol"
     ],
     "allFields": [
       "MDReqID",
@@ -10561,103 +19340,15 @@ export const MESSAGES_42: MessageDef[] = [
       "EncodedSecurityDesc",
       "FinancialStatus",
       "CorporateAction",
-      "TotalVolumeTraded",
-      "MDEntryType",
-      "MDEntryPx",
-      "Currency",
-      "MDEntrySize",
-      "MDEntryDate",
-      "MDEntryTime",
-      "TickDirection",
-      "MDMkt",
-      "TradingSessionID",
-      "QuoteCondition",
-      "TradeCondition",
-      "MDEntryOriginator",
-      "LocationID",
-      "DeskID",
-      "OpenCloseSettleFlag",
-      "TimeInForce",
-      "ExpireDate",
-      "ExpireTime",
-      "MinQty",
-      "ExecInst",
-      "SellerDays",
-      "OrderID",
-      "QuoteEntryID",
-      "MDEntryBuyer",
-      "MDEntrySeller",
-      "NumberOfOrders",
-      "MDEntryPositionNo",
-      "Text",
-      "EncodedTextLen",
-      "EncodedText"
+      "TotalVolumeTraded"
     ]
   },
   {
     "msgtype": "X",
     "name": "Market Data Incremental Refresh",
-    "requiredFields": [
-      "MDUpdateAction"
-    ],
+    "requiredFields": [],
     "allFields": [
-      "MDReqID",
-      "MDUpdateAction",
-      "DeleteReason",
-      "MDEntryType",
-      "MDEntryID",
-      "MDEntryRefID",
-      "Symbol",
-      "SymbolSfx",
-      "SecurityID",
-      "IDSource",
-      "SecurityType",
-      "MaturityMonthYear",
-      "MaturityDay",
-      "PutOrCall",
-      "StrikePrice",
-      "OptAttribute",
-      "ContractMultiplier",
-      "CouponRate",
-      "SecurityExchange",
-      "Issuer",
-      "EncodedIssuerLen",
-      "EncodedIssuer",
-      "SecurityDesc",
-      "EncodedSecurityDescLen",
-      "EncodedSecurityDesc",
-      "FinancialStatus",
-      "CorporateAction",
-      "MDEntryPx",
-      "Currency",
-      "MDEntrySize",
-      "MDEntryDate",
-      "MDEntryTime",
-      "TickDirection",
-      "MDMkt",
-      "TradingSessionID",
-      "QuoteCondition",
-      "TradeCondition",
-      "MDEntryOriginator",
-      "LocationID",
-      "DeskID",
-      "OpenCloseSettleFlag",
-      "TimeInForce",
-      "ExpireDate",
-      "ExpireTime",
-      "MinQty",
-      "ExecInst",
-      "SellerDays",
-      "OrderID",
-      "QuoteEntryID",
-      "MDEntryBuyer",
-      "MDEntrySeller",
-      "NumberOfOrders",
-      "MDEntryPositionNo",
-      "TotalVolumeTraded",
-      "Text",
-      "EncodedTextLen",
-      "EncodedText"
+      "MDReqID"
     ]
   },
   {
@@ -10679,35 +19370,14 @@ export const MESSAGES_42: MessageDef[] = [
     "name": "Quote Cancel",
     "requiredFields": [
       "QuoteID",
-      "QuoteCancelType",
-      "Symbol"
+      "QuoteCancelType"
     ],
     "allFields": [
       "QuoteReqID",
       "QuoteID",
       "QuoteCancelType",
       "QuoteResponseLevel",
-      "TradingSessionID",
-      "Symbol",
-      "SymbolSfx",
-      "SecurityID",
-      "IDSource",
-      "SecurityType",
-      "MaturityMonthYear",
-      "MaturityDay",
-      "PutOrCall",
-      "StrikePrice",
-      "OptAttribute",
-      "ContractMultiplier",
-      "CouponRate",
-      "SecurityExchange",
-      "Issuer",
-      "EncodedIssuerLen",
-      "EncodedIssuer",
-      "SecurityDesc",
-      "EncodedSecurityDescLen",
-      "EncodedSecurityDesc",
-      "UnderlyingSymbol"
+      "TradingSessionID"
     ]
   },
   {
@@ -10754,28 +19424,7 @@ export const MESSAGES_42: MessageDef[] = [
       "QuoteRejectReason",
       "QuoteResponseLevel",
       "TradingSessionID",
-      "Text",
-      "QuoteSetID",
-      "UnderlyingSymbol",
-      "UnderlyingSymbolSfx",
-      "UnderlyingSecurityID",
-      "UnderlyingIDSource",
-      "UnderlyingSecurityType",
-      "UnderlyingMaturityMonthYear",
-      "UnderlyingMaturityDay",
-      "UnderlyingPutOrCall",
-      "UnderlyingStrikePrice",
-      "UnderlyingOptAttribute",
-      "UnderlyingContractMultiplier",
-      "UnderlyingCouponRate",
-      "UnderlyingSecurityExchange",
-      "UnderlyingIssuer",
-      "EncodedUnderlyingIssuerLen",
-      "EncodedUnderlyingIssuer",
-      "UnderlyingSecurityDesc",
-      "EncodedUnderlyingSecurityDescLen",
-      "EncodedUnderlyingSecurityDesc",
-      "TotQuoteEntries"
+      "Text"
     ]
   },
   {
@@ -10811,29 +19460,7 @@ export const MESSAGES_42: MessageDef[] = [
       "Text",
       "EncodedTextLen",
       "EncodedText",
-      "TradingSessionID",
-      "UnderlyingSymbol",
-      "UnderlyingSymbolSfx",
-      "UnderlyingSecurityID",
-      "UnderlyingIDSource",
-      "UnderlyingSecurityType",
-      "UnderlyingMaturityMonthYear",
-      "UnderlyingMaturityDay",
-      "UnderlyingPutOrCall",
-      "UnderlyingStrikePrice",
-      "UnderlyingOptAttribute",
-      "UnderlyingContractMultiplier",
-      "UnderlyingCouponRate",
-      "UnderlyingSecurityExchange",
-      "UnderlyingIssuer",
-      "EncodedUnderlyingIssuerLen",
-      "EncodedUnderlyingIssuer",
-      "UnderlyingSecurityDesc",
-      "EncodedUnderlyingSecurityDescLen",
-      "EncodedUnderlyingSecurityDesc",
-      "RatioQty",
-      "Side",
-      "UnderlyingCurrency"
+      "TradingSessionID"
     ]
   },
   {
@@ -10872,29 +19499,7 @@ export const MESSAGES_42: MessageDef[] = [
       "TradingSessionID",
       "Text",
       "EncodedTextLen",
-      "EncodedText",
-      "UnderlyingSymbol",
-      "UnderlyingSymbolSfx",
-      "UnderlyingSecurityID",
-      "UnderlyingIDSource",
-      "UnderlyingSecurityType",
-      "UnderlyingMaturityMonthYear",
-      "UnderlyingMaturityDay",
-      "UnderlyingPutOrCall",
-      "UnderlyingStrikePrice",
-      "UnderlyingOptAttribute",
-      "UnderlyingContractMultiplier",
-      "UnderlyingCouponRate",
-      "UnderlyingSecurityExchange",
-      "UnderlyingIssuer",
-      "EncodedUnderlyingIssuerLen",
-      "EncodedUnderlyingIssuer",
-      "UnderlyingSecurityDesc",
-      "EncodedUnderlyingSecurityDescLen",
-      "EncodedUnderlyingSecurityDesc",
-      "RatioQty",
-      "Side",
-      "UnderlyingCurrency"
+      "EncodedText"
     ]
   },
   {
@@ -11020,39 +19625,14 @@ export const MESSAGES_42: MessageDef[] = [
     "msgtype": "i",
     "name": "Mass Quote",
     "requiredFields": [
-      "QuoteID",
-      "QuoteSetID",
-      "UnderlyingSymbol",
-      "TotQuoteEntries"
+      "QuoteID"
     ],
     "allFields": [
       "QuoteReqID",
       "QuoteID",
       "QuoteResponseLevel",
       "DefBidSize",
-      "DefOfferSize",
-      "QuoteSetID",
-      "UnderlyingSymbol",
-      "UnderlyingSymbolSfx",
-      "UnderlyingSecurityID",
-      "UnderlyingIDSource",
-      "UnderlyingSecurityType",
-      "UnderlyingMaturityMonthYear",
-      "UnderlyingMaturityDay",
-      "UnderlyingPutOrCall",
-      "UnderlyingStrikePrice",
-      "UnderlyingOptAttribute",
-      "UnderlyingContractMultiplier",
-      "UnderlyingCouponRate",
-      "UnderlyingSecurityExchange",
-      "UnderlyingIssuer",
-      "EncodedUnderlyingIssuerLen",
-      "EncodedUnderlyingIssuer",
-      "UnderlyingSecurityDesc",
-      "EncodedUnderlyingSecurityDescLen",
-      "EncodedUnderlyingSecurityDesc",
-      "QuoteSetValidUntilTime",
-      "TotQuoteEntries"
+      "DefOfferSize"
     ]
   },
   {
@@ -11110,52 +19690,16 @@ export const MESSAGES_42: MessageDef[] = [
       "StrikeTime",
       "Text",
       "EncodedTextLen",
-      "EncodedText",
-      "BidDescriptorType",
-      "BidDescriptor",
-      "SideValueInd",
-      "LiquidityValue",
-      "LiquidityNumSecurities",
-      "LiquidityPctLow",
-      "LiquidityPctHigh",
-      "EFPTrackingError",
-      "FairValue",
-      "OutsideIndexPct",
-      "ValueOfFutures",
-      "ListID",
-      "Side",
-      "TradingSessionID",
-      "NetGrossInd",
-      "SettlmntTyp",
-      "FutSettDate",
-      "Account"
+      "EncodedText"
     ]
   },
   {
     "msgtype": "l",
     "name": "Bid Response",
-    "requiredFields": [
-      "Commission",
-      "CommType"
-    ],
+    "requiredFields": [],
     "allFields": [
       "BidID",
-      "ClientBidID",
-      "Commission",
-      "CommType",
-      "ListID",
-      "Country",
-      "Side",
-      "Price",
-      "PriceType",
-      "FairValue",
-      "NetGrossInd",
-      "SettlmntTyp",
-      "FutSettDate",
-      "TradingSessionID",
-      "Text",
-      "EncodedTextLen",
-      "EncodedText"
+      "ClientBidID"
     ]
   },
   {
@@ -11163,40 +19707,11 @@ export const MESSAGES_42: MessageDef[] = [
     "name": "List Strike Price",
     "requiredFields": [
       "ListID",
-      "TotNoStrikes",
-      "Symbol",
-      "Price"
+      "TotNoStrikes"
     ],
     "allFields": [
       "ListID",
-      "TotNoStrikes",
-      "Symbol",
-      "SymbolSfx",
-      "SecurityID",
-      "IDSource",
-      "SecurityType",
-      "MaturityMonthYear",
-      "MaturityDay",
-      "PutOrCall",
-      "StrikePrice",
-      "OptAttribute",
-      "ContractMultiplier",
-      "CouponRate",
-      "SecurityExchange",
-      "Issuer",
-      "EncodedIssuerLen",
-      "EncodedIssuer",
-      "SecurityDesc",
-      "EncodedSecurityDescLen",
-      "EncodedSecurityDesc",
-      "PrevClosePx",
-      "ClOrdID",
-      "Side",
-      "Price",
-      "Currency",
-      "Text",
-      "EncodedTextLen",
-      "EncodedText"
+      "TotNoStrikes"
     ]
   }
 ]
@@ -11282,8 +19797,63 @@ export const MESSAGES_44: MessageDef[] = [
       "IOIID",
       "IOITransType",
       "IOIRefID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Side",
       "QtyType",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "IOIQty",
       "Currency",
       "PriceType",
@@ -11295,7 +19865,21 @@ export const MESSAGES_44: MessageDef[] = [
       "EncodedTextLen",
       "EncodedText",
       "TransactTime",
-      "URLLink"
+      "URLLink",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType"
     ]
   },
   {
@@ -11311,6 +19895,47 @@ export const MESSAGES_44: MessageDef[] = [
       "AdvId",
       "AdvTransType",
       "AdvRefID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "AdvSide",
       "Quantity",
       "QtyType",
@@ -11375,12 +20000,80 @@ export const MESSAGES_44: MessageDef[] = [
       "SettlDate",
       "CashMargin",
       "ClearingFeeIndicator",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Side",
       "QtyType",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "OrdType",
       "PriceType",
       "Price",
       "StopPx",
+      "PegOffsetValue",
+      "PegMoveType",
+      "PegOffsetType",
+      "PegLimitType",
+      "PegRoundDirection",
+      "PegScope",
+      "DiscretionInst",
+      "DiscretionOffsetValue",
+      "DiscretionMoveType",
+      "DiscretionOffsetType",
+      "DiscretionLimitType",
+      "DiscretionRoundDirection",
+      "DiscretionScope",
       "PeggedPrice",
       "DiscretionPrice",
       "TargetStrategy",
@@ -11420,6 +20113,24 @@ export const MESSAGES_44: MessageDef[] = [
       "TradeDate",
       "TransactTime",
       "ReportToExch",
+      "Commission",
+      "CommType",
+      "CommCurrency",
+      "FundRenewWaiv",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
       "GrossTradeAmt",
       "NumDaysInterest",
       "ExDate",
@@ -11517,9 +20228,7 @@ export const MESSAGES_44: MessageDef[] = [
       "MaxMessageSize",
       "TestMessageIndicator",
       "Username",
-      "Password",
-      "RefMsgType",
-      "MsgDirection"
+      "Password"
     ]
   },
   {
@@ -11592,15 +20301,84 @@ export const MESSAGES_44: MessageDef[] = [
       "MaxFloor",
       "ExDestination",
       "ProcessCode",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "PrevClosePx",
       "Side",
       "LocateReqd",
       "TransactTime",
       "QtyType",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "OrdType",
       "PriceType",
       "Price",
       "StopPx",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
       "Currency",
       "ComplianceID",
       "SolicitedFlag",
@@ -11611,6 +20389,10 @@ export const MESSAGES_44: MessageDef[] = [
       "ExpireDate",
       "ExpireTime",
       "GTBookingInst",
+      "Commission",
+      "CommType",
+      "CommCurrency",
+      "FundRenewWaiv",
       "OrderCapacity",
       "OrderRestrictions",
       "CustOrderCapacity",
@@ -11626,6 +20408,19 @@ export const MESSAGES_44: MessageDef[] = [
       "PositionEffect",
       "CoveredOrUncovered",
       "MaxShow",
+      "PegOffsetValue",
+      "PegMoveType",
+      "PegOffsetType",
+      "PegLimitType",
+      "PegRoundDirection",
+      "PegScope",
+      "DiscretionInst",
+      "DiscretionOffsetValue",
+      "DiscretionMoveType",
+      "DiscretionOffsetType",
+      "DiscretionLimitType",
+      "DiscretionRoundDirection",
+      "DiscretionScope",
       "TargetStrategy",
       "TargetStrategyParameters",
       "ParticipationRate",
@@ -11684,8 +20479,63 @@ export const MESSAGES_44: MessageDef[] = [
       "Account",
       "AcctIDSource",
       "AccountType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Side",
       "TransactTime",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "ComplianceID",
       "Text",
       "EncodedTextLen",
@@ -11728,13 +20578,95 @@ export const MESSAGES_44: MessageDef[] = [
       "MinQty",
       "MaxFloor",
       "ExDestination",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Side",
       "TransactTime",
       "QtyType",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "OrdType",
       "PriceType",
       "Price",
       "StopPx",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
+      "PegOffsetValue",
+      "PegMoveType",
+      "PegOffsetType",
+      "PegLimitType",
+      "PegRoundDirection",
+      "PegScope",
+      "DiscretionInst",
+      "DiscretionOffsetValue",
+      "DiscretionMoveType",
+      "DiscretionOffsetType",
+      "DiscretionLimitType",
+      "DiscretionRoundDirection",
+      "DiscretionScope",
       "TargetStrategy",
       "TargetStrategyParameters",
       "ParticipationRate",
@@ -11746,6 +20678,10 @@ export const MESSAGES_44: MessageDef[] = [
       "ExpireDate",
       "ExpireTime",
       "GTBookingInst",
+      "Commission",
+      "CommType",
+      "CommCurrency",
+      "FundRenewWaiv",
       "OrderCapacity",
       "OrderRestrictions",
       "CustOrderCapacity",
@@ -11783,6 +20719,56 @@ export const MESSAGES_44: MessageDef[] = [
       "OrdStatusReqID",
       "Account",
       "AcctIDSource",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Side"
     ]
   },
@@ -11815,6 +20801,58 @@ export const MESSAGES_44: MessageDef[] = [
       "ReversalIndicator",
       "MatchType",
       "Side",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "DeliveryForm",
+      "PctAtRisk",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Quantity",
       "QtyType",
       "LastMkt",
@@ -11824,6 +20862,14 @@ export const MESSAGES_44: MessageDef[] = [
       "PriceType",
       "AvgPx",
       "AvgParPx",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
       "Currency",
       "AvgPxPrecision",
       "TradeDate",
@@ -11849,6 +20895,12 @@ export const MESSAGES_44: MessageDef[] = [
       "StartCash",
       "EndCash",
       "LegalConfirm",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
       "TotNoAllocs",
       "LastFragment"
     ]
@@ -11964,7 +21016,53 @@ export const MESSAGES_44: MessageDef[] = [
       "SecondaryOrderID",
       "ExecID",
       "DKReason",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "Side",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "LastQty",
       "LastPx",
       "Text",
@@ -12002,7 +21100,62 @@ export const MESSAGES_44: MessageDef[] = [
       "QuoteResponseLevel",
       "TradingSessionID",
       "TradingSessionSubID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Side",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "SettlType",
       "SettlDate",
       "SettlDate2",
@@ -12041,6 +21194,20 @@ export const MESSAGES_44: MessageDef[] = [
       "ExDestination",
       "OrderCapacity",
       "PriceType",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
       "Text",
       "EncodedTextLen",
       "EncodedText"
@@ -12093,6 +21260,47 @@ export const MESSAGES_44: MessageDef[] = [
     "requiredFields": [],
     "allFields": [
       "MDReqID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "FinancialStatus",
       "CorporateAction",
       "NetChgPrevDay",
@@ -12150,6 +21358,56 @@ export const MESSAGES_44: MessageDef[] = [
     "allFields": [
       "QuoteStatusReqID",
       "QuoteID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Account",
       "AcctIDSource",
       "AccountType",
@@ -12189,6 +21447,49 @@ export const MESSAGES_44: MessageDef[] = [
     "allFields": [
       "SecurityReqID",
       "SecurityRequestType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "DeliveryForm",
+      "PctAtRisk",
       "Currency",
       "Text",
       "EncodedTextLen",
@@ -12211,6 +21512,49 @@ export const MESSAGES_44: MessageDef[] = [
       "SecurityReqID",
       "SecurityResponseID",
       "SecurityResponseType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "DeliveryForm",
+      "PctAtRisk",
       "Currency",
       "TradingSessionID",
       "TradingSessionSubID",
@@ -12231,6 +21575,49 @@ export const MESSAGES_44: MessageDef[] = [
     ],
     "allFields": [
       "SecurityStatusReqID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "DeliveryForm",
+      "PctAtRisk",
       "Currency",
       "SubscriptionRequestType",
       "TradingSessionID",
@@ -12243,6 +21630,49 @@ export const MESSAGES_44: MessageDef[] = [
     "requiredFields": [],
     "allFields": [
       "SecurityStatusReqID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "DeliveryForm",
+      "PctAtRisk",
       "Currency",
       "TradingSessionID",
       "TradingSessionSubID",
@@ -12467,6 +21897,92 @@ export const MESSAGES_44: MessageDef[] = [
       "MassCancelRequestType",
       "TradingSessionID",
       "TradingSessionSubID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "UnderlyingSymbol",
+      "UnderlyingSymbolSfx",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingProduct",
+      "UnderlyingCFICode",
+      "UnderlyingSecurityType",
+      "UnderlyingSecuritySubType",
+      "UnderlyingMaturityMonthYear",
+      "UnderlyingMaturityDate",
+      "UnderlyingPutOrCall",
+      "UnderlyingCouponPaymentDate",
+      "UnderlyingIssueDate",
+      "UnderlyingRepoCollateralSecurityType",
+      "UnderlyingRepurchaseTerm",
+      "UnderlyingRepurchaseRate",
+      "UnderlyingFactor",
+      "UnderlyingCreditRating",
+      "UnderlyingInstrRegistry",
+      "UnderlyingCountryOfIssue",
+      "UnderlyingStateOrProvinceOfIssue",
+      "UnderlyingLocaleOfIssue",
+      "UnderlyingRedemptionDate",
+      "UnderlyingStrikePrice",
+      "UnderlyingStrikeCurrency",
+      "UnderlyingOptAttribute",
+      "UnderlyingContractMultiplier",
+      "UnderlyingCouponRate",
+      "UnderlyingSecurityExchange",
+      "UnderlyingIssuer",
+      "EncodedUnderlyingIssuerLen",
+      "EncodedUnderlyingIssuer",
+      "UnderlyingSecurityDesc",
+      "EncodedUnderlyingSecurityDescLen",
+      "EncodedUnderlyingSecurityDesc",
+      "UnderlyingCPProgram",
+      "UnderlyingCPRegType",
+      "UnderlyingCurrency",
+      "UnderlyingQty",
+      "UnderlyingPx",
+      "UnderlyingDirtyPrice",
+      "UnderlyingEndPrice",
+      "UnderlyingStartValue",
+      "UnderlyingCurrentValue",
+      "UnderlyingEndValue",
       "Side",
       "TransactTime",
       "Text",
@@ -12493,6 +22009,92 @@ export const MESSAGES_44: MessageDef[] = [
       "TotalAffectedOrders",
       "TradingSessionID",
       "TradingSessionSubID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "UnderlyingSymbol",
+      "UnderlyingSymbolSfx",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingProduct",
+      "UnderlyingCFICode",
+      "UnderlyingSecurityType",
+      "UnderlyingSecuritySubType",
+      "UnderlyingMaturityMonthYear",
+      "UnderlyingMaturityDate",
+      "UnderlyingPutOrCall",
+      "UnderlyingCouponPaymentDate",
+      "UnderlyingIssueDate",
+      "UnderlyingRepoCollateralSecurityType",
+      "UnderlyingRepurchaseTerm",
+      "UnderlyingRepurchaseRate",
+      "UnderlyingFactor",
+      "UnderlyingCreditRating",
+      "UnderlyingInstrRegistry",
+      "UnderlyingCountryOfIssue",
+      "UnderlyingStateOrProvinceOfIssue",
+      "UnderlyingLocaleOfIssue",
+      "UnderlyingRedemptionDate",
+      "UnderlyingStrikePrice",
+      "UnderlyingStrikeCurrency",
+      "UnderlyingOptAttribute",
+      "UnderlyingContractMultiplier",
+      "UnderlyingCouponRate",
+      "UnderlyingSecurityExchange",
+      "UnderlyingIssuer",
+      "EncodedUnderlyingIssuerLen",
+      "EncodedUnderlyingIssuer",
+      "UnderlyingSecurityDesc",
+      "EncodedUnderlyingSecurityDescLen",
+      "EncodedUnderlyingSecurityDesc",
+      "UnderlyingCPProgram",
+      "UnderlyingCPRegType",
+      "UnderlyingCurrency",
+      "UnderlyingQty",
+      "UnderlyingPx",
+      "UnderlyingDirtyPrice",
+      "UnderlyingEndPrice",
+      "UnderlyingStartValue",
+      "UnderlyingCurrentValue",
+      "UnderlyingEndValue",
       "Side",
       "TransactTime",
       "Text",
@@ -12514,6 +22116,47 @@ export const MESSAGES_44: MessageDef[] = [
       "CrossID",
       "CrossType",
       "CrossPrioritization",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "SettlType",
       "SettlDate",
       "HandlInst",
@@ -12529,6 +22172,20 @@ export const MESSAGES_44: MessageDef[] = [
       "PriceType",
       "Price",
       "StopPx",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
       "Currency",
       "ComplianceID",
       "IOIID",
@@ -12539,6 +22196,19 @@ export const MESSAGES_44: MessageDef[] = [
       "ExpireTime",
       "GTBookingInst",
       "MaxShow",
+      "PegOffsetValue",
+      "PegMoveType",
+      "PegOffsetType",
+      "PegLimitType",
+      "PegRoundDirection",
+      "PegScope",
+      "DiscretionInst",
+      "DiscretionOffsetValue",
+      "DiscretionMoveType",
+      "DiscretionOffsetType",
+      "DiscretionLimitType",
+      "DiscretionRoundDirection",
+      "DiscretionScope",
       "TargetStrategy",
       "TargetStrategyParameters",
       "ParticipationRate",
@@ -12565,6 +22235,47 @@ export const MESSAGES_44: MessageDef[] = [
       "OrigCrossID",
       "CrossType",
       "CrossPrioritization",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "SettlType",
       "SettlDate",
       "HandlInst",
@@ -12580,6 +22291,20 @@ export const MESSAGES_44: MessageDef[] = [
       "PriceType",
       "Price",
       "StopPx",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
       "Currency",
       "ComplianceID",
       "IOIID",
@@ -12590,6 +22315,19 @@ export const MESSAGES_44: MessageDef[] = [
       "ExpireTime",
       "GTBookingInst",
       "MaxShow",
+      "PegOffsetValue",
+      "PegMoveType",
+      "PegOffsetType",
+      "PegLimitType",
+      "PegRoundDirection",
+      "PegScope",
+      "DiscretionInst",
+      "DiscretionOffsetValue",
+      "DiscretionMoveType",
+      "DiscretionOffsetType",
+      "DiscretionLimitType",
+      "DiscretionRoundDirection",
+      "DiscretionScope",
       "TargetStrategy",
       "TargetStrategyParameters",
       "ParticipationRate",
@@ -12615,6 +22353,47 @@ export const MESSAGES_44: MessageDef[] = [
       "OrigCrossID",
       "CrossType",
       "CrossPrioritization",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "TransactTime"
     ]
   },
@@ -12668,6 +22447,58 @@ export const MESSAGES_44: MessageDef[] = [
     "allFields": [
       "SecurityReqID",
       "SecurityListRequestType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "DeliveryForm",
+      "PctAtRisk",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Currency",
       "Text",
       "EncodedTextLen",
@@ -12703,6 +22534,51 @@ export const MESSAGES_44: MessageDef[] = [
     "allFields": [
       "SecurityReqID",
       "SecurityListRequestType",
+      "UnderlyingSymbol",
+      "UnderlyingSymbolSfx",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingProduct",
+      "UnderlyingCFICode",
+      "UnderlyingSecurityType",
+      "UnderlyingSecuritySubType",
+      "UnderlyingMaturityMonthYear",
+      "UnderlyingMaturityDate",
+      "UnderlyingPutOrCall",
+      "UnderlyingCouponPaymentDate",
+      "UnderlyingIssueDate",
+      "UnderlyingRepoCollateralSecurityType",
+      "UnderlyingRepurchaseTerm",
+      "UnderlyingRepurchaseRate",
+      "UnderlyingFactor",
+      "UnderlyingCreditRating",
+      "UnderlyingInstrRegistry",
+      "UnderlyingCountryOfIssue",
+      "UnderlyingStateOrProvinceOfIssue",
+      "UnderlyingLocaleOfIssue",
+      "UnderlyingRedemptionDate",
+      "UnderlyingStrikePrice",
+      "UnderlyingStrikeCurrency",
+      "UnderlyingOptAttribute",
+      "UnderlyingContractMultiplier",
+      "UnderlyingCouponRate",
+      "UnderlyingSecurityExchange",
+      "UnderlyingIssuer",
+      "EncodedUnderlyingIssuerLen",
+      "EncodedUnderlyingIssuer",
+      "UnderlyingSecurityDesc",
+      "EncodedUnderlyingSecurityDescLen",
+      "EncodedUnderlyingSecurityDesc",
+      "UnderlyingCPProgram",
+      "UnderlyingCPRegType",
+      "UnderlyingCurrency",
+      "UnderlyingQty",
+      "UnderlyingPx",
+      "UnderlyingDirtyPrice",
+      "UnderlyingEndPrice",
+      "UnderlyingStartValue",
+      "UnderlyingCurrentValue",
+      "UnderlyingEndValue",
       "SecuritySubType",
       "Currency",
       "Text",
@@ -12725,6 +22601,51 @@ export const MESSAGES_44: MessageDef[] = [
       "SecurityReqID",
       "SecurityResponseID",
       "SecurityRequestResult",
+      "UnderlyingSymbol",
+      "UnderlyingSymbolSfx",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingProduct",
+      "UnderlyingCFICode",
+      "UnderlyingSecurityType",
+      "UnderlyingSecuritySubType",
+      "UnderlyingMaturityMonthYear",
+      "UnderlyingMaturityDate",
+      "UnderlyingPutOrCall",
+      "UnderlyingCouponPaymentDate",
+      "UnderlyingIssueDate",
+      "UnderlyingRepoCollateralSecurityType",
+      "UnderlyingRepurchaseTerm",
+      "UnderlyingRepurchaseRate",
+      "UnderlyingFactor",
+      "UnderlyingCreditRating",
+      "UnderlyingInstrRegistry",
+      "UnderlyingCountryOfIssue",
+      "UnderlyingStateOrProvinceOfIssue",
+      "UnderlyingLocaleOfIssue",
+      "UnderlyingRedemptionDate",
+      "UnderlyingStrikePrice",
+      "UnderlyingStrikeCurrency",
+      "UnderlyingOptAttribute",
+      "UnderlyingContractMultiplier",
+      "UnderlyingCouponRate",
+      "UnderlyingSecurityExchange",
+      "UnderlyingIssuer",
+      "EncodedUnderlyingIssuerLen",
+      "EncodedUnderlyingIssuer",
+      "UnderlyingSecurityDesc",
+      "EncodedUnderlyingSecurityDescLen",
+      "EncodedUnderlyingSecurityDesc",
+      "UnderlyingCPProgram",
+      "UnderlyingCPRegType",
+      "UnderlyingCurrency",
+      "UnderlyingQty",
+      "UnderlyingPx",
+      "UnderlyingDirtyPrice",
+      "UnderlyingEndPrice",
+      "UnderlyingStartValue",
+      "UnderlyingCurrentValue",
+      "UnderlyingEndValue",
       "TotNoRelatedSym",
       "LastFragment"
     ]
@@ -12762,10 +22683,56 @@ export const MESSAGES_44: MessageDef[] = [
       "ExDestination",
       "ProcessCode",
       "Side",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "PrevClosePx",
       "LocateReqd",
       "TransactTime",
       "QtyType",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "OrdType",
       "PriceType",
       "Price",
@@ -12780,6 +22747,10 @@ export const MESSAGES_44: MessageDef[] = [
       "ExpireDate",
       "ExpireTime",
       "GTBookingInst",
+      "Commission",
+      "CommType",
+      "CommCurrency",
+      "FundRenewWaiv",
       "OrderCapacity",
       "OrderRestrictions",
       "CustOrderCapacity",
@@ -12792,6 +22763,19 @@ export const MESSAGES_44: MessageDef[] = [
       "PositionEffect",
       "CoveredOrUncovered",
       "MaxShow",
+      "PegOffsetValue",
+      "PegMoveType",
+      "PegOffsetType",
+      "PegLimitType",
+      "PegRoundDirection",
+      "PegScope",
+      "DiscretionInst",
+      "DiscretionOffsetValue",
+      "DiscretionMoveType",
+      "DiscretionOffsetType",
+      "DiscretionLimitType",
+      "DiscretionRoundDirection",
+      "DiscretionScope",
       "TargetStrategy",
       "TargetStrategyParameters",
       "ParticipationRate",
@@ -12839,10 +22823,56 @@ export const MESSAGES_44: MessageDef[] = [
       "ExDestination",
       "ProcessCode",
       "Side",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "PrevClosePx",
       "LocateReqd",
       "TransactTime",
       "QtyType",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "OrdType",
       "PriceType",
       "Price",
@@ -12857,6 +22887,10 @@ export const MESSAGES_44: MessageDef[] = [
       "ExpireDate",
       "ExpireTime",
       "GTBookingInst",
+      "Commission",
+      "CommType",
+      "CommCurrency",
+      "FundRenewWaiv",
       "OrderCapacity",
       "OrderRestrictions",
       "CustOrderCapacity",
@@ -12869,6 +22903,19 @@ export const MESSAGES_44: MessageDef[] = [
       "PositionEffect",
       "CoveredOrUncovered",
       "MaxShow",
+      "PegOffsetValue",
+      "PegMoveType",
+      "PegOffsetType",
+      "PegLimitType",
+      "PegRoundDirection",
+      "PegScope",
+      "DiscretionInst",
+      "DiscretionOffsetValue",
+      "DiscretionMoveType",
+      "DiscretionOffsetType",
+      "DiscretionLimitType",
+      "DiscretionRoundDirection",
+      "DiscretionScope",
       "TargetStrategy",
       "TargetStrategyParameters",
       "ParticipationRate",
@@ -12903,6 +22950,58 @@ export const MESSAGES_44: MessageDef[] = [
       "SecondaryTrdType",
       "TradeLinkID",
       "TrdMatchID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "DeliveryForm",
+      "PctAtRisk",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "ClearingBusinessDate",
       "TradingSessionID",
       "TradingSessionSubID",
@@ -12954,7 +23053,68 @@ export const MESSAGES_44: MessageDef[] = [
       "ExecRestatementReason",
       "PreviouslyReported",
       "PriceType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "QtyType",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
       "UnderlyingTradingSessionID",
       "UnderlyingTradingSessionSubID",
       "LastQty",
@@ -12966,6 +23126,14 @@ export const MESSAGES_44: MessageDef[] = [
       "TradeDate",
       "ClearingBusinessDate",
       "AvgPx",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
       "AvgPxIndicator",
       "MultiLegReportingType",
       "TradeLegRefID",
@@ -12993,6 +23161,92 @@ export const MESSAGES_44: MessageDef[] = [
       "AcctIDSource",
       "TradingSessionID",
       "TradingSessionSubID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "UnderlyingSymbol",
+      "UnderlyingSymbolSfx",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingProduct",
+      "UnderlyingCFICode",
+      "UnderlyingSecurityType",
+      "UnderlyingSecuritySubType",
+      "UnderlyingMaturityMonthYear",
+      "UnderlyingMaturityDate",
+      "UnderlyingPutOrCall",
+      "UnderlyingCouponPaymentDate",
+      "UnderlyingIssueDate",
+      "UnderlyingRepoCollateralSecurityType",
+      "UnderlyingRepurchaseTerm",
+      "UnderlyingRepurchaseRate",
+      "UnderlyingFactor",
+      "UnderlyingCreditRating",
+      "UnderlyingInstrRegistry",
+      "UnderlyingCountryOfIssue",
+      "UnderlyingStateOrProvinceOfIssue",
+      "UnderlyingLocaleOfIssue",
+      "UnderlyingRedemptionDate",
+      "UnderlyingStrikePrice",
+      "UnderlyingStrikeCurrency",
+      "UnderlyingOptAttribute",
+      "UnderlyingContractMultiplier",
+      "UnderlyingCouponRate",
+      "UnderlyingSecurityExchange",
+      "UnderlyingIssuer",
+      "EncodedUnderlyingIssuerLen",
+      "EncodedUnderlyingIssuer",
+      "UnderlyingSecurityDesc",
+      "EncodedUnderlyingSecurityDescLen",
+      "EncodedUnderlyingSecurityDesc",
+      "UnderlyingCPProgram",
+      "UnderlyingCPRegType",
+      "UnderlyingCurrency",
+      "UnderlyingQty",
+      "UnderlyingPx",
+      "UnderlyingDirtyPrice",
+      "UnderlyingEndPrice",
+      "UnderlyingStartValue",
+      "UnderlyingCurrentValue",
+      "UnderlyingEndValue",
       "Side"
     ]
   },
@@ -13037,7 +23291,62 @@ export const MESSAGES_44: MessageDef[] = [
       "QuoteType",
       "TradingSessionID",
       "TradingSessionSubID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Side",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "SettlType",
       "SettlDate",
       "SettlDate2",
@@ -13049,6 +23358,20 @@ export const MESSAGES_44: MessageDef[] = [
       "ExpireTime",
       "Price",
       "PriceType",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
       "BidPx",
       "OfferPx",
       "MktBidPx",
@@ -13100,7 +23423,62 @@ export const MESSAGES_44: MessageDef[] = [
       "QuoteType",
       "TradingSessionID",
       "TradingSessionSubID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Side",
+      "OrderQty",
+      "CashOrderQty",
+      "OrderPercent",
+      "RoundingDirection",
+      "RoundingModulus",
       "SettlType",
       "SettlDate",
       "SettlDate2",
@@ -13141,7 +23519,21 @@ export const MESSAGES_44: MessageDef[] = [
       "EncodedTextLen",
       "EncodedText",
       "Price",
-      "PriceType"
+      "PriceType",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType"
     ]
   },
   {
@@ -13175,6 +23567,64 @@ export const MESSAGES_44: MessageDef[] = [
       "IndividualAllocID",
       "TransactTime",
       "TradeDate",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "DeliveryForm",
+      "PctAtRisk",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
       "AllocQty",
       "QtyType",
       "Side",
@@ -13187,6 +23637,14 @@ export const MESSAGES_44: MessageDef[] = [
       "AvgPxPrecision",
       "PriceType",
       "AvgParPx",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
       "ReportedPx",
       "Text",
       "EncodedTextLen",
@@ -13211,6 +23669,14 @@ export const MESSAGES_44: MessageDef[] = [
       "SettlCurrFxRateCalc",
       "SettlType",
       "SettlDate",
+      "SettlDeliveryType",
+      "StandInstDbType",
+      "StandInstDbName",
+      "StandInstDbID",
+      "Commission",
+      "CommType",
+      "CommCurrency",
+      "FundRenewWaiv",
       "SharedCommission"
     ]
   },
@@ -13238,6 +23704,47 @@ export const MESSAGES_44: MessageDef[] = [
       "Account",
       "AcctIDSource",
       "AccountType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "Currency",
       "TransactTime",
       "AdjustmentType",
@@ -13277,6 +23784,47 @@ export const MESSAGES_44: MessageDef[] = [
       "Account",
       "AcctIDSource",
       "AccountType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "Currency",
       "TransactTime",
       "AdjustmentType",
@@ -13305,6 +23853,47 @@ export const MESSAGES_44: MessageDef[] = [
       "Account",
       "AcctIDSource",
       "AccountType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "Currency",
       "ClearingBusinessDate",
       "SettlSessID",
@@ -13337,6 +23926,47 @@ export const MESSAGES_44: MessageDef[] = [
       "Account",
       "AcctIDSource",
       "AccountType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "Currency",
       "ResponseTransportType",
       "ResponseDestination",
@@ -13372,6 +24002,47 @@ export const MESSAGES_44: MessageDef[] = [
       "Account",
       "AcctIDSource",
       "AccountType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "Currency",
       "SettlPrice",
       "SettlPriceType",
@@ -13399,6 +24070,47 @@ export const MESSAGES_44: MessageDef[] = [
       "TotNumTradeReports",
       "TradeRequestResult",
       "TradeRequestStatus",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "MultiLegReportingType",
       "ResponseTransportType",
       "ResponseDestination",
@@ -13433,6 +24145,47 @@ export const MESSAGES_44: MessageDef[] = [
       "TrdMatchID",
       "ExecID",
       "SecondaryExecID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "TransactTime",
       "ResponseTransportType",
       "ResponseDestination",
@@ -13484,6 +24237,58 @@ export const MESSAGES_44: MessageDef[] = [
       "ReversalIndicator",
       "MatchType",
       "Side",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "DeliveryForm",
+      "PctAtRisk",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "Quantity",
       "QtyType",
       "LastMkt",
@@ -13493,6 +24298,14 @@ export const MESSAGES_44: MessageDef[] = [
       "PriceType",
       "AvgPx",
       "AvgParPx",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
       "Currency",
       "AvgPxPrecision",
       "TradeDate",
@@ -13518,6 +24331,12 @@ export const MESSAGES_44: MessageDef[] = [
       "StartCash",
       "EndCash",
       "LegalConfirm",
+      "YieldType",
+      "Yield",
+      "YieldCalcDate",
+      "YieldRedemptionDate",
+      "YieldRedemptionPrice",
+      "YieldRedemptionPriceType",
       "TotNoAllocs",
       "LastFragment"
     ]
@@ -13616,6 +24435,47 @@ export const MESSAGES_44: MessageDef[] = [
       "LastRptRequested",
       "Account",
       "AccountType",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
       "Currency",
       "ThresholdAmount",
       "SettlPrice",
@@ -13653,6 +24513,56 @@ export const MESSAGES_44: MessageDef[] = [
       "OrderID",
       "SecondaryOrderID",
       "SecondaryClOrdID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "SettlDate",
       "Quantity",
       "QtyType",
@@ -13667,6 +24577,14 @@ export const MESSAGES_44: MessageDef[] = [
       "EndAccruedInterestAmt",
       "StartCash",
       "EndCash",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
       "TradingSessionID",
       "TradingSessionSubID",
       "SettlSessID",
@@ -13700,6 +24618,56 @@ export const MESSAGES_44: MessageDef[] = [
       "OrderID",
       "SecondaryOrderID",
       "SecondaryClOrdID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "SettlDate",
       "Quantity",
       "QtyType",
@@ -13714,6 +24682,18 @@ export const MESSAGES_44: MessageDef[] = [
       "EndAccruedInterestAmt",
       "StartCash",
       "EndCash",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "SettlDeliveryType",
+      "StandInstDbType",
+      "StandInstDbName",
+      "StandInstDbID",
       "TradingSessionID",
       "TradingSessionSubID",
       "SettlSessID",
@@ -13749,6 +24729,56 @@ export const MESSAGES_44: MessageDef[] = [
       "OrderID",
       "SecondaryOrderID",
       "SecondaryClOrdID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "SettlDate",
       "Quantity",
       "QtyType",
@@ -13763,6 +24793,14 @@ export const MESSAGES_44: MessageDef[] = [
       "EndAccruedInterestAmt",
       "StartCash",
       "EndCash",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
       "Text",
       "EncodedTextLen",
       "EncodedText"
@@ -13787,6 +24825,56 @@ export const MESSAGES_44: MessageDef[] = [
       "OrderID",
       "SecondaryOrderID",
       "SecondaryClOrdID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "SettlDate",
       "Quantity",
       "QtyType",
@@ -13801,6 +24889,18 @@ export const MESSAGES_44: MessageDef[] = [
       "EndAccruedInterestAmt",
       "StartCash",
       "EndCash",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "SettlDeliveryType",
+      "StandInstDbType",
+      "StandInstDbName",
+      "StandInstDbID",
       "TradingSessionID",
       "TradingSessionSubID",
       "SettlSessID",
@@ -13826,6 +24926,56 @@ export const MESSAGES_44: MessageDef[] = [
       "OrderID",
       "SecondaryOrderID",
       "SecondaryClOrdID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "SettlDate",
       "Quantity",
       "QtyType",
@@ -13840,6 +24990,18 @@ export const MESSAGES_44: MessageDef[] = [
       "EndAccruedInterestAmt",
       "StartCash",
       "EndCash",
+      "Spread",
+      "BenchmarkCurveCurrency",
+      "BenchmarkCurveName",
+      "BenchmarkCurvePoint",
+      "BenchmarkPrice",
+      "BenchmarkPriceType",
+      "BenchmarkSecurityID",
+      "BenchmarkSecurityIDSource",
+      "SettlDeliveryType",
+      "StandInstDbType",
+      "StandInstDbName",
+      "StandInstDbID",
       "TradingSessionID",
       "TradingSessionSubID",
       "SettlSessID",
@@ -13926,6 +25088,56 @@ export const MESSAGES_44: MessageDef[] = [
       "OrderID",
       "SecondaryOrderID",
       "SecondaryClOrdID",
+      "Symbol",
+      "SymbolSfx",
+      "SecurityID",
+      "SecurityIDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "PutOrCall",
+      "CouponPaymentDate",
+      "IssueDate",
+      "RepoCollateralSecurityType",
+      "RepurchaseTerm",
+      "RepurchaseRate",
+      "Factor",
+      "CreditRating",
+      "InstrRegistry",
+      "CountryOfIssue",
+      "StateOrProvinceOfIssue",
+      "LocaleOfIssue",
+      "RedemptionDate",
+      "StrikePrice",
+      "StrikeCurrency",
+      "OptAttribute",
+      "ContractMultiplier",
+      "CouponRate",
+      "SecurityExchange",
+      "Issuer",
+      "EncodedIssuerLen",
+      "EncodedIssuer",
+      "SecurityDesc",
+      "EncodedSecurityDescLen",
+      "EncodedSecurityDesc",
+      "Pool",
+      "ContractSettlMonth",
+      "CPProgram",
+      "CPRegType",
+      "DatedDate",
+      "InterestAccrualDate",
+      "AgreementDesc",
+      "AgreementID",
+      "AgreementDate",
+      "AgreementCurrency",
+      "TerminationType",
+      "StartDate",
+      "EndDate",
+      "DeliveryType",
+      "MarginRatio",
       "SettlDate",
       "Quantity",
       "QtyType",
@@ -13963,6 +25175,4316 @@ export const MESSAGES_44: MessageDef[] = [
       "Text",
       "EncodedTextLen",
       "EncodedText"
+    ]
+  }
+]
+
+export const MESSAGES_TT42: MessageDef[] = [
+  {
+    "msgtype": "0",
+    "name": "Heartbeat",
+    "requiredFields": [],
+    "allFields": [
+      "TestReqID"
+    ]
+  },
+  {
+    "msgtype": "1",
+    "name": "Test Request",
+    "requiredFields": [
+      "TestReqID"
+    ],
+    "allFields": [
+      "TestReqID"
+    ]
+  },
+  {
+    "msgtype": "2",
+    "name": "Resend Request",
+    "requiredFields": [
+      "BeginSeqNo",
+      "EndSeqNo"
+    ],
+    "allFields": [
+      "BeginSeqNo",
+      "EndSeqNo"
+    ]
+  },
+  {
+    "msgtype": "3",
+    "name": "Reject",
+    "requiredFields": [
+      "RefSeqNum"
+    ],
+    "allFields": [
+      "RefSeqNum",
+      "RefTagID",
+      "RefMsgType",
+      "SessionRejectReason",
+      "Text",
+      "StartSequenceNumber"
+    ]
+  },
+  {
+    "msgtype": "4",
+    "name": "Sequence Reset",
+    "requiredFields": [
+      "NewSeqNo"
+    ],
+    "allFields": [
+      "GapFillFlag",
+      "NewSeqNo"
+    ]
+  },
+  {
+    "msgtype": "5",
+    "name": "Logout",
+    "requiredFields": [],
+    "allFields": [
+      "Text",
+      "ForceLogout",
+      "NextExpectedMsgSeqNum"
+    ]
+  },
+  {
+    "msgtype": "8",
+    "name": "Execution Report",
+    "requiredFields": [
+      "OrderID",
+      "ExecType",
+      "OrdStatus",
+      "LeavesQty",
+      "CumQty",
+      "AvgPx"
+    ],
+    "allFields": [
+      "OrderID",
+      "SecondaryOrderID",
+      "SecondaryClOrdID",
+      "SecondaryExecID",
+      "ClOrdID",
+      "OrigClOrdID",
+      "TTClOrdID",
+      "ExecID",
+      "ExecTransType",
+      "ExecRefID",
+      "ExecType",
+      "ExecInst",
+      "OrdStatus",
+      "OrdRejReason",
+      "ExecRestatementReason",
+      "Account",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Side",
+      "OrderQty",
+      "OrdType",
+      "Price",
+      "StopPx",
+      "TimeInForce",
+      "ExpireDate",
+      "ClearingAccount",
+      "LastShares",
+      "LastPx",
+      "LeavesQty",
+      "CumQty",
+      "AvgPx",
+      "TradeDate",
+      "TransactTime",
+      "MinQty",
+      "LiquidityIndicator",
+      "OpenClose",
+      "DisplayQty",
+      "RefreshQty",
+      "Text",
+      "MultiLegReportingType",
+      "ManualOrderIndicator",
+      "ExchCred",
+      "OrderCapacity",
+      "CustOrderCapacity",
+      "ContingencyType",
+      "TTID",
+      "TrdType",
+      "TrdMatchID",
+      "CrossID",
+      "CrossType",
+      "TradeReportID",
+      "AOTCPreventionActionType",
+      "TotalNumOrders",
+      "BrokerID",
+      "CompanyID",
+      "LastParPx",
+      "HandlInst",
+      "StagedOrderMsg",
+      "StagedOrderOwner",
+      "StagedOrderStatus",
+      "ExternalSource",
+      "AggressorIndicator",
+      "EffectiveTime",
+      "ExpireTime",
+      "TextTTModifyingUser",
+      "TargetStrategyName",
+      "TargetStrategyType",
+      "BracketOrderType",
+      "BracketStopLimitOffset",
+      "ChildTIF",
+      "DiscVal",
+      "DiscValType",
+      "ETimeAct",
+      "Interval",
+      "IsTrlTrg",
+      "LeftoverAction",
+      "LeftoverTicks",
+      "LimitPriceType",
+      "LimitTicksAway",
+      "OcoStopTriggerPrice",
+      "ProfitTarget",
+      "StopLimitOffset",
+      "StopOrderType",
+      "StopTarget",
+      "TriggerPriceType",
+      "TriggerTicksAway",
+      "TriggerType",
+      "WithATickType",
+      "WithATick",
+      "AllocID",
+      "RefID",
+      "ClearingAccountOverride",
+      "DropCopyOrder",
+      "OrderOrigination",
+      "TrdRegPublicationReason",
+      "TradingVenueRegulatoryTradeID",
+      "LastLiquidityIndicator",
+      "OrderIDGUID",
+      "TextTT",
+      "TextA",
+      "TextB",
+      "TextC",
+      "TimeReceivedFromExchange",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "SelfMatchPreventionID",
+      "SelfMatchPreventionIDICE",
+      "SelfMatchPreventionInstruction",
+      "SMPInstruction",
+      "OrderSource",
+      "UniqueExecID",
+      "SpreadLegRatioQty",
+      "LastMkt",
+      "AccountRiskGroup",
+      "MlegHeadExecId",
+      "OrdStatusReqID",
+      "TTCustomerName",
+      "AccountID",
+      "UserID",
+      "InvestmentDecision",
+      "DirectElectronicAccess",
+      "TradingCapacity",
+      "LiquidityProvision",
+      "OriginalSecondaryExecID",
+      "MiFIDID",
+      "ExecutionDecision",
+      "ClientIDCode",
+      "TTSyntheticType",
+      "VendorDefinedField1",
+      "VendorDefinedField2",
+      "VendorDefinedField3",
+      "VendorDefinedField4",
+      "VendorDefinedField5",
+      "CustOrderHandlingInst",
+      "Organization",
+      "MockOrderFlag",
+      "MaxShow",
+      "ReviewUserID",
+      "ReviewStatus",
+      "UniqueLegID",
+      "OrderRestriction",
+      "LeftoverMktOrderLimitTicks",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "LastTradingDate",
+      "TradingStrategy",
+      "ReverseSpreadOC",
+      "MaxPart",
+      "MaxDisp",
+      "TwapStyle",
+      "WouldIfPrc",
+      "LimitPrc",
+      "IntentToCross",
+      "TTSMPID",
+      "TTSMPInstruction",
+      "NVDR",
+      "TTF",
+      "TFUserType",
+      "DynamicEndTime",
+      "UnderlyingSymbol",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingSecurityType",
+      "UnderlyingPx",
+      "UnderlyingQty",
+      "UnderlyingMaturityDate",
+      "UnderlyingIssuer",
+      "UnderlyingCurrency",
+      "UnderlyingMemo",
+      "UnderlyingStrikePrice",
+      "UnderlyingSpotRate",
+      "UnderlyingSecuritySubType",
+      "MemoFieldICE",
+      "SettlDate",
+      "IfTouchedPrice",
+      "IWouldPrice",
+      "IsFirm",
+      "FixingDate",
+      "FixingSource",
+      "ReportingParty",
+      "TradeID",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "SettlType",
+      "QuoteId",
+      "LastSpotRate",
+      "LastForwardPoints",
+      "RejectSource",
+      "TotalNumSecurities",
+      "InsertTime",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "9",
+    "name": "Order Cancel Reject",
+    "requiredFields": [
+      "OrderID",
+      "OrdStatus",
+      "CxlRejResponseTo"
+    ],
+    "allFields": [
+      "OrderID",
+      "SecondaryOrderID",
+      "ClOrdID",
+      "TTClOrdID",
+      "OrigClOrdID",
+      "OrdStatus",
+      "Account",
+      "TransactTime",
+      "CxlRejResponseTo",
+      "CxlRejReason",
+      "Text",
+      "TTID",
+      "AOTCPreventionActionType",
+      "BrokerID",
+      "CompanyID",
+      "HandlInst",
+      "StagedOrderMsg",
+      "StagedOrderOwner",
+      "StagedOrderStatus",
+      "ExternalSource",
+      "OrderIDGUID",
+      "ClearingAccountOverride",
+      "TextTT",
+      "TextA",
+      "TextB",
+      "TextC",
+      "TimeReceivedFromExchange",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "OrderCapacity",
+      "OrderOrigination",
+      "OrderSource",
+      "AccountID",
+      "UserID",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "LastMkt",
+      "AllocID",
+      "CustOrderHandlingInst",
+      "TTSyntheticType",
+      "TTCustomerName",
+      "Organization",
+      "MockOrderFlag",
+      "ExchCred",
+      "MaxShow",
+      "UniqueLegID",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "TTSMPID",
+      "TTSMPInstruction",
+      "TFUserType",
+      "NVDR",
+      "TTF",
+      "DynamicEndTime",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "SelfMatchPreventionID",
+      "RejectSource",
+      "InsertTime",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "AB",
+    "name": "New Order Multileg",
+    "requiredFields": [
+      "ClOrdID",
+      "Account",
+      "OrderQty",
+      "Side",
+      "OrdType"
+    ],
+    "allFields": [
+      "ClOrdID",
+      "TransactTime",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Account",
+      "SecondaryAccount",
+      "Price",
+      "StopPx",
+      "OrderQty",
+      "MinQty",
+      "DisplayQty",
+      "Side",
+      "OrdType",
+      "OpenClose",
+      "TimeInForce",
+      "ExpireDate",
+      "ExecInst",
+      "ManualOrderIndicator",
+      "ClearingAccountOverride",
+      "TextTT",
+      "TextA",
+      "TextB",
+      "TextC",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "TargetStrategyName",
+      "TargetStrategyType",
+      "ContingencyType",
+      "HandlInst",
+      "StagedOrderMsg",
+      "CompanyID",
+      "Text",
+      "DropCopyOrder",
+      "OrderOrigination",
+      "OrderCapacity",
+      "CustOrderCapacity",
+      "SelfMatchPreventionID",
+      "SMPInstruction",
+      "OrderSource",
+      "OrderID",
+      "TTCustomerName",
+      "BrokerID",
+      "LastMkt",
+      "ExpireTime",
+      "EffectiveTime",
+      "CustOrderHandlingInst",
+      "TTSyntheticType",
+      "Organization",
+      "MockOrderFlag",
+      "UserID",
+      "OrderRestriction",
+      "WaitingOption",
+      "ChildTIF",
+      "LeftoverMktOrderLimitTicks",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "TradingStrategy",
+      "ReverseSpreadOC",
+      "ParentVendorOrderID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "MaxPart",
+      "MaxDisp",
+      "TwapStyle",
+      "WouldIfPrc",
+      "LimitPrc",
+      "IntentToCross",
+      "TFUserType",
+      "DynamicEndTime",
+      "ParentVendorAlgoID",
+      "ParentVendorAlgoType",
+      "PriceFormula",
+      "ReloadOffset",
+      "OverrideTickNumerator",
+      "FormulaBasedOn",
+      "ReloadDelay",
+      "DisclosedQty",
+      "Reload",
+      "OverrideTickSize",
+      "OverrideTickDenominator",
+      "IsShared",
+      "SubStrategy",
+      "LegRiskAversion",
+      "HedgeDiscretionTicks",
+      "TTSMPID",
+      "TTSMPInstruction",
+      "IfTouchedPrice",
+      "IWouldPrice",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "QuoteId",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "D",
+    "name": "New Order Single",
+    "requiredFields": [
+      "ClOrdID",
+      "Account",
+      "OrderQty",
+      "Side",
+      "OrdType"
+    ],
+    "allFields": [
+      "ClOrdID",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Account",
+      "SecondaryAccount",
+      "Price",
+      "StopPx",
+      "OrderQty",
+      "MinQty",
+      "DisplayQty",
+      "Side",
+      "OrdType",
+      "OpenClose",
+      "TimeInForce",
+      "ExpireDate",
+      "ExecInst",
+      "ContingencyType",
+      "TransactTime",
+      "ManualOrderIndicator",
+      "HandlInst",
+      "StagedOrderMsg",
+      "CompanyID",
+      "EffectiveTime",
+      "ExpireTime",
+      "TextA",
+      "TextB",
+      "TargetStrategyName",
+      "TargetStrategyType",
+      "BracketOrderType",
+      "BracketStopLimitOffset",
+      "ChildTIF",
+      "DiscVal",
+      "DiscValType",
+      "ETimeAct",
+      "Interval",
+      "IsTrlTrg",
+      "LeftoverAction",
+      "LeftoverTicks",
+      "LimitPriceType",
+      "LimitTicksAway",
+      "OcoStopTriggerPrice",
+      "ProfitTarget",
+      "StopLimitOffset",
+      "StopOrderType",
+      "StopTarget",
+      "TriggerPriceType",
+      "TriggerTicksAway",
+      "TriggerType",
+      "WithATickType",
+      "WithATick",
+      "TriggerQtyType",
+      "TriggerQtyCompare",
+      "TriggerQty",
+      "TriggerLTPReset",
+      "TTStopLimitPriceType",
+      "TTStopWithATickType",
+      "TTStopWithATick",
+      "Payup",
+      "TTStopTriggerPriceType",
+      "TTStopIsTrlTrg",
+      "TTStopTriggerTicksAway",
+      "TTStopTriggerQtyType",
+      "TTStopTriggerQTyCompare",
+      "TTStopTriggerQty",
+      "TTStopTriggerLTPReset",
+      "TTStopTriggeredOrderType",
+      "TTStopTriggeredOrderPrice",
+      "TTStopLimitTicksAway",
+      "TTStopPayup",
+      "Text",
+      "ClearingAccountOverride",
+      "DropCopyOrder",
+      "OrderOrigination",
+      "OrderCapacity",
+      "CustOrderCapacity",
+      "TextTT",
+      "TextC",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "SelfMatchPreventionID",
+      "SMPInstruction",
+      "Duration",
+      "DurationBaseUnit",
+      "DurationSTime",
+      "DurationETime",
+      "LeftoverTimeAction",
+      "AutoResubExpiredGTD",
+      "ParentTIF",
+      "TTStopSecondConditionIsOn",
+      "TTStopSecondTriggerPriceType",
+      "TTStopSecondConditionIsTrlTrg",
+      "TTStopSecondTriggerTicksAway",
+      "TTStopSecondTriggerQtyType",
+      "TTStopSecondTriggerQtyCompare",
+      "TTStopSecondTriggerQty",
+      "Variance",
+      "OrderSource",
+      "OrderID",
+      "TTCustomerName",
+      "BrokerID",
+      "LastMkt",
+      "ETAGoToMktTicks",
+      "WaitingOption",
+      "TTStopChildTIFOverride",
+      "CustOrderHandlingInst",
+      "TTSyntheticType",
+      "Organization",
+      "MockOrderFlag",
+      "OrderRestriction",
+      "UserID",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "LeftoverMktOrderLimitTicks",
+      "ComplianceText",
+      "TradingStrategy",
+      "ReverseSpreadOC",
+      "ParentVendorOrderID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "MaxPart",
+      "MaxDisp",
+      "TwapStyle",
+      "WouldIfPrc",
+      "LimitPrc",
+      "IntentToCross",
+      "TFUserType",
+      "DynamicEndTime",
+      "ParentVendorAlgoID",
+      "ParentVendorAlgoType",
+      "TTSMPID",
+      "TTSMPInstruction",
+      "IfTouchedPrice",
+      "IWouldPrice",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "QuoteId",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "AC",
+    "name": "Multileg Order Cancel Replace",
+    "requiredFields": [
+      "ClOrdID",
+      "Account",
+      "OrderQty",
+      "Side",
+      "OrdType"
+    ],
+    "allFields": [
+      "OrderID",
+      "OrderIDGUID",
+      "OrigClOrdID",
+      "ClOrdID",
+      "Account",
+      "Price",
+      "StopPx",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "OrderQty",
+      "MinQty",
+      "DisplayQty",
+      "Side",
+      "OrdType",
+      "OpenClose",
+      "TimeInForce",
+      "ExpireDate",
+      "ExecInst",
+      "TransactTime",
+      "ManualOrderIndicator",
+      "ClearingAccountOverride",
+      "TextA",
+      "TextB",
+      "HandlInst",
+      "StagedOrderMsg",
+      "Text",
+      "DropCopyOrder",
+      "OrderCapacity",
+      "CustOrderCapacity",
+      "OrderOrigination",
+      "TextTT",
+      "TextC",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "SelfMatchPreventionID",
+      "SMPInstruction",
+      "OrderSource",
+      "CompanyID",
+      "TTCustomerName",
+      "LastMkt",
+      "ExpireTime",
+      "CustOrderHandlingInst",
+      "TTSyntheticType",
+      "Organization",
+      "MockOrderFlag",
+      "OrderRestriction",
+      "WaitingOption",
+      "ChildTIF",
+      "LeftoverMktOrderLimitTicks",
+      "UserID",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "TradingStrategy",
+      "ReverseSpreadOC",
+      "ParentVendorOrderID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "MaxPart",
+      "MaxDisp",
+      "TwapStyle",
+      "WouldIfPrc",
+      "LimitPrc",
+      "IntentToCross",
+      "DynamicEndTime",
+      "ParentVendorAlgoID",
+      "ParentVendorAlgoType",
+      "BrokerID",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "G",
+    "name": "Order Cancel Replace Request",
+    "requiredFields": [
+      "ClOrdID",
+      "Account",
+      "OrderQty",
+      "Side",
+      "OrdType"
+    ],
+    "allFields": [
+      "OrderID",
+      "OrderIDGUID",
+      "OrigClOrdID",
+      "ClOrdID",
+      "Account",
+      "Price",
+      "StopPx",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "OrderQty",
+      "MinQty",
+      "DisplayQty",
+      "Side",
+      "OrdType",
+      "OpenClose",
+      "TimeInForce",
+      "ExpireDate",
+      "ExecInst",
+      "TransactTime",
+      "ManualOrderIndicator",
+      "TextA",
+      "TextB",
+      "HandlInst",
+      "StagedOrderMsg",
+      "Text",
+      "BracketOrderType",
+      "BracketStopLimitOffset",
+      "ChildTIF",
+      "DiscVal",
+      "DiscValType",
+      "ETimeAct",
+      "Interval",
+      "IsTrlTrg",
+      "LeftoverAction",
+      "LeftoverTicks",
+      "LimitPriceType",
+      "LimitTicksAway",
+      "OcoStopTriggerPrice",
+      "ProfitTarget",
+      "StopLimitOffset",
+      "StopOrderType",
+      "StopTarget",
+      "TriggerPriceType",
+      "TriggerTicksAway",
+      "TriggerType",
+      "WithATickType",
+      "WithATick",
+      "TriggerQtyType",
+      "TriggerQtyCompare",
+      "TriggerQty",
+      "TriggerLTPReset",
+      "TTStopLimitPriceType",
+      "TTStopWithATickType",
+      "TTStopWithATick",
+      "Payup",
+      "TTStopTriggerPriceType",
+      "TTStopIsTrlTrg",
+      "TTStopTriggerTicksAway",
+      "TTStopTriggerQtyType",
+      "TTStopTriggerQTyCompare",
+      "TTStopTriggerQty",
+      "TTStopTriggerLTPReset",
+      "TTStopTriggeredOrderType",
+      "TTStopTriggeredOrderPrice",
+      "TTStopLimitTicksAway",
+      "TTStopPayup",
+      "ClearingAccountOverride",
+      "DropCopyOrder",
+      "OrderCapacity",
+      "CustOrderCapacity",
+      "OrderOrigination",
+      "TextTT",
+      "TextC",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "SelfMatchPreventionID",
+      "SMPInstruction",
+      "Duration",
+      "DurationBaseUnit",
+      "DurationSTime",
+      "DurationETime",
+      "CompanyID",
+      "LeftoverTimeAction",
+      "AutoResubExpiredGTD",
+      "ParentTIF",
+      "TTStopSecondConditionIsOn",
+      "TTStopSecondTriggerPriceType",
+      "TTStopSecondConditionIsTrlTrg",
+      "TTStopSecondTriggerTicksAway",
+      "TTStopSecondTriggerQtyType",
+      "TTStopSecondTriggerQtyCompare",
+      "TTStopSecondTriggerQty",
+      "Variance",
+      "OrderSource",
+      "TTCustomerName",
+      "LastMkt",
+      "ExpireTime",
+      "CustOrderHandlingInst",
+      "TTSyntheticType",
+      "Organization",
+      "MockOrderFlag",
+      "UserID",
+      "OrderRestriction",
+      "WaitingOption",
+      "LeftoverMktOrderLimitTicks",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "TradingStrategy",
+      "ReverseSpreadOC",
+      "ParentVendorOrderID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "MaxPart",
+      "MaxDisp",
+      "TwapStyle",
+      "WouldIfPrc",
+      "LimitPrc",
+      "IntentToCross",
+      "DynamicEndTime",
+      "ParentVendorAlgoID",
+      "ParentVendorAlgoType",
+      "BrokerID",
+      "IfTouchedPrice",
+      "IWouldPrice",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "F",
+    "name": "Order Cancel Request",
+    "requiredFields": [
+      "ClOrdID"
+    ],
+    "allFields": [
+      "ClOrdID",
+      "OrderID",
+      "OrderIDGUID",
+      "OrigClOrdID",
+      "ManualOrderIndicator",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Text",
+      "ClearingAccountOverride",
+      "TransactTime",
+      "DropCopyOrder",
+      "TextTT",
+      "OrderOrigination",
+      "TextC",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "CompanyID",
+      "OrderSource",
+      "LastMkt",
+      "StagedOrderMsg",
+      "TTSyntheticType",
+      "CustOrderHandlingInst",
+      "Organization",
+      "MockOrderFlag",
+      "UserID",
+      "Account",
+      "OrderRestriction",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "ParentVendorOrderID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "DynamicEndTime",
+      "ParentVendorAlgoID",
+      "ParentVendorAlgoType",
+      "BrokerID",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "BrokerRoute",
+      "Side"
+    ]
+  },
+  {
+    "msgtype": "c",
+    "name": "Security Definition Request",
+    "requiredFields": [
+      "SecurityReqID"
+    ],
+    "allFields": [
+      "SecurityReqID",
+      "SecurityRequestType",
+      "RequestTickTable",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Account",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "d",
+    "name": "Security Definition",
+    "requiredFields": [
+      "SecurityReqID",
+      "SecurityResponseID",
+      "SecurityResponseType",
+      "TotalNumSecurities"
+    ],
+    "allFields": [
+      "SecurityReqID",
+      "SecurityResponseID",
+      "SecurityResponseType",
+      "TotalNumSecurities",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "DisplayFactor",
+      "Text",
+      "MinLotSize",
+      "NumberOfBlocks",
+      "TradesInFlow",
+      "ExchTickSize",
+      "ExchPointValue",
+      "PriceDisplayType",
+      "RoundLot",
+      "UnderlyingSymbol",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingSecurityType",
+      "UnderlyingPx",
+      "UnderlyingQty",
+      "UnderlyingMaturityDate",
+      "UnderlyingIssuer",
+      "UnderlyingCurrency",
+      "UnderlyingMemo",
+      "UnderlyingStrikePrice",
+      "UnderlyingSpotRate",
+      "UnderlyingSecuritySubType",
+      "DisplayFactorQty",
+      "ProductComplex",
+      "DefSecuritySubTypeID"
+    ]
+  },
+  {
+    "msgtype": "e",
+    "name": "Security Status Request",
+    "requiredFields": [
+      "SecurityStatusReqID",
+      "SubscriptionRequestType"
+    ],
+    "allFields": [
+      "SecurityStatusReqID",
+      "SubscriptionRequestType",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone"
+    ]
+  },
+  {
+    "msgtype": "f",
+    "name": "Security Status",
+    "requiredFields": [
+      "SecurityStatusReqID",
+      "SecurityTradingStatus"
+    ],
+    "allFields": [
+      "SecurityStatusReqID",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "SecurityTradingStatus",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "V",
+    "name": "Market Data Request",
+    "requiredFields": [
+      "MDReqID",
+      "SubscriptionRequestType"
+    ],
+    "allFields": [
+      "MDReqID",
+      "SubscriptionRequestType",
+      "MarketDepth",
+      "MDUpdateType",
+      "AggregatedBook",
+      "IncludeNumberOfOrders",
+      "IncludeQuotes"
+    ]
+  },
+  {
+    "msgtype": "Y",
+    "name": "Market Data Request Reject",
+    "requiredFields": [
+      "MDReqID",
+      "Text"
+    ],
+    "allFields": [
+      "MDReqID",
+      "SecurityID",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "W",
+    "name": "Market Data Snapshot",
+    "requiredFields": [
+      "MDReqID"
+    ],
+    "allFields": [
+      "MDReqID",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "PriceFeedStatus",
+      "ExchangeSendingTime",
+      "ExchangeTransactTime"
+    ]
+  },
+  {
+    "msgtype": "X",
+    "name": "Market Data Incremental Refresh",
+    "requiredFields": [
+      "MDReqID"
+    ],
+    "allFields": [
+      "MDReqID",
+      "PriceFeedStatus",
+      "ExchangeSendingTime",
+      "ExchangeTransactTime",
+      "ExchangeSeqNum"
+    ]
+  },
+  {
+    "msgtype": "R",
+    "name": "Quote Request",
+    "requiredFields": [],
+    "allFields": [
+      "QuoteReqID",
+      "SRFQTransType",
+      "ValidUntilTime",
+      "UserID",
+      "Account",
+      "NegotiationID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID"
+    ]
+  },
+  {
+    "msgtype": "b",
+    "name": "Quote Request Response",
+    "requiredFields": [],
+    "allFields": [
+      "QuoteReqID",
+      "Account",
+      "ExecID",
+      "QuoteAckStatus",
+      "AccountID",
+      "UserID",
+      "OrderSource",
+      "ManualOrderIndicator",
+      "OrderID",
+      "OrderOrigination",
+      "OrderQty",
+      "SecondaryOrderID",
+      "SecurityDesc",
+      "Side",
+      "Text",
+      "TransactTime",
+      "CustOrderCapacity"
+    ]
+  },
+  {
+    "msgtype": "S",
+    "name": "Quote",
+    "requiredFields": [],
+    "allFields": [
+      "Account",
+      "AccountID",
+      "CompanyID",
+      "BrokerID",
+      "UserID",
+      "TTID",
+      "ManualOrderIndicator",
+      "BidPx",
+      "OfferPx",
+      "BidSize",
+      "OfferSize",
+      "ExpireTime",
+      "QuoteRefPrice",
+      "UnderlyingDeltaPercentage",
+      "TargetPartyExchangeTraderID",
+      "NegotiationID",
+      "QuotingStatus",
+      "SecondaryNegotiationID",
+      "MktQuoteID",
+      "Seq",
+      "QuoteReqID",
+      "SecondaryQuoteID",
+      "TransactTime",
+      "LastMkt",
+      "Text",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone"
+    ]
+  },
+  {
+    "msgtype": "AI",
+    "name": "Quote Status Report",
+    "requiredFields": [],
+    "allFields": [
+      "QuoteReqID",
+      "Account",
+      "ExecID",
+      "AccountID",
+      "CompanyID",
+      "BrokerID",
+      "UserID",
+      "TTID",
+      "OrderSource",
+      "ManualOrderIndicator",
+      "OrderOrigination",
+      "OrderQty",
+      "Side",
+      "Text",
+      "TransactTime",
+      "CustOrderCapacity",
+      "QuoteType",
+      "QuoteSubType",
+      "QuoteRefPrice",
+      "UnderlyingDeltaPercentage",
+      "ValidUntilTime",
+      "EffectiveTime",
+      "LastUpdateTime",
+      "BidPx",
+      "OfferPx",
+      "LastPx",
+      "LastShares",
+      "LeavesQty",
+      "SRFQTransType",
+      "NegotiationID",
+      "SecondaryNegotiationID",
+      "QuoteStatus",
+      "Seq",
+      "QuoteCondition",
+      "LastMkt",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone"
+    ]
+  },
+  {
+    "msgtype": "AJ",
+    "name": "Quote Response",
+    "requiredFields": [],
+    "allFields": [
+      "TradeReportID",
+      "NegotiationID",
+      "MktQuoteID",
+      "TradingSessionSubID",
+      "TransBkdTime",
+      "ValidUntilTime",
+      "OrderCapacity",
+      "Account",
+      "UserID",
+      "CompanyID",
+      "BrokerID",
+      "TTCustomerName",
+      "BidPx",
+      "OfferPx",
+      "BidSize",
+      "OfferSize",
+      "LastPx",
+      "LastShares",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "HandlInst"
+    ]
+  },
+  {
+    "msgtype": "A",
+    "name": "Logon",
+    "requiredFields": [
+      "HeartBtInt"
+    ],
+    "allFields": [
+      "EncryptMethod",
+      "HeartBtInt",
+      "RawData",
+      "ResetSeqNumFlag",
+      "NextExpectedMsgSeqNum",
+      "ByPassSessionRecovery",
+      "Password",
+      "StartDate",
+      "EndDate",
+      "SecurityExchange",
+      "ExDestination",
+      "CustomMode",
+      "Duration"
+    ]
+  },
+  {
+    "msgtype": "j",
+    "name": "Business Message Reject",
+    "requiredFields": [
+      "RefMsgType",
+      "BusinessRejectReason"
+    ],
+    "allFields": [
+      "RefSeqNum",
+      "RefMsgType",
+      "BusinessRejectRefID",
+      "BusinessRejectReason",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "H",
+    "name": "Order Status Request",
+    "requiredFields": [],
+    "allFields": [
+      "Account",
+      "ClOrdID",
+      "OrderID",
+      "CompanyID",
+      "ClearingAccountOverride",
+      "OrdStatusReqID"
+    ]
+  },
+  {
+    "msgtype": "AD",
+    "name": "Trade Capture Report Request",
+    "requiredFields": [
+      "SubscriptionRequestType"
+    ],
+    "allFields": [
+      "TradeRequestID",
+      "TradeRequestType",
+      "SubscriptionRequestType",
+      "LastUpdateTime",
+      "MultiLegReportingType"
+    ]
+  },
+  {
+    "msgtype": "AQ",
+    "name": "Trade Capture Report Request Ack",
+    "requiredFields": [],
+    "allFields": [
+      "TradeRequestID",
+      "TradeRequestType",
+      "TradeRequestResult",
+      "TradeRequestStatus",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "AE",
+    "name": "Trade Capture Report",
+    "requiredFields": [],
+    "allFields": [
+      "TradeReportID",
+      "ExecID",
+      "SecondaryExecID",
+      "ExecType",
+      "TradeReportTransType",
+      "TradeReportType",
+      "TradeHandlingInstr",
+      "TrdType",
+      "TrdSubType",
+      "Price",
+      "LastPx",
+      "LastShares",
+      "LeavesQty",
+      "MultiLegReportingType",
+      "TradeLinkID",
+      "TransactTime",
+      "TradeReportRefID",
+      "SecondaryTradeReportID",
+      "TradeID",
+      "OrigTradeID",
+      "TrdMatchID",
+      "FutureReferencePrice",
+      "TradeDate",
+      "OrigTradeDate",
+      "PreviouslyReported",
+      "TransBkdTime",
+      "Text",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "AvgPx",
+      "TradingVenueRegulatoryTradeID",
+      "LastMkt",
+      "RoutingAccount",
+      "CompanyID",
+      "BrokerID",
+      "TTCustomerName",
+      "Seq",
+      "LegFillSeq",
+      "UserID",
+      "TTID",
+      "TradePublishIndicator",
+      "OrderCapacity",
+      "UnderlyingSymbol",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingSecurityType",
+      "UnderlyingPx",
+      "UnderlyingQty",
+      "UnderlyingMaturityDate",
+      "UnderlyingIssuer",
+      "UnderlyingCurrency",
+      "UnderlyingMemo",
+      "UnderlyingStrikePrice",
+      "UnderlyingSpotRate",
+      "UnderlyingSecuritySubType",
+      "RelatedTradeID",
+      "RelatedTradeQty",
+      "SettlDate",
+      "HedgeType",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "TextC",
+      "TextTT",
+      "TradingSessionSubID",
+      "TFUserType",
+      "NegotiationID",
+      "SecondaryNegotiationID",
+      "ExpireTime",
+      "IfTouchedPrice",
+      "IWouldPrice",
+      "LimitPrc",
+      "ManualOrderIndicator",
+      "UniqueExecID",
+      "TrdRptStatus",
+      "InsertTime",
+      "OneOffSharedKey"
+    ]
+  },
+  {
+    "msgtype": "AR",
+    "name": "Trade Capture Report Ack",
+    "requiredFields": [],
+    "allFields": [
+      "TradeReportID",
+      "TradeReportRefID",
+      "SecondaryTradeReportID",
+      "ExecType",
+      "ExecID",
+      "TradeLinkID",
+      "TradeReportTransType",
+      "TradeReportType",
+      "TrdRptStatus",
+      "TrdSubType",
+      "TradeReportRejectReason",
+      "Text",
+      "TransactTime",
+      "PreviouslyReported",
+      "TransBkdTime",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "LastPx",
+      "LastShares",
+      "TTCustomerName",
+      "Seq",
+      "CompanyID",
+      "BrokerID",
+      "UserID",
+      "TTID",
+      "TradePublishIndicator",
+      "OrderCapacity",
+      "TrdType",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "TextC",
+      "TextTT",
+      "TradingSessionSubID",
+      "TFUserType",
+      "NegotiationID",
+      "SecondaryNegotiationID",
+      "ManualOrderIndicator",
+      "RoutingAccount",
+      "InsertTime"
+    ]
+  },
+  {
+    "msgtype": "B",
+    "name": "News",
+    "requiredFields": [
+      "Headline",
+      "LinesOfText",
+      "Text"
+    ],
+    "allFields": [
+      "Headline",
+      "LinesOfText",
+      "Text",
+      "NewsReportID"
+    ]
+  },
+  {
+    "msgtype": "U2",
+    "name": "Out Of Band Recovery Request",
+    "requiredFields": [],
+    "allFields": [
+      "StartDate",
+      "EndDate",
+      "SecurityExchange",
+      "ExDestination",
+      "CustomMode",
+      "Duration"
+    ]
+  },
+  {
+    "msgtype": "Q",
+    "name": "Dont Know Trade",
+    "requiredFields": [
+      "OrderID",
+      "ExecID",
+      "DKReason"
+    ],
+    "allFields": [
+      "OrderID",
+      "ExecID",
+      "DKReason",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Side",
+      "OrderQty",
+      "LastShares",
+      "LastPx",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "J",
+    "name": "Allocation Instruction",
+    "requiredFields": [
+      "AllocID",
+      "AllocType",
+      "AllocNoOrdersType",
+      "Side",
+      "Quantity",
+      "AvgPx",
+      "TradeDate"
+    ],
+    "allFields": [
+      "AllocID",
+      "AllocTransType",
+      "AllocType",
+      "AllocLinkID",
+      "AllocNoOrdersType",
+      "Side",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Quantity",
+      "LastMkt",
+      "PriceType",
+      "AvgPx",
+      "AvgParPx",
+      "TradeDate",
+      "TransactTime",
+      "SettlDate",
+      "GrossTradeAmt",
+      "NetMoney",
+      "OpenClose",
+      "Text",
+      "Account",
+      "AllocStrategy",
+      "VendorDefinedField1",
+      "VendorDefinedField2",
+      "VendorDefinedField3",
+      "VendorDefinedField4",
+      "VendorDefinedField5",
+      "AllocVolumeType"
+    ]
+  },
+  {
+    "msgtype": "P",
+    "name": "Allocation Instruction Ack",
+    "requiredFields": [
+      "AllocID",
+      "TransactTime",
+      "AllocStatus"
+    ],
+    "allFields": [
+      "AllocID",
+      "TransactTime",
+      "AllocStatus",
+      "Text",
+      "Account",
+      "VendorDefinedField1",
+      "VendorDefinedField2",
+      "VendorDefinedField3",
+      "VendorDefinedField4",
+      "VendorDefinedField5"
+    ]
+  },
+  {
+    "msgtype": "AS",
+    "name": "Allocation Report",
+    "requiredFields": [
+      "AllocReportID",
+      "AllocTransType",
+      "AllocReportType",
+      "AllocStatus",
+      "AllocNoOrdersType",
+      "Side",
+      "Quantity",
+      "AvgPx",
+      "TradeDate"
+    ],
+    "allFields": [
+      "AllocReportID",
+      "AllocTransType",
+      "AllocReportType",
+      "AllocStatus",
+      "AllocNoOrdersType",
+      "Side",
+      "Quantity",
+      "AvgPx",
+      "TradeDate",
+      "Text",
+      "Account",
+      "VendorDefinedField1",
+      "VendorDefinedField2",
+      "VendorDefinedField3",
+      "VendorDefinedField4",
+      "VendorDefinedField5",
+      "AllocVolumeType",
+      "TransactTime"
+    ]
+  },
+  {
+    "msgtype": "E",
+    "name": "New Order List",
+    "requiredFields": [
+      "ListID"
+    ],
+    "allFields": [
+      "ListID",
+      "ListExecInst"
+    ]
+  }
+]
+
+export const MESSAGES_TT44: MessageDef[] = [
+  {
+    "msgtype": "0",
+    "name": "Heartbeat",
+    "requiredFields": [],
+    "allFields": [
+      "TestReqID"
+    ]
+  },
+  {
+    "msgtype": "1",
+    "name": "Test Request",
+    "requiredFields": [
+      "TestReqID"
+    ],
+    "allFields": [
+      "TestReqID"
+    ]
+  },
+  {
+    "msgtype": "2",
+    "name": "Resend Request",
+    "requiredFields": [
+      "BeginSeqNo",
+      "EndSeqNo"
+    ],
+    "allFields": [
+      "BeginSeqNo",
+      "EndSeqNo"
+    ]
+  },
+  {
+    "msgtype": "3",
+    "name": "Reject",
+    "requiredFields": [
+      "RefSeqNum"
+    ],
+    "allFields": [
+      "RefSeqNum",
+      "RefTagID",
+      "RefMsgType",
+      "SessionRejectReason",
+      "Text",
+      "StartSequenceNumber"
+    ]
+  },
+  {
+    "msgtype": "4",
+    "name": "Sequence Reset",
+    "requiredFields": [
+      "NewSeqNo"
+    ],
+    "allFields": [
+      "GapFillFlag",
+      "NewSeqNo"
+    ]
+  },
+  {
+    "msgtype": "5",
+    "name": "Logout",
+    "requiredFields": [],
+    "allFields": [
+      "Text",
+      "ForceLogout",
+      "NextExpectedMsgSeqNum"
+    ]
+  },
+  {
+    "msgtype": "8",
+    "name": "Execution Report",
+    "requiredFields": [
+      "OrderID",
+      "ExecType",
+      "OrdStatus",
+      "LeavesQty",
+      "CumQty",
+      "AvgPx"
+    ],
+    "allFields": [
+      "OrderID",
+      "SecondaryOrderID",
+      "SecondaryClOrdID",
+      "SecondaryExecID",
+      "ClOrdID",
+      "OrigClOrdID",
+      "TTClOrdID",
+      "ExecID",
+      "ExecTransType",
+      "ExecRefID",
+      "ExecType",
+      "ExecInst",
+      "OrdStatus",
+      "OrdRejReason",
+      "ExecRestatementReason",
+      "Account",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Side",
+      "OrderQty",
+      "OrdType",
+      "Price",
+      "StopPx",
+      "TimeInForce",
+      "ExpireDate",
+      "ClearingAccount",
+      "LastShares",
+      "LastPx",
+      "LeavesQty",
+      "CumQty",
+      "AvgPx",
+      "TradeDate",
+      "TransactTime",
+      "MinQty",
+      "LiquidityIndicator",
+      "OpenClose",
+      "DisplayQty",
+      "RefreshQty",
+      "Text",
+      "MultiLegReportingType",
+      "ManualOrderIndicator",
+      "ExchCred",
+      "OrderCapacity",
+      "CustOrderCapacity",
+      "ContingencyType",
+      "TTID",
+      "TrdType",
+      "TrdMatchID",
+      "CrossID",
+      "CrossType",
+      "TradeReportID",
+      "AOTCPreventionActionType",
+      "TotalNumOrders",
+      "BrokerID",
+      "CompanyID",
+      "LastParPx",
+      "HandlInst",
+      "StagedOrderMsg",
+      "StagedOrderOwner",
+      "StagedOrderStatus",
+      "ExternalSource",
+      "AggressorIndicator",
+      "EffectiveTime",
+      "ExpireTime",
+      "TextTTModifyingUser",
+      "TargetStrategyName",
+      "TargetStrategyType",
+      "BracketOrderType",
+      "BracketStopLimitOffset",
+      "ChildTIF",
+      "DiscVal",
+      "DiscValType",
+      "ETimeAct",
+      "Interval",
+      "IsTrlTrg",
+      "LeftoverAction",
+      "LeftoverTicks",
+      "LimitPriceType",
+      "LimitTicksAway",
+      "OcoStopTriggerPrice",
+      "ProfitTarget",
+      "StopLimitOffset",
+      "StopOrderType",
+      "StopTarget",
+      "TriggerPriceType",
+      "TriggerTicksAway",
+      "TriggerType",
+      "WithATickType",
+      "WithATick",
+      "AllocID",
+      "RefID",
+      "ClearingAccountOverride",
+      "DropCopyOrder",
+      "OrderOrigination",
+      "TrdRegPublicationReason",
+      "TradingVenueRegulatoryTradeID",
+      "LastLiquidityIndicator",
+      "OrderIDGUID",
+      "TextTT",
+      "TextA",
+      "TextB",
+      "TextC",
+      "TimeReceivedFromExchange",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "SelfMatchPreventionID",
+      "SelfMatchPreventionIDICE",
+      "SelfMatchPreventionInstruction",
+      "SMPInstruction",
+      "OrderSource",
+      "UniqueExecID",
+      "SpreadLegRatioQty",
+      "LastMkt",
+      "AccountRiskGroup",
+      "MlegHeadExecId",
+      "OrdStatusReqID",
+      "TTCustomerName",
+      "AccountID",
+      "UserID",
+      "InvestmentDecision",
+      "DirectElectronicAccess",
+      "TradingCapacity",
+      "LiquidityProvision",
+      "OriginalSecondaryExecID",
+      "MiFIDID",
+      "ExecutionDecision",
+      "ClientIDCode",
+      "TTSyntheticType",
+      "VendorDefinedField1",
+      "VendorDefinedField2",
+      "VendorDefinedField3",
+      "VendorDefinedField4",
+      "VendorDefinedField5",
+      "CustOrderHandlingInst",
+      "Organization",
+      "MockOrderFlag",
+      "MaxShow",
+      "ReviewUserID",
+      "ReviewStatus",
+      "UniqueLegID",
+      "OrderRestriction",
+      "LeftoverMktOrderLimitTicks",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "LastTradingDate",
+      "TradingStrategy",
+      "ReverseSpreadOC",
+      "MaxPart",
+      "MaxDisp",
+      "TwapStyle",
+      "WouldIfPrc",
+      "LimitPrc",
+      "IntentToCross",
+      "TTSMPID",
+      "TTSMPInstruction",
+      "NVDR",
+      "TTF",
+      "TFUserType",
+      "DynamicEndTime",
+      "UnderlyingSymbol",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingSecurityType",
+      "UnderlyingPx",
+      "UnderlyingQty",
+      "UnderlyingMaturityDate",
+      "UnderlyingIssuer",
+      "UnderlyingCurrency",
+      "UnderlyingMemo",
+      "UnderlyingStrikePrice",
+      "UnderlyingSpotRate",
+      "UnderlyingSecuritySubType",
+      "MemoFieldICE",
+      "SettlDate",
+      "IfTouchedPrice",
+      "IWouldPrice",
+      "IsFirm",
+      "FixingDate",
+      "FixingSource",
+      "ReportingParty",
+      "TradeID",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "SettlType",
+      "QuoteId",
+      "LastSpotRate",
+      "LastForwardPoints",
+      "RejectSource",
+      "TotalNumSecurities",
+      "InsertTime",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "9",
+    "name": "Order Cancel Reject",
+    "requiredFields": [
+      "OrderID",
+      "OrdStatus",
+      "CxlRejResponseTo"
+    ],
+    "allFields": [
+      "OrderID",
+      "SecondaryOrderID",
+      "ClOrdID",
+      "TTClOrdID",
+      "OrigClOrdID",
+      "OrdStatus",
+      "Account",
+      "TransactTime",
+      "CxlRejResponseTo",
+      "CxlRejReason",
+      "Text",
+      "TTID",
+      "AOTCPreventionActionType",
+      "BrokerID",
+      "CompanyID",
+      "HandlInst",
+      "StagedOrderMsg",
+      "StagedOrderOwner",
+      "StagedOrderStatus",
+      "ExternalSource",
+      "OrderIDGUID",
+      "ClearingAccountOverride",
+      "TextTT",
+      "TextA",
+      "TextB",
+      "TextC",
+      "TimeReceivedFromExchange",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "OrderCapacity",
+      "OrderOrigination",
+      "OrderSource",
+      "AccountID",
+      "UserID",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "LastMkt",
+      "AllocID",
+      "CustOrderHandlingInst",
+      "TTSyntheticType",
+      "TTCustomerName",
+      "Organization",
+      "MockOrderFlag",
+      "ExchCred",
+      "MaxShow",
+      "UniqueLegID",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "TTSMPID",
+      "TTSMPInstruction",
+      "TFUserType",
+      "NVDR",
+      "TTF",
+      "DynamicEndTime",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "SelfMatchPreventionID",
+      "RejectSource",
+      "InsertTime",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "AB",
+    "name": "New Order Multileg",
+    "requiredFields": [
+      "ClOrdID",
+      "Account",
+      "OrderQty",
+      "Side",
+      "OrdType"
+    ],
+    "allFields": [
+      "ClOrdID",
+      "TransactTime",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Account",
+      "SecondaryAccount",
+      "Price",
+      "StopPx",
+      "OrderQty",
+      "MinQty",
+      "DisplayQty",
+      "Side",
+      "OrdType",
+      "OpenClose",
+      "TimeInForce",
+      "ExpireDate",
+      "ExecInst",
+      "ManualOrderIndicator",
+      "ClearingAccountOverride",
+      "TextTT",
+      "TextA",
+      "TextB",
+      "TextC",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "TargetStrategyName",
+      "TargetStrategyType",
+      "ContingencyType",
+      "HandlInst",
+      "StagedOrderMsg",
+      "CompanyID",
+      "Text",
+      "DropCopyOrder",
+      "OrderOrigination",
+      "OrderCapacity",
+      "CustOrderCapacity",
+      "SelfMatchPreventionID",
+      "SMPInstruction",
+      "OrderSource",
+      "OrderID",
+      "TTCustomerName",
+      "BrokerID",
+      "LastMkt",
+      "ExpireTime",
+      "EffectiveTime",
+      "CustOrderHandlingInst",
+      "TTSyntheticType",
+      "Organization",
+      "MockOrderFlag",
+      "UserID",
+      "OrderRestriction",
+      "WaitingOption",
+      "ChildTIF",
+      "LeftoverMktOrderLimitTicks",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "TradingStrategy",
+      "ReverseSpreadOC",
+      "ParentVendorOrderID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "MaxPart",
+      "MaxDisp",
+      "TwapStyle",
+      "WouldIfPrc",
+      "LimitPrc",
+      "IntentToCross",
+      "TFUserType",
+      "DynamicEndTime",
+      "ParentVendorAlgoID",
+      "ParentVendorAlgoType",
+      "PriceFormula",
+      "ReloadOffset",
+      "OverrideTickNumerator",
+      "FormulaBasedOn",
+      "ReloadDelay",
+      "DisclosedQty",
+      "Reload",
+      "OverrideTickSize",
+      "OverrideTickDenominator",
+      "IsShared",
+      "SubStrategy",
+      "LegRiskAversion",
+      "HedgeDiscretionTicks",
+      "TTSMPID",
+      "TTSMPInstruction",
+      "IfTouchedPrice",
+      "IWouldPrice",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "QuoteId",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "D",
+    "name": "New Order Single",
+    "requiredFields": [
+      "ClOrdID",
+      "Account",
+      "OrderQty",
+      "Side",
+      "OrdType"
+    ],
+    "allFields": [
+      "ClOrdID",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Account",
+      "SecondaryAccount",
+      "Price",
+      "StopPx",
+      "OrderQty",
+      "MinQty",
+      "DisplayQty",
+      "Side",
+      "OrdType",
+      "OpenClose",
+      "TimeInForce",
+      "ExpireDate",
+      "ExecInst",
+      "ContingencyType",
+      "TransactTime",
+      "ManualOrderIndicator",
+      "HandlInst",
+      "StagedOrderMsg",
+      "CompanyID",
+      "EffectiveTime",
+      "ExpireTime",
+      "TextA",
+      "TextB",
+      "TargetStrategyName",
+      "TargetStrategyType",
+      "BracketOrderType",
+      "BracketStopLimitOffset",
+      "ChildTIF",
+      "DiscVal",
+      "DiscValType",
+      "ETimeAct",
+      "Interval",
+      "IsTrlTrg",
+      "LeftoverAction",
+      "LeftoverTicks",
+      "LimitPriceType",
+      "LimitTicksAway",
+      "OcoStopTriggerPrice",
+      "ProfitTarget",
+      "StopLimitOffset",
+      "StopOrderType",
+      "StopTarget",
+      "TriggerPriceType",
+      "TriggerTicksAway",
+      "TriggerType",
+      "WithATickType",
+      "WithATick",
+      "TriggerQtyType",
+      "TriggerQtyCompare",
+      "TriggerQty",
+      "TriggerLTPReset",
+      "TTStopLimitPriceType",
+      "TTStopWithATickType",
+      "TTStopWithATick",
+      "Payup",
+      "TTStopTriggerPriceType",
+      "TTStopIsTrlTrg",
+      "TTStopTriggerTicksAway",
+      "TTStopTriggerQtyType",
+      "TTStopTriggerQTyCompare",
+      "TTStopTriggerQty",
+      "TTStopTriggerLTPReset",
+      "TTStopTriggeredOrderType",
+      "TTStopTriggeredOrderPrice",
+      "TTStopLimitTicksAway",
+      "TTStopPayup",
+      "Text",
+      "ClearingAccountOverride",
+      "DropCopyOrder",
+      "OrderOrigination",
+      "OrderCapacity",
+      "CustOrderCapacity",
+      "TextTT",
+      "TextC",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "SelfMatchPreventionID",
+      "SMPInstruction",
+      "Duration",
+      "DurationBaseUnit",
+      "DurationSTime",
+      "DurationETime",
+      "LeftoverTimeAction",
+      "AutoResubExpiredGTD",
+      "ParentTIF",
+      "TTStopSecondConditionIsOn",
+      "TTStopSecondTriggerPriceType",
+      "TTStopSecondConditionIsTrlTrg",
+      "TTStopSecondTriggerTicksAway",
+      "TTStopSecondTriggerQtyType",
+      "TTStopSecondTriggerQtyCompare",
+      "TTStopSecondTriggerQty",
+      "Variance",
+      "OrderSource",
+      "OrderID",
+      "TTCustomerName",
+      "BrokerID",
+      "LastMkt",
+      "ETAGoToMktTicks",
+      "WaitingOption",
+      "TTStopChildTIFOverride",
+      "CustOrderHandlingInst",
+      "TTSyntheticType",
+      "Organization",
+      "MockOrderFlag",
+      "OrderRestriction",
+      "UserID",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "LeftoverMktOrderLimitTicks",
+      "ComplianceText",
+      "TradingStrategy",
+      "ReverseSpreadOC",
+      "ParentVendorOrderID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "MaxPart",
+      "MaxDisp",
+      "TwapStyle",
+      "WouldIfPrc",
+      "LimitPrc",
+      "IntentToCross",
+      "TFUserType",
+      "DynamicEndTime",
+      "ParentVendorAlgoID",
+      "ParentVendorAlgoType",
+      "TTSMPID",
+      "TTSMPInstruction",
+      "IfTouchedPrice",
+      "IWouldPrice",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "QuoteId",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "AC",
+    "name": "Multileg Order Cancel Replace",
+    "requiredFields": [
+      "ClOrdID",
+      "Account",
+      "OrderQty",
+      "Side",
+      "OrdType"
+    ],
+    "allFields": [
+      "OrderID",
+      "OrderIDGUID",
+      "OrigClOrdID",
+      "ClOrdID",
+      "Account",
+      "Price",
+      "StopPx",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "OrderQty",
+      "MinQty",
+      "DisplayQty",
+      "Side",
+      "OrdType",
+      "OpenClose",
+      "TimeInForce",
+      "ExpireDate",
+      "ExecInst",
+      "TransactTime",
+      "ManualOrderIndicator",
+      "ClearingAccountOverride",
+      "TextA",
+      "TextB",
+      "HandlInst",
+      "StagedOrderMsg",
+      "Text",
+      "DropCopyOrder",
+      "OrderCapacity",
+      "CustOrderCapacity",
+      "OrderOrigination",
+      "TextTT",
+      "TextC",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "SelfMatchPreventionID",
+      "SMPInstruction",
+      "OrderSource",
+      "CompanyID",
+      "TTCustomerName",
+      "LastMkt",
+      "ExpireTime",
+      "CustOrderHandlingInst",
+      "TTSyntheticType",
+      "Organization",
+      "MockOrderFlag",
+      "OrderRestriction",
+      "WaitingOption",
+      "ChildTIF",
+      "LeftoverMktOrderLimitTicks",
+      "UserID",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "TradingStrategy",
+      "ReverseSpreadOC",
+      "ParentVendorOrderID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "MaxPart",
+      "MaxDisp",
+      "TwapStyle",
+      "WouldIfPrc",
+      "LimitPrc",
+      "IntentToCross",
+      "DynamicEndTime",
+      "ParentVendorAlgoID",
+      "ParentVendorAlgoType",
+      "BrokerID",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "G",
+    "name": "Order Cancel Replace Request",
+    "requiredFields": [
+      "ClOrdID",
+      "Account",
+      "OrderQty",
+      "Side",
+      "OrdType"
+    ],
+    "allFields": [
+      "OrderID",
+      "OrderIDGUID",
+      "OrigClOrdID",
+      "ClOrdID",
+      "Account",
+      "Price",
+      "StopPx",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "OrderQty",
+      "MinQty",
+      "DisplayQty",
+      "Side",
+      "OrdType",
+      "OpenClose",
+      "TimeInForce",
+      "ExpireDate",
+      "ExecInst",
+      "TransactTime",
+      "ManualOrderIndicator",
+      "TextA",
+      "TextB",
+      "HandlInst",
+      "StagedOrderMsg",
+      "Text",
+      "BracketOrderType",
+      "BracketStopLimitOffset",
+      "ChildTIF",
+      "DiscVal",
+      "DiscValType",
+      "ETimeAct",
+      "Interval",
+      "IsTrlTrg",
+      "LeftoverAction",
+      "LeftoverTicks",
+      "LimitPriceType",
+      "LimitTicksAway",
+      "OcoStopTriggerPrice",
+      "ProfitTarget",
+      "StopLimitOffset",
+      "StopOrderType",
+      "StopTarget",
+      "TriggerPriceType",
+      "TriggerTicksAway",
+      "TriggerType",
+      "WithATickType",
+      "WithATick",
+      "TriggerQtyType",
+      "TriggerQtyCompare",
+      "TriggerQty",
+      "TriggerLTPReset",
+      "TTStopLimitPriceType",
+      "TTStopWithATickType",
+      "TTStopWithATick",
+      "Payup",
+      "TTStopTriggerPriceType",
+      "TTStopIsTrlTrg",
+      "TTStopTriggerTicksAway",
+      "TTStopTriggerQtyType",
+      "TTStopTriggerQTyCompare",
+      "TTStopTriggerQty",
+      "TTStopTriggerLTPReset",
+      "TTStopTriggeredOrderType",
+      "TTStopTriggeredOrderPrice",
+      "TTStopLimitTicksAway",
+      "TTStopPayup",
+      "ClearingAccountOverride",
+      "DropCopyOrder",
+      "OrderCapacity",
+      "CustOrderCapacity",
+      "OrderOrigination",
+      "TextTT",
+      "TextC",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "SelfMatchPreventionID",
+      "SMPInstruction",
+      "Duration",
+      "DurationBaseUnit",
+      "DurationSTime",
+      "DurationETime",
+      "CompanyID",
+      "LeftoverTimeAction",
+      "AutoResubExpiredGTD",
+      "ParentTIF",
+      "TTStopSecondConditionIsOn",
+      "TTStopSecondTriggerPriceType",
+      "TTStopSecondConditionIsTrlTrg",
+      "TTStopSecondTriggerTicksAway",
+      "TTStopSecondTriggerQtyType",
+      "TTStopSecondTriggerQtyCompare",
+      "TTStopSecondTriggerQty",
+      "Variance",
+      "OrderSource",
+      "TTCustomerName",
+      "LastMkt",
+      "ExpireTime",
+      "CustOrderHandlingInst",
+      "TTSyntheticType",
+      "Organization",
+      "MockOrderFlag",
+      "UserID",
+      "OrderRestriction",
+      "WaitingOption",
+      "LeftoverMktOrderLimitTicks",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "TradingStrategy",
+      "ReverseSpreadOC",
+      "ParentVendorOrderID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "MaxPart",
+      "MaxDisp",
+      "TwapStyle",
+      "WouldIfPrc",
+      "LimitPrc",
+      "IntentToCross",
+      "DynamicEndTime",
+      "ParentVendorAlgoID",
+      "ParentVendorAlgoType",
+      "BrokerID",
+      "IfTouchedPrice",
+      "IWouldPrice",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "BrokerRoute"
+    ]
+  },
+  {
+    "msgtype": "F",
+    "name": "Order Cancel Request",
+    "requiredFields": [
+      "ClOrdID"
+    ],
+    "allFields": [
+      "ClOrdID",
+      "OrderID",
+      "OrderIDGUID",
+      "OrigClOrdID",
+      "ManualOrderIndicator",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Text",
+      "ClearingAccountOverride",
+      "TransactTime",
+      "DropCopyOrder",
+      "TextTT",
+      "OrderOrigination",
+      "TextC",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "CompanyID",
+      "OrderSource",
+      "LastMkt",
+      "StagedOrderMsg",
+      "TTSyntheticType",
+      "CustOrderHandlingInst",
+      "Organization",
+      "MockOrderFlag",
+      "UserID",
+      "Account",
+      "OrderRestriction",
+      "TTStopNoImplies",
+      "SecondConditionIsOn",
+      "SecondTriggerTicksAway",
+      "SecondTriggerQtyType",
+      "SecondTriggerQtyCompare",
+      "SecondTriggerQty",
+      "LeftoverTime",
+      "SecondTriggerPriceType",
+      "NoImplies",
+      "CustomSliceSched",
+      "ComplianceText",
+      "ParentVendorOrderID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "DynamicEndTime",
+      "ParentVendorAlgoID",
+      "ParentVendorAlgoType",
+      "BrokerID",
+      "HedgeOrderType",
+      "DeltaRounding",
+      "Vol",
+      "BrokerRoute",
+      "Side"
+    ]
+  },
+  {
+    "msgtype": "c",
+    "name": "Security Definition Request",
+    "requiredFields": [
+      "SecurityReqID"
+    ],
+    "allFields": [
+      "SecurityReqID",
+      "SecurityRequestType",
+      "RequestTickTable",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Account",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "d",
+    "name": "Security Definition",
+    "requiredFields": [
+      "SecurityReqID",
+      "SecurityResponseID",
+      "SecurityResponseType",
+      "TotalNumSecurities"
+    ],
+    "allFields": [
+      "SecurityReqID",
+      "SecurityResponseID",
+      "SecurityResponseType",
+      "TotalNumSecurities",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "DisplayFactor",
+      "Text",
+      "MinLotSize",
+      "NumberOfBlocks",
+      "TradesInFlow",
+      "ExchTickSize",
+      "ExchPointValue",
+      "PriceDisplayType",
+      "RoundLot",
+      "UnderlyingSymbol",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingSecurityType",
+      "UnderlyingPx",
+      "UnderlyingQty",
+      "UnderlyingMaturityDate",
+      "UnderlyingIssuer",
+      "UnderlyingCurrency",
+      "UnderlyingMemo",
+      "UnderlyingStrikePrice",
+      "UnderlyingSpotRate",
+      "UnderlyingSecuritySubType",
+      "DisplayFactorQty",
+      "ProductComplex",
+      "DefSecuritySubTypeID"
+    ]
+  },
+  {
+    "msgtype": "e",
+    "name": "Security Status Request",
+    "requiredFields": [
+      "SecurityStatusReqID",
+      "SubscriptionRequestType"
+    ],
+    "allFields": [
+      "SecurityStatusReqID",
+      "SubscriptionRequestType",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone"
+    ]
+  },
+  {
+    "msgtype": "f",
+    "name": "Security Status",
+    "requiredFields": [
+      "SecurityStatusReqID",
+      "SecurityTradingStatus"
+    ],
+    "allFields": [
+      "SecurityStatusReqID",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "SecurityTradingStatus",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "V",
+    "name": "Market Data Request",
+    "requiredFields": [
+      "MDReqID",
+      "SubscriptionRequestType"
+    ],
+    "allFields": [
+      "MDReqID",
+      "SubscriptionRequestType",
+      "MarketDepth",
+      "MDUpdateType",
+      "AggregatedBook",
+      "IncludeNumberOfOrders",
+      "IncludeQuotes"
+    ]
+  },
+  {
+    "msgtype": "Y",
+    "name": "Market Data Request Reject",
+    "requiredFields": [
+      "MDReqID",
+      "Text"
+    ],
+    "allFields": [
+      "MDReqID",
+      "SecurityID",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "W",
+    "name": "Market Data Snapshot",
+    "requiredFields": [
+      "MDReqID"
+    ],
+    "allFields": [
+      "MDReqID",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "PriceFeedStatus",
+      "ExchangeSendingTime",
+      "ExchangeTransactTime"
+    ]
+  },
+  {
+    "msgtype": "X",
+    "name": "Market Data Incremental Refresh",
+    "requiredFields": [
+      "MDReqID"
+    ],
+    "allFields": [
+      "MDReqID",
+      "PriceFeedStatus",
+      "ExchangeSendingTime",
+      "ExchangeTransactTime",
+      "ExchangeSeqNum"
+    ]
+  },
+  {
+    "msgtype": "R",
+    "name": "Quote Request",
+    "requiredFields": [],
+    "allFields": [
+      "QuoteReqID",
+      "SRFQTransType",
+      "ValidUntilTime",
+      "UserID",
+      "Account",
+      "NegotiationID",
+      "ParentVendorUserID",
+      "ParentVendorAccountID",
+      "ParentVendorBrokerID",
+      "ParentVendorProfileID"
+    ]
+  },
+  {
+    "msgtype": "b",
+    "name": "Quote Request Response",
+    "requiredFields": [],
+    "allFields": [
+      "QuoteReqID",
+      "Account",
+      "ExecID",
+      "QuoteAckStatus",
+      "AccountID",
+      "UserID",
+      "OrderSource",
+      "ManualOrderIndicator",
+      "OrderID",
+      "OrderOrigination",
+      "OrderQty",
+      "SecondaryOrderID",
+      "SecurityDesc",
+      "Side",
+      "Text",
+      "TransactTime",
+      "CustOrderCapacity"
+    ]
+  },
+  {
+    "msgtype": "S",
+    "name": "Quote",
+    "requiredFields": [],
+    "allFields": [
+      "Account",
+      "AccountID",
+      "CompanyID",
+      "BrokerID",
+      "UserID",
+      "TTID",
+      "ManualOrderIndicator",
+      "BidPx",
+      "OfferPx",
+      "BidSize",
+      "OfferSize",
+      "ExpireTime",
+      "QuoteRefPrice",
+      "UnderlyingDeltaPercentage",
+      "TargetPartyExchangeTraderID",
+      "NegotiationID",
+      "QuotingStatus",
+      "SecondaryNegotiationID",
+      "MktQuoteID",
+      "Seq",
+      "QuoteReqID",
+      "SecondaryQuoteID",
+      "TransactTime",
+      "LastMkt",
+      "Text",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone"
+    ]
+  },
+  {
+    "msgtype": "AI",
+    "name": "Quote Status Report",
+    "requiredFields": [],
+    "allFields": [
+      "QuoteReqID",
+      "Account",
+      "ExecID",
+      "AccountID",
+      "CompanyID",
+      "BrokerID",
+      "UserID",
+      "TTID",
+      "OrderSource",
+      "ManualOrderIndicator",
+      "OrderOrigination",
+      "OrderQty",
+      "Side",
+      "Text",
+      "TransactTime",
+      "CustOrderCapacity",
+      "QuoteType",
+      "QuoteSubType",
+      "QuoteRefPrice",
+      "UnderlyingDeltaPercentage",
+      "ValidUntilTime",
+      "EffectiveTime",
+      "LastUpdateTime",
+      "BidPx",
+      "OfferPx",
+      "LastPx",
+      "LastShares",
+      "LeavesQty",
+      "SRFQTransType",
+      "NegotiationID",
+      "SecondaryNegotiationID",
+      "QuoteStatus",
+      "Seq",
+      "QuoteCondition",
+      "LastMkt",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone"
+    ]
+  },
+  {
+    "msgtype": "AJ",
+    "name": "Quote Response",
+    "requiredFields": [],
+    "allFields": [
+      "TradeReportID",
+      "NegotiationID",
+      "MktQuoteID",
+      "TradingSessionSubID",
+      "TransBkdTime",
+      "ValidUntilTime",
+      "OrderCapacity",
+      "Account",
+      "UserID",
+      "CompanyID",
+      "BrokerID",
+      "TTCustomerName",
+      "BidPx",
+      "OfferPx",
+      "BidSize",
+      "OfferSize",
+      "LastPx",
+      "LastShares",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "HandlInst"
+    ]
+  },
+  {
+    "msgtype": "A",
+    "name": "Logon",
+    "requiredFields": [
+      "HeartBtInt"
+    ],
+    "allFields": [
+      "EncryptMethod",
+      "HeartBtInt",
+      "RawData",
+      "ResetSeqNumFlag",
+      "NextExpectedMsgSeqNum",
+      "ByPassSessionRecovery",
+      "Password",
+      "StartDate",
+      "EndDate",
+      "SecurityExchange",
+      "ExDestination",
+      "CustomMode",
+      "Duration"
+    ]
+  },
+  {
+    "msgtype": "j",
+    "name": "Business Message Reject",
+    "requiredFields": [
+      "RefMsgType",
+      "BusinessRejectReason"
+    ],
+    "allFields": [
+      "RefSeqNum",
+      "RefMsgType",
+      "BusinessRejectRefID",
+      "BusinessRejectReason",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "H",
+    "name": "Order Status Request",
+    "requiredFields": [],
+    "allFields": [
+      "Account",
+      "ClOrdID",
+      "OrderID",
+      "CompanyID",
+      "ClearingAccountOverride",
+      "OrdStatusReqID"
+    ]
+  },
+  {
+    "msgtype": "AD",
+    "name": "Trade Capture Report Request",
+    "requiredFields": [
+      "SubscriptionRequestType"
+    ],
+    "allFields": [
+      "TradeRequestID",
+      "TradeRequestType",
+      "SubscriptionRequestType",
+      "LastUpdateTime",
+      "MultiLegReportingType"
+    ]
+  },
+  {
+    "msgtype": "AQ",
+    "name": "Trade Capture Report Request Ack",
+    "requiredFields": [],
+    "allFields": [
+      "TradeRequestID",
+      "TradeRequestType",
+      "TradeRequestResult",
+      "TradeRequestStatus",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "AE",
+    "name": "Trade Capture Report",
+    "requiredFields": [],
+    "allFields": [
+      "TradeReportID",
+      "ExecID",
+      "SecondaryExecID",
+      "ExecType",
+      "TradeReportTransType",
+      "TradeReportType",
+      "TradeHandlingInstr",
+      "TrdType",
+      "TrdSubType",
+      "Price",
+      "LastPx",
+      "LastShares",
+      "LeavesQty",
+      "MultiLegReportingType",
+      "TradeLinkID",
+      "TransactTime",
+      "TradeReportRefID",
+      "SecondaryTradeReportID",
+      "TradeID",
+      "OrigTradeID",
+      "TrdMatchID",
+      "FutureReferencePrice",
+      "TradeDate",
+      "OrigTradeDate",
+      "PreviouslyReported",
+      "TransBkdTime",
+      "Text",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "AvgPx",
+      "TradingVenueRegulatoryTradeID",
+      "LastMkt",
+      "RoutingAccount",
+      "CompanyID",
+      "BrokerID",
+      "TTCustomerName",
+      "Seq",
+      "LegFillSeq",
+      "UserID",
+      "TTID",
+      "TradePublishIndicator",
+      "OrderCapacity",
+      "UnderlyingSymbol",
+      "UnderlyingSecurityID",
+      "UnderlyingSecurityIDSource",
+      "UnderlyingSecurityType",
+      "UnderlyingPx",
+      "UnderlyingQty",
+      "UnderlyingMaturityDate",
+      "UnderlyingIssuer",
+      "UnderlyingCurrency",
+      "UnderlyingMemo",
+      "UnderlyingStrikePrice",
+      "UnderlyingSpotRate",
+      "UnderlyingSecuritySubType",
+      "RelatedTradeID",
+      "RelatedTradeQty",
+      "SettlDate",
+      "HedgeType",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "TextC",
+      "TextTT",
+      "TradingSessionSubID",
+      "TFUserType",
+      "NegotiationID",
+      "SecondaryNegotiationID",
+      "ExpireTime",
+      "IfTouchedPrice",
+      "IWouldPrice",
+      "LimitPrc",
+      "ManualOrderIndicator",
+      "UniqueExecID",
+      "TrdRptStatus",
+      "InsertTime",
+      "OneOffSharedKey"
+    ]
+  },
+  {
+    "msgtype": "AR",
+    "name": "Trade Capture Report Ack",
+    "requiredFields": [],
+    "allFields": [
+      "TradeReportID",
+      "TradeReportRefID",
+      "SecondaryTradeReportID",
+      "ExecType",
+      "ExecID",
+      "TradeLinkID",
+      "TradeReportTransType",
+      "TradeReportType",
+      "TrdRptStatus",
+      "TrdSubType",
+      "TradeReportRejectReason",
+      "Text",
+      "TransactTime",
+      "PreviouslyReported",
+      "TransBkdTime",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "LastPx",
+      "LastShares",
+      "TTCustomerName",
+      "Seq",
+      "CompanyID",
+      "BrokerID",
+      "UserID",
+      "TTID",
+      "TradePublishIndicator",
+      "OrderCapacity",
+      "TrdType",
+      "EchoDC_01",
+      "EchoDC_02",
+      "EchoDC_03",
+      "EchoDC_04",
+      "EchoDC_05",
+      "EchoDC_06",
+      "EchoDC_07",
+      "EchoDC_08",
+      "EchoDC_09",
+      "EchoDC_10",
+      "EchoDC_11",
+      "EchoDC_12",
+      "EchoDC_13",
+      "EchoDC_14",
+      "EchoDC_15",
+      "EchoDC_16",
+      "EchoDC_17",
+      "EchoDC_18",
+      "EchoDC_19",
+      "EchoDC_20",
+      "TextC",
+      "TextTT",
+      "TradingSessionSubID",
+      "TFUserType",
+      "NegotiationID",
+      "SecondaryNegotiationID",
+      "ManualOrderIndicator",
+      "RoutingAccount",
+      "InsertTime"
+    ]
+  },
+  {
+    "msgtype": "B",
+    "name": "News",
+    "requiredFields": [
+      "Headline",
+      "LinesOfText",
+      "Text"
+    ],
+    "allFields": [
+      "Headline",
+      "LinesOfText",
+      "Text",
+      "NewsReportID"
+    ]
+  },
+  {
+    "msgtype": "U2",
+    "name": "Out Of Band Recovery Request",
+    "requiredFields": [],
+    "allFields": [
+      "StartDate",
+      "EndDate",
+      "SecurityExchange",
+      "ExDestination",
+      "CustomMode",
+      "Duration"
+    ]
+  },
+  {
+    "msgtype": "Q",
+    "name": "Dont Know Trade",
+    "requiredFields": [
+      "OrderID",
+      "ExecID",
+      "DKReason"
+    ],
+    "allFields": [
+      "OrderID",
+      "ExecID",
+      "DKReason",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Side",
+      "OrderQty",
+      "LastShares",
+      "LastPx",
+      "Text"
+    ]
+  },
+  {
+    "msgtype": "J",
+    "name": "Allocation Instruction",
+    "requiredFields": [
+      "AllocID",
+      "AllocType",
+      "AllocNoOrdersType",
+      "Side",
+      "Quantity",
+      "AvgPx",
+      "TradeDate"
+    ],
+    "allFields": [
+      "AllocID",
+      "AllocTransType",
+      "AllocType",
+      "AllocLinkID",
+      "AllocNoOrdersType",
+      "Side",
+      "Symbol",
+      "SecurityID",
+      "IDSource",
+      "Product",
+      "CFICode",
+      "SecurityType",
+      "SecuritySubType",
+      "MaturityMonthYear",
+      "MaturityDate",
+      "MaturityDay",
+      "ContractYearMonth",
+      "DeliveryTerm",
+      "DeliveryDate",
+      "PutOrCall",
+      "StrikePrice",
+      "OptAttribute",
+      "SecurityExchange",
+      "ExDestination",
+      "SecurityDesc",
+      "Currency",
+      "ExerciseStyle",
+      "Timezone",
+      "Quantity",
+      "LastMkt",
+      "PriceType",
+      "AvgPx",
+      "AvgParPx",
+      "TradeDate",
+      "TransactTime",
+      "SettlDate",
+      "GrossTradeAmt",
+      "NetMoney",
+      "OpenClose",
+      "Text",
+      "Account",
+      "AllocStrategy",
+      "VendorDefinedField1",
+      "VendorDefinedField2",
+      "VendorDefinedField3",
+      "VendorDefinedField4",
+      "VendorDefinedField5",
+      "AllocVolumeType"
+    ]
+  },
+  {
+    "msgtype": "P",
+    "name": "Allocation Instruction Ack",
+    "requiredFields": [
+      "AllocID",
+      "TransactTime",
+      "AllocStatus"
+    ],
+    "allFields": [
+      "AllocID",
+      "TransactTime",
+      "AllocStatus",
+      "Text",
+      "Account",
+      "VendorDefinedField1",
+      "VendorDefinedField2",
+      "VendorDefinedField3",
+      "VendorDefinedField4",
+      "VendorDefinedField5"
+    ]
+  },
+  {
+    "msgtype": "AS",
+    "name": "Allocation Report",
+    "requiredFields": [
+      "AllocReportID",
+      "AllocTransType",
+      "AllocReportType",
+      "AllocStatus",
+      "AllocNoOrdersType",
+      "Side",
+      "Quantity",
+      "AvgPx",
+      "TradeDate"
+    ],
+    "allFields": [
+      "AllocReportID",
+      "AllocTransType",
+      "AllocReportType",
+      "AllocStatus",
+      "AllocNoOrdersType",
+      "Side",
+      "Quantity",
+      "AvgPx",
+      "TradeDate",
+      "Text",
+      "Account",
+      "VendorDefinedField1",
+      "VendorDefinedField2",
+      "VendorDefinedField3",
+      "VendorDefinedField4",
+      "VendorDefinedField5",
+      "AllocVolumeType",
+      "TransactTime"
+    ]
+  },
+  {
+    "msgtype": "E",
+    "name": "New Order List",
+    "requiredFields": [
+      "ListID"
+    ],
+    "allFields": [
+      "ListID",
+      "ListExecInst"
     ]
   }
 ]

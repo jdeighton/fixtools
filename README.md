@@ -33,6 +33,49 @@ npm run dev
 
 ## Scripts
 
+### `scripts/buildSpecJson.mjs`
+
+Reads the raw QuickFIX XML spec files from the `specs/` directory and writes `fix_spec_combined.json`. This is the source-of-truth step — run it whenever you update or add a spec file.
+
+```sh
+node scripts/buildSpecJson.mjs
+```
+
+The `specs/` directory contains the following XML spec files:
+
+| File | Source | Description |
+|------|--------|-------------|
+| `FIX42.xml` | [QuickFIX GitHub](https://github.com/quickfix/quickfix/tree/master/spec) | Standard FIX 4.2 spec — 405 fields, 46 messages |
+| `FIX44.xml` | [QuickFIX GitHub](https://github.com/quickfix/quickfix/tree/master/spec) | Standard FIX 4.4 spec — 912 fields, 93 messages |
+| `TT-FIX42.xml` | [Trading Technologies](https://library.tradingtechnologies.com/tt-fix/TT-FIX42.xml) | TT's FIX 4.2 dialect — 639 fields, 40 messages, includes TT-specific tags (e.g. `ManualOrderIndicator`) |
+| `TT-FIX44.xml` | [Trading Technologies](https://library.tradingtechnologies.com/tt-fix/TT-FIX44.xml) | TT's FIX 4.4 dialect — 639 fields, 40 messages, includes TT-specific tags |
+
+The TT spec files differ from the standard QuickFIX files in two ways: they use TT-specific proprietary tags, and their message definitions use `<component>` references (e.g. `Instrument`, `Parties`) which the script expands recursively into full field lists.
+
+The parser in `buildSpecJson.mjs` handles both formats transparently — QuickFIX files use single-quoted attributes and no components; TT files use double-quoted attributes, XML comments, and nested components.
+
+The four specs are stored as separate keys in `fix_spec_combined.json` (`fix42`, `fix44`, `tt_fix42`, `tt_fix44`). Currently `generateDictionary.mjs` uses only `fix42` and `fix44` to build the app's dictionary; the TT data is available in the JSON for future use.
+
+To re-download the TT spec files (they are versioned and updated periodically by TT):
+
+```sh
+curl -o specs/TT-FIX42.xml https://library.tradingtechnologies.com/tt-fix/TT-FIX42.xml
+curl -o specs/TT-FIX44.xml https://library.tradingtechnologies.com/tt-fix/TT-FIX44.xml
+node scripts/buildSpecJson.mjs
+npm run build
+```
+
+To add support for another FIX version (e.g. FIX 5.0):
+
+1. Download the XML file — e.g. `curl -o specs/FIX50.xml https://raw.githubusercontent.com/quickfix/quickfix/master/spec/FIX50.xml`
+2. Add an entry to the `SPEC_FILES` array near the top of `buildSpecJson.mjs`:
+   ```js
+   { key: 'fix50', file: 'FIX50.xml' },
+   ```
+3. Run `node scripts/buildSpecJson.mjs` to regenerate `fix_spec_combined.json`.
+4. Update `generateDictionary.mjs` to read and export the new version's field and message arrays.
+5. Wire the new version into the UI: version selectors in the Dictionary, Enums, and Validator tabs.
+
 ### `scripts/generateDictionary.mjs`
 
 Reads `fix_spec_combined.json` (the raw FIX 4.2 + 4.4 spec data) and generates `src/data/fixDictionary.ts`, which contains:

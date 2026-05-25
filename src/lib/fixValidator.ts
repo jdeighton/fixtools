@@ -1,5 +1,7 @@
 import type { FixMessage, Settings, CustomEnum } from '../context/AppContext'
-import { FIELDS, FIELDS_42, MSG_TYPES, requiredFields, fieldName } from '../data/fixDictionary'
+import { FIELDS, FIELDS_42, FIELDS_TT42, FIELDS_TT44, MSG_TYPES, REQUIRED_FIELDS_42, REQUIRED_FIELDS_44, REQUIRED_FIELDS_TT42, REQUIRED_FIELDS_TT44, fieldName } from '../data/fixDictionary'
+
+export type ValidationProfile = 'auto' | 'FIX.4.2' | 'FIX.4.4' | 'TT-FIX.4.2' | 'TT-FIX.4.4'
 
 export interface ValidationIssue {
   severity: 'error' | 'warning'
@@ -65,24 +67,37 @@ function computeBodyLength(tags: Map<number, string>): number {
   return length
 }
 
-export function validateMessage(msg: FixMessage, settings: Settings, customEnums: CustomEnum[] = []): ValidationIssue[] {
+export function validateMessage(msg: FixMessage, settings: Settings, customEnums: CustomEnum[] = [], profile: ValidationProfile = 'auto'): ValidationIssue[] {
   const issues: ValidationIssue[] = []
   const t = (num: number) => msg.tags.get(num)
 
-  // Rule 1: BeginString
   const beginStr = t(8)
 
-  // Use the version-specific field map for enum validation so FIX 4.2-only values (e.g. 150=1,2) are accepted
-  const fieldsForVersion = beginStr === 'FIX.4.2' ? FIELDS_42 : FIELDS
+  // Pick the field map for enum validation based on the selected profile
+  const fieldsForVersion =
+    profile === 'TT-FIX.4.2' ? FIELDS_TT42 :
+    profile === 'TT-FIX.4.4' ? FIELDS_TT44 :
+    profile === 'FIX.4.2' || (profile === 'auto' && beginStr === 'FIX.4.2') ? FIELDS_42 :
+    FIELDS
 
-  // Build a lookup of enabled custom enum overrides scoped to this message's FIX version
+  // Effective version string for matching custom enum accommodations
+  const effectiveVersion: string =
+    profile === 'auto' ? (beginStr ?? '') : profile
+
   const allowedOverrides = new Set(
     customEnums
-      .filter(e => e.enabled && (!e.fixVersion || e.fixVersion === 'any' || e.fixVersion === beginStr))
+      .filter(e => e.enabled && (!e.fixVersion || e.fixVersion === 'any' || e.fixVersion === effectiveVersion))
       .map(e => `${e.tag}:${e.value}`)
   )
-  if (!beginStr || !['FIX.4.2', 'FIX.4.4'].includes(beginStr)) {
-    issues.push({ severity: 'error', tag: 8, tagName: 'BeginString', description: `BeginString must be FIX.4.2 or FIX.4.4, got "${beginStr ?? ''}"` })
+
+  // Rule 1: BeginString — TT profiles still expect standard FIX.4.x on the wire
+  const expectedBeginStr =
+    profile === 'TT-FIX.4.2' ? 'FIX.4.2' :
+    profile === 'TT-FIX.4.4' ? 'FIX.4.4' :
+    profile === 'auto' ? null : profile  // null = accept both standard versions
+  const validBeginStrs = expectedBeginStr ? [expectedBeginStr] : ['FIX.4.2', 'FIX.4.4']
+  if (!beginStr || !validBeginStrs.includes(beginStr)) {
+    issues.push({ severity: 'error', tag: 8, tagName: 'BeginString', description: `BeginString must be ${validBeginStrs.join(' or ')}, got "${beginStr ?? ''}"` })
   }
 
   // Rule 9: Tag ordering — 8 first, 9 second, 35 third, 10 last
@@ -105,13 +120,24 @@ export function validateMessage(msg: FixMessage, settings: Settings, customEnums
     issues.push({ severity: 'error', tag: 35, tagName: 'MsgType', description: `Unknown MsgType value: "${msgType}"` })
   }
 
-  // Rule 5: Required tags per MsgType
-  if (msgType && beginStr && ['FIX.4.2', 'FIX.4.4'].includes(beginStr)) {
-    const required = requiredFields(msgType, beginStr)
-    for (const reqFieldName of required) {
-      const tagNum = Object.entries(FIELDS).find(([, f]) => f.name === reqFieldName)?.[0]
-      if (tagNum && !msg.tags.has(Number(tagNum))) {
-        issues.push({ severity: 'error', tag: Number(tagNum), tagName: reqFieldName, description: `Required field "${reqFieldName}" (tag ${tagNum}) missing for MsgType ${msgType}` })
+  // Rule 5: Required fields per MsgType — use the profile's required-field table
+  if (msgType) {
+    let requiredForMsg: string[] = []
+    if (profile === 'TT-FIX.4.2') {
+      requiredForMsg = REQUIRED_FIELDS_TT42[msgType] ?? []
+    } else if (profile === 'TT-FIX.4.4') {
+      requiredForMsg = REQUIRED_FIELDS_TT44[msgType] ?? []
+    } else if (profile === 'FIX.4.2' || (profile === 'auto' && beginStr === 'FIX.4.2')) {
+      requiredForMsg = REQUIRED_FIELDS_42[msgType] ?? []
+    } else {
+      requiredForMsg = REQUIRED_FIELDS_44[msgType] ?? []
+    }
+    // Resolve field names to tag numbers using the active field map
+    const fieldsByName = Object.entries(fieldsForVersion)
+    for (const reqFieldName of requiredForMsg) {
+      const entry = fieldsByName.find(([, f]) => f.name === reqFieldName)
+      if (entry && !msg.tags.has(Number(entry[0]))) {
+        issues.push({ severity: 'error', tag: Number(entry[0]), tagName: reqFieldName, description: `Required field "${reqFieldName}" (tag ${entry[0]}) missing for MsgType ${msgType}` })
       }
     }
   }

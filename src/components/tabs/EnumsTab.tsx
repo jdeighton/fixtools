@@ -3,10 +3,13 @@ import { useApp } from '../../context/AppContext'
 import { FIELDS, fieldValueDescription } from '../../data/fixDictionary'
 import styles from './EnumsTab.module.css'
 
-const FIX_VERSIONS = ['FIX.4.2', 'FIX.4.4', 'any'] as const
+const FIX_VERSIONS = ['FIX.4.2', 'FIX.4.4', 'TT-FIX.4.2', 'TT-FIX.4.4', 'any'] as const
 
 function versionLabel(v: string) {
-  return v === 'any' ? 'Any' : v
+  if (v === 'any') return 'Any'
+  if (v === 'TT-FIX.4.2') return 'TT FIX 4.2'
+  if (v === 'TT-FIX.4.4') return 'TT FIX 4.4'
+  return v
 }
 
 function newId() {

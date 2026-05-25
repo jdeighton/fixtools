@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react'
-import { FIELDS, FIELDS_42, MESSAGES_42, MESSAGES_44 } from '../../data/fixDictionary'
+import { FIELDS, FIELDS_42, FIELDS_TT42, FIELDS_TT44, MESSAGES_42, MESSAGES_44, MESSAGES_TT42, MESSAGES_TT44 } from '../../data/fixDictionary'
 import type { FieldDef, MessageDef } from '../../data/fixDictionary'
 import styles from './DictionaryTab.module.css'
 
-type Version = 'FIX.4.2' | 'FIX.4.4'
+type Version = 'FIX.4.2' | 'FIX.4.4' | 'TT-FIX.4.2' | 'TT-FIX.4.4'
 type SubTab = 'msgtype' | 'msgname' | 'fieldtag' | 'fieldname'
 type DictView =
   | { kind: 'list' }
@@ -178,8 +178,17 @@ export function DictionaryTab() {
   const navigate = (v: DictView) => setHistory(h => [...h, v])
   const back = () => setHistory(h => h.length > 1 ? h.slice(0, -1) : h)
 
-  const messages = version === 'FIX.4.2' ? MESSAGES_42 : MESSAGES_44
-  const fields: FieldsMap = version === 'FIX.4.2' ? (FIELDS_42 as FieldsMap) : FIELDS
+  const messages =
+    version === 'FIX.4.2'    ? MESSAGES_42  :
+    version === 'TT-FIX.4.2' ? MESSAGES_TT42 :
+    version === 'TT-FIX.4.4' ? MESSAGES_TT44 :
+    MESSAGES_44
+
+  const fields: FieldsMap =
+    version === 'FIX.4.2'    ? (FIELDS_42   as FieldsMap) :
+    version === 'TT-FIX.4.2' ? (FIELDS_TT42 as FieldsMap) :
+    version === 'TT-FIX.4.4' ? (FIELDS_TT44 as FieldsMap) :
+    FIELDS
 
   const handleVersionChange = (v: Version) => { setVersion(v); setHistory([{ kind: 'list' }]); setSearch('') }
   const handleSubTabChange = (t: SubTab) => { setSubTab(t); setSearch(''); setHistory([{ kind: 'list' }]) }
@@ -223,6 +232,8 @@ export function DictionaryTab() {
         >
           <option value="FIX.4.2">FIX 4.2</option>
           <option value="FIX.4.4">FIX 4.4</option>
+          <option value="TT-FIX.4.2">TT FIX 4.2</option>
+          <option value="TT-FIX.4.4">TT FIX 4.4</option>
         </select>
 
         {view.kind === 'list' && (

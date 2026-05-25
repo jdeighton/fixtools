@@ -60,14 +60,18 @@ function titleCase(str) {
     .map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
 }
 
-const fields42 = spec.fix42?.fields ?? []
-const fields44 = spec.fix44?.fields ?? []
-const messages42 = spec.fix42?.messages ?? []
-const messages44 = spec.fix44?.messages ?? []
+const fields42     = spec.fix42?.fields    ?? []
+const fields44     = spec.fix44?.fields    ?? []
+const messages42   = spec.fix42?.messages  ?? []
+const messages44   = spec.fix44?.messages  ?? []
+const fieldsTt42   = spec.tt_fix42?.fields   ?? []
+const fieldsTt44   = spec.tt_fix44?.fields   ?? []
+const messagesTt42 = spec.tt_fix42?.messages ?? []
+const messagesTt44 = spec.tt_fix44?.messages ?? []
 
 const allFields = buildFieldMap(fields42, fields44)
 
-// FIX 4.2-only field map (not merged with 4.4) for version-aware enum validation
+// Single-version field map (no merging) for version-aware enum validation and TT specs
 function buildSingleVersionFieldMap(fields) {
   const map = {}
   for (const f of fields) {
@@ -84,11 +88,15 @@ function buildSingleVersionFieldMap(fields) {
   return map
 }
 
-const fields42Map = buildSingleVersionFieldMap(fields42)
-const msgTypes42 = buildMsgTypeMap(messages42)
-const msgTypes44 = buildMsgTypeMap(messages44)
-const required42 = buildRequiredMap(messages42)
-const required44 = buildRequiredMap(messages44)
+const fields42Map   = buildSingleVersionFieldMap(fields42)
+const fieldsTt42Map = buildSingleVersionFieldMap(fieldsTt42)
+const fieldsTt44Map = buildSingleVersionFieldMap(fieldsTt44)
+const msgTypes42    = buildMsgTypeMap(messages42)
+const msgTypes44    = buildMsgTypeMap(messages44)
+const required42    = buildRequiredMap(messages42)
+const required44    = buildRequiredMap(messages44)
+const requiredTt42  = buildRequiredMap(messagesTt42)
+const requiredTt44  = buildRequiredMap(messagesTt44)
 
 // Merge msgType maps
 const allMsgTypes = { ...msgTypes42, ...msgTypes44 }
@@ -97,7 +105,7 @@ function serialize(obj) {
   return JSON.stringify(obj, null, 2)
 }
 
-const output = `// Auto-generated from QuickFIX FIX42.xml and FIX44.xml specs — do not edit by hand
+const output = `// Auto-generated from QuickFIX and TT FIX spec files — do not edit by hand
 // Run: node scripts/generateDictionary.mjs
 
 export interface FieldDef {
@@ -110,11 +118,19 @@ export const FIELDS: Record<number, FieldDef> = ${serialize(allFields)}
 
 export const FIELDS_42: Record<number, FieldDef> = ${serialize(fields42Map)}
 
+export const FIELDS_TT42: Record<number, FieldDef> = ${serialize(fieldsTt42Map)}
+
+export const FIELDS_TT44: Record<number, FieldDef> = ${serialize(fieldsTt44Map)}
+
 export const MSG_TYPES: Record<string, string> = ${serialize(allMsgTypes)}
 
 export const REQUIRED_FIELDS_42: Record<string, string[]> = ${serialize(required42)}
 
 export const REQUIRED_FIELDS_44: Record<string, string[]> = ${serialize(required44)}
+
+export const REQUIRED_FIELDS_TT42: Record<string, string[]> = ${serialize(requiredTt42)}
+
+export const REQUIRED_FIELDS_TT44: Record<string, string[]> = ${serialize(requiredTt44)}
 
 export interface MessageDef {
   msgtype: string
@@ -131,6 +147,20 @@ export const MESSAGES_42: MessageDef[] = ${serialize(messages42.map(m => ({
 })))}
 
 export const MESSAGES_44: MessageDef[] = ${serialize(messages44.map(m => ({
+  msgtype: m.msgtype,
+  name: titleCase(m.name),
+  requiredFields: m.requiredFields ?? [],
+  allFields: m.allFields ?? [],
+})))}
+
+export const MESSAGES_TT42: MessageDef[] = ${serialize(messagesTt42.map(m => ({
+  msgtype: m.msgtype,
+  name: titleCase(m.name),
+  requiredFields: m.requiredFields ?? [],
+  allFields: m.allFields ?? [],
+})))}
+
+export const MESSAGES_TT44: MessageDef[] = ${serialize(messagesTt44.map(m => ({
   msgtype: m.msgtype,
   name: titleCase(m.name),
   requiredFields: m.requiredFields ?? [],
