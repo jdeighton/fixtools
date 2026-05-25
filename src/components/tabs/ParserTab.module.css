@@ -1,0 +1,199 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty {
+  color: var(--text-muted);
+  padding: 32px;
+  text-align: center;
+}
+
+.timelineSection {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+}
+
+.gridWrap {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Direction cell */
+.dirCell {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.compId {
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.arrow {
+  color: var(--accent);
+  font-size: 14px;
+}
+
+/* Detail panel */
+.detailSection {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+}
+
+.detailToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border: none;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.detailToggle:hover { color: var(--text-primary); }
+
+.detailEmpty {
+  padding: 10px 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.tagDetail {
+  padding: 4px 0;
+}
+
+.tagGrid {
+  display: table;
+  width: 100%;
+}
+
+.tagRow {
+  display: table-row;
+}
+
+.tagRow:hover > span {
+  background: var(--bg-elevated);
+}
+
+.tagNum {
+  display: table-cell;
+  padding: 3px 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  width: 48px;
+  white-space: nowrap;
+}
+
+.tagName {
+  display: table-cell;
+  padding: 3px 10px 3px 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  width: 160px;
+  white-space: nowrap;
+}
+
+.tagVal {
+  display: table-cell;
+  padding: 3px 10px 3px 0;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+/* Chevron shared by detail and diagram toggles */
+.chevron {
+  font-size: 9px;
+  transition: transform 0.2s;
+}
+
+.chevronCollapsed { transform: rotate(180deg); }
+
+/* Sequence diagram */
+.diagramSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.diagramToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border: none;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.diagramToggle:hover { color: var(--text-primary); }
+
+.diagHint {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.diagramBody {
+  /* natural height — SVG expands to full content size */
+}
+
+.rangeGate {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.rangeForm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.numInput {
+  width: 72px;
+  padding: 5px 8px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.numInput:focus { border-color: var(--border-focus); }
+
+.renderBtn {
+  padding: 5px 16px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.renderBtn:hover { background: var(--accent-hover); }

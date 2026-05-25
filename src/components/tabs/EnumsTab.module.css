@@ -1,0 +1,343 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 900px;
+  padding: 4px 0;
+}
+
+/* Intro */
+.intro h2 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.intro p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.summary {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Add form */
+.addForm {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.addForm h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.formRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fieldGroup label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.inputSm {
+  width: 100px;
+  padding: 6px 10px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  outline: none;
+  font-size: 13px;
+  transition: border-color 0.15s;
+}
+
+.inputSm:focus { border-color: var(--border-focus); }
+
+select.inputSm {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.inputLg {
+  width: 220px;
+  padding: 6px 10px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  outline: none;
+  font-size: 13px;
+  transition: border-color 0.15s;
+}
+
+.inputLg:focus { border-color: var(--border-focus); }
+
+.tagName {
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.tagNameUnknown {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.inStandard {
+  font-size: 11px;
+  color: var(--warning);
+  margin-top: 2px;
+}
+
+.notInStandard {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.versionCell {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+.addBtn {
+  padding: 7px 20px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-weight: 500;
+  font-size: 13px;
+  transition: background 0.15s;
+  height: 34px;
+  align-self: flex-end;
+}
+
+.addBtn:hover { background: var(--accent-hover); }
+
+.addError {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--error);
+}
+
+/* Empty state */
+.empty {
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 24px 0;
+}
+
+/* Table */
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table th {
+  text-align: left;
+  padding: 7px 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.table tbody tr:hover td { background: var(--bg-elevated); }
+.table tbody tr:last-child td { border-bottom: none; }
+
+.rowDisabled td { opacity: 0.45; }
+
+.monoCell {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+/* Toggle button */
+.toggleBtn {
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.toggleOn {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: #4ade80;
+}
+
+.toggleOn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: var(--error);
+}
+
+.toggleOff {
+  background: rgba(100, 100, 100, 0.15);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+
+.toggleOff:hover {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: #4ade80;
+}
+
+/* Action cell — pencil + delete side by side */
+.actionCell {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Edit (pencil) button */
+.editBtn {
+  padding: 3px 7px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.editBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Delete button */
+.deleteBtn {
+  padding: 3px 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 13px;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.deleteBtn:hover {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+/* Inline edit row */
+.editRow td {
+  background: var(--bg-elevated);
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.editInputSm {
+  width: 80px;
+  padding: 4px 8px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-focus);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-family: var(--font-mono);
+  outline: none;
+}
+
+.editInputLg {
+  width: 200px;
+  padding: 4px 8px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-focus);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 12px;
+  outline: none;
+}
+
+.editDescCell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.editError {
+  font-size: 11px;
+  color: var(--error);
+}
+
+.editHint {
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.saveBtn {
+  padding: 3px 12px;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.saveBtn:hover { background: var(--accent-hover); }
+
+.cancelBtn {
+  padding: 3px 10px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 12px;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.cancelBtn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}

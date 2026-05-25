@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(node scripts/generateDictionary.mjs)",
+      "Bash(npx vitest *)",
+      "Bash(node -e ' *)",
+      "Bash(node --experimental-vm-modules -e ' *)",
+      "Bash(node scripts/generateSamples.mjs)"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+:root {
+  --bg-base: #1a1a1a;
+  --bg-surface: #242424;
+  --bg-elevated: #2e2e2e;
+  --bg-input: #1e1e1e;
+
+  --accent: #e87020;
+  --accent-hover: #f0892a;
+
+  --buy: #3b82f6;
+  --sell: #ef4444;
+
+  --text-primary: #e8e8e8;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+
+  --border: #3a3a3a;
+  --border-focus: #e87020;
+
+  --success: #22c55e;
+  --error: #ef4444;
+  --warning: #f59e0b;
+
+  --tab-active-bg: #2e2e2e;
+  --tab-inactive-bg: #1a1a1a;
+
+  --radius: 6px;
+  --radius-sm: 3px;
+
+  --font-mono: 'Consolas', 'Fira Mono', 'Courier New', monospace;
+  --font-sans: system-ui, -apple-system, sans-serif;
+}

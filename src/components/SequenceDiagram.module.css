@@ -1,0 +1,11 @@
+.scroll {
+  background: var(--bg-base);
+  border-radius: var(--radius);
+  padding: 8px;
+  overflow-x: auto;
+}
+
+.svg {
+  display: block;
+  min-width: 100%;
+}
