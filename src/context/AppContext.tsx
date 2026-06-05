@@ -7,6 +7,7 @@ export interface FixMessage {
   direction: string
   fixVersion: string
   tags: Map<number, string>
+  groups: Map<number, Record<number, string>[]>
   sequenceIndex: number
 }
 

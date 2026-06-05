@@ -120,9 +120,83 @@
 .chevron {
   font-size: 9px;
   transition: transform 0.2s;
+  flex-shrink: 0;
 }
 
 .chevronCollapsed { transform: rotate(180deg); }
+
+/* Repeating groups in TagDetail */
+.groupBlock {
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.groupBlockToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: var(--bg-surface);
+  border: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+}
+
+.groupBlockToggle:hover { color: var(--text-primary); }
+
+.groupInstance {
+  border-top: 1px solid var(--border);
+}
+
+.groupInstanceLabel {
+  padding: 3px 10px 3px 22px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.groupTagGrid {
+  display: table;
+  width: 100%;
+}
+
+.groupTagRow {
+  display: table-row;
+}
+
+.groupTagRow:hover > span {
+  background: var(--bg-elevated);
+}
+
+.groupTagNum {
+  display: table-cell;
+  padding: 2px 10px 2px 32px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  width: 64px;
+  white-space: nowrap;
+}
+
+.groupTagName {
+  display: table-cell;
+  padding: 2px 10px 2px 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  width: 160px;
+  white-space: nowrap;
+}
+
+.groupTagVal {
+  display: table-cell;
+  padding: 2px 10px 2px 0;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
 
 /* Sequence diagram */
 .diagramSection {

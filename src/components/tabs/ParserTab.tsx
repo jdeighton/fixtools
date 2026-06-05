@@ -49,11 +49,17 @@ function DirectionCell({ msg }: { msg: FixMessage }) {
 }
 
 function TagDetail({ msg }: { msg: FixMessage }) {
-  const rows = [...msg.tags.entries()].map(([tag, value]) => ({
-    tag,
-    name: fieldName(tag),
-    value,
-  }))
+  const [openGroups, setOpenGroups] = useState<Set<number>>(new Set())
+
+  const toggleGroup = (noXTag: number) =>
+    setOpenGroups(prev => {
+      const next = new Set(prev)
+      next.has(noXTag) ? next.delete(noXTag) : next.add(noXTag)
+      return next
+    })
+
+  const rows = [...msg.tags.entries()].map(([tag, value]) => ({ tag, name: fieldName(tag), value }))
+
   return (
     <div className={styles.tagDetail}>
       <div className={styles.tagGrid}>
@@ -65,6 +71,32 @@ function TagDetail({ msg }: { msg: FixMessage }) {
           </div>
         ))}
       </div>
+
+      {msg.groups.size > 0 && [...msg.groups.entries()].map(([noXTag, instances]) => (
+        <div key={noXTag} className={styles.groupBlock}>
+          <button className={styles.groupBlockToggle} onClick={() => toggleGroup(noXTag)}>
+            <span className={`${styles.chevron} ${openGroups.has(noXTag) ? '' : styles.chevronCollapsed}`}>▲</span>
+            {fieldName(noXTag)} ({noXTag}) — {instances.length} instance{instances.length !== 1 ? 's' : ''}
+          </button>
+          {openGroups.has(noXTag) && instances.map((inst, idx) => (
+            <div key={idx} className={styles.groupInstance}>
+              <div className={styles.groupInstanceLabel}>Instance {idx + 1}</div>
+              <div className={styles.groupTagGrid}>
+                {Object.entries(inst).map(([tagStr, value]) => {
+                  const tag = Number(tagStr)
+                  return (
+                    <div key={tag} className={styles.groupTagRow}>
+                      <span className={styles.groupTagNum}>{tag}</span>
+                      <span className={styles.groupTagName}>{fieldName(tag)}</span>
+                      <span className={styles.groupTagVal}>{value}</span>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   )
 }

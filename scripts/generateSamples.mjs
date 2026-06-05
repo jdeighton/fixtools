@@ -472,3 +472,95 @@ function scenario(name) {
 
   write()
 }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// File 5: ESU6-ESZ6 Calendar Spread — buy 2 spreads @ 12.50 limit, partial fill
+// FIX 4.4 — demonstrates NoLegs (555) and NoPartyIDs (453) repeating groups
+// ═══════════════════════════════════════════════════════════════════════════════
+
+{
+  const { add, write } = scenario('es_calendar_spread.txt')
+  const S = 'TRADER01', T = 'CME_GW'
+  const ACCT = 'ACCT-FUT-001'
+
+  // FIX 4.4 session helpers
+  const logon44   = (sndr, tgt, seq, ts) => buildFix('FIX.4.4', [[35,'A'],[49,sndr],[56,tgt],[34,seq],[52,fts(ts)],[98,'0'],[108,'30']])
+  const hb44      = (sndr, tgt, seq, ts) => buildFix('FIX.4.4', [[35,'0'],[49,sndr],[56,tgt],[34,seq],[52,fts(ts)]])
+  const logout44  = (sndr, tgt, seq, ts, txt) => buildFix('FIX.4.4', [[35,'5'],[49,sndr],[56,tgt],[34,seq],[52,fts(ts)],...(txt?[[58,txt]]:[]) ])
+
+  // Leg definitions for ESU6-ESZ6 calendar spread
+  // Leg 1: near month ESU6 (Sep 2026)  |  Leg 2: far month ESZ6 (Dec 2026)
+  const legs = [
+    [555,'2'],
+    [600,'ESU6'],[609,'FUT'],[610,'202609'],[617,'CME'],
+    [600,'ESZ6'],[609,'FUT'],[610,'202612'],[617,'CME'],
+  ]
+
+  // NoPartyIDs: clearing firm + order origination trader
+  const parties = [
+    [453,'2'],
+    [448,'CLRG-001'],[447,'D'],[452,'4'],   // PartyRole 4 = Clearing Firm
+    [448,'TRADER01'],[447,'D'],[452,'11'],   // PartyRole 11 = Order Origination Trader
+  ]
+
+  add('2026-06-05 09:30:00.000', 'out', logon44(S, T, 1, '2026-06-05 09:30:00.000'))
+  add('2026-06-05 09:30:00.213', 'in',  logon44(T, S, 1, '2026-06-05 09:30:00.213'))
+
+  // BUY 2 ESU6-ESZ6 calendar spreads @ 12.50 LIMIT Day
+  const clOrdId = 'ES-CAL-20260605-001'
+  add('2026-06-05 09:30:05.441', 'out', buildFix('FIX.4.4', [
+    [35,'D'],[49,S],[56,T],[34,2],[52,fts('2026-06-05 09:30:05.441')],
+    [11,clOrdId],[1,ACCT],[21,'1'],
+    [55,'ESU6-ESZ6'],[167,'FUT'],[207,'CME'],
+    [54,'1'],[38,'2'],[40,'2'],[44,'12.50'],[59,'0'],
+    [60,fts('2026-06-05 09:30:05.441')],
+    ...legs,
+  ]))
+
+  // Acknowledged — exchange confirms order, echoes legs and parties
+  const orderId = 'CME-SPR-938471000'
+  add('2026-06-05 09:30:05.612', 'in', buildFix('FIX.4.4', [
+    [35,'8'],[49,T],[56,S],[34,2],[52,fts('2026-06-05 09:30:05.612')],
+    [37,orderId],[11,clOrdId],[17,'CME-EX-SPR-00010001'],[20,'0'],[150,'0'],[39,'0'],
+    [55,'ESU6-ESZ6'],[167,'FUT'],[207,'CME'],
+    [54,'1'],[38,'2'],[40,'2'],[44,'12.50'],
+    [32,'0'],[31,'0.00'],[14,'0'],[151,'2'],[6,'0.00'],
+    [60,fts('2026-06-05 09:30:05.441')],
+    ...legs,
+    ...parties,
+  ]))
+
+  // Partial fill: 1 spread @ 12.50
+  add('2026-06-05 09:30:06.088', 'in', buildFix('FIX.4.4', [
+    [35,'8'],[49,T],[56,S],[34,3],[52,fts('2026-06-05 09:30:06.088')],
+    [37,orderId],[11,clOrdId],[17,'CME-EX-SPR-00010002'],[20,'0'],[150,'1'],[39,'1'],
+    [55,'ESU6-ESZ6'],[167,'FUT'],[207,'CME'],
+    [54,'1'],[38,'2'],[40,'2'],[44,'12.50'],
+    [32,'1'],[31,'12.50'],[14,'1'],[151,'1'],[6,'12.50'],
+    [60,fts('2026-06-05 09:30:06.088')],
+    ...legs,
+    ...parties,
+  ]))
+
+  // Fill remaining 1 spread @ 12.25 (spread tightened slightly)
+  add('2026-06-05 09:30:06.504', 'in', buildFix('FIX.4.4', [
+    [35,'8'],[49,T],[56,S],[34,4],[52,fts('2026-06-05 09:30:06.504')],
+    [37,orderId],[11,clOrdId],[17,'CME-EX-SPR-00010003'],[20,'0'],[150,'2'],[39,'2'],
+    [55,'ESU6-ESZ6'],[167,'FUT'],[207,'CME'],
+    [54,'1'],[38,'2'],[40,'2'],[44,'12.50'],
+    [32,'1'],[31,'12.25'],[14,'2'],[151,'0'],[6,'12.375'],
+    [60,fts('2026-06-05 09:30:06.504')],
+    ...legs,
+    ...parties,
+  ]))
+
+  // Heartbeats
+  add('2026-06-05 09:31:00.000', 'out', hb44(S, T, 3, '2026-06-05 09:31:00.000'))
+  add('2026-06-05 09:31:00.077', 'in',  hb44(T, S, 5, '2026-06-05 09:31:00.077'))
+
+  // Logout
+  add('2026-06-05 09:45:00.000', 'out', logout44(S, T, 4, '2026-06-05 09:45:00.000', 'Session complete'))
+  add('2026-06-05 09:45:00.109', 'in',  logout44(T, S, 6, '2026-06-05 09:45:00.109'))
+
+  write()
+}

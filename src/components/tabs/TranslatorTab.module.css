@@ -101,3 +101,107 @@
   flex: 1;
   min-height: 0;
 }
+
+/* Repeating groups panel */
+.groupsBody {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.groupEntry {
+  border-bottom: 1px solid var(--border);
+}
+
+.groupToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  background: var(--bg-surface);
+  border: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+}
+
+.groupToggle:hover { color: var(--text-primary); }
+
+.instanceEntry {
+  border-top: 1px solid var(--border);
+}
+
+.instanceToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px 4px 22px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.instanceToggle:hover { color: var(--text-secondary); }
+
+.instanceRows {
+  display: table;
+  width: 100%;
+}
+
+.instanceTagRow {
+  display: table-row;
+}
+
+.instanceTagRow:hover > span {
+  background: var(--bg-elevated);
+}
+
+.groupTagNum {
+  display: table-cell;
+  padding: 2px 8px 2px 36px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  width: 64px;
+  white-space: nowrap;
+}
+
+.groupTagName {
+  display: table-cell;
+  padding: 2px 8px 2px 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  width: 160px;
+  white-space: nowrap;
+}
+
+.groupTagVal {
+  display: table-cell;
+  padding: 2px 8px 2px 0;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.groupTagDesc {
+  display: table-cell;
+  padding: 2px 8px 2px 0;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+/* Chevron for group toggles */
+.chevron {
+  font-size: 9px;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.chevronCollapsed { transform: rotate(180deg); }

@@ -5,6 +5,7 @@ import esData from '../../../samples/es_buy_partial_fill.txt?raw'
 import clData from '../../../samples/cl_sell_partial_cancel.txt?raw'
 import gcData from '../../../samples/gc_buy_amend_fill.txt?raw'
 import mixedData from '../../../samples/mixed_session.txt?raw'
+import calSpreadData from '../../../samples/es_calendar_spread.txt?raw'
 import styles from './ExamplesTab.module.css'
 
 interface Sample {
@@ -44,6 +45,13 @@ const SAMPLES: Sample[] = [
     scenario: 'Full intraday session — ES market buy & close, NQ limit order with price amendment & fill, CL sell with partial fills',
     data: mixedData,
   },
+  {
+    filename: 'es_calendar_spread.txt',
+    messages: 10,
+    instruments: 'ESU6-ESZ6',
+    scenario: 'E-mini S&P 500 calendar spread (FIX 4.4) — buy 2 ESU6-ESZ6 spreads at 12.50 limit, partial fill at 12.50 then fill at 12.25. Demonstrates NoLegs (555) and NoPartyIDs (453) repeating groups.',
+    data: calSpreadData,
+  },
 ]
 
 export function ExamplesTab() {
@@ -63,7 +71,7 @@ export function ExamplesTab() {
       <div className={styles.intro}>
         <h2>Example FIX Sessions</h2>
         <p>
-          Pre-built FIX 4.2 log files demonstrating common futures trading scenarios.
+          Pre-built FIX log files demonstrating common futures trading scenarios.
           Click a filename to load it into the input panel — all tabs will update immediately.
         </p>
       </div>
@@ -109,11 +117,12 @@ export function ExamplesTab() {
       <div className={styles.notes}>
         <h3>Notes</h3>
         <ul>
-          <li>All messages use FIX 4.2 with correct BodyLength (tag 9) and CheckSum (tag 10).</li>
+          <li>All messages have correct BodyLength (tag 9) and CheckSum (tag 10). The first four files use FIX 4.2; the calendar spread uses FIX 4.4.</li>
           <li>Futures contracts use standard CME/NYMEX/COMEX symbols and realistic intraday prices.</li>
           <li>The <strong>Sequence</strong> tab shows the message flow as a UML diagram between TRADER01 and the exchange gateway.</li>
           <li>The <strong>Validator</strong> tab confirms all messages are well-formed — no errors expected.</li>
           <li>The mixed session file works well with the <strong>Compare</strong> tab to contrast execution reports across fills.</li>
+          <li>The calendar spread file demonstrates repeating groups — load it and open the <strong>Details</strong> tab to see the NoLegs and NoPartyIDs panels on each execution report.</li>
         </ul>
       </div>
     </div>

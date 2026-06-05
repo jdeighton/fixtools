@@ -43,6 +43,62 @@ function formatDate(ts: Date | null): string {
   return ts.toISOString().slice(0, 10)
 }
 
+function GroupInstance({
+  idx, instance, fixVersion, resolveDesc,
+}: {
+  idx: number
+  instance: Record<number, string>
+  fixVersion: string
+  resolveDesc: (tag: number, value: string, version: string) => string
+}) {
+  const [open, setOpen] = useState(true)
+  return (
+    <div className={styles.instanceEntry}>
+      <button className={styles.instanceToggle} onClick={() => setOpen(o => !o)}>
+        <span className={`${styles.chevron} ${open ? '' : styles.chevronCollapsed}`}>▲</span>
+        Instance {idx + 1}
+      </button>
+      {open && (
+        <div className={styles.instanceRows}>
+          {Object.entries(instance).map(([tagStr, value]) => {
+            const tag = Number(tagStr)
+            return (
+              <div key={tag} className={styles.instanceTagRow}>
+                <span className={styles.groupTagNum}>{tag}</span>
+                <span className={styles.groupTagName}>{fieldName(tag)}</span>
+                <span className={styles.groupTagVal}>{value}</span>
+                <span className={styles.groupTagDesc}>{resolveDesc(tag, value, fixVersion)}</span>
+              </div>
+            )
+          })}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function GroupEntry({
+  noXTag, instances, fixVersion, resolveDesc,
+}: {
+  noXTag: number
+  instances: Record<number, string>[]
+  fixVersion: string
+  resolveDesc: (tag: number, value: string, version: string) => string
+}) {
+  const [open, setOpen] = useState(true)
+  return (
+    <div className={styles.groupEntry}>
+      <button className={styles.groupToggle} onClick={() => setOpen(o => !o)}>
+        <span className={`${styles.chevron} ${open ? '' : styles.chevronCollapsed}`}>▲</span>
+        {fieldName(noXTag)} ({noXTag}) — {instances.length} instance{instances.length !== 1 ? 's' : ''}
+      </button>
+      {open && instances.map((inst, i) => (
+        <GroupInstance key={i} idx={i} instance={inst} fixVersion={fixVersion} resolveDesc={resolveDesc} />
+      ))}
+    </div>
+  )
+}
+
 function SummaryCell({ msg }: { msg: FixMessage }) {
   const parts = buildSummaryParts(msg)
   return (
@@ -229,6 +285,23 @@ export function TranslatorTab() {
             />
           </div>
         </div>
+
+        {selected && selected.groups.size > 0 && (
+          <div className={styles.detailPanel}>
+            <div className={styles.panelHeader}>Repeating Groups</div>
+            <div className={styles.groupsBody}>
+              {[...selected.groups.entries()].map(([noXTag, instances]) => (
+                <GroupEntry
+                  key={noXTag}
+                  noXTag={noXTag}
+                  instances={instances}
+                  fixVersion={selected.fixVersion}
+                  resolveDesc={resolveDesc}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
