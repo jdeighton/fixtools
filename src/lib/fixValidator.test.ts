@@ -88,6 +88,58 @@ describe('fixValidator', () => {
     expect(issues.some(i => i.tag === 60 && i.severity === 'warning')).toBe(true)
   })
 
+  it('warns when NoX declared count exceeds parsed instances', () => {
+    const pairs: [number, string][] = [
+      [8, 'FIX.4.4'], [9, '100'], [35, '8'],
+      [49, 'CME_GW'], [56, 'TRADER01'], [34, '1'], [52, '20240101-09:00:00'],
+      [37, 'ORD1'], [11, 'CL1'], [17, 'EX1'], [20, '0'], [150, '0'], [39, '0'],
+      [55, 'ESU6'], [54, '1'], [38, '2'], [32, '0'], [31, '0.00'], [14, '0'], [151, '2'], [6, '0.00'],
+      [60, '20240101-09:00:00'],
+      [453, '2'],                                   // declares 2 NoPartyIDs instances
+      [448, 'CLRG-001'], [447, 'D'], [452, '4'],    // only 1 instance — tag 10 terminates the group
+      [10, '000'],
+    ]
+    const [msg] = parseFixMessages(buildMsg(pairs))
+    const issues = validateMessage(msg, { ...DEFAULT_SETTINGS, validateBodyLengthChecksum: false })
+    expect(issues.some(i => i.tag === 453 && i.severity === 'warning')).toBe(true)
+  })
+
+  it('does not warn when NoX declared count matches parsed instances', () => {
+    const pairs: [number, string][] = [
+      [8, 'FIX.4.4'], [9, '100'], [35, '8'],
+      [49, 'CME_GW'], [56, 'TRADER01'], [34, '1'], [52, '20240101-09:00:00'],
+      [37, 'ORD1'], [11, 'CL1'], [17, 'EX1'], [20, '0'], [150, '0'], [39, '0'],
+      [55, 'ESU6'], [54, '1'], [38, '2'], [32, '0'], [31, '0.00'], [14, '0'], [151, '2'], [6, '0.00'],
+      [60, '20240101-09:00:00'],
+      [453, '2'],
+      [448, 'CLRG-001'], [447, 'D'], [452, '4'],    // instance 1
+      [448, 'TRADER01'], [447, 'D'], [452, '11'],    // instance 2
+      [10, '000'],
+    ]
+    const [msg] = parseFixMessages(buildMsg(pairs))
+    const issues = validateMessage(msg, { ...DEFAULT_SETTINGS, validateBodyLengthChecksum: false })
+    expect(issues.every(i => !(i.tag === 453 && i.severity === 'warning'))).toBe(true)
+  })
+
+  it('warning description names the tag and both counts', () => {
+    const pairs: [number, string][] = [
+      [8, 'FIX.4.4'], [9, '100'], [35, '8'],
+      [49, 'CME_GW'], [56, 'TRADER01'], [34, '1'], [52, '20240101-09:00:00'],
+      [37, 'ORD1'], [11, 'CL1'], [17, 'EX1'], [20, '0'], [150, '0'], [39, '0'],
+      [55, 'ESU6'], [54, '1'], [38, '2'], [32, '0'], [31, '0.00'], [14, '0'], [151, '2'], [6, '0.00'],
+      [60, '20240101-09:00:00'],
+      [453, '2'],
+      [448, 'CLRG-001'], [447, 'D'], [452, '4'],
+      [10, '000'],
+    ]
+    const [msg] = parseFixMessages(buildMsg(pairs))
+    const issues = validateMessage(msg, { ...DEFAULT_SETTINGS, validateBodyLengthChecksum: false })
+    const warn = issues.find(i => i.tag === 453 && i.severity === 'warning')
+    expect(warn?.description).toMatch(/NoPartyIDs/)
+    expect(warn?.description).toMatch(/\b2\b/)   // declared count
+    expect(warn?.description).toMatch(/\b1\b/)   // actual count
+  })
+
   it('does not warn when TransactTime and SendingTime are within threshold', () => {
     const pairs: [number, string][] = [
       [8, 'FIX.4.4'], [9, '80'], [35, 'D'], [49, 'A'], [56, 'B'], [34, '1'],

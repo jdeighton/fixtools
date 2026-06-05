@@ -180,6 +180,19 @@ export function validateMessage(msg: FixMessage, settings: Settings, customEnums
     }
   }
 
+  // Repeating group count check
+  for (const [noXTag, instances] of msg.groups) {
+    const declared = parseInt(msg.tags.get(noXTag) ?? '', 10)
+    if (!isNaN(declared) && declared !== instances.length) {
+      issues.push({
+        severity: 'warning',
+        tag: noXTag,
+        tagName: fieldName(noXTag),
+        description: `${fieldName(noXTag)} (${noXTag}) declared ${declared} instance${declared !== 1 ? 's' : ''} but ${instances.length} ${instances.length !== 1 ? 'were' : 'was'} parsed`,
+      })
+    }
+  }
+
   // Time delta warning
   const sendingTime = t(52)
   const transactTime = t(60)
