@@ -38,7 +38,7 @@ export function ValidatorTab() {
       errorCount: issues.filter(i => i.severity === 'error').length,
       warningCount: issues.filter(i => i.severity === 'warning').length,
     }
-  }), [messages, settings, customEnums])
+  }), [messages, settings, customEnums, profile])
 
   const failing = useMemo(() => {
     const withIssues = results.filter(r => r.issues.length > 0)
