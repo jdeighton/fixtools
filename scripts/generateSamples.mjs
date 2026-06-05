@@ -564,3 +564,80 @@ function scenario(name) {
 
   write()
 }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// File 6: ESZ6 Market Data — order-by-order book snapshot then incremental updates
+// Demonstrates NoRelatedSym (146), NoMDEntryTypes (267), NoMDEntries (268)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+{
+  const { add, write } = scenario('md_esz6_orderbook.txt')
+  const S = 'TRADER01', T = 'CME_MD'
+
+  // ── Session open
+  add('2026-06-05 09:30:00.000', 'out', logon(S, T, 1, '2026-06-05 09:30:00.000'))
+  add('2026-06-05 09:30:00.198', 'in',  logon(T, S, 1, '2026-06-05 09:30:00.198'))
+
+  // ── Subscribe: snapshot + incremental updates for ESZ6 full order book
+  add('2026-06-05 09:30:00.412', 'out', buildFix('FIX.4.2', [
+    [35,'V'], [49,S], [56,T], [34,2], [52,fts('2026-06-05 09:30:00.412')],
+    [262,'MD-REQ-001'],  // MDReqID
+    [263,'1'],           // SubscriptionRequestType: 1=Snapshot+Updates
+    [264,'0'],           // MarketDepth: 0=Full book
+    [265,'1'],           // MDUpdateType: 1=Incremental Refresh
+    [267,'2'],           // NoMDEntryTypes
+    [269,'0'],           //   MDEntryType: Bid
+    [269,'1'],           //   MDEntryType: Offer
+    [146,'1'],           // NoRelatedSym
+    [55,'ESZ6'],         //   Symbol
+    [207,'CME'],         //   SecurityExchange
+  ]))
+
+  // ── Initial snapshot: 3 bids + 3 offers (order-by-order level)
+  // Each entry is a resting order identified by MDEntryID (278)
+  add('2026-06-05 09:30:00.621', 'in', buildFix('FIX.4.2', [
+    [35,'W'], [49,T], [56,S], [34,2], [52,fts('2026-06-05 09:30:00.621')],
+    [262,'MD-REQ-001'], [55,'ESZ6'], [207,'CME'],
+    [268,'6'],            // NoMDEntries — 3 bids, 3 offers
+    // Bid side
+    [269,'0'],[278,'BID-001'],[270,'5807.50'],[271,'10'],
+    [269,'0'],[278,'BID-002'],[270,'5807.50'],[271,'5'],
+    [269,'0'],[278,'BID-003'],[270,'5807.25'],[271,'8'],
+    // Offer side
+    [269,'1'],[278,'ASK-001'],[270,'5807.75'],[271,'12'],
+    [269,'1'],[278,'ASK-002'],[270,'5807.75'],[271,'3'],
+    [269,'1'],[278,'ASK-003'],[270,'5808.00'],[271,'20'],
+  ]))
+
+  // ── Update 1: new bid order joins the book at 5807.50
+  add('2026-06-05 09:30:01.044', 'in', buildFix('FIX.4.2', [
+    [35,'X'], [49,T], [56,S], [34,3], [52,fts('2026-06-05 09:30:01.044')],
+    [262,'MD-REQ-001'],
+    [268,'1'],
+    [269,'0'],[279,'0'],[278,'BID-004'],[270,'5807.50'],[271,'15'],
+  ]))
+
+  // ── Update 2: BID-002 cancelled; ASK-001 executes against it producing a trade
+  add('2026-06-05 09:30:01.388', 'in', buildFix('FIX.4.2', [
+    [35,'X'], [49,T], [56,S], [34,4], [52,fts('2026-06-05 09:30:01.388')],
+    [262,'MD-REQ-001'],
+    [268,'3'],
+    [269,'0'],[279,'2'],[278,'BID-002'],                          // Bid cancelled
+    [269,'1'],[279,'2'],[278,'ASK-001'],                          // Ask filled — remove from book
+    [269,'2'],[279,'0'],[278,'TRD-001'],[270,'5807.75'],[271,'5'], // Trade print
+  ]))
+
+  // ── Update 3: new aggressive ask narrows the spread
+  add('2026-06-05 09:30:01.802', 'in', buildFix('FIX.4.2', [
+    [35,'X'], [49,T], [56,S], [34,5], [52,fts('2026-06-05 09:30:01.802')],
+    [262,'MD-REQ-001'],
+    [268,'1'],
+    [269,'1'],[279,'0'],[278,'ASK-004'],[270,'5807.50'],[271,'7'],
+  ]))
+
+  // ── Logout
+  add('2026-06-05 09:45:00.000', 'out', logout(S, T, 3, '2026-06-05 09:45:00.000', 'Session complete'))
+  add('2026-06-05 09:45:00.093', 'in',  logout(T, S, 6, '2026-06-05 09:45:00.093'))
+
+  write()
+}

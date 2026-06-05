@@ -6,6 +6,7 @@ import clData from '../../../samples/cl_sell_partial_cancel.txt?raw'
 import gcData from '../../../samples/gc_buy_amend_fill.txt?raw'
 import mixedData from '../../../samples/mixed_session.txt?raw'
 import calSpreadData from '../../../samples/es_calendar_spread.txt?raw'
+import mdOrderbookData from '../../../samples/md_esz6_orderbook.txt?raw'
 import styles from './ExamplesTab.module.css'
 
 interface Sample {
@@ -51,6 +52,13 @@ const SAMPLES: Sample[] = [
     instruments: 'ESU6-ESZ6',
     scenario: 'E-mini S&P 500 calendar spread (FIX 4.4) — buy 2 ESU6-ESZ6 spreads at 12.50 limit, partial fill at 12.50 then fill at 12.25. Demonstrates NoLegs (555) and NoPartyIDs (453) repeating groups.',
     data: calSpreadData,
+  },
+  {
+    filename: 'md_esz6_orderbook.txt',
+    messages: 9,
+    instruments: 'ESZ6',
+    scenario: 'E-mini S&P 500 market data — subscribe to full order-by-order book, receive initial snapshot (3 bids + 3 offers), then 3 incremental updates: new bid, bid cancel + trade print, new aggressive ask. Demonstrates NoRelatedSym (146), NoMDEntryTypes (267), and NoMDEntries (268) repeating groups.',
+    data: mdOrderbookData,
   },
 ]
 

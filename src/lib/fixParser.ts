@@ -18,7 +18,10 @@ const GROUP_DEFS = new Map<number, GroupDef>([
   // FIX 4.2
   [78,  { firstDelimTag: 79,  memberTags: new Set([79, 80, 81, 92, 161, 208, 209, 366]) }],  // NoAllocs
   [136, { firstDelimTag: 137, memberTags: new Set([137, 138, 139]) }],                        // NoMiscFees
+  [146, { firstDelimTag: 55,  memberTags: new Set([22, 48, 55, 65, 167, 200, 207]) }],        // NoRelatedSym
   [232, { firstDelimTag: 233, memberTags: new Set([233, 234]) }],                             // NoStipulations
+  [267, { firstDelimTag: 269, memberTags: new Set([269]) }],                                  // NoMDEntryTypes
+  [268, { firstDelimTag: 269, memberTags: new Set([269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 282, 283, 284, 285, 286, 287, 288, 289, 290]) }], // NoMDEntries
   [382, { firstDelimTag: 375, memberTags: new Set([337, 375, 437, 438]) }],                   // NoContraBrokers
   [386, { firstDelimTag: 336, memberTags: new Set([336, 625]) }],                             // NoTradingSessions
   // FIX 4.4

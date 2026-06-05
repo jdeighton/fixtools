@@ -102,6 +102,7 @@ Generates the sample FIX 4.2 log files in the `samples/` directory. Each file co
 | `gc_buy_amend_fill.txt` | 4.2 | Gold futures — buy 3 contracts, price amended, full fill at amended price |
 | `mixed_session.txt` | 4.2 | Full intraday session across ES, NQ, and CL with multiple order types |
 | `es_calendar_spread.txt` | 4.4 | E-mini S&P 500 calendar spread — buy 2 ESU6-ESZ6 spreads at limit; demonstrates `NoLegs` (tag 555) and `NoPartyIDs` (tag 453) repeating groups |
+| `md_esz6_orderbook.txt` | 4.2 | E-mini S&P 500 market data — subscribe, receive order-by-order book snapshot (3 bids + 3 offers), then 3 incremental updates; demonstrates `NoRelatedSym` (146), `NoMDEntryTypes` (267), and `NoMDEntries` (268) repeating groups |
 
 Run this script after making any changes to the sample scenarios (e.g. updating dates, symbols, or prices), then rebuild:
 
