@@ -70,36 +70,41 @@ function TagDetail({ msg }: { msg: FixMessage }) {
 }
 
 export function ParserTab() {
-  const { messages } = useApp()
+  const { messages, settings } = useApp()
+
+  const visibleMessages = useMemo(
+    () => settings.hideHeartbeats ? messages.filter(m => m.tags.get(35) !== '0') : messages,
+    [messages, settings.hideHeartbeats]
+  )
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null)
   const [showDetail, setShowDetail] = useState(false)
   const [showDiagram, setShowDiagram] = useState(true)
-  const [diagramRange, setDiagramRange] = useState<[number, number]>([1, Math.min(50, messages.length)])
+  const [diagramRange, setDiagramRange] = useState<[number, number]>([1, Math.min(50, visibleMessages.length)])
   const [diagramMessages, setDiagramMessages] = useState<FixMessage[] | null>(null)
   const [pendingRange, setPendingRange] = useState(false)
 
   useEffect(() => {
-    setSelectedIdx(messages.length > 0 ? 0 : null)
-    setDiagramRange([1, Math.min(50, messages.length)])
-    if (messages.length === 0) {
+    setSelectedIdx(visibleMessages.length > 0 ? visibleMessages[0].sequenceIndex : null)
+    setDiagramRange([1, Math.min(50, visibleMessages.length)])
+    if (visibleMessages.length === 0) {
       setDiagramMessages(null)
       setPendingRange(false)
-    } else if (messages.length > DIAGRAM_THRESHOLD) {
+    } else if (visibleMessages.length > DIAGRAM_THRESHOLD) {
       setDiagramMessages(null)
       setPendingRange(true)
     } else {
-      setDiagramMessages(messages)
+      setDiagramMessages(visibleMessages)
       setPendingRange(false)
     }
-  }, [messages])
+  }, [visibleMessages])
 
-  const rowData: TimelineRow[] = useMemo(() => messages.map(m => ({
+  const rowData: TimelineRow[] = useMemo(() => visibleMessages.map(m => ({
     idx: m.sequenceIndex + 1,
     time: m.timestamp ? m.timestamp.toISOString().slice(11, 23) : '',
     direction: m.direction,
     summaryText: buildSummaryParts(m).map(p => p.text).join(''),
     _msg: m,
-  })), [messages])
+  })), [visibleMessages])
 
   const colDefs: ColDef<TimelineRow>[] = useMemo(() => [
     { field: 'idx', headerName: '#', width: 58 },
@@ -124,18 +129,18 @@ export function ParserTab() {
   }, [])
 
   const handleShowDiagram = () => {
-    if (messages.length > DIAGRAM_THRESHOLD) {
+    if (visibleMessages.length > DIAGRAM_THRESHOLD) {
       setPendingRange(true)
     } else {
-      setDiagramMessages(messages)
+      setDiagramMessages(visibleMessages)
     }
     setShowDiagram(true)
   }
 
   const applyDiagramRange = () => {
     const s = Math.max(0, diagramRange[0] - 1)
-    const e = Math.min(messages.length, diagramRange[1])
-    setDiagramMessages(messages.slice(s, e))
+    const e = Math.min(visibleMessages.length, diagramRange[1])
+    setDiagramMessages(visibleMessages.slice(s, e))
     setPendingRange(false)
   }
 
@@ -186,14 +191,14 @@ export function ParserTab() {
           <div className={styles.diagramBody}>
             {pendingRange && (
               <div className={styles.rangeGate}>
-                <p>{messages.length} messages — the diagram may be large. Select a range:</p>
+                <p>{visibleMessages.length} messages — the diagram may be large. Select a range:</p>
                 <div className={styles.rangeForm}>
                   <label>From</label>
-                  <input type="number" min={1} max={messages.length} value={diagramRange[0]}
+                  <input type="number" min={1} max={visibleMessages.length} value={diagramRange[0]}
                     onChange={e => setDiagramRange([Number(e.target.value), diagramRange[1]])}
                     className={styles.numInput} />
                   <label>to</label>
-                  <input type="number" min={1} max={messages.length} value={diagramRange[1]}
+                  <input type="number" min={1} max={visibleMessages.length} value={diagramRange[1]}
                     onChange={e => setDiagramRange([diagramRange[0], Number(e.target.value)])}
                     className={styles.numInput} />
                   <button className={styles.renderBtn} onClick={applyDiagramRange}>Render Diagram</button>

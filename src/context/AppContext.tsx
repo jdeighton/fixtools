@@ -14,6 +14,8 @@ export interface Settings {
   compareMaxAutoDisplay: number
   validatorTimeDeltaSeconds: number
   validateBodyLengthChecksum: boolean
+  appendOnInput: boolean
+  hideHeartbeats: boolean
 }
 
 export interface CustomEnum {
@@ -29,6 +31,8 @@ const DEFAULT_SETTINGS: Settings = {
   compareMaxAutoDisplay: 10,
   validatorTimeDeltaSeconds: 60,
   validateBodyLengthChecksum: true,
+  appendOnInput: false,
+  hideHeartbeats: false,
 }
 
 function loadJson<T>(key: string, fallback: T): T {

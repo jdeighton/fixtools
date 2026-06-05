@@ -60,6 +60,30 @@ export function SettingsModal({ onClose }: Props) {
             </label>
             <p className={styles.hint}>Disable when working with log-format FIX data where these values may not match the wire format</p>
           </div>
+          <div className={styles.field}>
+            <label className={styles.checkboxLabel}>
+              <input
+                type="checkbox"
+                checked={form.appendOnInput}
+                onChange={e => setForm(f => ({ ...f, appendOnInput: e.target.checked }))}
+                className={styles.checkbox}
+              />
+              Input: append new data (don&apos;t overwrite)
+            </label>
+            <p className={styles.hint}>When on, pasting or dropping a second log adds its messages to the existing list rather than replacing them</p>
+          </div>
+          <div className={styles.field}>
+            <label className={styles.checkboxLabel}>
+              <input
+                type="checkbox"
+                checked={form.hideHeartbeats}
+                onChange={e => setForm(f => ({ ...f, hideHeartbeats: e.target.checked }))}
+                className={styles.checkbox}
+              />
+              Hide heartbeat messages (MsgType 0)
+            </label>
+            <p className={styles.hint}>Suppress heartbeats from the Details grid, Sequence timeline, and sequence diagram</p>
+          </div>
         </div>
         <div className={styles.footer}>
           <button className={styles.cancel} onClick={onClose}>Cancel</button>

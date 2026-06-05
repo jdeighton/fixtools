@@ -3,7 +3,7 @@ import { validateMessage } from './fixValidator'
 import { parseFixMessages } from './fixParser'
 import type { Settings } from '../context/AppContext'
 
-const DEFAULT_SETTINGS: Settings = { compareMaxAutoDisplay: 10, validatorTimeDeltaSeconds: 60, validateBodyLengthChecksum: true }
+const DEFAULT_SETTINGS: Settings = { compareMaxAutoDisplay: 10, validatorTimeDeltaSeconds: 60, validateBodyLengthChecksum: true, appendOnInput: false, hideHeartbeats: false }
 const SOH = '\x01'
 
 function buildMsg(pairs: [number, string][]): string {

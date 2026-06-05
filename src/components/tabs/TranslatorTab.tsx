@@ -57,7 +57,7 @@ function SummaryCell({ msg }: { msg: FixMessage }) {
 }
 
 export function TranslatorTab() {
-  const { messages, customEnums } = useApp()
+  const { messages, customEnums, settings } = useApp()
 
   const customEnumDesc = useMemo(() => {
     const map = new Map<string, string>()
@@ -72,7 +72,12 @@ export function TranslatorTab() {
   const [bizFilter, setBizFilter] = useState('')
   const gridRef = useRef<AgGridReact>(null)
 
-  const rowData: MsgRow[] = useMemo(() => messages.map(m => ({
+  const visibleMessages = useMemo(
+    () => settings.hideHeartbeats ? messages.filter(m => m.tags.get(35) !== '0') : messages,
+    [messages, settings.hideHeartbeats]
+  )
+
+  const rowData: MsgRow[] = useMemo(() => visibleMessages.map(m => ({
     sequenceIndex: m.sequenceIndex,
     time: formatTime(m.timestamp),
     date: formatDate(m.timestamp),
@@ -83,7 +88,7 @@ export function TranslatorTab() {
     clOrdId: m.tags.get(11) ?? '',
     summaryText: buildSummaryText(m),
     _msg: m,
-  })), [messages])
+  })), [visibleMessages])
 
   const colDefs: ColDef<MsgRow>[] = useMemo(() => [
     { field: 'time', headerName: 'Time', width: 110, pinned: 'left' },
@@ -106,12 +111,11 @@ export function TranslatorTab() {
   ], [])
 
   const onGridReady = useCallback((e: GridReadyEvent) => {
-    if (messages.length > 0) {
+    if (visibleMessages.length > 0) {
       e.api.getDisplayedRowAtIndex(0)?.setSelected(true)
-      const first = messages[0]
-      setSelected(first)
+      setSelected(visibleMessages[0])
     }
-  }, [messages])
+  }, [visibleMessages])
 
   const onRowClicked = useCallback((e: { data?: MsgRow }) => {
     if (e.data) setSelected(e.data._msg)
@@ -175,7 +179,7 @@ export function TranslatorTab() {
             value={msgFilter}
             onChange={e => setMsgFilter(e.target.value)}
           />
-          <span className={styles.count}>{messages.length} message{messages.length !== 1 ? 's' : ''}</span>
+          <span className={styles.count}>{visibleMessages.length} message{visibleMessages.length !== 1 ? 's' : ''}</span>
         </div>
         <div className={styles.gridWrap}>
           <AgGridReact
