@@ -23,7 +23,7 @@ interface MsgResult {
 }
 
 export function ValidatorTab() {
-  const { messages, settings, customEnums } = useApp()
+  const { effectiveMessages: messages, settings, customEnums } = useApp()
   const [filter, setFilter] = useState('')
   const [profile, setProfile] = useState<ValidationProfile>('auto')
 

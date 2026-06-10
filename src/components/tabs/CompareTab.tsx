@@ -24,7 +24,7 @@ function colHeader(msg: FixMessage): string {
 }
 
 export function CompareTab() {
-  const { messages, settings } = useApp()
+  const { effectiveMessages: messages, settings } = useApp()
   const threshold = settings.compareMaxAutoDisplay
   const exceeds = messages.length > threshold
 

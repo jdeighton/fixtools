@@ -102,7 +102,7 @@ function TagDetail({ msg }: { msg: FixMessage }) {
 }
 
 export function ParserTab() {
-  const { messages, settings } = useApp()
+  const { effectiveMessages: messages, settings } = useApp()
 
   const visibleMessages = useMemo(
     () => settings.hideHeartbeats ? messages.filter(m => m.tags.get(35) !== '0') : messages,

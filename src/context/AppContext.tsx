@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, useCallback, useMemo, type ReactNode } from 'react'
+import { applyFilters, type Filter } from '../lib/filterLines'
+import { parseFixMessages } from '../lib/fixParser'
 
 export interface FixMessage {
   rawLine: string
@@ -45,6 +47,8 @@ function loadJson<T>(key: string, fallback: T): T {
   }
 }
 
+export type { Filter }
+
 interface AppContextValue {
   messages: FixMessage[]
   setMessages: (msgs: FixMessage[]) => void
@@ -54,6 +58,10 @@ interface AppContextValue {
   setSettings: (s: Settings) => void
   customEnums: CustomEnum[]
   setCustomEnums: (enums: CustomEnum[]) => void
+  filters: Filter[]
+  setFilters: (filters: Filter[]) => void
+  filteredRawInput: string
+  effectiveMessages: FixMessage[]
   resetAll: () => void
 }
 
@@ -62,6 +70,7 @@ const AppContext = createContext<AppContextValue | null>(null)
 export function AppProvider({ children }: { children: ReactNode }) {
   const [messages, setMessages] = useState<FixMessage[]>([])
   const [rawInput, setRawInput] = useState('')
+  const [filters, setFilters] = useState<Filter[]>([])
 
   const [settings, setSettingsState] = useState<Settings>(() =>
     ({ ...DEFAULT_SETTINGS, ...loadJson('fix-toolkit-settings', {}) })
@@ -81,9 +90,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('fix-toolkit-custom-enums', JSON.stringify(enums))
   }, [])
 
+  const filteredRawInput = useMemo(() => {
+    if (filters.length === 0) return rawInput
+    const lines = rawInput.split('\n')
+    return applyFilters(lines, filters).join('\n')
+  }, [rawInput, filters])
+
+  const effectiveMessages = useMemo(() => {
+    if (filters.length === 0) return messages
+    return parseFixMessages(filteredRawInput)
+  }, [filters, filteredRawInput, messages])
+
   const resetAll = useCallback(() => {
     setMessages([])
     setRawInput('')
+    setFilters([])
   }, [])
 
   useEffect(() => {
@@ -96,6 +117,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
       rawInput, setRawInput,
       settings, setSettings,
       customEnums, setCustomEnums,
+      filters, setFilters,
+      filteredRawInput,
+      effectiveMessages,
       resetAll,
     }}>
       {children}

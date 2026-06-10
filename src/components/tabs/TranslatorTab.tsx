@@ -113,7 +113,7 @@ function SummaryCell({ msg }: { msg: FixMessage }) {
 }
 
 export function TranslatorTab() {
-  const { messages, customEnums, settings } = useApp()
+  const { effectiveMessages: messages, customEnums, settings } = useApp()
 
   const customEnumDesc = useMemo(() => {
     const map = new Map<string, string>()

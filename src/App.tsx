@@ -3,6 +3,8 @@ import './App.css'
 import { AppProvider, useApp } from './context/AppContext'
 import { Header } from './components/Header'
 import { InputPanel } from './components/InputPanel'
+import { FilterPanel } from './components/FilterPanel'
+import { FilteredDataPanel } from './components/FilteredDataPanel'
 import { TabNav, type TabId } from './components/TabNav'
 import { SettingsModal } from './components/SettingsModal'
 import { ResetDialog } from './components/ResetDialog'
@@ -28,6 +30,8 @@ function AppShell() {
       />
       <div className="app-body">
         <InputPanel />
+        <FilterPanel />
+        <FilteredDataPanel />
         <TabNav active={activeTab} onChange={setActiveTab} />
         <div className="tab-content" role="tabpanel">
           {activeTab === 'translator' && <TranslatorTab />}
