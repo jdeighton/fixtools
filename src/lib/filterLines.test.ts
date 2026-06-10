@@ -65,6 +65,33 @@ describe('applyFilters', () => {
   })
 })
 
+describe('applyFilters OR mode', () => {
+  it('OR mode includes a line that matches any filter', () => {
+    const lines = ['35=D line', '35=8 line', 'unrelated line']
+    expect(applyFilters(lines, [f('35=D'), f('35=8')], 'OR')).toEqual(['35=D line', '35=8 line'])
+  })
+
+  it('OR mode excludes a line that matches no filter', () => {
+    const lines = ['35=D line', 'nothing here']
+    expect(applyFilters(lines, [f('35=D'), f('35=8')], 'OR')).toEqual(['35=D line'])
+  })
+
+  it('OR mode skips invalid regex and applies remaining filters', () => {
+    const lines = ['35=D line', 'other line']
+    expect(applyFilters(lines, [f('[bad', true), f('35=D')], 'OR')).toEqual(['35=D line'])
+  })
+
+  it('OR mode with an empty-text filter returns all lines (empty is pass-through)', () => {
+    const lines = ['aaa', 'bbb']
+    expect(applyFilters(lines, [f('')], 'OR')).toEqual(lines)
+  })
+
+  it('default mode (no mode arg) behaves as AND', () => {
+    const lines = ['35=D 49=CLIENT', '35=D 49=BROKER', '35=8 49=CLIENT']
+    expect(applyFilters(lines, [f('35=D'), f('CLIENT')])).toEqual(['35=D 49=CLIENT'])
+  })
+})
+
 describe('appendFilterSet', () => {
   it('appending to empty current returns the set filters with generated IDs', () => {
     const set = createFilterSet('test', [{ id: 'x', text: '35=D', isRegex: false }])

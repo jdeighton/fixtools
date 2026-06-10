@@ -151,6 +151,39 @@
   opacity: 1;
 }
 
+.modeToggle {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.modeBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.4;
+}
+
+.modeBtn + .modeBtn {
+  border-left: 1px solid var(--border);
+}
+
+.modeBtnActive {
+  background: var(--accent);
+  color: #fff;
+}
+
+.modeBtn:not(.modeBtnActive):hover {
+  color: var(--text-primary);
+}
+
 .errorMsg {
   font-size: 11px;
   color: var(--error, #e04040);

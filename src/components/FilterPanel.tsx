@@ -4,7 +4,7 @@ import { useApp } from '../context/AppContext'
 import { getFilterError, createFilterSet, generateId, type Filter } from '../lib/filterLines'
 
 export function FilterPanel() {
-  const { filters, setFilters, filterSets, setFilterSets } = useApp()
+  const { filters, setFilters, filterMode, setFilterMode, filterSets, setFilterSets } = useApp()
   const [saving, setSaving] = useState(false)
   const [presetName, setPresetName] = useState('')
   const [nameError, setNameError] = useState(false)
@@ -52,6 +52,18 @@ export function FilterPanel() {
         <span className={styles.label}>
           Filters{filters.length > 0 ? ` (${filters.length})` : ''}
         </span>
+        {filters.length > 0 && (
+          <div className={styles.modeToggle}>
+            <button
+              className={`${styles.modeBtn} ${filterMode === 'AND' ? styles.modeBtnActive : ''}`}
+              onClick={() => setFilterMode('AND')}
+            >AND</button>
+            <button
+              className={`${styles.modeBtn} ${filterMode === 'OR' ? styles.modeBtnActive : ''}`}
+              onClick={() => setFilterMode('OR')}
+            >OR</button>
+          </div>
+        )}
         {filters.length > 0 && !saving && (
           <button className={styles.saveBtn} onClick={() => setSaving(true)} title="Save current filters as a preset">
             Save as preset

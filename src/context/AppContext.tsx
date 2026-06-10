@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback, useMemo, type ReactNode } from 'react'
-import { applyFilters, type Filter, type FilterSet } from '../lib/filterLines'
+import { applyFilters, type Filter, type FilterSet, type FilterMode } from '../lib/filterLines'
 import { parseFixMessages } from '../lib/fixParser'
 
 export interface FixMessage {
@@ -47,7 +47,7 @@ function loadJson<T>(key: string, fallback: T): T {
   }
 }
 
-export type { Filter, FilterSet }
+export type { Filter, FilterSet, FilterMode }
 
 interface AppContextValue {
   messages: FixMessage[]
@@ -60,6 +60,8 @@ interface AppContextValue {
   setCustomEnums: (enums: CustomEnum[]) => void
   filters: Filter[]
   setFilters: (filters: Filter[]) => void
+  filterMode: FilterMode
+  setFilterMode: (mode: FilterMode) => void
   filterSets: FilterSet[]
   setFilterSets: (sets: FilterSet[]) => void
   filteredRawInput: string
@@ -73,6 +75,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [messages, setMessages] = useState<FixMessage[]>([])
   const [rawInput, setRawInput] = useState('')
   const [filters, setFilters] = useState<Filter[]>([])
+  const [filterMode, setFilterMode] = useState<FilterMode>('AND')
 
   const [filterSets, setFilterSetsState] = useState<FilterSet[]>(() =>
     loadJson<FilterSet[]>('fix-toolkit-filter-sets', [])
@@ -104,8 +107,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const filteredRawInput = useMemo(() => {
     if (filters.length === 0) return rawInput
     const lines = rawInput.split('\n')
-    return applyFilters(lines, filters).join('\n')
-  }, [rawInput, filters])
+    return applyFilters(lines, filters, filterMode).join('\n')
+  }, [rawInput, filters, filterMode])
 
   const effectiveMessages = useMemo(() => {
     if (filters.length === 0) return messages
@@ -129,6 +132,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       settings, setSettings,
       customEnums, setCustomEnums,
       filters, setFilters,
+      filterMode, setFilterMode,
       filterSets, setFilterSets,
       filteredRawInput,
       effectiveMessages,
