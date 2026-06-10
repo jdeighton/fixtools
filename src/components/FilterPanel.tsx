@@ -75,7 +75,7 @@ export function FilterPanel() {
             spellCheck={false}
           />
           <button className={styles.confirmBtn} onClick={confirmSave} title="Save preset">✓</button>
-          <button className={styles.deleteBtn} onClick={cancelSave} title="Cancel">✕</button>
+          <button className={styles.cancelBtn} onClick={cancelSave} title="Cancel">✕</button>
         </div>
       )}
 

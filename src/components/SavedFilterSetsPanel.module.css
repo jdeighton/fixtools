@@ -74,19 +74,23 @@
   color: #fff;
 }
 
+/* Preset delete — most destructive: red-tinted border at rest, filled red on hover */
 .deleteBtn {
   background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 14px;
+  border: 1px solid var(--error, #e04040);
+  color: var(--error, #e04040);
+  font-size: 12px;
   cursor: pointer;
-  padding: 2px 4px;
+  padding: 2px 6px;
   border-radius: var(--radius-sm);
   line-height: 1;
   flex-shrink: 0;
-  transition: color 0.15s;
+  opacity: 0.6;
+  transition: opacity 0.15s, background 0.15s, color 0.15s;
 }
 
 .deleteBtn:hover {
-  color: var(--error, #e04040);
+  opacity: 1;
+  background: var(--error, #e04040);
+  color: #fff;
 }

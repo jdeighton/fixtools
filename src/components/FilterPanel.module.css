@@ -113,21 +113,42 @@
   transform: translateX(12px);
 }
 
+/* Filter-row delete — moderate weight: visible on hover with red colour */
 .deleteBtn {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 2px 5px;
+  border-radius: var(--radius-sm);
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.deleteBtn:hover {
+  color: var(--error, #e04040);
+  border-color: var(--error, #e04040);
+}
+
+/* Save-row cancel — least alarming: plain muted text, no border, smaller */
+.cancelBtn {
   background: none;
   border: none;
   color: var(--text-muted);
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   padding: 2px 4px;
   border-radius: var(--radius-sm);
   line-height: 1;
   flex-shrink: 0;
-  transition: color 0.15s;
+  opacity: 0.7;
+  transition: opacity 0.15s;
 }
 
-.deleteBtn:hover {
-  color: var(--error, #e04040);
+.cancelBtn:hover {
+  opacity: 1;
 }
 
 .errorMsg {
