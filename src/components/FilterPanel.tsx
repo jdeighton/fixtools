@@ -1,15 +1,21 @@
-import { useCallback } from 'react'
+import { useCallback, useState, useRef, useEffect } from 'react'
 import styles from './FilterPanel.module.css'
 import { useApp } from '../context/AppContext'
-import { getFilterError, type Filter } from '../lib/filterLines'
-
-let nextId = 1
+import { getFilterError, createFilterSet, generateId, type Filter } from '../lib/filterLines'
 
 export function FilterPanel() {
-  const { filters, setFilters } = useApp()
+  const { filters, setFilters, filterSets, setFilterSets } = useApp()
+  const [saving, setSaving] = useState(false)
+  const [presetName, setPresetName] = useState('')
+  const [nameError, setNameError] = useState(false)
+  const nameInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (saving) nameInputRef.current?.focus()
+  }, [saving])
 
   const addFilter = useCallback(() => {
-    setFilters([...filters, { id: String(nextId++), text: '', isRegex: false }])
+    setFilters([...filters, { id: generateId(), text: '', isRegex: false }])
   }, [filters, setFilters])
 
   const updateFilter = useCallback((id: string, patch: Partial<Filter>) => {
@@ -20,16 +26,58 @@ export function FilterPanel() {
     setFilters(filters.filter(f => f.id !== id))
   }, [filters, setFilters])
 
+  const confirmSave = useCallback(() => {
+    const name = presetName.trim()
+    if (!name) { setNameError(true); return }
+    setFilterSets([...filterSets, createFilterSet(name, filters)])
+    setPresetName('')
+    setSaving(false)
+    setNameError(false)
+  }, [presetName, filters, filterSets, setFilterSets])
+
+  const cancelSave = useCallback(() => {
+    setSaving(false)
+    setPresetName('')
+    setNameError(false)
+  }, [])
+
+  const onNameKey = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') confirmSave()
+    if (e.key === 'Escape') cancelSave()
+  }, [confirmSave, cancelSave])
+
   return (
     <div className={styles.panel}>
       <div className={styles.header}>
         <span className={styles.label}>
           Filters{filters.length > 0 ? ` (${filters.length})` : ''}
         </span>
+        {filters.length > 0 && !saving && (
+          <button className={styles.saveBtn} onClick={() => setSaving(true)} title="Save current filters as a preset">
+            Save as preset
+          </button>
+        )}
         <button className={styles.addBtn} onClick={addFilter} title="Add filter">
           + Add filter
         </button>
       </div>
+
+      {saving && (
+        <div className={styles.saveRow}>
+          <input
+            ref={nameInputRef}
+            type="text"
+            className={`${styles.textInput} ${nameError ? styles.textInputError : ''}`}
+            value={presetName}
+            onChange={e => { setPresetName(e.target.value); setNameError(false) }}
+            onKeyDown={onNameKey}
+            placeholder="Preset name…"
+            spellCheck={false}
+          />
+          <button className={styles.confirmBtn} onClick={confirmSave} title="Save preset">✓</button>
+          <button className={styles.deleteBtn} onClick={cancelSave} title="Cancel">✕</button>
+        </div>
+      )}
 
       {filters.length > 0 && (
         <div className={styles.filterList}>

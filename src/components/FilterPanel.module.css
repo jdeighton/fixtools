@@ -135,3 +135,42 @@
   color: var(--error, #e04040);
   padding: 0 16px 4px;
 }
+
+.saveBtn {
+  padding: 3px 10px;
+  background: none;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.saveBtn:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+.saveRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 16px 8px;
+}
+
+.confirmBtn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.confirmBtn:hover {
+  background: var(--accent-hover);
+}

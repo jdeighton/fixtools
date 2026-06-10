@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback, useMemo, type ReactNode } from 'react'
-import { applyFilters, type Filter } from '../lib/filterLines'
+import { applyFilters, type Filter, type FilterSet } from '../lib/filterLines'
 import { parseFixMessages } from '../lib/fixParser'
 
 export interface FixMessage {
@@ -47,7 +47,7 @@ function loadJson<T>(key: string, fallback: T): T {
   }
 }
 
-export type { Filter }
+export type { Filter, FilterSet }
 
 interface AppContextValue {
   messages: FixMessage[]
@@ -60,6 +60,8 @@ interface AppContextValue {
   setCustomEnums: (enums: CustomEnum[]) => void
   filters: Filter[]
   setFilters: (filters: Filter[]) => void
+  filterSets: FilterSet[]
+  setFilterSets: (sets: FilterSet[]) => void
   filteredRawInput: string
   effectiveMessages: FixMessage[]
   resetAll: () => void
@@ -71,6 +73,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [messages, setMessages] = useState<FixMessage[]>([])
   const [rawInput, setRawInput] = useState('')
   const [filters, setFilters] = useState<Filter[]>([])
+
+  const [filterSets, setFilterSetsState] = useState<FilterSet[]>(() =>
+    loadJson<FilterSet[]>('fix-toolkit-filter-sets', [])
+  )
+
+  const setFilterSets = useCallback((sets: FilterSet[]) => {
+    setFilterSetsState(sets)
+    localStorage.setItem('fix-toolkit-filter-sets', JSON.stringify(sets))
+  }, [])
 
   const [settings, setSettingsState] = useState<Settings>(() =>
     ({ ...DEFAULT_SETTINGS, ...loadJson('fix-toolkit-settings', {}) })
@@ -118,6 +129,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       settings, setSettings,
       customEnums, setCustomEnums,
       filters, setFilters,
+      filterSets, setFilterSets,
       filteredRawInput,
       effectiveMessages,
       resetAll,

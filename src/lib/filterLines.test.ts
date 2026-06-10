@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { applyFilters, getFilterError, type Filter } from './filterLines'
+import { applyFilters, getFilterError, createFilterSet, appendFilterSet, type Filter } from './filterLines'
 
 const f = (text: string, isRegex = false, id = '1'): Filter => ({ id, text, isRegex })
 
@@ -62,6 +62,72 @@ describe('applyFilters', () => {
     expect(applyFilters(lines, [f('35=D'), f('CLIENT', true)])).toEqual([
       '8=FIX.4.4|35=D|49=CLIENT|',
     ])
+  })
+})
+
+describe('appendFilterSet', () => {
+  it('appending to empty current returns the set filters with generated IDs', () => {
+    const set = createFilterSet('test', [{ id: 'x', text: '35=D', isRegex: false }])
+    const result = appendFilterSet([], set)
+    expect(result).toHaveLength(1)
+    expect(result[0].text).toBe('35=D')
+    expect(result[0].isRegex).toBe(false)
+    expect(result[0].id).toBeDefined()
+  })
+
+  it('appending to existing filters returns existing followed by set filters', () => {
+    const existing: Filter[] = [{ id: 'e1', text: 'ClOrdID=99', isRegex: false }]
+    const set = createFilterSet('test', [{ id: 'x', text: '35=D', isRegex: false }])
+    const result = appendFilterSet(existing, set)
+    expect(result).toHaveLength(2)
+    expect(result[0]).toEqual(existing[0])
+    expect(result[1].text).toBe('35=D')
+  })
+
+  it('createFilterSet strips IDs from filters and preserves name and values', () => {
+    const active: Filter[] = [
+      { id: 'active-1', text: '35=D', isRegex: false },
+      { id: 'active-2', text: '[A-Z]+', isRegex: true },
+    ]
+    const set = createFilterSet('My preset', active)
+    expect(set.name).toBe('My preset')
+    expect(set.filters).toHaveLength(2)
+    expect(set.filters[0]).toEqual({ text: '35=D', isRegex: false })
+    expect(set.filters[1]).toEqual({ text: '[A-Z]+', isRegex: true })
+    expect((set.filters[0] as Filter).id).toBeUndefined()
+  })
+
+  it('appending an empty set returns current filters unchanged', () => {
+    const existing: Filter[] = [{ id: 'e1', text: 'foo', isRegex: false }]
+    const set = createFilterSet('empty', [])
+    const result = appendFilterSet(existing, set)
+    expect(result).toEqual(existing)
+  })
+
+  it('filter text and isRegex are preserved exactly through append', () => {
+    const set = createFilterSet('test', [
+      { id: 'a', text: '35=[D8]', isRegex: true },
+      { id: 'b', text: 'CLIENT', isRegex: false },
+    ])
+    const result = appendFilterSet([], set)
+    expect(result[0].text).toBe('35=[D8]')
+    expect(result[0].isRegex).toBe(true)
+    expect(result[1].text).toBe('CLIENT')
+    expect(result[1].isRegex).toBe(false)
+  })
+
+  it('all IDs in the merged result are unique', () => {
+    const existing: Filter[] = [
+      { id: 'e1', text: 'foo', isRegex: false },
+      { id: 'e2', text: 'bar', isRegex: false },
+    ]
+    const set = createFilterSet('test', [
+      { id: 'x', text: 'baz', isRegex: false },
+      { id: 'y', text: 'qux', isRegex: false },
+    ])
+    const result = appendFilterSet(existing, set)
+    const ids = result.map(f => f.id)
+    expect(new Set(ids).size).toBe(ids.length)
   })
 })
 

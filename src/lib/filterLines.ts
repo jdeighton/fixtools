@@ -4,6 +4,28 @@ export interface Filter {
   isRegex: boolean
 }
 
+export interface FilterSet {
+  id: string
+  name: string
+  filters: Array<{ text: string; isRegex: boolean }>
+}
+
+let nextId = 1
+export function generateId(): string { return String(nextId++) }
+
+export function createFilterSet(name: string, filters: Filter[]): FilterSet {
+  return {
+    id: generateId(),
+    name,
+    filters: filters.map(({ text, isRegex }) => ({ text, isRegex })),
+  }
+}
+
+export function appendFilterSet(current: Filter[], set: FilterSet): Filter[] {
+  const appended = set.filters.map(f => ({ ...f, id: generateId() }))
+  return [...current, ...appended]
+}
+
 export function getFilterError(filter: Filter): string | null {
   if (!filter.isRegex || filter.text === '') return null
   try {
