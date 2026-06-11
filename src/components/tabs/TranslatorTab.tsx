@@ -6,6 +6,7 @@ import { useApp, type FixMessage } from '../../context/AppContext'
 import { buildSummaryParts, buildSummaryText } from '../../lib/fixSummary'
 import { fieldName, fieldValueDescription, msgTypeDescription } from '../../data/fixDictionary'
 import { darkTheme } from '../../lib/gridTheme'
+import { CopyRawButton } from '../CopyRawButton'
 import styles from './TranslatorTab.module.css'
 
 ModuleRegistry.registerModules([AllCommunityModule])
@@ -273,6 +274,7 @@ export function TranslatorTab() {
         <div className={styles.detailPanel}>
           <div className={styles.panelHeader}>
             Business Level Tags
+            {selected && <CopyRawButton rawLine={selected.rawLine} />}
             <input className={styles.filterSm} placeholder="Filter..." value={bizFilter} onChange={e => setBizFilter(e.target.value)} />
           </div>
           <div className={styles.detailGrid}>

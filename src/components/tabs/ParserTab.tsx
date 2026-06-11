@@ -7,6 +7,7 @@ import { buildSummaryParts } from '../../lib/fixSummary'
 import { fieldName } from '../../data/fixDictionary'
 import { SequenceDiagram } from '../SequenceDiagram'
 import { darkTheme } from '../../lib/gridTheme'
+import { CopyRawButton } from '../CopyRawButton'
 import styles from './ParserTab.module.css'
 
 ModuleRegistry.registerModules([AllCommunityModule])
@@ -206,6 +207,7 @@ export function ParserTab() {
           {selectedMsg
             ? <>Message #{selectedMsg.sequenceIndex + 1} — {selectedMsg.tags.get(35)} — {selectedMsg.direction}</>
             : 'Message Detail'}
+          {selectedMsg && <CopyRawButton rawLine={selectedMsg.rawLine} />}
         </button>
         {showDetail && !selectedMsg && <div className={styles.detailEmpty}>Click a message to inspect its tags</div>}
         {showDetail && selectedMsg && <TagDetail msg={selectedMsg} />}

@@ -19,6 +19,7 @@ export interface Settings {
   validateBodyLengthChecksum: boolean
   appendOnInput: boolean
   hideHeartbeats: boolean
+  copyIncludePreamble: boolean
 }
 
 export interface CustomEnum {
@@ -36,6 +37,7 @@ const DEFAULT_SETTINGS: Settings = {
   validateBodyLengthChecksum: true,
   appendOnInput: false,
   hideHeartbeats: false,
+  copyIncludePreamble: true,
 }
 
 function loadJson<T>(key: string, fallback: T): T {

@@ -84,6 +84,18 @@ export function SettingsModal({ onClose }: Props) {
             </label>
             <p className={styles.hint}>Suppress heartbeats from the Details grid, Sequence timeline, and sequence diagram</p>
           </div>
+          <div className={styles.field}>
+            <label className={styles.checkboxLabel}>
+              <input
+                type="checkbox"
+                checked={form.copyIncludePreamble}
+                onChange={e => setForm(f => ({ ...f, copyIncludePreamble: e.target.checked }))}
+                className={styles.checkbox}
+              />
+              Copy: include log preamble (everything before 8=FIX)
+            </label>
+            <p className={styles.hint}>When off, only the FIX message content starting from 8=FIX is copied to the clipboard</p>
+          </div>
         </div>
         <div className={styles.footer}>
           <button className={styles.cancel} onClick={onClose}>Cancel</button>

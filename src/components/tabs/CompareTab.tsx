@@ -5,9 +5,19 @@ import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community'
 import { useApp, type FixMessage } from '../../context/AppContext'
 import { fieldName, msgTypeDescription } from '../../data/fixDictionary'
 import { darkTheme } from '../../lib/gridTheme'
+import { CopyRawButton } from '../CopyRawButton'
 import styles from './CompareTab.module.css'
 
 ModuleRegistry.registerModules([AllCommunityModule])
+
+function CopyColumnHeader({ msg }: { msg: FixMessage }) {
+  return (
+    <span style={{ display: 'flex', alignItems: 'center', gap: 4, width: '100%' }}>
+      <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis' }}>{colHeader(msg)}</span>
+      <CopyRawButton rawLine={msg.rawLine} />
+    </span>
+  )
+}
 
 interface TagRow {
   tag: number
@@ -84,7 +94,7 @@ export function CompareTab() {
         const key = colKey(msg)
         return {
           field: key,
-          headerName: colHeader(msg),
+          headerComponent: () => <CopyColumnHeader msg={msg} />,
           minWidth: 130,
           flex: 1,
           cellStyle: (params: { data?: TagRow; value?: unknown }) => {
