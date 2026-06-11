@@ -9,12 +9,47 @@ Paste a FIX log or raw FIX message stream into the input panel. All tabs update 
 | Tab | Description |
 |-----|-------------|
 | **Details** | Decodes each message field-by-field, resolving tag numbers and enum values to human-readable descriptions using the FIX 4.2 / 4.4 spec |
-| **Compare** | Side-by-side diff of two selected messages, highlighting fields that differ |
+| **Compare** | Side-by-side diff of two or more selected messages, highlighting fields that differ |
 | **Sequence** | Renders a UML sequence diagram of the message flow between counterparties |
 | **Validator** | Checks each message for structural errors: missing required tags, invalid enum values, bad BodyLength (tag 9), bad CheckSum (tag 10) |
 | **Enums** | Manage custom tag/value → description mappings, scoped per FIX version, that override or extend the built-in dictionary across all tabs |
 | **Dictionary** | Browse the full FIX 4.2 and 4.4 spec — messages by MsgType or name, fields by tag number or name — with drill-down navigation between messages and fields |
 | **Examples** | Load pre-built FIX 4.2 futures trading sessions to explore the tool |
+
+## Filtering
+
+The filter panel sits between the input area and the tab navigation. It lets you narrow the raw input lines before parsing, so every tab operates on the filtered subset.
+
+### Adding and editing filters
+
+Click **+ Add filter** to add a filter row. Each row has:
+
+- A text input — plain-text substring match (case-insensitive) by default
+- A **Regex** toggle — switches the input to a compiled `RegExp`; invalid patterns are highlighted with an inline error and skipped without crashing
+- A delete button (✕) to remove the filter
+
+Filters update the output in real time as you type.
+
+### AND / OR mode
+
+The **AND / OR** segmented control in the filter panel header (visible when at least one filter is active) switches the combination mode:
+
+- **AND** (default) — a line is kept only if it matches every active filter
+- **OR** — a line is kept if it matches any active filter
+
+### Filtered Data panel
+
+When filters are active a collapsible **Filtered Data** section appears showing the matched lines and a count (`X of Y lines match`). This is read-only — it reflects what all tabs will see.
+
+### Saving and loading filter sets
+
+Click **Save as preset** (visible when filters are active) to name and save the current filter list. Saved presets appear in a collapsible **Saved Filter Sets** panel. Clicking **Load** on a preset appends its filters to whatever is currently active. Presets persist across page loads via `localStorage`. Delete a preset with its ✕ button.
+
+## Copying raw lines
+
+A small **⧉** button appears on the Details tab (Business Level Tags header), the Sequence tab (Message Detail header), and in each column header on the Compare tab. Clicking it copies the raw input line for that message to the clipboard. A brief **✓** confirms success.
+
+By default the full line including any log preamble is copied. To copy only the FIX content (from `8=FIX` onwards), uncheck **Copy: include log preamble** in Settings.
 
 ## Getting started
 
