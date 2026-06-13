@@ -1,20 +1,29 @@
-import type { Control, Parameter, StrategyPanel } from '../model'
+import type { Control, Parameter, StrategyPanel, Strategy } from '../model'
 import type { ControlValue, TicketStateMap } from './ticketTypes'
+import { resolveClockInitValue } from './complexControls'
 
 export function resolveInitialValue(
   control: Control,
   getStandardField: ((name: string) => string | undefined) | null,
+  param?: Parameter,
 ): ControlValue {
+  let rawStr: string | undefined
+
   if (control.initPolicy === 'UseFixField' && control.initFixField && getStandardField) {
     const val = getStandardField(control.initFixField)
-    if (val !== undefined) {
-      return { raw: coerceForType(control, val), initialized: true }
-    }
+    if (val !== undefined) rawStr = val
   }
-  if (control.initValue !== undefined) {
-    return { raw: coerceForType(control, control.initValue), initialized: true }
+
+  if (rawStr === undefined) rawStr = control.initValue
+  if (rawStr === undefined) return { raw: null, initialized: false }
+
+  // Clock_t: apply initValueMode=1 (max(initValue, now))
+  if (control.xsiType === 'Clock_t') {
+    const adjusted = resolveClockInitValue(rawStr, control.initValueMode, param?.xsiType, new Date())
+    return { raw: adjusted, initialized: adjusted !== null }
   }
-  return { raw: null, initialized: false }
+
+  return { raw: coerceForType(control, rawStr), initialized: true }
 }
 
 function coerceForType(control: Control, val: string): string | boolean | number {
@@ -75,11 +84,13 @@ export function collectAllControls(panels: StrategyPanel[]): Control[] {
 export function initTicketState(
   panels: StrategyPanel[],
   getStandardField: ((name: string) => string | undefined) | null,
+  strategy?: Strategy,
 ): TicketStateMap {
   const controls = collectAllControls(panels)
   const map = new Map<string, ControlValue>()
   for (const ctrl of controls) {
-    map.set(ctrl.id, resolveInitialValue(ctrl, getStandardField))
+    const param = strategy?.parameters.find(p => p.name === ctrl.parameterRef)
+    map.set(ctrl.id, resolveInitialValue(ctrl, getStandardField, param))
   }
   return map
 }

@@ -1,7 +1,8 @@
-import { useContext } from 'react'
-import type { Control, Parameter } from '../model'
+import { useContext, useState } from 'react'
+import type { Control, Parameter, ParameterType } from '../model'
 import type { ControlValue } from './ticketTypes'
 import { TicketContext } from './TicketContext'
+import { matchListItem, doubleSpinnerTooltip, tzAbbrev } from './complexControls'
 import styles from './ControlRenderer.module.css'
 
 // ── Common chrome ──────────────────────────────────────────────────────────────
@@ -359,14 +360,172 @@ function DurationControl({ control, param, value, onChange }: CtrlProps) {
   )
 }
 
-// ── Stub (Clock_t, DoubleSpinner_t, EditableDropDownList_t) ────────────────────
+// ── Clock_t ────────────────────────────────────────────────────────────────────
 
-function StubControl({ control }: { control: Control }) {
+const DATE_PARAM_TYPES: ReadonlySet<ParameterType> = new Set([
+  'UTCTimestamp_t', 'TZTimestamp_t', 'UTCDateOnly_t', 'LocalMktDate_t',
+])
+const TIME_PARAM_TYPES: ReadonlySet<ParameterType> = new Set([
+  'UTCTimestamp_t', 'TZTimestamp_t', 'UTCTimeOnly_t', 'TZTimeOnly_t',
+])
+
+function ClockControl({ control, param, value, onChange }: CtrlProps) {
+  const current = typeof value.raw === 'string' ? value.raw : ''
+  const paramType = param?.xsiType
+  const isMonthYear = paramType === 'MonthYear_t'
+  const hasDate = !isMonthYear && (paramType == null || DATE_PARAM_TYPES.has(paramType as ParameterType))
+  const hasTime = !isMonthYear && (paramType == null || TIME_PARAM_TYPES.has(paramType as ParameterType))
+
+  const splitAt = current.indexOf('T')
+  const datePart = splitAt >= 0 ? current.slice(0, splitAt) : (hasDate && !hasTime ? current : '')
+  const timePart = splitAt >= 0 ? current.slice(splitAt + 1) : (hasTime && !hasDate ? current : '')
+
+  function setDate(d: string) {
+    onChange({ raw: hasTime ? `${d}T${timePart}` : d, initialized: true })
+  }
+  function setTime(t: string) {
+    onChange({ raw: hasDate ? `${datePart}T${t}` : t, initialized: true })
+  }
+
+  const tz = control.localMktTz
+  const hint = tz ? tzAbbrev(tz) : null
+
   return (
-    <div className={styles.stub} title={`${control.xsiType} — implemented in next release`}>
-      <span className={styles.stubType}>{control.xsiType}</span>
-      {control.label && <span className={styles.stubLabel}>{control.label}</span>}
-    </div>
+    <ControlWrap control={control} param={param}>
+      <div className={styles.clockRow}>
+        {isMonthYear && (
+          <input
+            id={control.id}
+            type="month"
+            className={styles.clockInput}
+            value={current}
+            onChange={e => onChange({ raw: e.target.value, initialized: true })}
+          />
+        )}
+        {!isMonthYear && hasDate && (
+          <input
+            id={hasTime ? undefined : control.id}
+            type="date"
+            className={styles.clockInput}
+            value={datePart}
+            onChange={e => setDate(e.target.value)}
+          />
+        )}
+        {!isMonthYear && hasTime && (
+          <input
+            id={control.id}
+            type="time"
+            step="1"
+            className={styles.clockInput}
+            value={timePart}
+            onChange={e => setTime(e.target.value)}
+          />
+        )}
+        {hint && <span className={styles.tzHint} data-testid="tz-hint">{hint}</span>}
+      </div>
+    </ControlWrap>
+  )
+}
+
+// ── DoubleSpinner_t ────────────────────────────────────────────────────────────
+
+function DoubleSpinnerControl({ control, param, value, onChange }: CtrlProps) {
+  const current = typeof value.raw === 'number' ? value.raw : (value.raw !== null ? Number(value.raw) : 0)
+  const min = param?.minValue !== undefined ? Number(param.minValue) : -Infinity
+  const max = param?.maxValue !== undefined ? Number(param.maxValue) : Infinity
+
+  const outerStep = control.outerIncrement ?? control.increment ?? 1
+  const innerStep = control.innerIncrement ?? control.increment ?? 1
+
+  function clamp(v: number): number {
+    return Math.min(max, Math.max(min, v))
+  }
+  function step(delta: number) {
+    onChange({ raw: clamp(current + delta), initialized: true })
+  }
+
+  const outerTip = doubleSpinnerTooltip(control.outerIncrementPolicy ?? control.incrementPolicy, outerStep)
+  const innerTip = doubleSpinnerTooltip(control.innerIncrementPolicy ?? control.incrementPolicy, innerStep)
+
+  return (
+    <ControlWrap control={control} param={param}>
+      <div className={styles.dsSpinner}>
+        <div className={styles.dsArrows}>
+          <button type="button" className={styles.dsBtn} onClick={() => step(outerStep)} title={outerTip} aria-label="Outer increment">▲</button>
+          <button type="button" className={styles.dsBtn} onClick={() => step(-outerStep)} title={outerTip} aria-label="Outer decrement">▼</button>
+        </div>
+        <input
+          id={control.id}
+          type="text"
+          inputMode="numeric"
+          className={styles.dsInput}
+          value={current}
+          onChange={e => {
+            const n = parseFloat(e.target.value)
+            if (!isNaN(n)) onChange({ raw: clamp(n), initialized: true })
+          }}
+          onBlur={e => {
+            const n = parseFloat(e.target.value)
+            onChange({ raw: clamp(isNaN(n) ? 0 : n), initialized: true })
+          }}
+        />
+        <div className={styles.dsArrows}>
+          <button type="button" className={styles.dsBtn} onClick={() => step(innerStep)} title={innerTip} aria-label="Inner increment">▲</button>
+          <button type="button" className={styles.dsBtn} onClick={() => step(-innerStep)} title={innerTip} aria-label="Inner decrement">▼</button>
+        </div>
+      </div>
+    </ControlWrap>
+  )
+}
+
+// ── EditableDropDownList_t ─────────────────────────────────────────────────────
+
+function EditableDropDownListControl({ control, param, value, onChange }: CtrlProps) {
+  const initialText = value.initialized && typeof value.raw === 'string'
+    ? (control.listItems.find(it => it.enumID === value.raw)?.uiRep ?? value.raw)
+    : ''
+
+  const [text, setText] = useState(initialText)
+  const listId = `${control.id}-list`
+
+  function handleChange(inputText: string) {
+    setText(inputText)
+    const enumID = matchListItem(inputText, control.listItems)
+    onChange({ raw: enumID ?? inputText, initialized: true })
+  }
+
+  function handleClear() {
+    setText('')
+    onChange({ raw: null, initialized: false })
+  }
+
+  return (
+    <ControlWrap control={control} param={param}>
+      <div className={styles.edWrap}>
+        <input
+          id={control.id}
+          type="text"
+          list={listId}
+          className={styles.edInput}
+          value={text}
+          onChange={e => handleChange(e.target.value)}
+          placeholder={control.tooltip ?? undefined}
+        />
+        <datalist id={listId}>
+          {control.listItems.map(it => (
+            <option key={it.enumID} value={it.uiRep} />
+          ))}
+        </datalist>
+        {(text || value.initialized) && (
+          <button
+            type="button"
+            className={styles.edClear}
+            onClick={handleClear}
+            aria-label="Clear"
+          >×</button>
+        )}
+      </div>
+    </ControlWrap>
   )
 }
 
@@ -417,7 +576,13 @@ export function ControlRenderer({ control }: { control: Control }) {
       return <RadioButtonControl control={control} value={value} onRadioSelect={ctx.onRadioSelect} />
     case 'Duration_t':
       return <DurationControl control={control} param={param} value={value} onChange={onChange} />
+    case 'Clock_t':
+      return <ClockControl control={control} param={param} value={value} onChange={onChange} />
+    case 'DoubleSpinner_t':
+      return <DoubleSpinnerControl control={control} param={param} value={value} onChange={onChange} />
+    case 'EditableDropDownList_t':
+      return <EditableDropDownListControl control={control} param={param} value={value} onChange={onChange} />
     default:
-      return <StubControl control={control} />
+      return null
   }
 }

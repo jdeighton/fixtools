@@ -59,11 +59,11 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
   const allControls = useMemo(() => collectAllControls(layout.panels), [layout])
 
   const [ticketState, setTicketState] = useState<TicketStateMap>(() =>
-    initTicketState(layout.panels, null),
+    initTicketState(layout.panels, null, strategy),
   )
 
   useEffect(() => {
-    setTicketState(initTicketState(layout.panels, sfRef.current ? (n => sfRef.current!.getStandardField(n)) : null))
+    setTicketState(initTicketState(layout.panels, sfRef.current ? (n => sfRef.current!.getStandardField(n)) : null, strategy))
   }, [strategy.name])
 
   function onChange(id: string, value: ControlValue) {
