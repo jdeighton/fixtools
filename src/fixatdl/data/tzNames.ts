@@ -1,0 +1,67 @@
+// Olson (IANA) timezone names valid in FIXatdl localMktTz attributes — Appendix 1
+export const TZ_NAMES: readonly string[] = [
+  // Americas
+  'America/Adak', 'America/Anchorage', 'America/Bogota', 'America/Buenos_Aires',
+  'America/Caracas', 'America/Chicago', 'America/Costa_Rica', 'America/Denver',
+  'America/Detroit', 'America/El_Salvador', 'America/Guatemala', 'America/Guayaquil',
+  'America/Halifax', 'America/Havana', 'America/Hermosillo', 'America/Honolulu',
+  'America/Indianapolis', 'America/Jamaica', 'America/Juneau', 'America/La_Paz',
+  'America/Lima', 'America/Los_Angeles', 'America/Managua', 'America/Mazatlan',
+  'America/Mexico_City', 'America/Monterrey', 'America/Montevideo',
+  'America/Montreal', 'America/Nassau', 'America/New_York', 'America/Noronha',
+  'America/Panama', 'America/Phoenix', 'America/Puerto_Rico', 'America/Regina',
+  'America/Santiago', 'America/Santo_Domingo', 'America/Sao_Paulo',
+  'America/St_Johns', 'America/Tegucigalpa', 'America/Thule', 'America/Tijuana',
+  'America/Toronto', 'America/Vancouver', 'America/Winnipeg',
+  // Europe
+  'Europe/Amsterdam', 'Europe/Athens', 'Europe/Belgrade', 'Europe/Berlin',
+  'Europe/Bratislava', 'Europe/Brussels', 'Europe/Bucharest', 'Europe/Budapest',
+  'Europe/Copenhagen', 'Europe/Dublin', 'Europe/Helsinki', 'Europe/Istanbul',
+  'Europe/Kiev', 'Europe/Lisbon', 'Europe/Ljubljana', 'Europe/London',
+  'Europe/Luxembourg', 'Europe/Madrid', 'Europe/Malta', 'Europe/Minsk',
+  'Europe/Monaco', 'Europe/Moscow', 'Europe/Nicosia', 'Europe/Oslo',
+  'Europe/Paris', 'Europe/Prague', 'Europe/Riga', 'Europe/Rome',
+  'Europe/Samara', 'Europe/Sarajevo', 'Europe/Skopje', 'Europe/Sofia',
+  'Europe/Stockholm', 'Europe/Tallinn', 'Europe/Tirane', 'Europe/Uzhgorod',
+  'Europe/Vaduz', 'Europe/Vienna', 'Europe/Vilnius', 'Europe/Warsaw',
+  'Europe/Zaporozhye', 'Europe/Zurich',
+  // Africa
+  'Africa/Abidjan', 'Africa/Accra', 'Africa/Addis_Ababa', 'Africa/Algiers',
+  'Africa/Cairo', 'Africa/Casablanca', 'Africa/Dar_es_Salaam', 'Africa/Djibouti',
+  'Africa/Johannesburg', 'Africa/Kampala', 'Africa/Lagos', 'Africa/Nairobi',
+  'Africa/Tripoli', 'Africa/Tunis',
+  // Middle East
+  'Asia/Aden', 'Asia/Amman', 'Asia/Bahrain', 'Asia/Beirut', 'Asia/Damascus',
+  'Asia/Dubai', 'Asia/Gaza', 'Asia/Jerusalem', 'Asia/Kuwait',
+  'Asia/Muscat', 'Asia/Qatar', 'Asia/Riyadh', 'Asia/Tehran',
+  // Asia
+  'Asia/Almaty', 'Asia/Ashgabat', 'Asia/Baghdad', 'Asia/Baku',
+  'Asia/Bangkok', 'Asia/Bishkek', 'Asia/Brunei', 'Asia/Calcutta',
+  'Asia/Colombo', 'Asia/Dacca', 'Asia/Dhaka', 'Asia/Dushanbe',
+  'Asia/Hong_Kong', 'Asia/Hovd', 'Asia/Irkutsk', 'Asia/Jakarta',
+  'Asia/Kabul', 'Asia/Karachi', 'Asia/Kashgar', 'Asia/Katmandu',
+  'Asia/Kolkata', 'Asia/Krasnoyarsk', 'Asia/Kuala_Lumpur', 'Asia/Kuching',
+  'Asia/Kuwait', 'Asia/Macau', 'Asia/Magadan', 'Asia/Manila',
+  'Asia/Novosibirsk', 'Asia/Omsk', 'Asia/Oral', 'Asia/Phnom_Penh',
+  'Asia/Pyongyang', 'Asia/Qyzylorda', 'Asia/Rangoon', 'Asia/Saigon',
+  'Asia/Samarkand', 'Asia/Seoul', 'Asia/Shanghai', 'Asia/Singapore',
+  'Asia/Taipei', 'Asia/Tashkent', 'Asia/Tbilisi', 'Asia/Tokyo',
+  'Asia/Ulaanbaatar', 'Asia/Urumqi', 'Asia/Vientiane', 'Asia/Vladivostok',
+  'Asia/Yakutsk', 'Asia/Yangon', 'Asia/Yekaterinburg', 'Asia/Yerevan',
+  // Pacific / Australia / NZ
+  'Australia/Adelaide', 'Australia/Brisbane', 'Australia/Darwin',
+  'Australia/Hobart', 'Australia/Melbourne', 'Australia/Perth',
+  'Australia/Sydney', 'Pacific/Auckland', 'Pacific/Fiji',
+  'Pacific/Guam', 'Pacific/Honolulu', 'Pacific/Noumea',
+  'Pacific/Pago_Pago', 'Pacific/Port_Moresby', 'Pacific/Tongatapu',
+  // UTC / Etc
+  'UTC', 'Etc/UTC', 'Etc/GMT',
+  'Etc/GMT+1', 'Etc/GMT+2', 'Etc/GMT+3', 'Etc/GMT+4', 'Etc/GMT+5',
+  'Etc/GMT+6', 'Etc/GMT+7', 'Etc/GMT+8', 'Etc/GMT+9', 'Etc/GMT+10',
+  'Etc/GMT+11', 'Etc/GMT+12',
+  'Etc/GMT-1', 'Etc/GMT-2', 'Etc/GMT-3', 'Etc/GMT-4', 'Etc/GMT-5',
+  'Etc/GMT-6', 'Etc/GMT-7', 'Etc/GMT-8', 'Etc/GMT-9', 'Etc/GMT-10',
+  'Etc/GMT-11', 'Etc/GMT-12',
+]
+
+export const TZ_NAMES_SET: ReadonlySet<string> = new Set(TZ_NAMES)
