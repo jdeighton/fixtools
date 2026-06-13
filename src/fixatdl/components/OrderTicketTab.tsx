@@ -1,6 +1,9 @@
+import { useRef } from 'react'
 import type { AtdlDocument, Strategy } from '../model'
 import { generateFallbackLayout } from '../lib/fallbackLayout'
 import { PanelTree } from './PanelTree'
+import { StandardFieldsPanel } from './StandardFieldsPanel'
+import type { StandardFieldsHandle } from './StandardFieldsPanel'
 import styles from './OrderTicketTab.module.css'
 
 interface Props {
@@ -10,6 +13,8 @@ interface Props {
 }
 
 export function OrderTicketTab({ doc, activeStrategyName, onStrategyChange }: Props) {
+  const sfRef = useRef<StandardFieldsHandle>(null)
+
   if (!doc) {
     return (
       <div className={styles.root}>
@@ -54,6 +59,8 @@ export function OrderTicketTab({ doc, activeStrategyName, onStrategyChange }: Pr
           ))}
         </select>
       </div>
+
+      <StandardFieldsPanel ref={sfRef} strategy={strategy} />
 
       {useFallback && (
         <div className={styles.fallbackBanner}>

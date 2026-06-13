@@ -1,0 +1,97 @@
+.panel {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.headerTitle {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+}
+
+/* ── Field grid ── */
+
+.fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 8px 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 110px;
+}
+
+.fieldWide {
+  min-width: 180px;
+}
+
+.label {
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.labelTag {
+  color: var(--text-secondary);
+  opacity: 0.6;
+  margin-left: 3px;
+}
+
+.input,
+.select {
+  padding: 3px 6px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-family: var(--font-mono);
+  min-width: 0;
+  width: 100%;
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+.input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.input[type='datetime-local'] {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color-scheme: dark;
+}
+
+/* ── Extra (referenced) fields ── */
+
+.extraSection {
+  padding: 4px 12px 8px;
+  border-top: 1px dashed color-mix(in srgb, var(--border) 60%, transparent);
+  margin-top: 2px;
+}
+
+.extraLabel {
+  font-size: 10px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
