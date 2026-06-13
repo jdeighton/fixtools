@@ -16,6 +16,7 @@ import { ValidatorTab } from './components/tabs/ValidatorTab'
 import { EnumsTab } from './components/tabs/EnumsTab'
 import { DictionaryTab } from './components/tabs/DictionaryTab'
 import { ExamplesTab } from './components/tabs/ExamplesTab'
+import { FixatdlPage } from './fixatdl/components/FixatdlPage'
 
 function AppShell() {
   const [activeTab, setActiveTab] = useState<TabId>('translator')
@@ -43,6 +44,7 @@ function AppShell() {
           {activeTab === 'enums' && <EnumsTab />}
           {activeTab === 'dictionary' && <DictionaryTab />}
           {activeTab === 'examples' && <ExamplesTab />}
+          {activeTab === 'fixatdl' && <FixatdlPage />}
         </div>
       </div>
       {showSettings && <SettingsModal onClose={() => setShowSettings(false)} />}

@@ -1,0 +1,155 @@
+.page {
+  display: flex;
+  flex-direction: row;
+  margin: -16px;
+  height: calc(100% + 32px);
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+/* ── Left rail ── */
+
+.rail {
+  width: 260px;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+  transition: width 0.2s ease, min-width 0.2s ease;
+}
+
+.railCollapsed {
+  width: 40px;
+  min-width: 40px;
+}
+
+.railToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.railToggle:hover {
+  color: var(--text-primary);
+}
+
+.chevron {
+  font-size: 10px;
+  display: inline-block;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+  /* points left → clicking collapses */
+  transform: rotate(-90deg);
+}
+
+.chevronCollapsed {
+  /* points right → clicking expands */
+  transform: rotate(90deg);
+}
+
+.railLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.railBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+.emptyRail {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Main area ── */
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Document header strip */
+
+.docHeader {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.docStatus {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Inner tab bar */
+
+.innerNav {
+  display: flex;
+  flex-shrink: 0;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 8px;
+}
+
+.innerTab {
+  padding: 9px 18px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -1px;
+}
+
+.innerTab:hover {
+  color: var(--text-primary);
+}
+
+.innerTabActive {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Inner tab content */
+
+.innerContent {
+  flex: 1;
+  overflow: auto;
+  padding: 24px;
+}
+
+.emptyState {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin: 0;
+}

@@ -1,6 +1,6 @@
 import styles from './TabNav.module.css'
 
-export type TabId = 'translator' | 'compare' | 'parser' | 'validator' | 'enums' | 'dictionary' | 'examples'
+export type TabId = 'translator' | 'compare' | 'parser' | 'validator' | 'enums' | 'dictionary' | 'examples' | 'fixatdl'
 
 const TABS: { id: TabId; label: string }[] = [
   { id: 'translator', label: 'Details' },
@@ -10,6 +10,7 @@ const TABS: { id: TabId; label: string }[] = [
   { id: 'enums', label: 'Enums' },
   { id: 'dictionary', label: 'Dictionary' },
   { id: 'examples', label: 'Examples' },
+  { id: 'fixatdl', label: 'FIXatdl' },
 ]
 
 interface Props {
