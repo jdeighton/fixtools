@@ -57,10 +57,6 @@ function has(findings: Finding[], id: string): boolean {
   return findings.some(f => f.ruleId === id)
 }
 
-function cmp(field: string, op: EditNode['kind'] extends 'compare' ? EditNode & { kind: 'compare' } : never): EditNode {
-  return { kind: 'compare', field, op: 'EQ', value: 'x' }
-}
-
 // Shorthand for compare nodes
 function eq(field: string, value?: string, field2?: string): EditNode {
   return { kind: 'compare', field, op: 'EQ', value, field2 }

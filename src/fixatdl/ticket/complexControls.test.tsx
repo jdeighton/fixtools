@@ -38,7 +38,7 @@ function CtxWrapper({
   initialValue: ControlValue
   strategy?: Strategy
   children: React.ReactNode
-  onChangeSpy?: ReturnType<typeof vi.fn>
+  onChangeSpy?: (id: string, v: ControlValue) => void
 }) {
   const [state, setState] = useState<TicketStateMap>(new Map([[control.id, initialValue]]))
   const strat = strategy ?? makeStrategy()
@@ -51,7 +51,7 @@ function CtxWrapper({
       setState(new Map([[id, v]]))
       onChangeSpy?.(id, v)
     },
-    onRadioSelect: vi.fn(),
+    onRadioSelect: vi.fn() as (radioGroup: string, selectedId: string) => void,
     getStandardField: () => undefined,
     hoveredControlId: null,
     setHoveredControlId: () => {},
@@ -67,7 +67,7 @@ function renderControl(
   control: Control,
   initialValue: ControlValue = { raw: null, initialized: false },
   strategy?: Strategy,
-  onChangeSpy?: ReturnType<typeof vi.fn>,
+  onChangeSpy?: (id: string, v: ControlValue) => void,
 ) {
   render(
     <CtxWrapper control={control} initialValue={initialValue} strategy={strategy} onChangeSpy={onChangeSpy}>

@@ -21,9 +21,6 @@ function eqNode(field: string, value: string): EditNode {
   return { kind: 'compare', field, op: 'EQ', value }
 }
 
-function neNode(field: string, value: string): EditNode {
-  return { kind: 'compare', field, op: 'NE', value }
-}
 
 function exNode(field: string): EditNode {
   return { kind: 'compare', field, op: 'EX' }

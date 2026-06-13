@@ -42,7 +42,6 @@ describe('MatrixTab degraded banner', () => {
   })
 
   test('shown when doc has error findings and at least one strategy', () => {
-    const doc = makeDoc({ findings: [makeError()] })
     render(<MatrixTab doc={makeDoc({ findings: [makeError()] })} onStrategySelect={() => {}} />)
     expect(screen.getByRole('alert')).toBeInTheDocument()
     expect(screen.getByRole('alert').textContent).toContain('parse errors')

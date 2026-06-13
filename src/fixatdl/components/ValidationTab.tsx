@@ -103,7 +103,7 @@ function FindingRow({ finding: f, expanded, active, sourceLines, onToggle, onAct
 interface SourceViewProps {
   sourceLines: string[]
   activeLine: number | null
-  containerRef: React.RefObject<HTMLDivElement>
+  containerRef: React.RefObject<HTMLDivElement | null>
 }
 
 function SourceView({ sourceLines, activeLine, containerRef }: SourceViewProps) {

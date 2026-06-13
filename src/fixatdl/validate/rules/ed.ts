@@ -1,6 +1,6 @@
 import type {
   AtdlDocument, Strategy, Parameter, Control, StrategyPanel,
-  EditNode, EditDef, StateRule, StrategyEdit, ParameterType, ControlType, Finding,
+  EditNode, EditDef, ParameterType, ControlType, Finding,
 } from '../../model'
 import { FIX_FIELD_MAP } from '../../data/fixFieldDictionary'
 

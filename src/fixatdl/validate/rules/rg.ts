@@ -1,7 +1,6 @@
 import type { AtdlDocument, Finding } from '../../model'
 
 const VALID_RG_FIX_TAGS = new Set([555, 68])  // NoLegs=555, TotNoOrders=68
-const VALID_RG_NAMES = new Set(['NoLegs', 'TotNoOrders'])
 
 export function checkRG(doc: AtdlDocument): Finding[] {
   const findings: Finding[] = []

@@ -586,7 +586,7 @@ export function ControlRenderer({ control }: { control: Control }) {
   }
 
   function onChange(v: ControlValue) {
-    ctx.onChange(control.id, v)
+    ctx!.onChange(control.id, v)
   }
 
   if (control.xsiType === 'HiddenField_t') return null

@@ -246,7 +246,7 @@ function resolveConstValue(constValue: string, param: Parameter, now: Date): str
 
 // ── Internal: type formatting ──────────────────────────────────────────────────
 
-function applyTypeFormatting(raw: string, param: Parameter, now: Date): string | null {
+function applyTypeFormatting(raw: string, param: Parameter, _now: Date): string | null {
   let value = raw
 
   // Percentage multiplyBy100

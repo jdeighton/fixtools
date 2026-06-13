@@ -54,7 +54,7 @@ export function OrderTicketTab({ doc, activeStrategyName, onStrategyChange }: Pr
 interface ShellProps {
   strategy: Strategy
   doc: AtdlDocument
-  sfRef: React.RefObject<StandardFieldsHandle>
+  sfRef: React.RefObject<StandardFieldsHandle | null>
   onStrategyChange: (name: string) => void
 }
 
