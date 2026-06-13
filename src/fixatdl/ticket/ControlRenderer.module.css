@@ -1,0 +1,240 @@
+/* ── Control wrapper ── */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 120px;
+  max-width: 260px;
+}
+
+.wrapDisabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* Inline layout: checkbox / radio button */
+.wrapInline {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  min-width: unset;
+  max-width: unset;
+}
+
+/* ── Label row ── */
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+  user-select: none;
+}
+
+.required {
+  color: var(--error);
+  font-weight: 700;
+  margin-left: 1px;
+}
+
+.helpBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.helpBtn:hover { color: var(--accent); }
+
+/* ── Inline label (checkbox / radio) ── */
+
+.inlineLabel {
+  font-size: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Dot on disabled-but-valued controls (used by StateRule in #25) */
+.valuedDot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-left: 4px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* ── Text input ── */
+
+.textInput {
+  padding: 4px 7px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.textInput:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+/* ── Number / spinner input ── */
+
+.numberInput {
+  padding: 4px 7px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.numberInput:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+/* ── Select ── */
+
+.select {
+  padding: 4px 7px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: auto;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+/* ── Checkbox / radio native inputs ── */
+
+.checkbox,
+.radio {
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+}
+
+/* ── Checkbox list / radio button list ── */
+
+.listGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.listGroupH {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.listItemLabel {
+  font-size: 12px;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ── Slider ── */
+
+.sliderWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.slider {
+  flex: 1;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.sliderValue {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  min-width: 44px;
+  text-align: right;
+}
+
+/* ── Label control ── */
+
+.labelText {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ── Stub (Clock_t, DoubleSpinner_t, EditableDropDownList_t) ── */
+
+.stub {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 8px;
+  background: var(--bg-elevated);
+  border: 1px dashed color-mix(in srgb, var(--text-muted) 35%, transparent);
+  border-radius: var(--radius-sm);
+  min-width: 120px;
+}
+
+.stubType {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.stubLabel {
+  font-size: 11px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

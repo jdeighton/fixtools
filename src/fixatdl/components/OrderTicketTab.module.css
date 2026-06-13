@@ -60,6 +60,69 @@
   padding: 16px;
 }
 
+/* ── Hidden fields debug strip ── */
+
+.hiddenStrip {
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.hiddenStripSummary {
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hiddenStripSummary::-webkit-details-marker { display: none; }
+.hiddenStripSummary::before {
+  content: '▶';
+  font-size: 9px;
+  transition: transform 0.15s;
+}
+
+details[open] .hiddenStripSummary::before {
+  transform: rotate(90deg);
+}
+
+.hiddenTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.hiddenRow {
+  border-top: 1px solid var(--border);
+}
+
+.hiddenId {
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  white-space: nowrap;
+  width: 40%;
+}
+
+.hiddenVal {
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  word-break: break-all;
+}
+
+.unset {
+  color: var(--text-muted);
+}
+
 /* ── Empty / no-strategy state ── */
 
 .empty {

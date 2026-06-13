@@ -1,18 +1,7 @@
 import { useState } from 'react'
 import type { StrategyPanel, Control } from '../model'
+import { ControlRenderer } from '../ticket/ControlRenderer'
 import styles from './PanelTree.module.css'
-
-// ── ControlSlot ───────────────────────────────────────────────────────────────
-
-function ControlSlot({ control }: { control: Control }) {
-  return (
-    <div className={styles.slot} data-testid="control-slot">
-      <span className={styles.slotId}>{control.id}</span>
-      <span className={styles.slotType}>{control.xsiType}</span>
-      {control.label && <span className={styles.slotLabel}>{control.label}</span>}
-    </div>
-  )
-}
 
 // ── Panel (recursive) ─────────────────────────────────────────────────────────
 
@@ -52,7 +41,7 @@ function Panel({ panel }: { panel: StrategyPanel }) {
           {panel.children.map((child, i) =>
             child.kind === 'panel'
               ? <Panel key={i} panel={child} />
-              : <ControlSlot key={child.id} control={child} />
+              : <ControlRenderer key={child.id} control={child} />
           )}
         </div>
       )}
