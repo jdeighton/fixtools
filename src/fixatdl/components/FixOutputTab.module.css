@@ -97,26 +97,165 @@
   border-color: var(--text-success, #4caf50);
 }
 
-/* ── Failures list ── */
+/* ── Validation panel ── */
 
-.failures {
-  padding: 6px 12px;
-  background: var(--bg-error-subtle, rgba(220,53,69,0.08));
+.validationSection {
   border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--bg-surface);
+}
+
+.validationSummary {
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--bg-elevated);
+}
+
+.validationSummary::-webkit-details-marker { display: none; }
+
+.summaryPass {
+  font-weight: 400;
+  color: var(--text-success, #4caf50);
+}
+
+.summaryFail {
+  font-weight: 600;
+  color: var(--text-error, #dc3545);
+}
+
+.validationPass {
+  font-size: 11px;
+  color: var(--text-success, #4caf50);
+  padding: 5px 12px 6px;
+}
+
+.validationList {
+  padding: 2px 0 4px;
+}
+
+.validationItem {
+  font-size: 11px;
+}
+
+.validationItemHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 3px 12px;
+}
+
+.validationItemHeader:hover {
+  background: var(--bg-hover, rgba(0,0,0,0.04));
+}
+
+.failIcon {
+  color: var(--text-error, #dc3545);
   flex-shrink: 0;
 }
 
-.failuresLabel {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-error, #dc3545);
-  margin-bottom: 4px;
+.dcBadge {
+  font-size: 10px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: var(--bg-warn-subtle, rgba(255,193,7,0.15));
+  color: var(--text-warn, #856404);
+  flex-shrink: 0;
 }
 
-.failureItem {
-  font-size: 11px;
+.itemMsg {
   color: var(--text-error, #dc3545);
+  flex: 1;
+}
+
+.expandToggle {
+  font-size: 9px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ── Edit node tree ── */
+
+.editTree {
+  padding: 4px 12px 6px 28px;
+  border-top: 1px dashed var(--border);
+  background: var(--bg-base);
+  font-size: 11px;
+  font-family: var(--font-mono, monospace);
+}
+
+.nodeGroup {
+  margin: 1px 0;
+}
+
+.nodeRow {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
   padding: 1px 0;
+}
+
+.nodeChildren {
+  margin-left: 14px;
+  border-left: 1px solid var(--border);
+  padding-left: 8px;
+}
+
+.nodeChipTrue {
+  font-size: 9px;
+  padding: 0 3px;
+  border-radius: 2px;
+  background: var(--text-success, #4caf50);
+  color: #fff;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+
+.nodeChipFalse {
+  font-size: 9px;
+  padding: 0 3px;
+  border-radius: 2px;
+  background: var(--text-error, #dc3545);
+  color: #fff;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+
+.nodeLabel {
+  color: var(--text-secondary);
+}
+
+.nodeOp {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ── Skipped rules ── */
+
+.skippedList {
+  padding: 2px 0 4px;
+  border-top: 1px solid var(--border);
+}
+
+.skippedItem {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 3px 12px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.infoIcon {
+  color: var(--accent);
+  flex-shrink: 0;
 }
 
 /* ── Field list ── */

@@ -1,9 +1,11 @@
 import { useContext, useMemo, useState, useCallback } from 'react'
-import type { AtdlDocument } from '../model'
+import type { AtdlDocument, EditNode } from '../model'
 import { TicketContext } from '../ticket/TicketContext'
 import { collectAllControls } from '../ticket/resolveInit'
 import { generateFallbackLayout } from '../lib/fallbackLayout'
 import { resolveWireValues, buildTag957Lines } from '../runtime/wireValueResolver'
+import { evaluateStrategyEdits } from '../runtime/strategyEditEngine'
+import type { StrategyEditResult } from '../runtime/strategyEditEngine'
 import { fieldName } from '../data/fixFieldDictionary'
 import styles from './FixOutputTab.module.css'
 
@@ -26,9 +28,133 @@ const HEADER_FIELD_MAP: Record<string, string> = {
   'OrdType': '40', 'Price': '44', 'TimeInForce': '59', 'TransactTime': '60',
 }
 
+const STD_FIELD_NAMES = [
+  'ClOrdID', 'Symbol', 'Side', 'OrderQty', 'OrdType',
+  'Price', 'TimeInForce', 'TransactTime',
+]
+
 type Transport = 'UDF' | '957'
 
-// ── Component ──────────────────────────────────────────────────────────────────
+// ── Validation tree renderer ───────────────────────────────────────────────────
+
+function NodeLabel({ node }: { node: EditNode }) {
+  if (node.kind === 'compare') {
+    const rhs = node.field2 ?? (node.value !== undefined ? `"${node.value}"` : '')
+    return <span className={styles.nodeLabel}>{node.field} {node.op}{rhs ? ` ${rhs}` : ''}</span>
+  }
+  if (node.kind === 'logic') {
+    return <span className={styles.nodeOp}>{node.op}</span>
+  }
+  return <span className={styles.nodeLabel}>ref:{node.id}</span>
+}
+
+function EditNodeTree({
+  node, nodeResults, path = '0',
+}: {
+  node: EditNode
+  nodeResults: Map<string, boolean>
+  path?: string
+}) {
+  const id = node.kind !== 'ref' && node.id != null ? node.id : path
+  const result = nodeResults.get(id)
+
+  return (
+    <div className={styles.nodeGroup}>
+      <div className={styles.nodeRow}>
+        {result !== undefined && (
+          <span className={result ? styles.nodeChipTrue : styles.nodeChipFalse}>
+            {result ? 'T' : 'F'}
+          </span>
+        )}
+        <NodeLabel node={node} />
+      </div>
+      {node.kind === 'logic' && (
+        <div className={styles.nodeChildren}>
+          {node.operands.map((op, i) => (
+            <EditNodeTree key={i} node={op} nodeResults={nodeResults} path={`${path}.${i}`} />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── Validation panel ───────────────────────────────────────────────────────────
+
+function ValidationPanel({ results }: { results: StrategyEditResult[] }) {
+  const [expanded, setExpanded] = useState<Set<number>>(new Set())
+
+  const failures = results.filter(r => !r.passed)
+  const skipped  = results.filter(r => r.passed && r.skippedFields.length > 0)
+
+  const allPassed = failures.length === 0
+
+  function toggle(i: number) {
+    setExpanded(prev => {
+      const next = new Set(prev)
+      if (next.has(i)) next.delete(i); else next.add(i)
+      return next
+    })
+  }
+
+  const totalChecks = results.filter(r => !r.skippedFields.length).length
+
+  return (
+    <details className={styles.validationSection} open={!allPassed}>
+      <summary className={styles.validationSummary}>
+        Validation
+        {allPassed
+          ? <span className={styles.summaryPass}> — {totalChecks} rule{totalChecks !== 1 ? 's' : ''} checked, no failures</span>
+          : <span className={styles.summaryFail}> — {failures.length} failure{failures.length !== 1 ? 's' : ''}</span>}
+      </summary>
+
+      {allPassed ? (
+        <div className={styles.validationPass}>✓ All validation rules passed</div>
+      ) : (
+        <div className={styles.validationList}>
+          {failures.map((r, i) => (
+            <div key={i} className={styles.validationItem}>
+              <div
+                className={styles.validationItemHeader}
+                onClick={() => r.edit && toggle(i)}
+                style={{ cursor: r.edit ? 'pointer' : 'default' }}
+              >
+                <span className={styles.failIcon}>✕</span>
+                {r.isDataContract && (
+                  <span className={styles.dcBadge}>data contract</span>
+                )}
+                <span className={styles.itemMsg}>{r.errorMsg}</span>
+                {r.edit && (
+                  <span className={styles.expandToggle}>
+                    {expanded.has(i) ? '▲' : '▼'}
+                  </span>
+                )}
+              </div>
+              {expanded.has(i) && r.edit && (
+                <div className={styles.editTree}>
+                  <EditNodeTree node={r.edit.condition} nodeResults={r.nodeResults} />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {skipped.length > 0 && (
+        <div className={styles.skippedList}>
+          {skipped.map((r, i) => (
+            <div key={i} className={styles.skippedItem}>
+              <span className={styles.infoIcon}>ℹ</span>
+              rule skipped: {r.skippedFields.join(', ')} not in standard fields
+            </div>
+          ))}
+        </div>
+      )}
+    </details>
+  )
+}
+
+// ── Main panel ─────────────────────────────────────────────────────────────────
 
 interface Props {
   doc: AtdlDocument
@@ -65,6 +191,18 @@ export function FixOutputPanel({ doc }: Props) {
     if (!wireOutput || !ctx) return []
     return buildTag957Lines(ctx.strategy, wireOutput)
   }, [ctx?.strategy, wireOutput])
+
+  // Run validation engine
+  const validationResults = useMemo(() => {
+    if (!ctx || !wireOutput) return []
+    const wireValues = new Map(wireOutput.fields.map(f => [f.paramName, f.wireValue]))
+    const standardFields = new Map<string, string>()
+    for (const name of STD_FIELD_NAMES) {
+      const val = ctx.getStandardField(name)
+      if (val !== undefined) standardFields.set(`FIX_${name}`, val)
+    }
+    return evaluateStrategyEdits(ctx.strategy, wireValues, standardFields)
+  }, [ctx?.strategy, wireOutput, ctx?.state])
 
   // Build list of [tag, value, name, controlId, isHeader] tuples
   const allLines = useMemo(() => {
@@ -147,14 +285,13 @@ export function FixOutputPanel({ doc }: Props) {
   }, [ctx, wireOutput, tag957Lines, effectiveTransport, doc])
 
   const rawText = useMemo(() => {
-    const sep = rawMode ? '' : '|'
-    const soh = rawMode ? '␁' : '|'  // ␁ for display, SOH for copy
-    return allLines.map(l => `${l.tag}=${l.value}`).join(soh) + (rawMode ? sep : '')
+    const soh = rawMode ? '␁' : '|'
+    return allLines.map(l => `${l.tag}=${l.value}`).join(soh) + (rawMode ? '' : '')
   }, [allLines, rawMode])
 
   const handleCopy = useCallback(() => {
     const text = rawMode
-      ? allLines.map(l => `${l.tag}=${l.value}`).join('') + ''
+      ? allLines.map(l => `${l.tag}=${l.value}`).join('') + ''
       : allLines.map(l => `${l.tag}=${l.value}`).join('|')
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true)
@@ -168,6 +305,8 @@ export function FixOutputPanel({ doc }: Props) {
   const s57Locked = !can957
   const udfLockedTip = udfLocked ? 'No fixTags defined — UDF not available' : undefined
   const s57LockedTip = s57Locked ? 'tag957Support=false — 957 mode not available' : undefined
+
+  const hasValidation = validationResults.length > 0
 
   return (
     <div className={styles.panel}>
@@ -224,17 +363,8 @@ export function FixOutputPanel({ doc }: Props) {
         </button>
       </div>
 
-      {/* StrategyEdit failures */}
-      {wireOutput && wireOutput.strategyEditFailures.length > 0 && (
-        <div className={styles.failures}>
-          <div className={styles.failuresLabel}>
-            StrategyEdit failures ({wireOutput.strategyEditFailures.length})
-          </div>
-          {wireOutput.strategyEditFailures.map((msg, i) => (
-            <div key={i} className={styles.failureItem}>✕ {msg}</div>
-          ))}
-        </div>
-      )}
+      {/* Validation results panel */}
+      {hasValidation && <ValidationPanel results={validationResults} />}
 
       {/* invertOnWire notice */}
       {wireOutput && wireOutput.invertOnWireParams.length > 0 && (
