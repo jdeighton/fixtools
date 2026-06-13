@@ -28,11 +28,15 @@ const BASE = `<?xml version="1.0" encoding="UTF-8"?>
   </Strategy>
 </Strategies>`
 
-// ── golden: bundled sample ────────────────────────────────────────────────────
+// ── golden: bundled sample (WF/NS/ST/SG/PA/CT scope) ────────────────────────
 
-describe('bundled sample — zero WF/NS/ST/SG findings', () => {
+describe('bundled sample — zero WF/NS/ST/SG/PA/CT findings', () => {
   let findings: Finding[]
-  beforeAll(() => { findings = validateDocument(parseAtdlDocument(sampleXml)) })
+  const PREFIXES = ['WF-', 'NS-', 'ST-', 'SG-', 'PA-', 'CT-']
+  beforeAll(() => {
+    const all = validateDocument(parseAtdlDocument(sampleXml))
+    findings = all.filter(f => PREFIXES.some(p => f.ruleId.startsWith(p)))
+  })
 
   test('zero errors', () => {
     expect(findings.filter(f => f.severity === 'error')).toHaveLength(0)

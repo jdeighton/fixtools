@@ -5,6 +5,9 @@ import { checkST } from './rules/st'
 import { checkSG } from './rules/sg'
 import { checkPA } from './rules/pa'
 import { checkCT } from './rules/ct'
+import { checkLY } from './rules/ly'
+import { checkED } from './rules/ed'
+import { checkRG } from './rules/rg'
 
 export function validateDocument(doc: AtdlDocument): Finding[] {
   return [
@@ -15,5 +18,8 @@ export function validateDocument(doc: AtdlDocument): Finding[] {
     ...checkSG(doc),
     ...checkPA(doc),
     ...checkCT(doc),
+    ...checkLY(doc),
+    ...checkED(doc),
+    ...checkRG(doc),
   ]
 }
