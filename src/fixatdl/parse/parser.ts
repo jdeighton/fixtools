@@ -426,6 +426,7 @@ export function parseAtdlDocument(xml: string): AtdlDocument {
       globalEdits: [],
       findings,
       sourceLineIndex: buildLineIndex(xml, domDoc),
+      sourceXml: xml,
     }
   }
 
@@ -481,6 +482,7 @@ export function parseAtdlDocument(xml: string): AtdlDocument {
     globalEdits,
     findings,
     sourceLineIndex: lineIndex,
+    sourceXml: xml,
   }
 
   runLinkPass(doc)

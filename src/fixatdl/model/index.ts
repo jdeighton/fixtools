@@ -14,6 +14,7 @@ export interface AtdlDocument {
   globalEdits: EditDef[]
   findings: Finding[]
   sourceLineIndex: LineIndex
+  sourceXml: string
 }
 
 export interface Strategy {
