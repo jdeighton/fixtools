@@ -8,6 +8,7 @@ import { DocumentInput } from './DocumentInput'
 import { LibraryList } from './LibraryList'
 import { MatrixTab } from './MatrixTab'
 import { OrderTicketTab } from './OrderTicketTab'
+import { ValidationTab } from './ValidationTab'
 import styles from './FixatdlPage.module.css'
 
 type InnerTab = 'validation' | 'matrix' | 'orderTicket'
@@ -233,15 +234,11 @@ export function FixatdlPage() {
         </nav>
 
         <div
-          className={innerTab === 'matrix' || innerTab === 'orderTicket' ? styles.innerContentFull : styles.innerContent}
+          className={styles.innerContentFull}
           role="tabpanel"
         >
           {innerTab === 'validation' && (
-            <p className={styles.emptyState}>
-              {activeDoc
-                ? `${activeDoc.findings.length === 0 ? 'No issues found.' : `${activeDoc.findings.length} finding${activeDoc.findings.length !== 1 ? 's' : ''}.`}`
-                : 'Load a FIXatdl document to run validation.'}
-            </p>
+            <ValidationTab doc={activeDoc} />
           )}
           {innerTab === 'matrix' && (
             <MatrixTab
