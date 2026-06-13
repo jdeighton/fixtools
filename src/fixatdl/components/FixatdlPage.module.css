@@ -153,3 +153,144 @@
   font-size: 13px;
   margin: 0;
 }
+
+/* ── Section label ── */
+
+.sectionLabel {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  margin: 10px 0 4px;
+}
+
+/* ── Document header enhancements ── */
+
+.docName {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
+}
+
+.docVersion {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.docStats {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.badgeError {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--error) 15%, transparent);
+  color: var(--error);
+}
+
+.badgeWarn {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--warning) 15%, transparent);
+  color: var(--warning);
+}
+
+/* ── Banners ── */
+
+.bannerError,
+.bannerWarn {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 7px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  line-height: 1.4;
+  margin-top: 6px;
+}
+
+.bannerError {
+  background: color-mix(in srgb, var(--error) 12%, var(--bg-elevated));
+  color: var(--error);
+  border: 1px solid color-mix(in srgb, var(--error) 30%, transparent);
+}
+
+.bannerWarn {
+  background: color-mix(in srgb, var(--warning) 12%, var(--bg-elevated));
+  color: var(--warning);
+  border: 1px solid color-mix(in srgb, var(--warning) 30%, transparent);
+}
+
+.bannerClose {
+  margin-left: auto;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  color: inherit;
+  opacity: 0.7;
+  padding: 0 2px;
+}
+
+.bannerClose:hover { opacity: 1; }
+
+/* ── Duplicate prompt ── */
+
+.dupBanner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 16px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg-elevated));
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.dupMsg {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.dupActions {
+  display: flex;
+  gap: 8px;
+}
+
+.dupBtn {
+  padding: 4px 14px;
+  font-size: 12px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.dupBtn:hover {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.dupBtnCancel {
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+.dupBtnCancel:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}

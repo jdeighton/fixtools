@@ -1,0 +1,138 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dropZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 10px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-input);
+  transition: border-color 0.15s, background 0.15s;
+  cursor: default;
+}
+
+.dropZoneActive {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-input));
+}
+
+.dropIcon {
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.dropLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.browseBtn {
+  margin-top: 2px;
+  padding: 4px 12px;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.browseBtn:hover:not(:disabled) {
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.browseBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.pasteSection {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pasteArea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  resize: vertical;
+  transition: border-color 0.15s;
+}
+
+.pasteArea:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+.pasteArea:disabled {
+  opacity: 0.5;
+}
+
+.pasteArea::placeholder {
+  color: var(--text-muted);
+}
+
+.loadBtn {
+  align-self: flex-end;
+  padding: 5px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.loadBtn:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.loadBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.sampleBtn {
+  padding: 6px 10px;
+  font-size: 11px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-align: center;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.sampleBtn:hover:not(:disabled) {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.sampleBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
