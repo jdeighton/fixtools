@@ -347,6 +347,16 @@
 
 .edClear:hover { color: var(--text-primary); }
 
+/* ── Cancel/Replace revert hint ── */
+
+.cxlRevertHint {
+  display: block;
+  font-size: 10px;
+  font-style: italic;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
 /* ── Stub (fallback for unknown types) ── */
 
 .stub {

@@ -42,7 +42,6 @@
 }
 
 .fixOutputToggle {
-  margin-left: auto;
   padding: 4px 12px;
   font-size: 12px;
   background: var(--bg-input);
@@ -58,6 +57,65 @@
   background: var(--accent);
   color: #fff;
   border-color: var(--accent);
+}
+
+/* ── Cancel/Replace simulation controls ── */
+
+.cxlRplGroup {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.sendBtn {
+  padding: 4px 12px;
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  color: var(--accent);
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.sendBtn:hover {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.cxlRplBtn {
+  padding: 4px 12px;
+  font-size: 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.cxlRplBtn:hover:not(:disabled) {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.cxlRplBtn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.cxlRplBtnActive {
+  background: color-mix(in srgb, var(--warning) 15%, var(--bg-input));
+  border-color: var(--warning);
+  color: var(--warning);
+  font-weight: 500;
+}
+
+.cxlRplBtnActive:hover {
+  background: color-mix(in srgb, var(--warning) 25%, var(--bg-input));
 }
 
 /* ── Fallback banner ── */

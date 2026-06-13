@@ -76,6 +76,7 @@ function TextFieldControl({ control, param, value, onChange, enabled }: CtrlProp
         type="text"
         className={styles.textInput}
         value={typeof value.raw === 'string' ? value.raw : ''}
+        disabled={enabled === false}
         onChange={e => onChange({ raw: e.target.value, initialized: true })}
         placeholder={control.tooltip ?? undefined}
       />
@@ -569,7 +570,20 @@ export function ControlRenderer({ control }: { control: Control }) {
 
   const value = ctx.state.get(control.id) ?? { raw: null, initialized: false }
   const param = ctx.strategy.parameters.find(p => p.name === control.parameterRef)
-  const enabled = effective.enabled
+  let enabled = effective.enabled
+
+  // C/R mode: apply mutableOnCxlRpl and revertOnCxlRpl rules
+  let effectiveControl = control
+  let ghostOriginal: ControlValue | null = null
+  if (ctx.cxlRplMode && param) {
+    if (param.mutableOnCxlRpl === false) {
+      enabled = false
+      effectiveControl = { ...control, tooltip: 'Cannot modify on Cancel/Replace' }
+    }
+    if (param.revertOnCxlRpl && (!value.initialized || value.raw === null)) {
+      ghostOriginal = ctx.originalState?.get(control.id) ?? null
+    }
+  }
 
   function onChange(v: ControlValue) {
     ctx.onChange(control.id, v)
@@ -577,36 +591,63 @@ export function ControlRenderer({ control }: { control: Control }) {
 
   if (control.xsiType === 'HiddenField_t') return null
 
-  switch (control.xsiType) {
+  let node: React.ReactNode
+
+  switch (effectiveControl.xsiType) {
     case 'Label_t':
-      return <LabelControl control={control} />
+      node = <LabelControl control={effectiveControl} />
+      break
     case 'TextField_t':
-      return <TextFieldControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <TextFieldControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'SingleSpinner_t':
-      return <SingleSpinnerControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <SingleSpinnerControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'Slider_t':
-      return <SliderControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <SliderControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'DropDownList_t':
-      return <DropDownListControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <DropDownListControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'RadioButtonList_t':
-      return <RadioButtonListControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <RadioButtonListControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'CheckBox_t':
-      return <CheckBoxControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <CheckBoxControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'CheckBoxList_t':
-      return <CheckBoxListControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <CheckBoxListControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'MultiSelectList_t':
-      return <MultiSelectListControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <MultiSelectListControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'RadioButton_t':
-      return <RadioButtonControl control={control} value={value} onRadioSelect={ctx.onRadioSelect} enabled={enabled} />
+      node = <RadioButtonControl control={effectiveControl} value={value} onRadioSelect={ctx.onRadioSelect} enabled={enabled} />
+      break
     case 'Duration_t':
-      return <DurationControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <DurationControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'Clock_t':
-      return <ClockControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <ClockControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'DoubleSpinner_t':
-      return <DoubleSpinnerControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <DoubleSpinnerControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     case 'EditableDropDownList_t':
-      return <EditableDropDownListControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
+      node = <EditableDropDownListControl control={effectiveControl} param={param} value={value} onChange={onChange} enabled={enabled} />
+      break
     default:
-      return null
+      node = null
   }
+
+  return (
+    <>
+      {node}
+      {ghostOriginal !== null && ghostOriginal.raw !== null && (
+        <span className={styles.cxlRevertHint} data-testid="cxl-revert-hint">
+          ↩ {String(ghostOriginal.raw)}
+        </span>
+      )}
+    </>
+  )
 }

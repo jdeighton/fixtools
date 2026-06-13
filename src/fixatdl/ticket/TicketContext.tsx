@@ -12,6 +12,9 @@ export interface TicketCtx {
   getStandardField: (name: string) => string | undefined
   hoveredControlId: string | null
   setHoveredControlId: (id: string | null) => void
+  cxlRplMode: boolean
+  originalState: TicketStateMap | null
+  sendOrder: () => void
 }
 
 export const TicketContext = createContext<TicketCtx | null>(null)

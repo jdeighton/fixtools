@@ -114,6 +114,18 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
   const [hoveredControlId, setHoveredControlId] = useState<string | null>(null)
   const [showFIXOutput, setShowFIXOutput] = useState(false)
 
+  const [cxlRplMode, setCxlRplMode] = useState(false)
+  const [originalState, setOriginalState] = useState<TicketStateMap | null>(null)
+
+  function sendOrder() {
+    setOriginalState(new Map(ticketState))
+    setCxlRplMode(false)
+  }
+
+  function toggleCxlRpl() {
+    setCxlRplMode(v => !v)
+  }
+
   const ctx: TicketCtx = {
     state: ticketState,
     effectiveState,
@@ -123,6 +135,9 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
     getStandardField,
     hoveredControlId,
     setHoveredControlId,
+    cxlRplMode,
+    originalState,
+    sendOrder,
   }
 
   const hiddenControls = useMemo(
@@ -147,11 +162,32 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
             className={styles.pickerSelect}
             value={strategy.name}
             onChange={e => onStrategyChange(e.target.value)}
+            disabled={cxlRplMode && doc.changeStrategyOnCxlRpl === false}
           >
             {doc.strategies.map(s => (
               <option key={s.name} value={s.name}>{optionText(s)}</option>
             ))}
           </select>
+          <div className={styles.cxlRplGroup}>
+            <button
+              type="button"
+              className={styles.sendBtn}
+              onClick={sendOrder}
+              aria-label="Send order and snapshot state"
+            >
+              Send
+            </button>
+            <button
+              type="button"
+              className={`${styles.cxlRplBtn} ${cxlRplMode ? styles.cxlRplBtnActive : ''}`}
+              onClick={toggleCxlRpl}
+              disabled={!originalState}
+              title={!originalState ? 'Click Send first to enable Cancel/Replace simulation' : undefined}
+              aria-pressed={cxlRplMode}
+            >
+              {cxlRplMode ? 'C/R Active (35=G)' : 'Simulate C/R'}
+            </button>
+          </div>
           <button
             type="button"
             className={`${styles.fixOutputToggle} ${showFIXOutput ? styles.fixOutputToggleActive : ''}`}

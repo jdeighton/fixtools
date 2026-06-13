@@ -55,6 +55,9 @@ function CtxWrapper({
     getStandardField: () => undefined,
     hoveredControlId: null,
     setHoveredControlId: () => {},
+    cxlRplMode: false,
+    originalState: null,
+    sendOrder: () => {},
   }
 
   return <TicketContext.Provider value={ctx}>{children}</TicketContext.Provider>

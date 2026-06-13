@@ -182,10 +182,27 @@ export function FixOutputPanel({ doc }: Props) {
     return collectAllControls(layout.panels)
   }, [ctx?.strategy])
 
+  // In C/R mode, substitute original values for cleared revertOnCxlRpl params
+  const wireState = useMemo(() => {
+    if (!ctx) return new Map()
+    if (!ctx.cxlRplMode || !ctx.originalState) return ctx.state
+    const next = new Map(ctx.state)
+    for (const c of allControls) {
+      const param = ctx.strategy.parameters.find(p => p.name === c.parameterRef)
+      if (!param?.revertOnCxlRpl) continue
+      const cur = next.get(c.id)
+      if (!cur?.initialized || cur.raw === null) {
+        const orig = ctx.originalState.get(c.id)
+        if (orig?.initialized && orig.raw !== null) next.set(c.id, orig)
+      }
+    }
+    return next
+  }, [ctx?.cxlRplMode, ctx?.originalState, ctx?.state, allControls])
+
   const wireOutput = useMemo(() => {
     if (!ctx) return null
-    return resolveWireValues(ctx.strategy, allControls, ctx.state, ctx.getStandardField)
-  }, [ctx?.strategy, allControls, ctx?.state])
+    return resolveWireValues(ctx.strategy, allControls, wireState, ctx.getStandardField)
+  }, [ctx?.strategy, allControls, wireState])
 
   const tag957Lines = useMemo(() => {
     if (!wireOutput || !ctx) return []
@@ -213,8 +230,9 @@ export function FixOutputPanel({ doc }: Props) {
       controlId: string | null; isHeader: boolean; paramName: string | null
     }> = []
 
-    // 35=D always first
-    lines.push({ tag: 35, value: 'D', name: 'MsgType', controlId: null, isHeader: true, paramName: null })
+    // 35=D (or 35=G in Cancel/Replace mode) always first
+    const msgType = ctx.cxlRplMode ? 'G' : 'D'
+    lines.push({ tag: 35, value: msgType, name: 'MsgType', controlId: null, isHeader: true, paramName: null })
 
     // Standard fields from panel
     for (const hf of HEADER_TAGS.slice(1)) {
