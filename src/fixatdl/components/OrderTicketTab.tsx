@@ -17,6 +17,7 @@ import {
   createEngineState,
 } from '../runtime/stateRuleEngine'
 import type { ControlEffectiveState, EngineState } from '../runtime/stateRuleEngine'
+import { FixOutputPanel } from './FixOutputTab'
 import styles from './OrderTicketTab.module.css'
 
 interface Props {
@@ -110,6 +111,9 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
     return sfRef.current?.getStandardField(name)
   }
 
+  const [hoveredControlId, setHoveredControlId] = useState<string | null>(null)
+  const [showFIXOutput, setShowFIXOutput] = useState(false)
+
   const ctx: TicketCtx = {
     state: ticketState,
     effectiveState,
@@ -117,6 +121,8 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
     onChange,
     onRadioSelect,
     getStandardField,
+    hoveredControlId,
+    setHoveredControlId,
   }
 
   const hiddenControls = useMemo(
@@ -146,6 +152,14 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
               <option key={s.name} value={s.name}>{optionText(s)}</option>
             ))}
           </select>
+          <button
+            type="button"
+            className={`${styles.fixOutputToggle} ${showFIXOutput ? styles.fixOutputToggleActive : ''}`}
+            onClick={() => setShowFIXOutput(v => !v)}
+            aria-pressed={showFIXOutput}
+          >
+            {showFIXOutput ? 'Hide FIX' : 'Generate FIX'}
+          </button>
         </div>
 
         <StandardFieldsPanel ref={sfRef} strategy={strategy} />
@@ -183,6 +197,8 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
             </details>
           )}
         </div>
+
+        {showFIXOutput && <FixOutputPanel doc={doc} />}
       </div>
     </TicketContext.Provider>
   )

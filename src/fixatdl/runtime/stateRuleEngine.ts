@@ -129,7 +129,7 @@ export function evaluateStateRules(
   }
 }
 
-function evalCondition(node: EditNode, state: TicketStateMap): boolean {
+export function evalCondition(node: EditNode, state: TicketStateMap): boolean {
   switch (node.kind) {
     case 'ref':
       return false  // unresolved EditRef — should not occur after parsing

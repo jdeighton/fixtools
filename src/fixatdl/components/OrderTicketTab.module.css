@@ -41,6 +41,25 @@
   border-color: var(--border-focus);
 }
 
+.fixOutputToggle {
+  margin-left: auto;
+  padding: 4px 12px;
+  font-size: 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.fixOutputToggleActive {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
 /* ── Fallback banner ── */
 
 .fallbackBanner {

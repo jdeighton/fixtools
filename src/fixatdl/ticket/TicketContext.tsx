@@ -10,6 +10,8 @@ export interface TicketCtx {
   onChange: (id: string, value: ControlValue) => void
   onRadioSelect: (radioGroup: string, selectedId: string) => void
   getStandardField: (name: string) => string | undefined
+  hoveredControlId: string | null
+  setHoveredControlId: (id: string | null) => void
 }
 
 export const TicketContext = createContext<TicketCtx | null>(null)

@@ -53,6 +53,8 @@ function CtxWrapper({
     },
     onRadioSelect: vi.fn(),
     getStandardField: () => undefined,
+    hoveredControlId: null,
+    setHoveredControlId: () => {},
   }
 
   return <TicketContext.Provider value={ctx}>{children}</TicketContext.Provider>

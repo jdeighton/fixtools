@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useCallback } from 'react'
 import type { Control, Parameter, ParameterType } from '../model'
 import type { ControlValue } from './ticketTypes'
 import { TicketContext } from './TicketContext'
@@ -17,11 +17,23 @@ interface WrapProps {
 }
 
 function ControlWrap({ control, param, children, inline = false, enabled = true, hasValue = false }: WrapProps) {
+  const ctx = useContext(TicketContext)
+  const isHovered = ctx?.hoveredControlId === control.id
   const isRequired = param?.use === 'required'
+
+  const onMouseEnter = useCallback(() => ctx?.setHoveredControlId(control.id), [ctx, control.id])
+  const onMouseLeave = useCallback(() => ctx?.setHoveredControlId(null), [ctx])
+
   return (
     <div
-      className={`${inline ? styles.wrapInline : styles.wrap} ${!enabled ? styles.wrapDisabled : ''}`}
+      className={[
+        inline ? styles.wrapInline : styles.wrap,
+        !enabled ? styles.wrapDisabled : '',
+        isHovered ? styles.wrapHovered : '',
+      ].join(' ').trim()}
       title={control.tooltip ?? undefined}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       {!inline && control.label != null && (
         <div className={styles.labelRow}>
