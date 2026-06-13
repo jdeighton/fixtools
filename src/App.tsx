@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { AppProvider, useApp } from './context/AppContext'
-import { Header } from './components/Header'
+import { Header, type AppMode } from './components/Header'
 import { InputPanel } from './components/InputPanel'
 import { FilterPanel } from './components/FilterPanel'
 import { SavedFilterSetsPanel } from './components/SavedFilterSetsPanel'
@@ -19,6 +19,7 @@ import { ExamplesTab } from './components/tabs/ExamplesTab'
 import { FixatdlPage } from './fixatdl/components/FixatdlPage'
 
 function AppShell() {
+  const [mode, setMode] = useState<AppMode>('messages')
   const [activeTab, setActiveTab] = useState<TabId>('translator')
   const [showSettings, setShowSettings] = useState(false)
   const [showReset, setShowReset] = useState(false)
@@ -27,26 +28,33 @@ function AppShell() {
   return (
     <div className="app">
       <Header
+        mode={mode}
+        onModeChange={setMode}
         onSettings={() => setShowSettings(true)}
         onReset={() => setShowReset(true)}
       />
-      <div className="app-body">
-        <InputPanel />
-        <FilterPanel />
-        <SavedFilterSetsPanel />
-        <FilteredDataPanel />
-        <TabNav active={activeTab} onChange={setActiveTab} />
-        <div className="tab-content" role="tabpanel">
-          {activeTab === 'translator' && <TranslatorTab />}
-          {activeTab === 'compare' && <CompareTab />}
-          {activeTab === 'parser' && <ParserTab />}
-          {activeTab === 'validator' && <ValidatorTab />}
-          {activeTab === 'enums' && <EnumsTab />}
-          {activeTab === 'dictionary' && <DictionaryTab />}
-          {activeTab === 'examples' && <ExamplesTab />}
-          {activeTab === 'fixatdl' && <FixatdlPage />}
+
+      {mode === 'messages' && (
+        <div className="app-body">
+          <InputPanel />
+          <FilterPanel />
+          <SavedFilterSetsPanel />
+          <FilteredDataPanel />
+          <TabNav active={activeTab} onChange={setActiveTab} />
+          <div className="tab-content" role="tabpanel">
+            {activeTab === 'translator' && <TranslatorTab />}
+            {activeTab === 'compare' && <CompareTab />}
+            {activeTab === 'parser' && <ParserTab />}
+            {activeTab === 'validator' && <ValidatorTab />}
+            {activeTab === 'enums' && <EnumsTab />}
+            {activeTab === 'dictionary' && <DictionaryTab />}
+            {activeTab === 'examples' && <ExamplesTab />}
+          </div>
         </div>
-      </div>
+      )}
+
+      {mode === 'atdl' && <FixatdlPage />}
+
       {showSettings && <SettingsModal onClose={() => setShowSettings(false)} />}
       {showReset && (
         <ResetDialog

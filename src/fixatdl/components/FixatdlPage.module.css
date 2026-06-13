@@ -1,8 +1,8 @@
 .page {
   display: flex;
   flex-direction: row;
-  margin: -16px;
-  height: calc(100% + 32px);
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
   background: var(--bg-base);
 }
