@@ -398,6 +398,57 @@ function runLinkPass(doc: AtdlDocument): void {
   }
 }
 
+// ── FIXatdl 1.2 metadata notices ─────────────────────────────────────────────
+
+// Attributes that appear in 1.2 Strategy elements but are stored as metadata only
+const ATDL_12_STRATEGY_METADATA_ATTRS = [
+  'objective', 'legAreSeverable', 'requiredNumberOfLegs', 'totalLegsTag', 'legSequenceTag',
+]
+// Elements that appear under 1.2 Strategy but are not yet parsed deeply
+const ATDL_12_STRATEGY_METADATA_ELEMENTS = ['VendorConfig', 'DeliveryMethods']
+
+function emitAtdl12Notices(root: Element, findings: Finding[]): void {
+  // Filter registry at Strategies level
+  if (kids(root, 'Filter').length > 0) {
+    findings.push({
+      ruleId: 'NS-007',
+      severity: 'info',
+      message: '<Filter> elements (FIXatdl 1.2 named-filter registry) detected — stored as metadata; filter resolution not implemented',
+      location: { path: 'Strategies/Filter' },
+    })
+  }
+
+  for (const stratEl of kids(root, 'Strategy')) {
+    const stratName = stratEl.getAttribute('name') ?? ''
+    const path = `Strategy[${stratName}]`
+
+    // Unsupported metadata attributes
+    for (const attr of ATDL_12_STRATEGY_METADATA_ATTRS) {
+      if (stratEl.hasAttribute(attr)) {
+        findings.push({
+          ruleId: 'NS-007',
+          severity: 'info',
+          message: `${path}/@${attr} is a FIXatdl 1.2 attribute — stored as metadata only`,
+          location: { path },
+        })
+        break // one NS-007 per strategy attribute block to avoid noise
+      }
+    }
+
+    // Unsupported child elements
+    for (const elem of ATDL_12_STRATEGY_METADATA_ELEMENTS) {
+      if (firstKid(stratEl, elem)) {
+        findings.push({
+          ruleId: 'NS-007',
+          severity: 'info',
+          message: `${path}/<${elem}> is a FIXatdl 1.2 element — not yet processed`,
+          location: { path: `${path}/${elem}` },
+        })
+      }
+    }
+  }
+}
+
 // ── Public API ────────────────────────────────────────────────────────────────
 
 export function parseAtdlDocument(xml: string): AtdlDocument {
@@ -463,6 +514,11 @@ export function parseAtdlDocument(xml: string): AtdlDocument {
     const attr = root.attributes[i]
     if (attr.name === 'xmlns') namespaces[''] = attr.value
     else if (attr.name.startsWith('xmlns:')) namespaces[attr.name.slice(6)] = attr.value
+  }
+
+  // NS-007: known FIXatdl 1.2 constructs that are not yet fully processed
+  if (version === '1.2') {
+    emitAtdl12Notices(root, findings)
   }
 
   const globalEdits = parseLocalEdits(root)

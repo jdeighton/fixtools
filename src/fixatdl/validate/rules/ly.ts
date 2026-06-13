@@ -73,11 +73,20 @@ function checkPanel(
     })
   }
 
-  // LY-090: grid attribute on a 1.2 document falls back to flow layout
+  // LY-090: GRID orientation panel (1.2 feature) — rendered as CSS grid
+  if (docVersion === '1.2' && panel.orientation === 'GRID') {
+    findings.push({
+      ruleId: 'LY-090', severity: 'info',
+      message: `Strategy[${stratName}] StrategyPanel uses FIXatdl 1.2 GRID orientation — rendering as CSS grid`,
+      location: { path: loc },
+    })
+  }
+
+  // LY-090: panel has grid-position attributes (1.2 PanelItem_t feature)
   if (docVersion === '1.2' && panel.grid != null) {
     findings.push({
       ruleId: 'LY-090', severity: 'info',
-      message: `Strategy[${stratName}] StrategyPanel uses grid layout (FIXatdl 1.2) which is not yet supported — rendering will fall back to flow layout`,
+      message: `Strategy[${stratName}] StrategyPanel has FIXatdl 1.2 grid-position attributes — honoured when placed inside a GRID-orientation parent panel`,
       location: { path: loc },
     })
   }
@@ -87,12 +96,15 @@ function checkPanel(
     if (child.kind === 'panel') checkPanel(child, stratName, docVersion, findings)
   }
 
-  // LY-090: check controls within this panel for grid attribute
+  // LY-090: control has grid-position attributes (1.2 PanelItem_t feature)
   for (const child of panel.children) {
     if (child.kind === 'control' && docVersion === '1.2' && child.grid != null) {
+      const isGridParent = panel.orientation === 'GRID'
       findings.push({
         ruleId: 'LY-090', severity: 'info',
-        message: `Strategy[${stratName}] Control[${child.id}] uses grid position (FIXatdl 1.2) — rendering will fall back to flow layout`,
+        message: isGridParent
+          ? `Strategy[${stratName}] Control[${child.id}] grid position applied (FIXatdl 1.2)`
+          : `Strategy[${stratName}] Control[${child.id}] has FIXatdl 1.2 grid-position attributes but parent is not GRID orientation — attributes ignored, flow layout used`,
         location: { path: `Strategy[${stratName}]/Control[${child.id}]` },
       })
     }
