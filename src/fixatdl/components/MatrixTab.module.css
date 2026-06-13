@@ -1,0 +1,194 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Sub-tab bar ── */
+
+.subTabBar {
+  display: flex;
+  flex-shrink: 0;
+  padding: 0 12px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.subTab {
+  padding: 7px 14px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -1px;
+}
+
+.subTab:hover { color: var(--text-primary); }
+
+.subTabActive {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ── Toolbar ── */
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--bg-surface);
+}
+
+.filterInput {
+  flex: 1;
+  max-width: 280px;
+  padding: 4px 8px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+.filterInput:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+.filterInput::placeholder { color: var(--text-muted); }
+
+.exportBtn {
+  padding: 4px 12px;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.exportBtn:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+/* ── Grid + detail split ── */
+
+.gridDetailSplit {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.gridSection {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.detailSection {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.2s ease;
+  border-left: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.detailSectionOpen {
+  width: 320px;
+}
+
+/* ── Strategy col header button ── */
+
+.stratHeaderBtn {
+  width: 100%;
+  height: 100%;
+  padding: 0 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.15s;
+  font-family: inherit;
+}
+
+.stratHeaderBtn:hover { color: var(--accent); }
+
+/* ── Matrix cell badges ── */
+
+.matrixCell {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 100%;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 16px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0 3px;
+}
+
+.badgeR {
+  background: color-mix(in srgb, #f97316 22%, transparent);
+  color: #f97316;
+}
+
+.badgeO {
+  background: color-mix(in srgb, var(--text-secondary) 15%, transparent);
+  color: var(--text-muted);
+}
+
+.badgeC {
+  background: color-mix(in srgb, #3b82f6 22%, transparent);
+  color: #3b82f6;
+}
+
+.badgeRG {
+  background: color-mix(in srgb, #22c55e 22%, transparent);
+  color: #22c55e;
+}
+
+/* ── Strategies grid ── */
+
+.strategiesGrid {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  height: 100%;
+}
+
+/* ── Empty state ── */
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  font-size: 13px;
+}

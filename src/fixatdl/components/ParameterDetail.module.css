@@ -1,0 +1,160 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 4px;
+  line-height: 1;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover { color: var(--text-primary); }
+
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.attrTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.attrTable td {
+  padding: 2px 0;
+  vertical-align: top;
+}
+
+.attrKey {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  padding-right: 10px;
+  width: 44%;
+}
+
+.attrVal {
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  word-break: break-all;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.dataTable th {
+  text-align: left;
+  padding: 3px 6px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+}
+
+.dataTable td {
+  padding: 3px 6px;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 40%, transparent);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.dataTable tr:last-child td {
+  border-bottom: none;
+}
+
+.emptyNote {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.stratLabel {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--accent);
+  margin-top: 6px;
+  margin-bottom: 2px;
+}
+
+.controlItem {
+  font-size: 11px;
+  color: var(--text-secondary);
+  padding: 1px 0;
+  line-height: 1.5;
+}
+
+.controlId {
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.controlType {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.controlLabel {
+  color: var(--text-secondary);
+}
+
+.editItem {
+  font-size: 11px;
+  color: var(--text-secondary);
+  padding: 1px 0;
+  line-height: 1.5;
+}
+
+.editMsg {
+  color: var(--text-primary);
+}

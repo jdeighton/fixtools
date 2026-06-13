@@ -6,6 +6,7 @@ import { loadDocument, formatBytes } from '../lib/loadDocument'
 import { parseAtdlDocument } from '../parse'
 import { DocumentInput } from './DocumentInput'
 import { LibraryList } from './LibraryList'
+import { MatrixTab } from './MatrixTab'
 import styles from './FixatdlPage.module.css'
 
 type InnerTab = 'validation' | 'matrix' | 'orderTicket'
@@ -36,6 +37,7 @@ export function FixatdlPage() {
   const [loadError, setLoadError] = useState<string | null>(null)
   const [sizeWarning, setSizeWarning] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const [activeStrategyName, setActiveStrategyName] = useState<string | null>(null)
 
   function activate(entry: LibraryEntry, doc: AtdlDocument) {
     store.touch(entry.id)
@@ -229,7 +231,10 @@ export function FixatdlPage() {
           ))}
         </nav>
 
-        <div className={styles.innerContent} role="tabpanel">
+        <div
+          className={innerTab === 'matrix' ? styles.innerContentFull : styles.innerContent}
+          role="tabpanel"
+        >
           {innerTab === 'validation' && (
             <p className={styles.emptyState}>
               {activeDoc
@@ -238,13 +243,16 @@ export function FixatdlPage() {
             </p>
           )}
           {innerTab === 'matrix' && (
-            <p className={styles.emptyState}>
-              {activeDoc ? 'Parameter matrix — coming soon.' : 'Load a FIXatdl document to view the parameter matrix.'}
-            </p>
+            <MatrixTab
+              doc={activeDoc}
+              onStrategySelect={name => { setActiveStrategyName(name); setInnerTab('orderTicket') }}
+            />
           )}
           {innerTab === 'orderTicket' && (
             <p className={styles.emptyState}>
-              {activeDoc ? 'Order ticket — coming soon.' : 'Load a FIXatdl document and select a strategy to render the order ticket.'}
+              {activeDoc
+                ? `Order ticket — coming soon.${activeStrategyName ? ` Active strategy: ${activeStrategyName}` : ' Select a strategy from the Matrix tab.'}`
+                : 'Load a FIXatdl document and select a strategy to render the order ticket.'}
             </p>
           )}
         </div>
