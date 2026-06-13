@@ -199,6 +199,12 @@ export function MatrixTab({ doc, onStrategySelect }: Props) {
   const matrixRows = useMemo(() => (doc ? buildMatrixRows(doc) : []), [doc])
   const strategyRows = useMemo(() => (doc ? buildStrategyRows(doc) : []), [doc])
 
+  const isDegraded = useMemo(
+    () => (doc?.findings.filter(f => f.severity === 'error').length ?? 0) > 0
+       && (doc?.strategies.length ?? 0) > 0,
+    [doc],
+  )
+
   const matrixCols = useMemo((): ColDef<MatrixRow>[] => {
     const left: ColDef<MatrixRow>[] = [
       { field: 'paramName', headerName: 'Parameter', pinned: 'left', width: 190, sortable: true },
@@ -266,6 +272,10 @@ export function MatrixTab({ doc, onStrategySelect }: Props) {
     })
   }, [])
 
+  const exportStrategiesCsv = useCallback(() => {
+    stratApiRef.current?.exportDataAsCsv({ fileName: 'strategies.csv' })
+  }, [])
+
   const detailOccurrences = useMemo((): ParamOccurrence[] => {
     if (!selectedRow) return []
     return [...selectedRow.cells.values()].map(c => ({
@@ -288,10 +298,12 @@ export function MatrixTab({ doc, onStrategySelect }: Props) {
 
   return (
     <div className={styles.root}>
-      <div className={styles.subTabBar}>
+      <div className={styles.subTabBar} role="tablist">
         {(['parameters', 'strategies'] as SubTab[]).map(id => (
           <button
             key={id}
+            role="tab"
+            aria-selected={subTab === id}
             className={`${styles.subTab} ${subTab === id ? styles.subTabActive : ''}`}
             onClick={() => setSubTab(id)}
           >
@@ -300,59 +312,77 @@ export function MatrixTab({ doc, onStrategySelect }: Props) {
         ))}
       </div>
 
-      {subTab === 'parameters' && (
-        <>
-          <div className={styles.toolbar}>
-            <input
-              className={styles.filterInput}
-              placeholder="Quick filter…"
-              value={filterText}
-              onChange={e => setFilterText(e.target.value)}
-            />
-            <button className={styles.exportBtn} onClick={exportCsv}>Export CSV</button>
-          </div>
-
-          <div className={styles.gridDetailSplit}>
-            <div className={styles.gridSection}>
-              <AgGridReact<MatrixRow>
-                theme={darkTheme}
-                rowData={matrixRows}
-                columnDefs={matrixCols}
-                quickFilterText={filterText}
-                onGridReady={onMatrixReady}
-                onRowClicked={onRowClicked}
-                rowSelection={{ mode: 'singleRow', checkboxes: false, enableClickSelection: true }}
-                animateRows={false}
-                suppressCellFocus
-              />
-            </div>
-
-            <div className={`${styles.detailSection} ${selectedRow ? styles.detailSectionOpen : ''}`}>
-              {selectedRow && doc && (
-                <ParameterDetail
-                  paramName={selectedRow.paramName}
-                  fixTag={selectedRow.fixTag}
-                  occurrences={detailOccurrences}
-                  doc={doc}
-                  onClose={() => setSelectedRow(null)}
-                />
-              )}
-            </div>
-          </div>
-        </>
+      {isDegraded && (
+        <div className={styles.degradedBanner} role="alert">
+          ⚠ Document has parse errors — data shown may be incomplete
+        </div>
       )}
 
-      {subTab === 'strategies' && (
-        <div className={styles.strategiesGrid}>
-          <AgGridReact<StrategyRow>
-            theme={darkTheme}
-            rowData={strategyRows}
-            columnDefs={strategyCols}
-            onGridReady={onStrategyReady}
-            animateRows={false}
-            suppressCellFocus
-          />
-        </div>
+      {doc.strategies.length === 0 ? (
+        <div className={styles.empty}>No strategies found in this document.</div>
+      ) : (
+        <>
+          {subTab === 'parameters' && (
+            <>
+              <div className={styles.toolbar}>
+                <input
+                  className={styles.filterInput}
+                  placeholder="Quick filter…"
+                  value={filterText}
+                  onChange={e => setFilterText(e.target.value)}
+                  aria-label="Quick filter parameters"
+                />
+                <button className={styles.exportBtn} onClick={exportCsv}>Export CSV</button>
+              </div>
+
+              <div className={styles.gridDetailSplit}>
+                <div className={styles.gridSection}>
+                  <AgGridReact<MatrixRow>
+                    theme={darkTheme}
+                    rowData={matrixRows}
+                    columnDefs={matrixCols}
+                    quickFilterText={filterText}
+                    onGridReady={onMatrixReady}
+                    onRowClicked={onRowClicked}
+                    rowSelection={{ mode: 'singleRow', checkboxes: false, enableClickSelection: true }}
+                    animateRows={false}
+                    suppressCellFocus
+                  />
+                </div>
+
+                <div className={`${styles.detailSection} ${selectedRow ? styles.detailSectionOpen : ''}`}>
+                  {selectedRow && doc && (
+                    <ParameterDetail
+                      paramName={selectedRow.paramName}
+                      fixTag={selectedRow.fixTag}
+                      occurrences={detailOccurrences}
+                      doc={doc}
+                      onClose={() => setSelectedRow(null)}
+                    />
+                  )}
+                </div>
+              </div>
+            </>
+          )}
+
+          {subTab === 'strategies' && (
+            <>
+              <div className={styles.toolbar}>
+                <button className={styles.exportBtn} onClick={exportStrategiesCsv}>Export CSV</button>
+              </div>
+              <div className={styles.strategiesGrid}>
+                <AgGridReact<StrategyRow>
+                  theme={darkTheme}
+                  rowData={strategyRows}
+                  columnDefs={strategyCols}
+                  onGridReady={onStrategyReady}
+                  animateRows={false}
+                  suppressCellFocus
+                />
+              </div>
+            </>
+          )}
+        </>
       )}
     </div>
   )

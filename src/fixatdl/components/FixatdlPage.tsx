@@ -9,6 +9,7 @@ import { LibraryList } from './LibraryList'
 import { MatrixTab } from './MatrixTab'
 import { OrderTicketTab } from './OrderTicketTab'
 import { ValidationTab } from './ValidationTab'
+import sampleXml from '../data/SampleStrategiesFor-v1_1.xml?raw'
 import styles from './FixatdlPage.module.css'
 
 type InnerTab = 'validation' | 'matrix' | 'orderTicket'
@@ -219,41 +220,60 @@ export function FixatdlPage() {
           </div>
         )}
 
-        <nav className={styles.innerNav} role="tablist">
-          {INNER_TABS.map(({ id, label }) => (
-            <button
-              key={id}
-              role="tab"
-              aria-selected={innerTab === id}
-              className={`${styles.innerTab} ${innerTab === id ? styles.innerTabActive : ''}`}
-              onClick={() => setInnerTab(id)}
-            >
-              {label}
-            </button>
-          ))}
-        </nav>
+        {!activeDoc ? (
+          <div className={styles.noDocState}>
+            <div className={styles.noDocCard}>
+              <p className={styles.noDocTitle}>No document loaded</p>
+              <p className={styles.noDocHint}>Drop a FIXatdl file into the library panel, or try the sample</p>
+              <button
+                type="button"
+                className={styles.noDocSample}
+                onClick={() => handleLoad(sampleXml, 'sample', 'Sample v1.1')}
+                disabled={isLoading}
+              >
+                Load sample (v1.1)
+              </button>
+            </div>
+          </div>
+        ) : (
+          <>
+            <nav className={styles.innerNav} role="tablist">
+              {INNER_TABS.map(({ id, label }) => (
+                <button
+                  key={id}
+                  role="tab"
+                  aria-selected={innerTab === id}
+                  className={`${styles.innerTab} ${innerTab === id ? styles.innerTabActive : ''}`}
+                  onClick={() => setInnerTab(id)}
+                >
+                  {label}
+                </button>
+              ))}
+            </nav>
 
-        <div
-          className={styles.innerContentFull}
-          role="tabpanel"
-        >
-          {innerTab === 'validation' && (
-            <ValidationTab doc={activeDoc} />
-          )}
-          {innerTab === 'matrix' && (
-            <MatrixTab
-              doc={activeDoc}
-              onStrategySelect={name => { setActiveStrategyName(name); setInnerTab('orderTicket') }}
-            />
-          )}
-          {innerTab === 'orderTicket' && (
-            <OrderTicketTab
-              doc={activeDoc}
-              activeStrategyName={activeStrategyName}
-              onStrategyChange={setActiveStrategyName}
-            />
-          )}
-        </div>
+            <div
+              className={styles.innerContentFull}
+              role="tabpanel"
+            >
+              {innerTab === 'validation' && (
+                <ValidationTab doc={activeDoc} />
+              )}
+              {innerTab === 'matrix' && (
+                <MatrixTab
+                  doc={activeDoc}
+                  onStrategySelect={name => { setActiveStrategyName(name); setInnerTab('orderTicket') }}
+                />
+              )}
+              {innerTab === 'orderTicket' && (
+                <OrderTicketTab
+                  doc={activeDoc}
+                  activeStrategyName={activeStrategyName}
+                  onStrategyChange={setActiveStrategyName}
+                />
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   )

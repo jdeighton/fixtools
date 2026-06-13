@@ -59,6 +59,7 @@ interface ShellProps {
 }
 
 function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
+  const isDegraded = (doc.findings?.filter(f => f.severity === 'error').length ?? 0) > 0 && doc.strategies.length > 0
   const useFallback = strategy.layout == null
   const layout = strategy.layout ?? generateFallbackLayout(strategy)
 
@@ -197,6 +198,12 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
             {showFIXOutput ? 'Hide FIX' : 'Generate FIX'}
           </button>
         </div>
+
+        {isDegraded && (
+          <div className={styles.degradedBanner} role="alert">
+            ⚠ Document has parse errors — ticket data may be incomplete
+          </div>
+        )}
 
         <StandardFieldsPanel ref={sfRef} strategy={strategy} />
 

@@ -116,6 +116,7 @@ function SourceView({ sourceLines, activeLine, containerRef }: SourceViewProps) 
             <div
               key={n}
               data-line={n}
+              tabIndex={-1}
               className={activeLine === n ? styles.sourceLineActive : styles.sourceLine}
             >
               <span className={styles.lineNum}>{n}</span>
@@ -163,11 +164,13 @@ export function ValidationTab({ doc }: Props) {
   // Degraded: errors present but document was partially parsed
   const isDegraded = errorCount > 0 && (doc?.strategies?.length ?? 0) > 0
 
-  // Scroll source view to active line
+  // Scroll source view to active line and move focus there
   useEffect(() => {
     if (activeLine == null || !sourceRef.current) return
     const el = sourceRef.current.querySelector<HTMLElement>(`[data-line="${activeLine}"]`)
-    el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    if (!el) return
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    el.focus()
   }, [activeLine])
 
   async function copyFindings() {

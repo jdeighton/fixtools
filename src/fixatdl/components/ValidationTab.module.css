@@ -337,6 +337,12 @@
   outline: 1px solid color-mix(in srgb, var(--warning) 40%, transparent);
 }
 
+.sourceLine:focus,
+.sourceLineActive:focus {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -1px;
+}
+
 .lineNum {
   min-width: 36px;
   text-align: right;
