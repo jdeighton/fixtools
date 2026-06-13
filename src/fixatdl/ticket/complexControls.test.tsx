@@ -45,6 +45,7 @@ function CtxWrapper({
 
   const ctx: TicketCtx = {
     state,
+    effectiveState: new Map(),
     strategy: strat,
     onChange: (id, v) => {
       setState(new Map([[id, v]]))

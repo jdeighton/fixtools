@@ -12,6 +12,11 @@ import {
   collectAllControls,
   applyRadioSelect,
 } from '../ticket/resolveInit'
+import {
+  evaluateStateRules,
+  createEngineState,
+} from '../runtime/stateRuleEngine'
+import type { ControlEffectiveState, EngineState } from '../runtime/stateRuleEngine'
 import styles from './OrderTicketTab.module.css'
 
 interface Props {
@@ -62,9 +67,32 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
     initTicketState(layout.panels, null, strategy),
   )
 
+  const engineStateRef = useRef<EngineState>(createEngineState())
+  const [effectiveState, setEffectiveState] = useState<Map<string, ControlEffectiveState>>(new Map())
+
   useEffect(() => {
     setTicketState(initTicketState(layout.panels, sfRef.current ? (n => sfRef.current!.getStandardField(n)) : null, strategy))
+    engineStateRef.current = createEngineState()
   }, [strategy.name])
+
+  // Re-evaluate StateRules whenever ticketState changes
+  useEffect(() => {
+    const { effects, forcedValues, nextEngineState } = evaluateStateRules(
+      allControls,
+      ticketState,
+      engineStateRef.current,
+    )
+    engineStateRef.current = nextEngineState
+    setEffectiveState(effects)
+
+    if (forcedValues.size > 0) {
+      setTicketState(prev => {
+        const next = new Map(prev)
+        for (const [id, val] of forcedValues) next.set(id, val)
+        return next
+      })
+    }
+  }, [ticketState])
 
   function onChange(id: string, value: ControlValue) {
     setTicketState(prev => {
@@ -84,6 +112,7 @@ function TicketShell({ strategy, doc, sfRef, onStrategyChange }: ShellProps) {
 
   const ctx: TicketCtx = {
     state: ticketState,
+    effectiveState,
     strategy,
     onChange,
     onRadioSelect,

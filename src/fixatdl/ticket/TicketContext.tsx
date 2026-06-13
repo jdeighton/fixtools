@@ -1,9 +1,11 @@
 import { createContext, useContext } from 'react'
 import type { Strategy } from '../model'
 import type { ControlValue, TicketStateMap } from './ticketTypes'
+import type { ControlEffectiveState } from '../runtime/stateRuleEngine'
 
 export interface TicketCtx {
   state: TicketStateMap
+  effectiveState: Map<string, ControlEffectiveState>
   strategy: Strategy
   onChange: (id: string, value: ControlValue) => void
   onRadioSelect: (radioGroup: string, selectedId: string) => void

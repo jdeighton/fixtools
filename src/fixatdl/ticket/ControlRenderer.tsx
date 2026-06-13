@@ -13,9 +13,10 @@ interface WrapProps {
   children: React.ReactNode
   inline?: boolean
   enabled?: boolean
+  hasValue?: boolean
 }
 
-function ControlWrap({ control, param, children, inline = false, enabled = true }: WrapProps) {
+function ControlWrap({ control, param, children, inline = false, enabled = true, hasValue = false }: WrapProps) {
   const isRequired = param?.use === 'required'
   return (
     <div
@@ -28,6 +29,9 @@ function ControlWrap({ control, param, children, inline = false, enabled = true 
             {control.label}
             {isRequired && <span className={styles.required} aria-hidden="true"> *</span>}
           </label>
+          {!enabled && hasValue && (
+            <span className={styles.valuedDot} title="Has value on wire" aria-hidden="true" />
+          )}
           {control.helpText && (
             <button type="button" className={styles.helpBtn} title={control.helpText} aria-label={`Help for ${control.id}`}>
               ⓘ
@@ -47,13 +51,14 @@ interface CtrlProps {
   param: Parameter | undefined
   value: ControlValue
   onChange: (v: ControlValue) => void
+  enabled?: boolean
 }
 
 // ── TextField_t ────────────────────────────────────────────────────────────────
 
-function TextFieldControl({ control, param, value, onChange }: CtrlProps) {
+function TextFieldControl({ control, param, value, onChange, enabled }: CtrlProps) {
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && value.raw !== null}>
       <input
         id={control.id}
         type="text"
@@ -68,14 +73,14 @@ function TextFieldControl({ control, param, value, onChange }: CtrlProps) {
 
 // ── SingleSpinner_t ────────────────────────────────────────────────────────────
 
-function SingleSpinnerControl({ control, param, value, onChange }: CtrlProps) {
+function SingleSpinnerControl({ control, param, value, onChange, enabled }: CtrlProps) {
   const step = control.increment ?? 1
   const minVal = param?.minValue !== undefined ? Number(param.minValue) : undefined
   const maxVal = param?.maxValue !== undefined ? Number(param.maxValue) : undefined
   const current = typeof value.raw === 'number' ? value.raw : (value.raw !== null ? Number(value.raw) : '')
 
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && value.raw !== null}>
       <input
         id={control.id}
         type="number"
@@ -92,7 +97,7 @@ function SingleSpinnerControl({ control, param, value, onChange }: CtrlProps) {
 
 // ── Slider_t ───────────────────────────────────────────────────────────────────
 
-function SliderControl({ control, param, value, onChange }: CtrlProps) {
+function SliderControl({ control, param, value, onChange, enabled }: CtrlProps) {
   const hasItems = control.listItems.length > 0
 
   if (hasItems) {
@@ -102,7 +107,7 @@ function SliderControl({ control, param, value, onChange }: CtrlProps) {
     const current = items[sliderIdx]
 
     return (
-      <ControlWrap control={control} param={param}>
+      <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && value.raw !== null}>
         <div className={styles.sliderWrap}>
           <div className={styles.sliderRow}>
             <input
@@ -130,7 +135,7 @@ function SliderControl({ control, param, value, onChange }: CtrlProps) {
   const current = typeof value.raw === 'number' ? value.raw : minVal
 
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && value.raw !== null}>
       <div className={styles.sliderWrap}>
         <div className={styles.sliderRow}>
           <input
@@ -152,11 +157,11 @@ function SliderControl({ control, param, value, onChange }: CtrlProps) {
 
 // ── DropDownList_t ─────────────────────────────────────────────────────────────
 
-function DropDownListControl({ control, param, value, onChange }: CtrlProps) {
+function DropDownListControl({ control, param, value, onChange, enabled }: CtrlProps) {
   const selected = typeof value.raw === 'string' ? value.raw : ''
 
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && value.raw !== null}>
       <select
         id={control.id}
         className={styles.select}
@@ -174,12 +179,12 @@ function DropDownListControl({ control, param, value, onChange }: CtrlProps) {
 
 // ── RadioButtonList_t ──────────────────────────────────────────────────────────
 
-function RadioButtonListControl({ control, param, value, onChange }: CtrlProps) {
+function RadioButtonListControl({ control, param, value, onChange, enabled }: CtrlProps) {
   const selected = typeof value.raw === 'string' ? value.raw : null
   const isHoriz = control.orientation === 'HORIZONTAL'
 
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && value.raw !== null}>
       <div className={isHoriz ? styles.listGroupH : styles.listGroup} role="radiogroup">
         {control.listItems.map(it => (
           <label key={it.enumID} className={styles.listItem}>
@@ -201,12 +206,12 @@ function RadioButtonListControl({ control, param, value, onChange }: CtrlProps) 
 
 // ── CheckBox_t ─────────────────────────────────────────────────────────────────
 
-function CheckBoxControl({ control, param, value, onChange }: CtrlProps) {
+function CheckBoxControl({ control, param, value, onChange, enabled }: CtrlProps) {
   const checked = value.raw === true
 
   return (
     <div
-      className={styles.wrapInline}
+      className={`${styles.wrapInline} ${enabled === false ? styles.wrapDisabled : ''}`}
       title={control.tooltip ?? undefined}
     >
       <input
@@ -231,7 +236,7 @@ function CheckBoxControl({ control, param, value, onChange }: CtrlProps) {
 
 // ── CheckBoxList_t ─────────────────────────────────────────────────────────────
 
-function CheckBoxListControl({ control, param, value, onChange }: CtrlProps) {
+function CheckBoxListControl({ control, param, value, onChange, enabled }: CtrlProps) {
   const selected: string[] = Array.isArray(value.raw) ? value.raw : []
   const isHoriz = control.orientation === 'HORIZONTAL'
 
@@ -243,7 +248,7 @@ function CheckBoxListControl({ control, param, value, onChange }: CtrlProps) {
   }
 
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && selected.length > 0}>
       <div className={isHoriz ? styles.listGroupH : styles.listGroup}>
         {control.listItems.map(it => (
           <label key={it.enumID} className={styles.listItem}>
@@ -263,12 +268,12 @@ function CheckBoxListControl({ control, param, value, onChange }: CtrlProps) {
 
 // ── MultiSelectList_t ──────────────────────────────────────────────────────────
 
-function MultiSelectListControl({ control, param, value, onChange }: CtrlProps) {
+function MultiSelectListControl({ control, param, value, onChange, enabled }: CtrlProps) {
   const selected: string[] = Array.isArray(value.raw) ? value.raw : []
   const size = Math.min(Math.max(control.listItems.length, 3), 8)
 
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && selected.length > 0}>
       <select
         id={control.id}
         multiple
@@ -294,17 +299,19 @@ function RadioButtonControl({
   control,
   value,
   onRadioSelect,
+  enabled,
 }: {
   control: Control
   value: ControlValue
   onRadioSelect: (radioGroup: string, selectedId: string) => void
+  enabled?: boolean
 }) {
   const checked = value.raw === true
   const group = control.radioGroup ?? control.id
 
   return (
     <div
-      className={styles.wrapInline}
+      className={`${styles.wrapInline} ${enabled === false ? styles.wrapDisabled : ''}`}
       title={control.tooltip ?? undefined}
     >
       <input
@@ -345,9 +352,9 @@ function LabelControl({ control }: { control: Control }) {
 
 // ── Duration_t ─────────────────────────────────────────────────────────────────
 
-function DurationControl({ control, param, value, onChange }: CtrlProps) {
+function DurationControl({ control, param, value, onChange, enabled }: CtrlProps) {
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && value.raw !== null}>
       <input
         id={control.id}
         type="text"
@@ -369,7 +376,7 @@ const TIME_PARAM_TYPES: ReadonlySet<ParameterType> = new Set([
   'UTCTimestamp_t', 'TZTimestamp_t', 'UTCTimeOnly_t', 'TZTimeOnly_t',
 ])
 
-function ClockControl({ control, param, value, onChange }: CtrlProps) {
+function ClockControl({ control, param, value, onChange, enabled }: CtrlProps) {
   const current = typeof value.raw === 'string' ? value.raw : ''
   const paramType = param?.xsiType
   const isMonthYear = paramType === 'MonthYear_t'
@@ -391,7 +398,7 @@ function ClockControl({ control, param, value, onChange }: CtrlProps) {
   const hint = tz ? tzAbbrev(tz) : null
 
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && value.raw !== null}>
       <div className={styles.clockRow}>
         {isMonthYear && (
           <input
@@ -429,7 +436,7 @@ function ClockControl({ control, param, value, onChange }: CtrlProps) {
 
 // ── DoubleSpinner_t ────────────────────────────────────────────────────────────
 
-function DoubleSpinnerControl({ control, param, value, onChange }: CtrlProps) {
+function DoubleSpinnerControl({ control, param, value, onChange, enabled }: CtrlProps) {
   const current = typeof value.raw === 'number' ? value.raw : (value.raw !== null ? Number(value.raw) : 0)
   const min = param?.minValue !== undefined ? Number(param.minValue) : -Infinity
   const max = param?.maxValue !== undefined ? Number(param.maxValue) : Infinity
@@ -448,7 +455,7 @@ function DoubleSpinnerControl({ control, param, value, onChange }: CtrlProps) {
   const innerTip = doubleSpinnerTooltip(control.innerIncrementPolicy ?? control.incrementPolicy, innerStep)
 
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && value.raw !== null}>
       <div className={styles.dsSpinner}>
         <div className={styles.dsArrows}>
           <button type="button" className={styles.dsBtn} onClick={() => step(outerStep)} title={outerTip} aria-label="Outer increment">▲</button>
@@ -480,7 +487,7 @@ function DoubleSpinnerControl({ control, param, value, onChange }: CtrlProps) {
 
 // ── EditableDropDownList_t ─────────────────────────────────────────────────────
 
-function EditableDropDownListControl({ control, param, value, onChange }: CtrlProps) {
+function EditableDropDownListControl({ control, param, value, onChange, enabled }: CtrlProps) {
   const initialText = value.initialized && typeof value.raw === 'string'
     ? (control.listItems.find(it => it.enumID === value.raw)?.uiRep ?? value.raw)
     : ''
@@ -500,7 +507,7 @@ function EditableDropDownListControl({ control, param, value, onChange }: CtrlPr
   }
 
   return (
-    <ControlWrap control={control} param={param}>
+    <ControlWrap control={control} param={param} enabled={enabled} hasValue={value.initialized && value.raw !== null}>
       <div className={styles.edWrap}>
         <input
           id={control.id}
@@ -544,8 +551,13 @@ export function ControlRenderer({ control }: { control: Control }) {
     )
   }
 
+  const effective = ctx.effectiveState.get(control.id) ?? { enabled: true, visible: true, forcedValue: null }
+
+  if (!effective.visible) return null
+
   const value = ctx.state.get(control.id) ?? { raw: null, initialized: false }
   const param = ctx.strategy.parameters.find(p => p.name === control.parameterRef)
+  const enabled = effective.enabled
 
   function onChange(v: ControlValue) {
     ctx.onChange(control.id, v)
@@ -557,31 +569,31 @@ export function ControlRenderer({ control }: { control: Control }) {
     case 'Label_t':
       return <LabelControl control={control} />
     case 'TextField_t':
-      return <TextFieldControl control={control} param={param} value={value} onChange={onChange} />
+      return <TextFieldControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'SingleSpinner_t':
-      return <SingleSpinnerControl control={control} param={param} value={value} onChange={onChange} />
+      return <SingleSpinnerControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'Slider_t':
-      return <SliderControl control={control} param={param} value={value} onChange={onChange} />
+      return <SliderControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'DropDownList_t':
-      return <DropDownListControl control={control} param={param} value={value} onChange={onChange} />
+      return <DropDownListControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'RadioButtonList_t':
-      return <RadioButtonListControl control={control} param={param} value={value} onChange={onChange} />
+      return <RadioButtonListControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'CheckBox_t':
-      return <CheckBoxControl control={control} param={param} value={value} onChange={onChange} />
+      return <CheckBoxControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'CheckBoxList_t':
-      return <CheckBoxListControl control={control} param={param} value={value} onChange={onChange} />
+      return <CheckBoxListControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'MultiSelectList_t':
-      return <MultiSelectListControl control={control} param={param} value={value} onChange={onChange} />
+      return <MultiSelectListControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'RadioButton_t':
-      return <RadioButtonControl control={control} value={value} onRadioSelect={ctx.onRadioSelect} />
+      return <RadioButtonControl control={control} value={value} onRadioSelect={ctx.onRadioSelect} enabled={enabled} />
     case 'Duration_t':
-      return <DurationControl control={control} param={param} value={value} onChange={onChange} />
+      return <DurationControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'Clock_t':
-      return <ClockControl control={control} param={param} value={value} onChange={onChange} />
+      return <ClockControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'DoubleSpinner_t':
-      return <DoubleSpinnerControl control={control} param={param} value={value} onChange={onChange} />
+      return <DoubleSpinnerControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     case 'EditableDropDownList_t':
-      return <EditableDropDownListControl control={control} param={param} value={value} onChange={onChange} />
+      return <EditableDropDownListControl control={control} param={param} value={value} onChange={onChange} enabled={enabled} />
     default:
       return null
   }
