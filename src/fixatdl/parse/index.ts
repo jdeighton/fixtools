@@ -1,0 +1,1 @@
+export { parseAtdlDocument } from './parser'
