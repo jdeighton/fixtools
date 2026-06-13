@@ -7,6 +7,7 @@ import { parseAtdlDocument } from '../parse'
 import { DocumentInput } from './DocumentInput'
 import { LibraryList } from './LibraryList'
 import { MatrixTab } from './MatrixTab'
+import { OrderTicketTab } from './OrderTicketTab'
 import styles from './FixatdlPage.module.css'
 
 type InnerTab = 'validation' | 'matrix' | 'orderTicket'
@@ -232,7 +233,7 @@ export function FixatdlPage() {
         </nav>
 
         <div
-          className={innerTab === 'matrix' ? styles.innerContentFull : styles.innerContent}
+          className={innerTab === 'matrix' || innerTab === 'orderTicket' ? styles.innerContentFull : styles.innerContent}
           role="tabpanel"
         >
           {innerTab === 'validation' && (
@@ -249,11 +250,11 @@ export function FixatdlPage() {
             />
           )}
           {innerTab === 'orderTicket' && (
-            <p className={styles.emptyState}>
-              {activeDoc
-                ? `Order ticket — coming soon.${activeStrategyName ? ` Active strategy: ${activeStrategyName}` : ' Select a strategy from the Matrix tab.'}`
-                : 'Load a FIXatdl document and select a strategy to render the order ticket.'}
-            </p>
+            <OrderTicketTab
+              doc={activeDoc}
+              activeStrategyName={activeStrategyName}
+              onStrategyChange={setActiveStrategyName}
+            />
           )}
         </div>
       </div>

@@ -1,0 +1,95 @@
+.tree {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Panel ── */
+
+.panel {
+  /* unstyled by default */
+}
+
+.panelLine {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  background: var(--bg-elevated);
+}
+
+.panelLineSep {
+  border-bottom: 1px solid var(--border);
+}
+
+.collapseBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 9px;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.collapseBtn:hover { color: var(--text-secondary); }
+
+.panelTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.panelBody {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* ── Control slot placeholder ── */
+
+.slot {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  background: var(--bg-elevated);
+  border: 1px dashed color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: var(--radius-sm);
+  min-width: 140px;
+  max-width: 240px;
+}
+
+.slotId {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.slotType {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.slotLabel {
+  font-size: 11px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
