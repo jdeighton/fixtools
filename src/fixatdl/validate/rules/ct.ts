@@ -1,6 +1,4 @@
-import type {
-  AtdlDocument, Strategy, Parameter, Control, StrategyPanel, ControlType, Finding,
-} from '../../model'
+import type { AtdlDocument, Strategy, Parameter, ControlType, Finding } from '../../model'
 import { CONTROL_PARAM_COMPAT } from '../controlParamCompatibility'
 import { STRING_ID_RE, collectControls } from '../../lib/treeUtils'
 

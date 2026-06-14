@@ -7,7 +7,7 @@ function mkPanel(children: Array<StrategyPanel | Control>): StrategyPanel {
 }
 
 function mkCtrl(id: string): Control {
-  return { kind: 'control', id, xsiType: 'TextField_t' as any }
+  return { kind: 'control', id, xsiType: 'TextField_t' as any, listItems: [], stateRules: [] }
 }
 
 describe('collectControls', () => {

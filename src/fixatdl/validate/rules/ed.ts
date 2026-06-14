@@ -1,7 +1,4 @@
-import type {
-  AtdlDocument, Strategy, Parameter, Control, StrategyPanel,
-  EditNode, EditDef, ParameterType, ControlType, Finding,
-} from '../../model'
+import type { AtdlDocument, Strategy, Parameter, Control, EditNode, EditDef, ParameterType, ControlType, Finding } from '../../model'
 import { FIX_FIELD_MAP } from '../../data/fixFieldDictionary'
 import { collectControls } from '../../lib/treeUtils'
 

@@ -1,6 +1,4 @@
-import type {
-  AtdlDocument, Strategy, StrategyPanel, Control, Finding,
-} from '../../model'
+import type { AtdlDocument, Strategy, StrategyPanel, Finding } from '../../model'
 import { collectControls } from '../../lib/treeUtils'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
