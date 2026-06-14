@@ -1,4 +1,5 @@
 import type { Strategy, Parameter, EditNode, StrategyEdit } from '../model'
+import { compareValues } from './editNodeEvaluator'
 
 export interface StrategyEditResult {
   edit: StrategyEdit | null     // null for data-contract checks
@@ -131,30 +132,8 @@ function evalNodeTracked(
       }
 
       const rhsStr = field2 !== undefined ? (lookup.get(field2) ?? '') : (value ?? '')
-      const lhsNum = Number(lhsStr)
-      const rhsNum = Number(rhsStr)
-      const bothNumeric = lhsStr !== '' && rhsStr !== '' && !isNaN(lhsNum) && !isNaN(rhsNum)
 
-      let result: boolean
-      if (bothNumeric) {
-        switch (op) {
-          case 'EQ': result = lhsNum === rhsNum; break
-          case 'NE': result = lhsNum !== rhsNum; break
-          case 'LT': result = lhsNum < rhsNum;  break
-          case 'GT': result = lhsNum > rhsNum;  break
-          case 'LE': result = lhsNum <= rhsNum; break
-          default:   result = lhsNum >= rhsNum; break  // GE
-        }
-      } else {
-        switch (op) {
-          case 'EQ': result = lhsStr === rhsStr; break
-          case 'NE': result = lhsStr !== rhsStr; break
-          case 'LT': result = lhsStr < rhsStr;  break
-          case 'GT': result = lhsStr > rhsStr;  break
-          case 'LE': result = lhsStr <= rhsStr; break
-          default:   result = lhsStr >= rhsStr; break  // GE
-        }
-      }
+      const result = compareValues(lhsStr, rhsStr, op)
 
       nodeResults.set(id, result)
       return result

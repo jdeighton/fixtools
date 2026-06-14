@@ -1,5 +1,6 @@
 import type { Control, EditNode } from '../model'
 import type { ControlValue, TicketStateMap } from '../ticket/ticketTypes'
+import { compareValues } from './editNodeEvaluator'
 
 export interface ControlEffectiveState {
   enabled: boolean
@@ -171,30 +172,7 @@ export function evalCondition(node: EditNode, state: TicketStateMap): boolean {
         ? rawToString(state.get(field2)?.raw)
         : (value ?? '')
 
-      // Type-aware: numeric if both sides parse as numbers (and are non-empty)
-      const lhsNum = Number(lhsStr)
-      const rhsNum = Number(rhsStr)
-      const bothNumeric = lhsStr !== '' && rhsStr !== '' && !isNaN(lhsNum) && !isNaN(rhsNum)
-
-      if (bothNumeric) {
-        switch (op) {
-          case 'EQ': return lhsNum === rhsNum
-          case 'NE': return lhsNum !== rhsNum
-          case 'LT': return lhsNum < rhsNum
-          case 'GT': return lhsNum > rhsNum
-          case 'LE': return lhsNum <= rhsNum
-          case 'GE': return lhsNum >= rhsNum
-        }
-      }
-
-      switch (op) {
-        case 'EQ': return lhsStr === rhsStr
-        case 'NE': return lhsStr !== rhsStr
-        case 'LT': return lhsStr < rhsStr
-        case 'GT': return lhsStr > rhsStr
-        case 'LE': return lhsStr <= rhsStr
-        case 'GE': return lhsStr >= rhsStr
-      }
+      return compareValues(lhsStr, rhsStr, op)
     }
   }
 
