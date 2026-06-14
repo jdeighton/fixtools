@@ -2,10 +2,9 @@ import type {
   AtdlDocument, Strategy, Parameter, Control, StrategyPanel, ControlType, Finding,
 } from '../../model'
 import { CONTROL_PARAM_COMPAT } from '../controlParamCompatibility'
+import { STRING_ID_RE, collectControls } from '../../lib/treeUtils'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-
-const STRING_ID_RE = /^[A-Za-z][A-Za-z0-9_]{0,254}$/
 
 const LIST_CONTROLS = new Set<ControlType>([
   'DropDownList_t', 'EditableDropDownList_t', 'RadioButtonList_t',
@@ -14,16 +13,6 @@ const LIST_CONTROLS = new Set<ControlType>([
 
 function ctrlPath(stratName: string, ctrlId: string): string {
   return `Strategy[${stratName}]/Control[${ctrlId}]`
-}
-
-function collectControls(panels: StrategyPanel[]): Control[] {
-  const controls: Control[] = []
-  function walk(node: StrategyPanel | Control): void {
-    if (node.kind === 'control') { controls.push(node); return }
-    for (const child of node.children) walk(child)
-  }
-  for (const p of panels) walk(p)
-  return controls
 }
 
 // Validate initValue for specific control types where format matters

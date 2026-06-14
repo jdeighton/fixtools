@@ -1,6 +1,10 @@
 import type { Control, Parameter, StrategyPanel, Strategy } from '../model'
 import type { ControlValue, TicketStateMap } from './ticketTypes'
 import { resolveClockInitValue } from './complexControls'
+import { collectControls } from '../lib/treeUtils'
+
+// Re-export for backwards compatibility with existing callers
+export { collectControls as collectAllControls }
 
 export function resolveInitialValue(
   control: Control,
@@ -69,24 +73,12 @@ export function applyRadioSelect(
   return next
 }
 
-export function collectAllControls(panels: StrategyPanel[]): Control[] {
-  const out: Control[] = []
-  function walk(nodes: Array<StrategyPanel | Control>): void {
-    for (const node of nodes) {
-      if (node.kind === 'control') out.push(node)
-      else walk(node.children)
-    }
-  }
-  walk(panels)
-  return out
-}
-
 export function initTicketState(
   panels: StrategyPanel[],
   getStandardField: ((name: string) => string | undefined) | null,
   strategy?: Strategy,
 ): TicketStateMap {
-  const controls = collectAllControls(panels)
+  const controls = collectControls(panels)
   const map = new Map<string, ControlValue>()
   for (const ctrl of controls) {
     const param = strategy?.parameters.find(p => p.name === ctrl.parameterRef)

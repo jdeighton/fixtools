@@ -1,18 +1,9 @@
 import type {
   AtdlDocument, Strategy, StrategyPanel, Control, Finding,
 } from '../../model'
+import { collectControls } from '../../lib/treeUtils'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-
-function collectControls(panels: StrategyPanel[]): Control[] {
-  const out: Control[] = []
-  function walk(node: StrategyPanel | Control): void {
-    if (node.kind === 'control') { out.push(node); return }
-    for (const c of node.children) walk(c)
-  }
-  for (const p of panels) walk(p)
-  return out
-}
 
 function checkPanels(
   panels: StrategyPanel[],

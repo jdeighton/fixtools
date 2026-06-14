@@ -1,9 +1,8 @@
 import type { AtdlDocument, Strategy, Parameter, ParameterType, Finding } from '../../model'
 import { TZ_NAMES_SET } from '../../data/tzNames'
+import { STRING_ID_RE } from '../../lib/treeUtils'
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-
-const STRING_ID_RE = /^[A-Za-z][A-Za-z0-9_]{0,254}$/
 
 function path(stratName: string, paramName: string): string {
   return `Strategy[${stratName}]/Parameter[${paramName}]`

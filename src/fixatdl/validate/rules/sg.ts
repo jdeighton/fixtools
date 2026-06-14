@@ -1,6 +1,6 @@
 import type { AtdlDocument, Strategy, Finding } from '../../model'
+import { STRING_ID_RE } from '../../lib/treeUtils'
 
-const STRING_ID_RE = /^[A-Za-z][A-Za-z0-9_]{0,254}$/
 const COUNTRY_CODE_RE = /^[A-Z0-9]{2}$/
 const VALID_FIX_MSG_TYPES = new Set(['D', 'E', 'AB', 's'])
 const VALID_REGIONS = new Set(['TheAmericas', 'EuropeMiddleEastAfrica', 'AsiaPacificJapan'])
