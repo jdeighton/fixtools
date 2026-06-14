@@ -1,5 +1,6 @@
 import type { FixMessage, Settings, CustomEnum } from '../context/AppContext'
 import { FIELDS, FIELDS_42, FIELDS_TT42, FIELDS_TT44, MSG_TYPES, REQUIRED_FIELDS_42, REQUIRED_FIELDS_44, REQUIRED_FIELDS_TT42, REQUIRED_FIELDS_TT44, fieldName } from '../data/fixDictionary'
+import { parseFixTimestamp } from './timestamps'
 
 export type ValidationProfile = 'auto' | 'FIX.4.2' | 'FIX.4.4' | 'TT-FIX.4.2' | 'TT-FIX.4.4'
 
@@ -32,11 +33,7 @@ function validateType(type: string, value: string): boolean {
   }
 }
 
-function parseFixTs(v: string): Date | null {
-  const m = v.match(/^(\d{4})(\d{2})(\d{2})-(\d{2}):(\d{2}):(\d{2})(?:\.(\d+))?$/)
-  if (!m) return null
-  return new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6], m[7] ? +m[7].padEnd(3, '0').slice(0, 3) : 0))
-}
+
 
 // Reconstruct message body with SOH for checksum/body-length calculation
 function reconstructWithSoh(tags: Map<number, string>): string {
@@ -197,8 +194,8 @@ export function validateMessage(msg: FixMessage, settings: Settings, customEnums
   const sendingTime = t(52)
   const transactTime = t(60)
   if (sendingTime && transactTime) {
-    const st = parseFixTs(sendingTime)
-    const tt = parseFixTs(transactTime)
+    const st = parseFixTimestamp(sendingTime)
+    const tt = parseFixTimestamp(transactTime)
     if (st && tt) {
       const deltaSec = Math.abs(tt.getTime() - st.getTime()) / 1000
       if (deltaSec > settings.validatorTimeDeltaSeconds) {
