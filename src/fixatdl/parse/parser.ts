@@ -118,7 +118,7 @@ function parseStateRule(el: Element): StateRule {
   }
 }
 
-function gridAttrs(el: Element): Control['grid'] | undefined {
+function parseGridAttrs(el: Element): { row?: number; col?: number; rowSpan?: number; colSpan?: number } | undefined {
   const row = numA(el, 'row')
   const col = numA(el, 'col') ?? numA(el, 'column')
   const rowSpan = numA(el, 'rowSpan')
@@ -160,25 +160,11 @@ function parseControl(el: Element): Control {
     ...(el.hasAttribute('disableForTemplate') ? { disableForTemplate: el.getAttribute('disableForTemplate') === 'true' } : {}),
     listItems: kids(el, 'ListItem').map(parseListItem),
     stateRules: kids(el, 'StateRule').map(parseStateRule),
-    ...(gridAttrs(el) ? { grid: gridAttrs(el)! } : {}),
+    ...(parseGridAttrs(el) ? { grid: parseGridAttrs(el)! } : {}),
   }
 }
 
 // ── StrategyPanel ─────────────────────────────────────────────────────────────
-
-function parsePanelGrid(el: Element): StrategyPanel['grid'] | undefined {
-  const row = numA(el, 'row')
-  const col = numA(el, 'col') ?? numA(el, 'column')
-  const rowSpan = numA(el, 'rowSpan')
-  const colSpan = numA(el, 'colSpan')
-  if (row == null && col == null && rowSpan == null && colSpan == null) return undefined
-  return {
-    ...(row != null ? { row } : {}),
-    ...(col != null ? { col } : {}),
-    ...(rowSpan != null ? { rowSpan } : {}),
-    ...(colSpan != null ? { colSpan } : {}),
-  }
-}
 
 function parseStrategyPanel(el: Element): StrategyPanel {
   const children: Array<StrategyPanel | Control> = []
@@ -200,7 +186,7 @@ function parseStrategyPanel(el: Element): StrategyPanel {
     ...(numA(el, 'numRows') != null ? { numRows: numA(el, 'numRows')! } : {}),
     ...(numA(el, 'numCols') != null ? { numCols: numA(el, 'numCols')! } : {}),
     ...(a(el, 'fillOrder') ? { fillOrder: a(el, 'fillOrder') as 'ROW-MAJOR' | 'COL-MAJOR' } : {}),
-    ...(parsePanelGrid(el) ? { grid: parsePanelGrid(el)! } : {}),
+    ...(parseGridAttrs(el) ? { grid: parseGridAttrs(el)! } : {}),
     children,
   }
 }
