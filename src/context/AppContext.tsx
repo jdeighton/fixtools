@@ -1,6 +1,7 @@
-import { createContext, useContext, useState, useEffect, useCallback, useMemo, type ReactNode } from 'react'
+import { createContext, useContext, useState, useCallback, useMemo, type ReactNode } from 'react'
 import { applyFilters, type Filter, type FilterSet, type FilterMode } from '../lib/filterLines'
 import { parseFixMessages } from '../lib/fixParser'
+import { usePersistedState } from '../hooks/usePersistedState'
 
 export interface FixMessage {
   rawLine: string
@@ -40,15 +41,6 @@ const DEFAULT_SETTINGS: Settings = {
   copyIncludePreamble: true,
 }
 
-function loadJson<T>(key: string, fallback: T): T {
-  try {
-    const s = localStorage.getItem(key)
-    return s ? (JSON.parse(s) as T) : fallback
-  } catch {
-    return fallback
-  }
-}
-
 export type { Filter, FilterSet, FilterMode }
 
 interface AppContextValue {
@@ -79,32 +71,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [filters, setFilters] = useState<Filter[]>([])
   const [filterMode, setFilterMode] = useState<FilterMode>('AND')
 
-  const [filterSets, setFilterSetsState] = useState<FilterSet[]>(() =>
-    loadJson<FilterSet[]>('fix-toolkit-filter-sets', [])
-  )
+  const [filterSets, setFilterSets] = usePersistedState<FilterSet[]>('fix-toolkit-filter-sets', [])
 
-  const setFilterSets = useCallback((sets: FilterSet[]) => {
-    setFilterSetsState(sets)
-    localStorage.setItem('fix-toolkit-filter-sets', JSON.stringify(sets))
-  }, [])
+  const [settings, setSettings] = usePersistedState<Settings>('fix-toolkit-settings', DEFAULT_SETTINGS)
 
-  const [settings, setSettingsState] = useState<Settings>(() =>
-    ({ ...DEFAULT_SETTINGS, ...loadJson('fix-toolkit-settings', {}) })
-  )
-
-  const [customEnums, setCustomEnumsState] = useState<CustomEnum[]>(() =>
-    loadJson<CustomEnum[]>('fix-toolkit-custom-enums', [])
-  )
-
-  const setSettings = useCallback((s: Settings) => {
-    setSettingsState(s)
-    localStorage.setItem('fix-toolkit-settings', JSON.stringify(s))
-  }, [])
-
-  const setCustomEnums = useCallback((enums: CustomEnum[]) => {
-    setCustomEnumsState(enums)
-    localStorage.setItem('fix-toolkit-custom-enums', JSON.stringify(enums))
-  }, [])
+  const [customEnums, setCustomEnums] = usePersistedState<CustomEnum[]>('fix-toolkit-custom-enums', [])
 
   const filteredRawInput = useMemo(() => {
     if (filters.length === 0) return rawInput
@@ -122,10 +93,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setRawInput('')
     setFilters([])
   }, [])
-
-  useEffect(() => {
-    localStorage.setItem('fix-toolkit-settings', JSON.stringify(settings))
-  }, [settings])
 
   return (
     <AppContext.Provider value={{
