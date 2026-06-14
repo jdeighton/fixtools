@@ -32,7 +32,20 @@ function validateType(type: string, value: string): boolean {
     default: return true  // STRING and unknown types accept anything
   }
 }
-
+export function resolveProfile(
+  profile: ValidationProfile,
+  beginStr: string | undefined,
+): { fields: Record<number, typeof FIELDS[keyof typeof FIELDS]>, requiredFieldsTable: Record<string, string[]> } {
+  if (profile === 'TT-FIX.4.2') {
+    return { fields: FIELDS_TT42, requiredFieldsTable: REQUIRED_FIELDS_TT42 }
+  } else if (profile === 'TT-FIX.4.4') {
+    return { fields: FIELDS_TT44, requiredFieldsTable: REQUIRED_FIELDS_TT44 }
+  } else if (profile === 'FIX.4.2' || (profile === 'auto' && beginStr === 'FIX.4.2')) {
+    return { fields: FIELDS_42, requiredFieldsTable: REQUIRED_FIELDS_42 }
+  } else {
+    return { fields: FIELDS, requiredFieldsTable: REQUIRED_FIELDS_44 }
+  }
+}
 
 
 // Reconstruct message body with SOH for checksum/body-length calculation
@@ -70,12 +83,8 @@ export function validateMessage(msg: FixMessage, settings: Settings, customEnums
 
   const beginStr = t(8)
 
-  // Pick the field map for enum validation based on the selected profile
-  const fieldsForVersion =
-    profile === 'TT-FIX.4.2' ? FIELDS_TT42 :
-    profile === 'TT-FIX.4.4' ? FIELDS_TT44 :
-    profile === 'FIX.4.2' || (profile === 'auto' && beginStr === 'FIX.4.2') ? FIELDS_42 :
-    FIELDS
+  // Resolve the profile once — returns both the field map and the required-field table
+  const { fields: fieldsForVersion, requiredFieldsTable } = resolveProfile(profile, beginStr)
 
   // Effective version string for matching custom enum accommodations
   const effectiveVersion: string =
@@ -119,16 +128,7 @@ export function validateMessage(msg: FixMessage, settings: Settings, customEnums
 
   // Rule 5: Required fields per MsgType — use the profile's required-field table
   if (msgType) {
-    let requiredForMsg: string[] = []
-    if (profile === 'TT-FIX.4.2') {
-      requiredForMsg = REQUIRED_FIELDS_TT42[msgType] ?? []
-    } else if (profile === 'TT-FIX.4.4') {
-      requiredForMsg = REQUIRED_FIELDS_TT44[msgType] ?? []
-    } else if (profile === 'FIX.4.2' || (profile === 'auto' && beginStr === 'FIX.4.2')) {
-      requiredForMsg = REQUIRED_FIELDS_42[msgType] ?? []
-    } else {
-      requiredForMsg = REQUIRED_FIELDS_44[msgType] ?? []
-    }
+    const requiredForMsg = requiredFieldsTable[msgType] ?? []
     // Resolve field names to tag numbers using the active field map
     const fieldsByName = Object.entries(fieldsForVersion)
     for (const reqFieldName of requiredForMsg) {
